@@ -8,6 +8,6 @@ package Business.Role;
  *
  * @author meghanshubhatt
  */
-public class Role {
+public abstract class Role {
     
 }
