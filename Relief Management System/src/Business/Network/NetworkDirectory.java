@@ -4,11 +4,14 @@
  */
 package Business.Network;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author meghanshubhatt
  */
-public class Network {
+public class NetworkDirectory {
     
+
     
 }

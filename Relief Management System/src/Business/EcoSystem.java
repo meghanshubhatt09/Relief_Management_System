@@ -3,16 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business;
-import Business.Network.Network;
-import java.util.ArrayList;
+import Business.Network.NetworkDirectory;
 /**
  *
  * @author meghanshubhatt
  */
+
+        
 public class EcoSystem {
     
     private static EcoSystem business;
-    private ArrayList<Network> networkList;
+    private NetworkDirectory networkDirectory;
     
     
        public static EcoSystem getInstance() {
@@ -22,20 +23,13 @@ public class EcoSystem {
         return business;
     }
        
-       
-        public ArrayList<Network> getNetworkList() {
-        return networkList;
+     private EcoSystem() {
+        networkDirectory = new NetworkDirectory();
     }
-        
-        
-       public static void setInstance(EcoSystem system) {
-        business=system;
+
+    public NetworkDirectory getNetworkDirectory() {
+        return networkDirectory;
     }
-       
-       public Network createAndAddNetwork() {
-        Network network = new Network();
-        networkList.add(network);
-        return network;
-    }
+
     
 }
