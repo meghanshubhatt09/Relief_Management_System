@@ -8,6 +8,6 @@ package Business.Enterprise;
  *
  * @author meghanshubhatt
  */
-public class HospitalEnterprise {
+public class HospitalEnterprise  {
     
 }
