@@ -41,5 +41,50 @@ public abstract class Organization {
             return value;
         }
     }
+    public Organization(String name) {
+        this.name = name;
+        workQueue = new WorkQueue();
+        employeeDirectory = new EmployeeDirectory();
+        userAccountDirectory = new UserAccountDirectory();
+        organizationID = counter;
+        roles = new HashSet<>();
+        ++counter;
+    }
+
+    public abstract HashSet<Role> getSupportedRole();
+    
+    public UserAccountDirectory getUserAccountDirectory() {
+        return userAccountDirectory;
+    }
+
+    public int getOrganizationID() {
+        return organizationID;
+    }
+
+    public EmployeeDirectory getEmployeeDirectory() {
+        return employeeDirectory;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public WorkQueue getWorkQueue() {
+        return workQueue;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setWorkQueue(WorkQueue workQueue) {
+        this.workQueue = workQueue;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+    
     
 }
