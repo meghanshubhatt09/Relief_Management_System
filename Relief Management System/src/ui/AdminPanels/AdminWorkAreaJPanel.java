@@ -4,6 +4,9 @@
  */
 package ui.AdminPanels;
 
+import Business.EcoSystem;
+import javax.swing.JPanel;
+
 /**
  *
  * @author rk
@@ -15,6 +18,10 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
      */
     public AdminWorkAreaJPanel() {
         initComponents();
+    }
+
+    public AdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem business) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
