@@ -25,13 +25,8 @@ public abstract class Organization {
     
     
     public enum Type{
-        CDCManager("CDCManager Organization"),
-        Clinic("Clinic Organization"),
-        Supplier("Supplier Organization"), 
-        Provider("Provider Organization"),
         NGOManager("NGOManager Organization"),
         SponsorManager("Sponsor Organization"),
-        ResearchLabAdmin("ResearchLabAdmin Organization"),
         BloodBank("BloodBank Organization");
         private String value;
         private Type(String value) {
