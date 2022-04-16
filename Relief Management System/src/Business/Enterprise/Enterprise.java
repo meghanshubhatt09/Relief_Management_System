@@ -9,11 +9,12 @@ import Business.Organization.OrganizationDirectory;
  *
  * @author meghanshubhatt
  */
-public abstract class Enterprise {
+public abstract class Enterprise extends Organization{
     private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
     
     public Enterprise(String name, EnterpriseType type) {
+        super(name);
         this.enterpriseType = type;
         organizationDirectory = new OrganizationDirectory();
     }
