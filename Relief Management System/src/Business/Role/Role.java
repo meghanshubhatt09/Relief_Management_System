@@ -35,5 +35,18 @@ public abstract class Role {
             return value;
         }
     }
+    public RoleType type;
+
+    public abstract JPanel createWorkArea(JPanel userProcessContainer, 
+            UserAccount account, 
+            Organization organization, 
+            EcoSystem business);
+
+    @Override
+    public String toString() {
+        return (type != null) ? this.type.getValue() : this.getClass().getName();
+    }
+    
+  
     
 }
