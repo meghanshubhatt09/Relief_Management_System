@@ -19,13 +19,14 @@ import ui.AdminPanels.AdminWorkAreaJPanel;
  */
 public class SystemAdminRole  extends Role{
     
-        public SystemAdminRole(){
-        this.type = RoleType.SystemAdmin;
-    }
+//        public SystemAdminRole(){
+//        this.type = RoleType.SystemAdmin;
+//    }
+
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, EcoSystem business) {
-        return new AdminWorkAreaJPanel(userProcessContainer, business); 
+    public JPanel createWorkArea(JPanel UserContainer, UserAccount userAccount, Organization organization, Enterprise enterprise, EcoSystem system) {
+        return new AdminWorkAreaJPanel(UserContainer, enterprise);
     }
         
 
