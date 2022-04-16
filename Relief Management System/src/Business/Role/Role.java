@@ -21,7 +21,14 @@ public abstract class Role {
     
         public enum RoleType {
         SystemAdmin("SystemAdmin"),
-        NGOAdmin("NGOAdmin");
+        NGOAdminRole("NGOAdminRole"),
+        DoctorAdminRole("DoctorAdminRole"),
+        ClinicAdminRole("ClinicAdminRole"),
+        BloodBankAdminRole("BloodBankAdminRole"),
+        SponsorAdminRole("SponsorAdminRole"),
+        EmergencyAdminRole("EmergencyAdminRole"),
+        ServiceProviderAdmin("ServiceProviderAdmin"),
+        HospitalAdminRole("HospitalAdminRole");
 
         private String value;
 
