@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import java.awt.Component;
 
 import javax.swing.JPanel;
 /**
@@ -15,6 +16,8 @@ import javax.swing.JPanel;
  * @author meghanshubhatt
  */
 public abstract class Role {
+
+
     
         public enum RoleType {
         SystemAdmin("SystemAdmin"),
@@ -37,14 +40,16 @@ public abstract class Role {
     }
     public RoleType type;
 
-    public abstract JPanel createWorkArea(JPanel userProcessContainer, 
-            UserAccount account, 
+        public abstract JPanel createWorkArea(JPanel UserContainer, 
+            UserAccount userAccount, 
             Organization organization, 
-            EcoSystem business);
+            Enterprise enterprise, 
+            EcoSystem system);
+
 
     @Override
     public String toString() {
-        return (type != null) ? this.type.getValue() : this.getClass().getName();
+        return this.getClass().toString();
     }
     
   

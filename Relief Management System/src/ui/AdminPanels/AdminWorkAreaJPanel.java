@@ -5,6 +5,7 @@
 package ui.AdminPanels;
 
 import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
 import javax.swing.JPanel;
 
 /**
@@ -15,14 +16,17 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form AdminWorkAreaJPanel
-     */
-    public AdminWorkAreaJPanel() {
+     */    
+        JPanel userProcessContainer;
+    Enterprise enterprise;
+    /** Creates new form AdminWorkAreaJPanel */
+    public AdminWorkAreaJPanel(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        //valueLabel.setText(enterprise.getName());
     }
 
-    public AdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
