@@ -14,7 +14,7 @@ import Business.Role.DoctorAdminRole;
  */
 public class ClinicOrganization extends Organization{
 
-    public ClinicOrganization(String name) {
+    public ClinicOrganization() {
         super(Organization.Type.ClinicOrganization.getValue());
     }
 

@@ -24,6 +24,18 @@ public class OrganizationDirectory {
     
     public Organization createOrganization(Type type){
         Organization organization = null;
+        if (type.getValue().equals(Type.NGOOrganization.getValue())){
+            organization = new NGOOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.SponsorOrganization.getValue())){
+            organization = new SponsorOrganization();
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.ClinicOrganization.getValue())){
+            organization = new ClinicOrganization();
+            organizationList.add(organization);
+        }
 
         
         return organization;
