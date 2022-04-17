@@ -13,7 +13,7 @@ import java.util.HashSet;
  */
 public class NGOOrganization extends Organization{
 
-    public NGOOrganization(String name) {
+    public NGOOrganization() {
         super(Type.NGOOrganization.getValue());
     }
 
