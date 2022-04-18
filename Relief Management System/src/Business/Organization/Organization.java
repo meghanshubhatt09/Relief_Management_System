@@ -26,7 +26,7 @@ public abstract class Organization {
     
     public enum Type{
         NGOOrganization("NGO Organization"),
-        SponsorOrganization("Sponsor Organization"),
+        DonationOrganization("Donation Organization"),
         ClinicOrganization("Clinic Organization");
         private String value;
         private Type(String value) {

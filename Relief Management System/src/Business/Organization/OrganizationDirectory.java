@@ -28,8 +28,8 @@ public class OrganizationDirectory {
             organization = new NGOOrganization();
             organizationList.add(organization);
         }
-        else if (type.getValue().equals(Type.SponsorOrganization.getValue())){
-            organization = new SponsorOrganization();
+        else if (type.getValue().equals(Type.DonationOrganization.getValue())){
+            organization = new DonationOrganization();
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.ClinicOrganization.getValue())){
