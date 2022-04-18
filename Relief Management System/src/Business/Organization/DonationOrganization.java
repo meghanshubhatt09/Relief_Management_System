@@ -11,10 +11,10 @@ import java.util.HashSet;
  *
  * @author meghanshubhatt
  */
-public class SponsorOrganization extends Organization{
+public class DonationOrganization extends Organization{
 
-    public SponsorOrganization() {
-        super(Organization.Type.SponsorOrganization.getValue());
+    public DonationOrganization() {
+        super(Organization.Type.DonationOrganization.getValue());
     }
 
     @Override

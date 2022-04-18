@@ -25,7 +25,7 @@ public abstract class Role {
         DoctorAdminRole("DoctorAdminRole"),
         ClinicAdminRole("ClinicAdminRole"),
         BloodBankAdminRole("BloodBankAdminRole"),
-        SponsorAdminRole("SponsorAdminRole"),
+        DonationAdminRole("DonationAdminRole"),
         EmergencyAdminRole("EmergencyAdminRole"),
         ServiceProviderAdmin("ServiceProviderAdmin"),
         HospitalAdminRole("HospitalAdminRole");
