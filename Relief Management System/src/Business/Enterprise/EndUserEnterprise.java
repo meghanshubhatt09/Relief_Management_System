@@ -4,10 +4,22 @@
  */
 package Business.Enterprise;
 
+import Business.Role.Role;
+import java.util.HashSet;
+
 /**
  *
  * @author meghanshubhatt
  */
-public class EndUserEnterprise {
+public class EndUserEnterprise extends Enterprise{
+
+    public EndUserEnterprise(String name) {
+        super(name, EnterpriseType.EndUser);
+    }
+
+    @Override
+    public HashSet<Role> getSupportedRole() {
+        return null;
+    }
     
 }
