@@ -4,10 +4,22 @@
  */
 package Business.Enterprise;
 
+import Business.Role.Role;
+import java.util.HashSet;
+
 /**
  *
  * @author meghanshubhatt
  */
-public class NGOEnterprise {
+public class NGOEnterprise extends Enterprise{
+
+    public NGOEnterprise(String name) {
+        super(name, EnterpriseType.NGO);
+    }
+
+    @Override
+    public HashSet<Role> getSupportedRole() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
