@@ -4,6 +4,9 @@
  */
 package ui.AdminPanels;
 
+import Business.EcoSystem;
+import javax.swing.JPanel;
+
 /**
  *
  * @author rk
@@ -15,6 +18,10 @@ public class EnterpriseMangWAJPanel extends javax.swing.JPanel {
      */
     public EnterpriseMangWAJPanel() {
         initComponents();
+    }
+
+    EnterpriseMangWAJPanel(JPanel userProcessContainer, EcoSystem ecoSystem) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
