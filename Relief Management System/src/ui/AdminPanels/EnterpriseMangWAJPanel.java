@@ -6,17 +6,8 @@ package ui.AdminPanels;
 
 import Business.EcoSystem;
 import javax.swing.JPanel;
-
-import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
-import Business.Role.BloodBankAdminRole;
-import Business.Role.EndUserAdminRole;
-import Business.Role.HospitalAdminRole;
-import Business.Role.NGOAdminRole;
-import static Business.Role.Role.RoleType.DonationAdminRole;
-import Business.Role.DonationAdminRole;
-import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -41,8 +32,8 @@ public class EnterpriseMangWAJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.ecoSystem = ecoSystem;
 
-//        filltheTable();
-//        populateNetworkList();
+        filltheTable();
+        populateNetworkList();
     }
 
 
@@ -205,16 +196,60 @@ public class EnterpriseMangWAJPanel extends javax.swing.JPanel {
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
 
+        Network network = (Network) networkJComboBox.getSelectedItem();
+        Enterprise.EnterpriseType type = (Enterprise.EnterpriseType) enterpriseTypeJComboBox.getSelectedItem();
+        
+        
+        if (network == null || type == null) {
+            JOptionPane.showMessageDialog(null, "Invalid Input!");
+            return;
+        }
+
+        String name = nameJTextField.getText();
+
+        Enterprise enterprise = network.getEnterpriseDirectory().createAndAddEnterprise(name, type);
+
+        filltheTable();
+        JOptionPane.showMessageDialog(null, "Enterprise Created "+name);
       
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-      
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        AdminWorkAreaJPanel Adminwjp = (AdminWorkAreaJPanel) component;
+        Adminwjp.fillTheTree();
+
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-       
+        int selectedRow= enterpriseJTable.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+
+            Enterprise p=(Enterprise) enterpriseJTable.getValueAt(selectedRow, 0);
+
+            for (Network network : ecoSystem.getNetworkList()) {
+                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                   
+                        if(p==enterprise){
+                           network.getEnterpriseDirectory().getEnterpriseList().remove(p);
+                            break;
+                        }
+
+                    
+                }
+            }
+
+            JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
+            filltheTable();
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
 
@@ -235,10 +270,33 @@ public class EnterpriseMangWAJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void filltheTable() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        DefaultTableModel model = (DefaultTableModel) enterpriseJTable.getModel();
+
+        model.setRowCount(0);
+        for (Network network : ecoSystem.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                Object[] row = new Object[3];
+                row[0] = enterprise;
+                row[1] = network.getName();
+                row[2] = enterprise.getEnterpriseType().getValue();
+
+                model.addRow(row);
+            }
+        }
+        
     }
 
     private void populateNetworkList() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        networkJComboBox.removeAllItems();
+        enterpriseTypeJComboBox.removeAllItems();
+
+        for (Network network : ecoSystem.getNetworkList()) {
+            networkJComboBox.addItem(network);
+        }
+
+        for (Enterprise.EnterpriseType type : Enterprise.EnterpriseType.values()) {
+            enterpriseTypeJComboBox.addItem(type);
+        }
+         
     }
 }

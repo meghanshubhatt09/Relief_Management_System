@@ -24,6 +24,27 @@ public class EnterpriseDirectory {
     
     public Enterprise createAndAddEnterprise(String name, Enterprise.EnterpriseType type){
         Enterprise enterprise = null;
+        if (type == Enterprise.EnterpriseType.Hospital){
+            enterprise = new HospitalEnterprise(name);
+            enterpriseList.add(enterprise);
+        }
+        else if (type == Enterprise.EnterpriseType.ServiceProvider){
+            enterprise = new ServiceProviderEnterprise(name);
+            enterpriseList.add(enterprise);
+        }
+        else if(type == Enterprise.EnterpriseType.NGO){
+            enterprise = new NGOEnterprise(name);
+            enterpriseList.add(enterprise);
+        }
+        else if(type == Enterprise.EnterpriseType.EndUser)
+        {
+            enterprise = new EndUserEnterprise(name);
+            enterpriseList.add(enterprise);
+        }
+        else if(type == Enterprise.EnterpriseType.Donation){
+             enterprise = new Donation(name);
+            enterpriseList.add(enterprise);
+        }
         return enterprise;
     }
 }
