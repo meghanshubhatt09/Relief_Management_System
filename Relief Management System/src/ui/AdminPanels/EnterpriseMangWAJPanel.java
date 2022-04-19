@@ -7,6 +7,23 @@ package ui.AdminPanels;
 import Business.EcoSystem;
 import javax.swing.JPanel;
 
+import Business.Employee.Employee;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Role.BloodBankAdminRole;
+import Business.Role.EndUserAdminRole;
+import Business.Role.HospitalAdminRole;
+import Business.Role.NGOAdminRole;
+import static Business.Role.Role.RoleType.DonationAdminRole;
+import Business.Role.DonationAdminRole;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
  * @author rk
@@ -16,13 +33,19 @@ public class EnterpriseMangWAJPanel extends javax.swing.JPanel {
     /**
      * Creates new form EnterpriseMangWAJPanel
      */
-    public EnterpriseMangWAJPanel() {
+    private JPanel userProcessContainer;
+    private EcoSystem ecoSystem;
+    
+    public EnterpriseMangWAJPanel(JPanel userProcessContainer, EcoSystem ecoSystem) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecoSystem = ecoSystem;
+
+//        filltheTable();
+//        populateNetworkList();
     }
 
-    EnterpriseMangWAJPanel(JPanel userProcessContainer, EcoSystem ecoSystem) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -210,4 +233,12 @@ public class EnterpriseMangWAJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox networkJComboBox;
     private javax.swing.JButton submitJButton;
     // End of variables declaration//GEN-END:variables
+
+    private void filltheTable() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void populateNetworkList() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
