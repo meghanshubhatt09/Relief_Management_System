@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package ui.AdminPanels;
-
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import java.awt.CardLayout;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import java.awt.CardLayout;
@@ -25,13 +25,14 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
      */
     EcoSystem ecoSystem;    
     JPanel userProcessContainer;
-    Enterprise enterprise;
+    EcoSystem ecoSystem;
+ 
     /** Creates new form AdminWorkAreaJPanel */
     public AdminWorkAreaJPanel(EcoSystem ecoSystem,JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
         this.ecoSystem = ecoSystem;
         this.userProcessContainer = userProcessContainer;
-        this.enterprise = enterprise;
+        this.ecoSystem = ecoSystem;
         //valueLabel.setText(enterprise.getName());
         
         fillTheTree();
@@ -40,9 +41,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     public void fillTheTree() {
         
         DefaultTreeModel model = (DefaultTreeModel) AdminSystem.getModel();
-
-        
-        
         ArrayList<Network> networkList = ecoSystem.getNetworkList();
         ArrayList<Enterprise> enterpriseList;
         ArrayList<Organization> organizationList;
@@ -121,6 +119,11 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jButton2.setBackground(new java.awt.Color(204, 204, 255));
         jButton2.setText("Enterprise Mangement");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(204, 204, 255));
         jButton3.setText("SetUp Admins");
@@ -192,6 +195,14 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        EnterpriseMangWAJPanel enterpriseMangWAJPanel = new EnterpriseMangWAJPanel(userProcessContainer, ecoSystem);
+        userProcessContainer.add("enterpriseMangWAJPanel", enterpriseMangWAJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
