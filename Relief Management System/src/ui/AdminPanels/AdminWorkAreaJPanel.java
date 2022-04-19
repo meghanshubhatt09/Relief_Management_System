@@ -25,7 +25,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
      */
     EcoSystem ecoSystem;    
     JPanel userProcessContainer;
-    EcoSystem ecoSystem;
  
     /** Creates new form AdminWorkAreaJPanel */
     public AdminWorkAreaJPanel(EcoSystem ecoSystem,JPanel userProcessContainer, Enterprise enterprise) {
