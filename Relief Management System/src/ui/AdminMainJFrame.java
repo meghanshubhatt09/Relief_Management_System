@@ -23,13 +23,14 @@ public class AdminMainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form AdminMainJFrame
      */
-    private EcoSystem system;
+    private EcoSystem ecoSystem;
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     
     public AdminMainJFrame() {
         initComponents();
-        system = dB4OUtil.retrieveSystem();
-        EcoSystem.setInstance(system);
+        ecoSystem = dB4OUtil.retrieveSystem();
+        System.out.println("ui.AdminMainJFrame.<init>()" + ecoSystem);
+        EcoSystem.setInstance(ecoSystem);
         setExtendedState(getExtendedState()| JFrame.MAXIMIZED_BOTH);
         
     }
@@ -159,13 +160,13 @@ public class AdminMainJFrame extends javax.swing.JFrame {
         
          //Step1: Check in the system user account directory if you have the user
          
-        UserAccount userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
+        UserAccount userAccount = ecoSystem.getUserAccountDirectory().authenticateUser(userName, password);
         Enterprise isEnterprise = null;
         Organization isOrganization = null;
         
         if (userAccount == null) {
             //Step2: Go inside each network to check each enterprise
-            for (Network network : system.getNetworkList()) {
+            for (Network network : ecoSystem.getNetworkList()) {
                 //Step 2-a: Check against each enterprise
                 for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                     userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
@@ -199,7 +200,7 @@ public class AdminMainJFrame extends javax.swing.JFrame {
             return;
         } else {
             CardLayout layout = (CardLayout) UserContainer.getLayout();
-            UserContainer.add("workArea", userAccount.getRole().createWorkArea(UserContainer, userAccount, isOrganization, isEnterprise, system));
+            UserContainer.add("workArea", userAccount.getRole().createWorkArea(UserContainer, userAccount, isOrganization, isEnterprise, ecoSystem));
             layout.next(UserContainer);
         }
         loginBtn.setEnabled(false);
@@ -229,7 +230,8 @@ public class AdminMainJFrame extends javax.swing.JFrame {
         UserContainer.add("blank", blankJP);
         CardLayout crdLyt = (CardLayout) UserContainer.getLayout();
         crdLyt.next(UserContainer);
-        dB4OUtil.storeSystem(system);
+        System.out.println("storeSystem" + ecoSystem);
+        dB4OUtil.storeSystem(ecoSystem);
     }//GEN-LAST:event_logoutBtnActionPerformed
 
     /**

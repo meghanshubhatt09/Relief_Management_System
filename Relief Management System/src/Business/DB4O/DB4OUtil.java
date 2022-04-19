@@ -70,8 +70,12 @@ public class DB4OUtil {
         else{
             system = systems.get(systems.size() - 1);
         }
+        
+                System.out.println("Business.DB4O.DB4OUtil.retrieveSystem()" + " " + system);
         conn.close();
         return system;
+        
+
     }
     
 }

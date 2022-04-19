@@ -3,11 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package ui.AdminPanels;
-
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import java.awt.CardLayout;
+import Business.Network.Network;
+import Business.Organization.Organization;
+import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JPanel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -17,18 +22,63 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form AdminWorkAreaJPanel
-     */    
+     */
+    EcoSystem ecoSystem;    
     JPanel userProcessContainer;
     EcoSystem ecoSystem;
  
     /** Creates new form AdminWorkAreaJPanel */
-    public AdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem ecoSystem) {
+    public AdminWorkAreaJPanel(EcoSystem ecoSystem,JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
+        this.ecoSystem = ecoSystem;
         this.userProcessContainer = userProcessContainer;
         this.ecoSystem = ecoSystem;
         //valueLabel.setText(enterprise.getName());
+        
+        fillTheTree();
     }
 
+    public void fillTheTree() {
+        
+        DefaultTreeModel model = (DefaultTreeModel) AdminSystem.getModel();
+        ArrayList<Network> networkList = ecoSystem.getNetworkList();
+        ArrayList<Enterprise> enterpriseList;
+        ArrayList<Organization> organizationList;
+        Network network;
+        Enterprise enterprise;
+        Organization organization;
+
+        DefaultMutableTreeNode networks = new DefaultMutableTreeNode("Networks");
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode) model.getRoot();
+        root.removeAllChildren();
+        root.insert(networks, 0);
+
+        DefaultMutableTreeNode networkNode;
+        DefaultMutableTreeNode enterpriseNode;
+        DefaultMutableTreeNode organizationNode;
+        for (int i = 0; i < networkList.size(); i++) {
+            network = networkList.get(i);
+            networkNode = new DefaultMutableTreeNode(network.getName());
+            networks.insert(networkNode, i);
+
+            enterpriseList = network.getEnterpriseDirectory().getEnterpriseList();
+
+            for (int j = 0; j < enterpriseList.size(); j++) {
+                enterprise = enterpriseList.get(j);
+                enterpriseNode = new DefaultMutableTreeNode(enterprise.getName());
+                networkNode.insert(enterpriseNode, j);
+
+                organizationList = enterprise.getOrganizationDirectory().getOrganizationList();
+                for (int k = 0; k < organizationList.size(); k++) {
+                    organization = organizationList.get(k);
+                    organizationNode = new DefaultMutableTreeNode(organization.getName());
+                    enterpriseNode.insert(organizationNode, k);
+                }
+            }
+        }
+
+        model.reload();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -139,6 +189,11 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+         NetworkMangWAJPanel networkMangWAJPanel = new NetworkMangWAJPanel(ecoSystem,userProcessContainer);
+        userProcessContainer.add("networkMangWAJPanel", networkMangWAJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
