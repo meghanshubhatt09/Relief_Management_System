@@ -29,7 +29,7 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
         this.ecoSystem =ecoSystem;
         this.userProcessContainer=userProcessContainer;
         
-         populateNetworkTable();
+         fillNetworkTable();
     }
 
     /**
@@ -162,7 +162,7 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void populateNetworkTable() {
+    private void fillNetworkTable() {
         DefaultTableModel model = (DefaultTableModel) networkJTable.getModel();
 
         model.setRowCount(0);
@@ -185,6 +185,24 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        int selectedRowValue= networkJTable.getSelectedRow();
+        if(selectedRowValue<0){
+            JOptionPane.showMessageDialog(null, "Please select the network row to delete!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+
+            Network existingNetwork =(Network) networkJTable.getValueAt(selectedRowValue, 0);
+
+            for (Network network : ecoSystem.getNetworkList()) {
+                    if(existingNetwork==network){
+                      ecoSystem.getNetworkList().remove(existingNetwork);
+                        break;
+                    }
+            }
+
+            JOptionPane.showMessageDialog(null, "You have successfully deleted the network!!");
+            fillNetworkTable();
+        }
        
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -201,7 +219,7 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
         Network network = ecoSystem.createAndAddNetwork();
         network.setName(name);
 
-        populateNetworkTable();
+        fillNetworkTable();
         JOptionPane.showMessageDialog(null, "Added the nework!!");
         }
     }//GEN-LAST:event_submitJButtonActionPerformed
