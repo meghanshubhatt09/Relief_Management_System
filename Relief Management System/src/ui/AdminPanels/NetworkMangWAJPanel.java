@@ -4,6 +4,14 @@
  */
 package ui.AdminPanels;
 
+import Business.EcoSystem;
+import Business.Network.Network;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author rk
@@ -13,8 +21,15 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
     /**
      * Creates new form NetworkMangWAJPanel
      */
-    public NetworkMangWAJPanel() {
+    EcoSystem ecoSystem;    
+    JPanel userProcessContainer;
+    public NetworkMangWAJPanel(EcoSystem ecoSystem,    
+    JPanel userProcessContainer) {
         initComponents();
+        this.ecoSystem =ecoSystem;
+        this.userProcessContainer=userProcessContainer;
+        
+         populateNetworkTable();
     }
 
     /**
@@ -147,8 +162,25 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void populateNetworkTable() {
+        DefaultTableModel model = (DefaultTableModel) networkJTable.getModel();
+
+        model.setRowCount(0);
+        for (Network network : ecoSystem.getNetworkList()) {
+            Object[] row = new Object[1];
+            row[0] = network;
+            model.addRow(row);
+        }
+    }
+
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-        
+         userProcessContainer.remove(this);
+         Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        AdminWorkAreaJPanel adminWorkAreaJPanel = (AdminWorkAreaJPanel) component;
+        adminWorkAreaJPanel.fillTheTree();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -157,7 +189,21 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
+        
+        if(nameJTextField.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Please provide the name of the network!!");
+        }
+        else
+        {
+        String name = nameJTextField.getText();
 
+        Network network = ecoSystem.createAndAddNetwork();
+        network.setName(name);
+
+        populateNetworkTable();
+        JOptionPane.showMessageDialog(null, "Added the nework!!");
+        }
     }//GEN-LAST:event_submitJButtonActionPerformed
 
 
