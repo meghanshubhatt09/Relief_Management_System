@@ -3,18 +3,47 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package ui.AdminPanels;
-
+import Business.EcoSystem;
+import Business.Employee.Employee;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Role.BloodBankAdminRole;
+import Business.Role.ClinicAdminRole;
+import Business.Role.DoctorAdminRole;
+import Business.Role.DonationAdminRole;
+import Business.Role.HospitalAdminRole;
+import Business.Role.EmergencyAdminRole;
+import Business.Role.EmergencyRequestAdminRole;
+import Business.Role.EndUserAdminRole;
+import Business.Role.FoodAdminRole;
+import Business.Role.NGOAdminRole;
+import Business.Role.PoliceAdminRole;
+import static Business.Role.Role.RoleType.DonationAdminRole;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author rk
  */
 public class SetupAdminsJPanel extends javax.swing.JPanel {
 
+    private JPanel userProcessContainer;
+    private EcoSystem ecoSystem;
     /**
      * Creates new form SetupAdminsJPanel
      */
-    public SetupAdminsJPanel() {
+    public SetupAdminsJPanel(JPanel userProcessContainer, EcoSystem ecoSystem) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.ecoSystem = ecoSystem;
+        
+        filltheTable();
+        populateNetworkComboBox();
     }
 
     /**
@@ -192,21 +221,94 @@ public class SetupAdminsJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-       
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        AdminWorkAreaJPanel Adminwjp = (AdminWorkAreaJPanel) component;
+        Adminwjp.fillTheTree();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
-    private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
+    private void populateEnterpriseJComboBox(Network network) {
+        enterpriseJComboBox.removeAllItems();
 
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+            enterpriseJComboBox.addItem(enterprise);
+        }
+
+    }
+    
+    
+    private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
+        Network network = (Network) networkJComboBox.getSelectedItem();
+        if (network != null) {
+            populateEnterpriseJComboBox(network);
+        }
        
     }//GEN-LAST:event_networkJComboBoxActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        
+        int selectedRow = enterpriseJTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            UserAccount p = (UserAccount) enterpriseJTable.getValueAt(selectedRow, 2);
+
+            for (Network network : ecoSystem.getNetworkList()) {
+                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    for (UserAccount userAccount : enterprise.getUserAccountDirectory().getUserAccountList()) {
+                        if (p == userAccount) {
+                            enterprise.getUserAccountDirectory().getUserAccountList().remove(p);
+                            break;
+                        }
+
+                    }
+                }
+            }
+
+            JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
+            filltheTable();
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
+        Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
 
+        String username = usernameJTextField.getText();
+        String password = String.valueOf(passwordJPasswordField.getPassword());
+        String name = nameJTextField.getText();
+
+        Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
+        if (EcoSystem.checkIfUsernameIsUnique(username)) {
+            UserAccount account = null;
+//            if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
+//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
+//            } 
+//            else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Distributor) {
+//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DistributorAdminRole());
+//            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
+//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
+//            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.NGO) {
+//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new NGOAdmin());
+//            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.EndUser) {
+//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new EndUserRole());
+//            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Sponsor) {
+//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new SponsorAdmin());
+//            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.BloodBank) {
+//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new BloodBankAdminRole());
+//            } else{
+//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ResearchLabAdminRole());
+//            }
+         
+
+            filltheTable();
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
        
     }//GEN-LAST:event_submitJButtonActionPerformed
 
@@ -229,4 +331,30 @@ public class SetupAdminsJPanel extends javax.swing.JPanel {
     private javax.swing.JButton submitJButton;
     private javax.swing.JTextField usernameJTextField;
     // End of variables declaration//GEN-END:variables
+
+    private void filltheTable() {
+        DefaultTableModel model = (DefaultTableModel) enterpriseJTable.getModel();
+
+        model.setRowCount(0);
+        for (Network network : ecoSystem.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (UserAccount userAccount : enterprise.getUserAccountDirectory().getUserAccountList()) {
+                    Object[] row = new Object[3];
+                    row[0] = enterprise.getName();
+                    row[1] = network.getName();
+                    row[2] = userAccount;
+
+                    model.addRow(row);
+                }
+            }
+        }
+    }
+
+    private void populateNetworkComboBox() {
+        networkJComboBox.removeAllItems();
+
+        for (Network network : ecoSystem.getNetworkList()) {
+            networkJComboBox.addItem(network);
+        }
+    }
 }
