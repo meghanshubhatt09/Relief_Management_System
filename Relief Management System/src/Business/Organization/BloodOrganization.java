@@ -4,10 +4,22 @@
  */
 package Business.Organization;
 
+import Business.Role.Role;
+import java.util.HashSet;
+
 /**
  *
  * @author meghanshubhatt
  */
-public class BloodOrganization {
+public class BloodOrganization extends Organization{
+
+    public BloodOrganization() {
+        super(Organization.Type.BloodOrganization.getValue());
+    }
+
+    @Override
+    public HashSet<Role> getSupportedRole() {
+        return null; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

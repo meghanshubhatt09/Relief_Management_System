@@ -284,9 +284,9 @@ public class SetupAdminsJPanel extends javax.swing.JPanel {
         Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
         if (EcoSystem.checkIfUsernameIsUnique(username)) {
             UserAccount account = null;
-//            if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
-//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
-//            } 
+            if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
+            } 
 //            else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Distributor) {
 //                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DistributorAdminRole());
 //            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {

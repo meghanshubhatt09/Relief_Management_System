@@ -4,6 +4,7 @@
  */
 package Business.Enterprise;
 
+import Business.Role.BloodBankAdminRole;
 import Business.Role.ClinicAdminRole;
 import Business.Role.Role;
 import java.util.HashSet;
@@ -21,6 +22,7 @@ public class HospitalEnterprise  extends Enterprise{
     @Override
     public HashSet<Role> getSupportedRole() {
          roles.add(new ClinicAdminRole());
+         roles.add(new BloodBankAdminRole());
          return roles;
     }
     
