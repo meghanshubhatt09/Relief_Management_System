@@ -4,6 +4,12 @@
  */
 package ui.Hospital.Clinic;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.ClinicOrganization;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+
 /**
  *
  * @author meghanshubhatt
@@ -15,6 +21,10 @@ public class ClinicAdminWorkAreaJPanel extends javax.swing.JPanel {
      */
     public ClinicAdminWorkAreaJPanel() {
         initComponents();
+    }
+
+    public ClinicAdminWorkAreaJPanel(JPanel UserContainer, UserAccount userAccount, ClinicOrganization clinicOrganization, Enterprise enterprise, EcoSystem system) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
