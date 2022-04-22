@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.Employee;
-
+import Business.Organization.Organization;
 /**
  *
  * @author meghanshubhatt
@@ -12,6 +12,12 @@ public class Employee {
     private String name;
     private int id;
     private static int count = 1;
+    private Organization organization;
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
 
     public Employee() {
         id = count;

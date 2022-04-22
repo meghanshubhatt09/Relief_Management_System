@@ -9,6 +9,7 @@ import Business.UserAccount.UserAccountDirectory;
 import Business.WorkQueue.WorkQueue;
 import java.util.ArrayList;
 import java.util.HashSet;
+import Business.Employee.Employee;
 /**
  *
  * @author meghanshubhatt
@@ -20,6 +21,11 @@ public abstract class Organization {
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private int organizationID;
+    private Employee employee;
+
+    public Employee getEmployee() {
+        return employee;
+    }
     private static int counter=0;
     public HashSet<Role> roles;
     
@@ -27,6 +33,7 @@ public abstract class Organization {
     public enum Type{
         NGOOrganization("NGO Organization"),
         DonationOrganization("Donation Organization"),
+        BloodOrganization("Blood Organization"),
         ClinicOrganization("Clinic Organization");
         private String value;
         private Type(String value) {
