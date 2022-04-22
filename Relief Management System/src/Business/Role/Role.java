@@ -27,7 +27,7 @@ public abstract class Role {
         BloodBankAdminRole("BloodBankAdminRole"),
         DonationAdminRole("DonationAdminRole"),
         EmergencyAdminRole("EmergencyAdminRole"),
-        ServiceProviderAdmin("ServiceProviderAdmin"),
+        ServiceProviderAdminRole("ServiceProviderAdminRole"),
         HospitalAdminRole("HospitalAdminRole");
 
         private String value;
