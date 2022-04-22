@@ -19,6 +19,7 @@ import Business.Role.FoodAdminRole;
 import Business.Role.NGOAdminRole;
 import Business.Role.PoliceAdminRole;
 import static Business.Role.Role.RoleType.DonationAdminRole;
+import Business.Role.ServiceProviderAdminRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -287,8 +288,9 @@ public class SetupAdminsJPanel extends javax.swing.JPanel {
             if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
             } 
-//            else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Distributor) {
-//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DistributorAdminRole());
+            else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.ServiceProvider) {
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ServiceProviderAdminRole());
+            }
 //            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
 //                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
 //            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.NGO) {
