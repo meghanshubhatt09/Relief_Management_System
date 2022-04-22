@@ -172,6 +172,11 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnUserAccountsManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserAccountsManageActionPerformed
         // TODO add your handling code here:
+        HospitalManageUserAccounts hospitalManageUserAccounts = new HospitalManageUserAccounts(userProcessContainer, enterprise);
+        userProcessContainer.add("HospitalManageUserAccounts", hospitalManageUserAccounts);
+
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnUserAccountsManageActionPerformed
 
 
