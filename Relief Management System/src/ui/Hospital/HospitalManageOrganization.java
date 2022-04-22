@@ -48,6 +48,7 @@ public class HospitalManageOrganization extends javax.swing.JPanel {
         addJButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         organizationJTable = new javax.swing.JTable();
+        btnDeleteRequest = new javax.swing.JButton();
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel3.setText("Hospital Manage Organization");
@@ -105,19 +106,30 @@ public class HospitalManageOrganization extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(organizationJTable);
 
+        btnDeleteRequest.setText("Delete Request");
+        btnDeleteRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteRequestActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(210, 210, 210))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(33, 33, 33)
-                        .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(210, 210, 210))
+                        .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDeleteRequest)
+                        .addGap(161, 161, 161))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -138,10 +150,11 @@ public class HospitalManageOrganization extends javax.swing.JPanel {
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeleteRequest))
                 .addGap(18, 18, 18)
                 .addComponent(addJButton)
                 .addGap(29, 29, 29)
@@ -168,10 +181,37 @@ public class HospitalManageOrganization extends javax.swing.JPanel {
         filltheTable();
     }//GEN-LAST:event_addJButtonActionPerformed
 
+    private void btnDeleteRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRequestActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = organizationJTable.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        {
+             String p = (String) organizationJTable.getValueAt(selectedRow, 1);
+             
+             for(Organization org : organizationDirectory.getOrganizationList())
+             {
+                 if (org.getName() == p)
+                 {
+                    organizationDirectory.getOrganizationList().remove(org);
+                    JOptionPane.showMessageDialog(null, "You have successfully deleted the account");
+                    filltheTable();
+                    break;
+                     
+                 }
+             }
+             
+
+        }
+    }//GEN-LAST:event_btnDeleteRequestActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
     private javax.swing.JButton backJButton;
+    private javax.swing.JButton btnDeleteRequest;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
