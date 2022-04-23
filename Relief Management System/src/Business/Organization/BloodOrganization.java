@@ -4,6 +4,7 @@
  */
 package Business.Organization;
 
+import Business.Role.BloodBankAdminRole;
 import Business.Role.Role;
 import java.util.HashSet;
 
@@ -19,7 +20,8 @@ public class BloodOrganization extends Organization{
 
     @Override
     public HashSet<Role> getSupportedRole() {
-        return null; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        roles.add(new BloodBankAdminRole());
+        return roles;
     }
     
 }

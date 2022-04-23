@@ -17,18 +17,19 @@ import javax.swing.JPanel;
  */
 public abstract class Role {
 
+    private String name;
 
     
         public enum RoleType {
-        SystemAdmin("SystemAdmin"),
-        NGOAdminRole("NGOAdminRole"),
-        DoctorAdminRole("DoctorAdminRole"),
-        ClinicAdminRole("ClinicAdminRole"),
-        BloodBankAdminRole("BloodBankAdminRole"),
-        DonationAdminRole("DonationAdminRole"),
-        EmergencyAdminRole("EmergencyAdminRole"),
-        ServiceProviderAdmin("ServiceProviderAdmin"),
-        HospitalAdminRole("HospitalAdminRole");
+        SystemAdmin("System Admin"),
+        NGOAdminRole("NGO Admin Role"),
+        DoctorAdminRole("Doctor Admin Role"),
+        ClinicAdminRole("Clinic Admin Role"),
+        BloodBankAdminRole("Blood Bank Admin Role"),
+        DonationAdminRole("Donation Admin Role"),
+        EmergencyAdminRole("Emergency Admin Role"),
+        ServiceProviderAdmin("Service Provider Admin"),
+        HospitalAdminRole("Hospital Admin Role");
 
         private String value;
 

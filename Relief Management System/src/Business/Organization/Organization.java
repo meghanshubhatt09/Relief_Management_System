@@ -22,6 +22,11 @@ public abstract class Organization {
     private UserAccountDirectory userAccountDirectory;
     private int organizationID;
     private Employee employee;
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
 
     public Employee getEmployee() {
         return employee;
