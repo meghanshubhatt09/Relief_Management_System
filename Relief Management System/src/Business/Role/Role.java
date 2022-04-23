@@ -17,6 +17,7 @@ import javax.swing.JPanel;
  */
 public abstract class Role {
 
+  
 
     
         public enum RoleType {
