@@ -9,17 +9,18 @@ import java.util.HashSet;
 
 /**
  *
- * @author meghanshubhatt
+ * @author rk
  */
-public class EmergencyRequestOrganization extends Organization {
+public class ShelterOrganization extends Organization {
 
-    public EmergencyRequestOrganization() {
-        super(Organization.Type.EmergencyRequestOrganization.getValue());
+    public ShelterOrganization() {
+        super(Organization.Type.ShelterOrganization.getValue());
     }
 
     @Override
     public HashSet<Role> getSupportedRole() {
-        return null;
+        
+    return null;
     }
     
 }
