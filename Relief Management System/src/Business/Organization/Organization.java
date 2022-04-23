@@ -34,7 +34,11 @@ public abstract class Organization {
         NGOOrganization("NGO Organization"),
         DonationOrganization("Donation Organization"),
         BloodOrganization("Blood Organization"),
-        ClinicOrganization("Clinic Organization");
+        ClinicOrganization("Clinic Organization"),
+        FoodOrganization("Food Organization"),
+        ShelterOrganization("Shelter Organization"),
+        EmergencyRequestOrganization("Emergency Request Organization");
+        
         private String value;
         private Type(String value) {
             this.value = value;

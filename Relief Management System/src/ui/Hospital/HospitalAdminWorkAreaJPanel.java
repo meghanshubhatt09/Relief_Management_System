@@ -143,7 +143,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(btnEmployeeCreation)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(btnUserAccountsManage))
                 .addContainerGap(128, Short.MAX_VALUE))

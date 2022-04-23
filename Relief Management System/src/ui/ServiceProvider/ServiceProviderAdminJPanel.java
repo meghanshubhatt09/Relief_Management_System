@@ -9,8 +9,10 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.RoundedBorder;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import ui.Hospital.HospitalManageOrganization;
 
 /**
  *
@@ -133,6 +135,10 @@ public class ServiceProviderAdminJPanel extends javax.swing.JPanel {
 
     private void ManageOrgBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageOrgBtnActionPerformed
         // TODO add your handling code here:
+        SPManageOrganization sPManageOrganization = new SPManageOrganization(enterprise.getOrganizationDirectory(),userProcessContainer);
+        userProcessContainer.add("SPManageOrganization", sPManageOrganization);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
         
     }//GEN-LAST:event_ManageOrgBtnActionPerformed
 
