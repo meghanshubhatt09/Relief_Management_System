@@ -95,6 +95,7 @@ public class AdminMainJFrame extends javax.swing.JFrame {
         });
 
         logoutJButton.setText("Logout");
+        logoutJButton.setEnabled(false);
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutJButtonActionPerformed(evt);
@@ -204,7 +205,7 @@ public class AdminMainJFrame extends javax.swing.JFrame {
             layout.next(UserContainer);
         }
         loginBtn.setEnabled(false);
-        loginBtn.setEnabled(true);
+        logoutJButton.setEnabled(true);
         usernameTxt.setEnabled(false);
         passwordTxt.setEnabled(false);
         
