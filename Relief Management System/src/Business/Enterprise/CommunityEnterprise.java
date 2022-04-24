@@ -11,10 +11,10 @@ import java.util.HashSet;
  *
  * @author meghanshubhatt
  */
-public class EndUserEnterprise extends Enterprise{
+public class CommunityEnterprise extends Enterprise{
 
-    public EndUserEnterprise(String name) {
-        super(name, EnterpriseType.EndUser);
+    public CommunityEnterprise(String name) {
+        super(name, EnterpriseType.Community);
     }
 
     @Override

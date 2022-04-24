@@ -9,12 +9,13 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Role.BloodBankAdminRole;
 import Business.Role.ClinicAdminRole;
+import Business.Role.CommunityHeadRole;
 import Business.Role.DoctorAdminRole;
 import Business.Role.DonationAdminRole;
 import Business.Role.HospitalAdminRole;
 import Business.Role.EmergencyAdminRole;
 import Business.Role.EmergencyRequestAdminRole;
-import Business.Role.EndUserAdminRole;
+//import Business.Role.EndUserAdminRole;
 import Business.Role.FoodAdminRole;
 import Business.Role.NGOAdminRole;
 import Business.Role.PoliceAdminRole;
@@ -290,14 +291,14 @@ public class SetupAdminsJPanel extends javax.swing.JPanel {
             } 
             else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.ServiceProvider) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ServiceProviderAdminRole());
+            }else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Community) {
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new CommunityHeadRole());
             }
 //            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
 //                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
 //            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.NGO) {
 //                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new NGOAdmin());
-//            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.EndUser) {
-//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new EndUserRole());
-//            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Sponsor) {
+//            }  else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Sponsor) {
 //                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new SponsorAdmin());
 //            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.BloodBank) {
 //                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new BloodBankAdminRole());
