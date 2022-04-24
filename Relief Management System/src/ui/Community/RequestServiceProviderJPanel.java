@@ -4,6 +4,12 @@
  */
 package ui.Community;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.ClinicOrganization;
+import Business.UserAccount.UserAccount;
+import javax.swing.JPanel;
+
 /**
  *
  * @author arjun
@@ -12,9 +18,23 @@ public class RequestServiceProviderJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form RequestServiceProviderJPanel
+     * 
      */
+     private JPanel userProcessContainer;
+//    private ClinicOrganization organization;
+    private Enterprise enterprise;
+    private UserAccount account;
+    private EcoSystem business;
     public RequestServiceProviderJPanel() {
         initComponents();
+        
+    }
+
+    RequestServiceProviderJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem ecoSystem) {
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+        this.account = account;
+        this.business = business;
     }
 
     /**

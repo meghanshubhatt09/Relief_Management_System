@@ -6,7 +6,6 @@ package ui.Community;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.ClinicOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
@@ -14,19 +13,19 @@ import javax.swing.JPanel;
  *
  * @author arjun
  */
-public class RequestHospitalJPanel extends javax.swing.JPanel {
+public class ManageCommunityJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form RequestHospitalJPanel
+     * Creates new form ManageCommunityJPanel
      */
     private JPanel userProcessContainer;
 //    private ClinicOrganization organization;
     private Enterprise enterprise;
     private UserAccount account;
     private EcoSystem business;
-    public RequestHospitalJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem ecoSystem) {
+    public ManageCommunityJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem ecoSystem) {
         initComponents();
-         this.userProcessContainer = userProcessContainer;
+        this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.account = account;
         this.business = business;

@@ -9,6 +9,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.ClinicOrganization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import java.awt.CardLayout;
 
 /**
  *
@@ -53,15 +54,30 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
         enterpriseNameLabel = new javax.swing.JTextField();
         btnRequestServiceProvider = new javax.swing.JButton();
         btnRequestHospital = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnManageCommunity = new javax.swing.JButton();
 
         enterpriseNameLabel.setText("jTextField1");
 
         btnRequestServiceProvider.setText("Request Other Services");
+        btnRequestServiceProvider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestServiceProviderActionPerformed(evt);
+            }
+        });
 
         btnRequestHospital.setText("Request Health Aid");
+        btnRequestHospital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestHospitalActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Manage Community");
+        btnManageCommunity.setText("Manage Community");
+        btnManageCommunity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageCommunityActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -76,7 +92,7 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(128, 128, 128)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                            .addComponent(btnManageCommunity)
                             .addComponent(btnRequestHospital)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(115, 115, 115)
@@ -93,16 +109,41 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGap(39, 39, 39)
                 .addComponent(btnRequestHospital)
                 .addGap(50, 50, 50)
-                .addComponent(jButton1)
+                .addComponent(btnManageCommunity)
                 .addContainerGap(86, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRequestServiceProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestServiceProviderActionPerformed
+        // TODO add your handling code here:
+        RequestServiceProviderJPanel requestServiceProviderJPanel = new RequestServiceProviderJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
+        userProcessContainer.add("requestServiceProviderJPanel",requestServiceProviderJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+    }//GEN-LAST:event_btnRequestServiceProviderActionPerformed
+
+    private void btnRequestHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestHospitalActionPerformed
+        // TODO add your handling code here:
+        RequestHospitalJPanel requestHospitalJPanel = new RequestHospitalJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
+        userProcessContainer.add("requestHospitalJPanel",requestHospitalJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnRequestHospitalActionPerformed
+
+    private void btnManageCommunityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCommunityActionPerformed
+        // TODO add your handling code here:
+        ManageCommunityJPanel manageCommunityJPanel = new ManageCommunityJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
+        userProcessContainer.add("manageCommunityJPanel",manageCommunityJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageCommunityActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnManageCommunity;
     private javax.swing.JButton btnRequestHospital;
     private javax.swing.JButton btnRequestServiceProvider;
     private javax.swing.JTextField enterpriseNameLabel;
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
