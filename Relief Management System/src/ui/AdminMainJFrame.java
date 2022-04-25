@@ -29,8 +29,9 @@ public class AdminMainJFrame extends javax.swing.JFrame {
     public AdminMainJFrame() {
         initComponents();
         ecoSystem = dB4OUtil.retrieveSystem();
-        System.out.println("ui.AdminMainJFrame.<init>()" + ecoSystem);
+        
         EcoSystem.setInstance(ecoSystem);
+        System.out.println("ui.AdminMainJFrame.<init>()" + ecoSystem);
         setExtendedState(getExtendedState()| JFrame.MAXIMIZED_BOTH);
         
     }
@@ -202,6 +203,7 @@ public class AdminMainJFrame extends javax.swing.JFrame {
         } else {
             CardLayout layout = (CardLayout) UserContainer.getLayout();
             UserContainer.add("workArea", userAccount.getRole().createWorkArea(UserContainer, userAccount, isOrganization, isEnterprise, ecoSystem));
+            //System.out.println("ui.AdminMainJFrame.loginBtnActionPerformed() "+ecoSystem);
             layout.next(UserContainer);
         }
         loginBtn.setEnabled(false);
@@ -231,6 +233,7 @@ public class AdminMainJFrame extends javax.swing.JFrame {
         CardLayout crdLyt = (CardLayout) UserContainer.getLayout();
         crdLyt.next(UserContainer);
         dB4OUtil.storeSystem(ecoSystem);
+        System.out.println("Value of system" + "" + ecoSystem.getSupportedRole());
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     /**

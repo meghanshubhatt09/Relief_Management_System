@@ -12,7 +12,9 @@ import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import ui.Hospital.HospitalCreateEmployee;
 import ui.Hospital.HospitalManageOrganization;
+import ui.Hospital.HospitalManageUserAccounts;
 
 /**
  *
@@ -77,8 +79,18 @@ public class ServiceProviderAdminJPanel extends javax.swing.JPanel {
         });
 
         ManageEmpBtn.setText("Manage Employer");
+        ManageEmpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManageEmpBtnActionPerformed(evt);
+            }
+        });
 
         CreateCredBtn.setText("Employer Credential");
+        CreateCredBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CreateCredBtnActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("jButton4");
 
@@ -141,6 +153,22 @@ public class ServiceProviderAdminJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
         
     }//GEN-LAST:event_ManageOrgBtnActionPerformed
+
+    private void ManageEmpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageEmpBtnActionPerformed
+        // TODO add your handling code here:
+        SPCreateEmployee sPCreateEmployee = new SPCreateEmployee(enterprise.getOrganizationDirectory(),userProcessContainer);
+        userProcessContainer.add("SPCreateEmployee", sPCreateEmployee);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_ManageEmpBtnActionPerformed
+
+    private void CreateCredBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateCredBtnActionPerformed
+        // TODO add your handling code here:
+        SPManageUserAccount sPManageUserAccount = new SPManageUserAccount(userProcessContainer, enterprise);
+        userProcessContainer.add("SPManageUserAccount", sPManageUserAccount);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_CreateCredBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,7 +4,9 @@
  */
 package Business.Organization;
 
+import Business.Role.FoodAdminRole;
 import Business.Role.Role;
+import Business.Role.ShelterAdminRole;
 import java.util.HashSet;
 
 /**
@@ -20,7 +22,8 @@ public class ShelterOrganization extends Organization {
     @Override
     public HashSet<Role> getSupportedRole() {
         
-    return null;
+    roles.add(new ShelterAdminRole());
+        return roles;
     }
     
 }

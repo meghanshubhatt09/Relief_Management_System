@@ -4,6 +4,7 @@
  */
 package Business.Doctor;
 
+import Business.Doctor.Doctor;
 import java.util.ArrayList;
 
 /**
@@ -11,20 +12,24 @@ import java.util.ArrayList;
  * @author meghanshubhatt
  */
 public class DoctorDirectory {
-    private ArrayList<Doctor> doctorList;
+        private ArrayList<Doctor> doctorList;
+        
+          
+     public DoctorDirectory(){
+         System.out.println("Inside Doctor Directory");
+        doctorList= new ArrayList<>();
+                
+    }
 
     public ArrayList<Doctor> getDoctorList() {
-        return doctorList;
+        return this.doctorList;
+        
     }
 
     public void setDoctorList(ArrayList<Doctor> doctorList) {
         this.doctorList = doctorList;
     }
-    
-     public DoctorDirectory(){
-        doctorList= new ArrayList<>();
-                
-    }
+  
      
     public Doctor addDoctor() {
         Doctor doctor = new Doctor();
@@ -32,7 +37,7 @@ public class DoctorDirectory {
         return doctor;
     }
     
- 
+    //Removing an Employee from the Directory
     public void removeDoctor(Doctor doctor) {
         doctorList.remove(doctor);
     }
