@@ -29,7 +29,11 @@ public abstract class Role {
         DonationAdminRole("Donation Admin Role"),
         EmergencyAdminRole("Emergency Admin Role"),
         ServiceProviderAdminRole("Service Provider Admin Role"),
-        HospitalAdminRole("Hospital Admin Role");
+        HospitalAdminRole("Hospital Admin Role"),
+        FoodAdminRole("Food Organization Admin Role"),
+        ShelterAdminRole("Shelter Organization Admin Role"),
+        FSAdminRole("Food and Shelter Admin Role");
+        
 
         private String value;
 

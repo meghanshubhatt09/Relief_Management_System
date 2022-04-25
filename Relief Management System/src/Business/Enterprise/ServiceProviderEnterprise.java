@@ -4,8 +4,10 @@
  */
 package Business.Enterprise;
 
+import Business.Role.FoodAdminRole;
 import Business.Role.Role;
 import Business.Role.ServiceProviderAdminRole;
+import Business.Role.ShelterAdminRole;
 import java.util.HashSet;
 
 /**
@@ -20,8 +22,10 @@ public class ServiceProviderEnterprise extends Enterprise{
 
     @Override
     public HashSet<Role> getSupportedRole() {
-        roles.add(new ServiceProviderAdminRole());
-        return roles;
+         roles.add(new FoodAdminRole());
+         roles.add(new ShelterAdminRole());
+         roles.add(new ServiceProviderAdminRole());
+         return roles;
     }
 
 

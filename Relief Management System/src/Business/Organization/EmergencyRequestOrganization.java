@@ -4,6 +4,8 @@
  */
 package Business.Organization;
 
+import Business.Role.EmergencyRequestAdminRole;
+import Business.Role.FoodAdminRole;
 import Business.Role.Role;
 import java.util.HashSet;
 
@@ -19,7 +21,8 @@ public class EmergencyRequestOrganization extends Organization {
 
     @Override
     public HashSet<Role> getSupportedRole() {
-        return null;
+        roles.add(new EmergencyRequestAdminRole());
+        return roles;
     }
     
 }
