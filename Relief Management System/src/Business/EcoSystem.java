@@ -10,6 +10,7 @@ import Business.Role.Role;
 import Business.Role.SystemAdminRole;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Community.CommunityDirectory;
 import java.util.ArrayList;
 import java.util.HashSet;
 import Business.Doctor.DoctorDirectory;
@@ -24,6 +25,9 @@ public class EcoSystem extends Organization {
 
     private static EcoSystem ecosystem;
     private ArrayList<Network> networkList;
+
+    private CommunityDirectory communityList;
+  
     private DoctorDirectory doctorList;
 
     public DoctorDirectory getDoctorList() {
@@ -48,6 +52,15 @@ public class EcoSystem extends Organization {
         System.out.println("Inside System Directory");
         networkList = new ArrayList<>();
         this.doctorList = new DoctorDirectory();
+        communityList = new CommunityDirectory();
+    }
+
+    public CommunityDirectory getCommunityList() {
+        return communityList;
+    }
+
+    public void setCommunityList(CommunityDirectory communityList) {
+        this.communityList = communityList;
     }
 
     public ArrayList<Network> getNetworkList() {
