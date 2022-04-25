@@ -9,16 +9,17 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import ui.ServiceProvider.ServiceProviderAdminJPanel;
 
 /**
  *
  * @author rk
  */
-public class EmergencyAdminRole extends Role {
+public class ServiceProviderAdminRole extends Role {
 
     @Override
-    public JPanel createWorkArea(JPanel UserContainer, UserAccount userAccount, Organization organization, Enterprise enterprise, EcoSystem system) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount userAccount, Organization organization, Enterprise enterprise, EcoSystem ecoSystem) {
+        return new ServiceProviderAdminJPanel(userProcessContainer,userAccount,organization,enterprise, ecoSystem);
     }
     
 }

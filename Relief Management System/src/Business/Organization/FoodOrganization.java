@@ -4,10 +4,24 @@
  */
 package Business.Organization;
 
+import Business.Role.FoodAdminRole;
+import Business.Role.Role;
+import java.util.HashSet;
+
 /**
  *
  * @author meghanshubhatt
  */
-public class FoodOrganization {
+public class FoodOrganization extends Organization {
+
+    public FoodOrganization() {
+        super(Organization.Type.FoodOrganization.getValue());
+    }
+
+    @Override
+    public HashSet<Role> getSupportedRole() {
+         roles.add(new FoodAdminRole());
+        return roles;
+    }
     
 }

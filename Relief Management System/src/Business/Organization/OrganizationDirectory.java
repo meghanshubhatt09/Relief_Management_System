@@ -40,6 +40,18 @@ public class OrganizationDirectory {
             organization = new BloodOrganization();
             organizationList.add(organization);
         }
+         else if (type.getValue().equals(Type.FoodOrganization.getValue())){
+            organization = new FoodOrganization();
+            organizationList.add(organization);
+        }
+         else if (type.getValue().equals(Type.ShelterOrganization.getValue())){
+            organization = new ShelterOrganization();
+            organizationList.add(organization);
+        }
+         else if (type.getValue().equals(Type.EmergencyRequestOrganization.getValue())){
+            organization = new EmergencyRequestOrganization();
+            organizationList.add(organization);
+        }
 
         
         return organization;
