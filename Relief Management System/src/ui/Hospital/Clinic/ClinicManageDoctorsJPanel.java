@@ -236,11 +236,11 @@ public class ClinicManageDoctorsJPanel extends javax.swing.JPanel {
        table.setRowCount(0);
         System.out.println(ecoSystem.getDoctorList());
       for (Doctor doctor : ecoSystem.getDoctorList().getDoctorList()) {
-//            
-//           Object[] row = new Object[2];
-//           row[0]= doctor;
-//           row[1]=doctor.getQuantity();
-//           table.addRow(row);
+            
+           Object[] row = new Object[2];
+           row[0]= doctor;
+           row[1]=doctor.getQuantity();
+           table.addRow(row);
     }  
     }
 }
