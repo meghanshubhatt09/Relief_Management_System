@@ -233,6 +233,7 @@ public class AdminMainJFrame extends javax.swing.JFrame {
         CardLayout crdLyt = (CardLayout) UserContainer.getLayout();
         crdLyt.next(UserContainer);
         dB4OUtil.storeSystem(ecoSystem);
+        System.out.println("Value of system" + "" + ecoSystem.getSupportedRole());
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     /**

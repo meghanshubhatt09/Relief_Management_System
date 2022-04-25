@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  *
  * @author rk
  */
-public class EmergencyAdminRole extends Role {
+public class FSAdminRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel UserContainer, UserAccount userAccount, Organization organization, Enterprise enterprise, EcoSystem system) {
