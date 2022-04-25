@@ -24,7 +24,7 @@ public abstract class Enterprise extends Organization{
         Hospital("Hospital"),
         NGO("NGO"),
         Donation("Donation"),
-        EndUser("End User");
+        Community("Community");
         
         private String value;
 
