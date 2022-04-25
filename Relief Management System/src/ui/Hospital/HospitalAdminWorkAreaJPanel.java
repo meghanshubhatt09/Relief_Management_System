@@ -11,6 +11,7 @@ import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import ui.Hospital.Clinic.ClinicManageDoctorsJPanel;
 /**
  *
  * @author meghanshubhatt
@@ -32,6 +33,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         
         enterpriseNameLabel.setText(enterprise.getName());
+        System.out.println("ui.Hospital.HospitalAdminWorkAreaJPanel.<init>() "+ecoSystem);
     }
 
     /**
@@ -52,6 +54,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnEmployeeCreation = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         btnUserAccountsManage = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jLabel1.setText("Hospital Admin Panel");
 
@@ -91,6 +94,13 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Doctor");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,6 +134,10 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
                                 .addComponent(btnEmployeeCreation, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(81, 81, 81))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(125, 125, 125))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +160,9 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(btnUserAccountsManage))
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addComponent(jButton1)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -179,12 +195,27 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnUserAccountsManageActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         ClinicManageDoctorsJPanel clinicManageDoctorsJPanel = new ClinicManageDoctorsJPanel(userProcessContainer, enterprise, ecoSystem, userAccount,enterprise.getOrganizationDirectory());
+         System.out.println("ui.Hospital.Clinic.ClinicAdminWorkAreaJPanel.jButton1ActionPerformed()");
+        System.out.println("ui.Hospital.Clinic.ClinicAdminWorkAreaJPanel.jButton1ActionPerformed()");
+        System.out.println(enterprise);
+        System.out.println("ecosystem"+ ecoSystem);
+       
+        
+        userProcessContainer.add("HospitalManageDoctorsJPanel", clinicManageDoctorsJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateManageOrganization;
     private javax.swing.JButton btnEmployeeCreation;
     private javax.swing.JButton btnUserAccountsManage;
     private javax.swing.JTextField enterpriseNameLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

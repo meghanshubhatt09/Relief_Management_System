@@ -10,7 +10,7 @@ import Business.Organization.ClinicOrganization;
  *
  * @author meghanshubhatt
  */
-public class Doctor extends ClinicOrganization{
+public class Doctor {
     
     private String docName;
     private String doctorId;
