@@ -26,7 +26,7 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
     UserAccount userAccount;
    
 
-    public CommunityAdminWorkAreaJPanel(JPanel UserContainer, UserAccount userAccount, Enterprise enterprise, EcoSystem system) {
+    public CommunityAdminWorkAreaJPanel(JPanel userProcessContainer , UserAccount userAccount, Enterprise enterprise, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
