@@ -25,9 +25,7 @@ public class EcoSystem extends Organization {
 
     private static EcoSystem ecosystem;
     private ArrayList<Network> networkList;
-
     private CommunityDirectory communityList;
-  
     private DoctorDirectory doctorList;
 
     public DoctorDirectory getDoctorList() {
