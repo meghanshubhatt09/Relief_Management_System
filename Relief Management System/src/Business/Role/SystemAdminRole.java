@@ -27,7 +27,7 @@ public class SystemAdminRole  extends Role{
     @Override
 
     public JPanel createWorkArea(JPanel UserContainer, UserAccount userAccount, Organization organization, Enterprise enterprise, EcoSystem ecoSystem) {
-        return new AdminWorkAreaJPanel(ecoSystem,UserContainer, enterprise);
+        return new AdminWorkAreaJPanel(UserContainer,ecoSystem);
     }
         
 

@@ -29,8 +29,9 @@ public class AdminMainJFrame extends javax.swing.JFrame {
     public AdminMainJFrame() {
         initComponents();
         ecoSystem = dB4OUtil.retrieveSystem();
-        System.out.println("ui.AdminMainJFrame.<init>()" + ecoSystem);
+        
         EcoSystem.setInstance(ecoSystem);
+        System.out.println("ui.AdminMainJFrame.<init>()" + ecoSystem);
         setExtendedState(getExtendedState()| JFrame.MAXIMIZED_BOTH);
         
     }
@@ -95,6 +96,7 @@ public class AdminMainJFrame extends javax.swing.JFrame {
         });
 
         logoutJButton.setText("Logout");
+        logoutJButton.setEnabled(false);
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutJButtonActionPerformed(evt);
@@ -201,10 +203,11 @@ public class AdminMainJFrame extends javax.swing.JFrame {
         } else {
             CardLayout layout = (CardLayout) UserContainer.getLayout();
             UserContainer.add("workArea", userAccount.getRole().createWorkArea(UserContainer, userAccount, isOrganization, isEnterprise, ecoSystem));
+            //System.out.println("ui.AdminMainJFrame.loginBtnActionPerformed() "+ecoSystem);
             layout.next(UserContainer);
         }
         loginBtn.setEnabled(false);
-        loginBtn.setEnabled(true);
+        logoutJButton.setEnabled(true);
         usernameTxt.setEnabled(false);
         passwordTxt.setEnabled(false);
         

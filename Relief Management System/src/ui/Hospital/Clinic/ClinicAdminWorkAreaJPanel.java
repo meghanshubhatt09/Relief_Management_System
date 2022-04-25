@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.ClinicOrganization;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -19,12 +20,22 @@ public class ClinicAdminWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ClinicAdminWorkAreaJPanel
      */
-    public ClinicAdminWorkAreaJPanel() {
-        initComponents();
-    }
+    JPanel userProcessContainer;
+    UserAccount userAccount; 
+    ClinicOrganization clinicOrganization; 
+    Enterprise enterprise; 
+    EcoSystem ecoSystem;
 
-    public ClinicAdminWorkAreaJPanel(JPanel UserContainer, UserAccount userAccount, ClinicOrganization clinicOrganization, Enterprise enterprise, EcoSystem system) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public ClinicAdminWorkAreaJPanel(JPanel UserContainer, UserAccount userAccount, ClinicOrganization clinicOrganization, Enterprise enterprise, EcoSystem ecoSystem) {
+        initComponents();
+        this.ecoSystem = ecoSystem;
+        this.clinicOrganization = clinicOrganization;
+        this.userProcessContainer = UserContainer;
+        this.userAccount = userAccount;
+        this.enterprise = enterprise;
+        
+        //System.out.println("ui.Hospital.Clinic.ClinicAdminWorkAreaJPanel.<init>() "+ecoSystem);
+        
     }
 
     /**
@@ -36,19 +47,68 @@ public class ClinicAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+
+        jLabel1.setText("Clinic-Doctor Workplace");
+
+        jLabel2.setText("Manage Doctor: ");
+
+        jButton1.setText("Manage Doctor");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel1)
+                .addContainerGap(400, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(102, 102, 102))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ClinicManageDoctorsJPanel clinicManageDoctorsJPanel = new ClinicManageDoctorsJPanel(userProcessContainer, enterprise, ecoSystem, userAccount,enterprise.getOrganizationDirectory());
+         System.out.println("ui.Hospital.Clinic.ClinicAdminWorkAreaJPanel.jButton1ActionPerformed()");
+        System.out.println("ui.Hospital.Clinic.ClinicAdminWorkAreaJPanel.jButton1ActionPerformed()");
+        System.out.println(enterprise);
+        System.out.println("ecosystem"+ ecoSystem);
+       
+        
+        userProcessContainer.add("HospitalManageDoctorsJPanel", clinicManageDoctorsJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
