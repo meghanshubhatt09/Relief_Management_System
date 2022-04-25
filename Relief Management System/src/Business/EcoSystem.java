@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import Business.Doctor.DoctorDirectory;
 import Business.Doctor.Doctor;
+import Business.Role.ClinicAdminRole;
 import Business.Role.HospitalAdminRole;
 
 /**
@@ -25,19 +26,31 @@ public class EcoSystem extends Organization {
 
     private static EcoSystem ecosystem;
     private ArrayList<Network> networkList;
-
     private CommunityDirectory communityList;
-  
-    private DoctorDirectory doctorList;
 
-    public DoctorDirectory getDoctorList() {
-        System.out.println("Inside Get Doctor List");
-        System.out.println(doctorList);
-        return doctorList;
+    private DoctorDirectory doctorDirectoryList;
+    
+    private EcoSystem() {
+        super(null);
+        networkList = new ArrayList<>();
+        this.doctorDirectoryList = new DoctorDirectory();
+        this.communityList = new CommunityDirectory();
     }
 
-    public void setDoctorList(DoctorDirectory doctorList) {
-        this.doctorList = doctorList;
+      public CommunityDirectory getCommunityList() {
+        return communityList;
+    }
+
+    public void setCommunityList(CommunityDirectory communityList) {
+        this.communityList = communityList;
+    }
+
+    public DoctorDirectory getDoctorList() {
+        return doctorDirectoryList;
+    }
+
+    public void setDoctorList(DoctorDirectory doctorDirectoryList) {
+        this.doctorDirectoryList = doctorDirectoryList;
     }
 
     public static EcoSystem getInstance() {
@@ -47,21 +60,7 @@ public class EcoSystem extends Organization {
         return ecosystem;
     }
 
-    private EcoSystem() {
-        super(null);
-        System.out.println("Inside System Directory");
-        networkList = new ArrayList<>();
-        this.doctorList = new DoctorDirectory();
-        communityList = new CommunityDirectory();
-    }
 
-    public CommunityDirectory getCommunityList() {
-        return communityList;
-    }
-
-    public void setCommunityList(CommunityDirectory communityList) {
-        this.communityList = communityList;
-    }
 
     public ArrayList<Network> getNetworkList() {
         return networkList;
@@ -81,6 +80,7 @@ public class EcoSystem extends Organization {
     public HashSet<Role> getSupportedRole() {
         roles.add(new SystemAdminRole());
         roles.add(new HospitalAdminRole());
+        roles.add(new ClinicAdminRole());
         return roles;
     }
 
