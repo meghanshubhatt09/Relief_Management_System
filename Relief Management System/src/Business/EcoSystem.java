@@ -12,38 +12,52 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import java.util.ArrayList;
 import java.util.HashSet;
+import Business.Doctor.DoctorDirectory;
+import Business.Doctor.Doctor;
+import Business.Role.HospitalAdminRole;
 
 /**
  *
  * @author meghanshubhatt
  */
-
-        
 public class EcoSystem extends Organization {
+
     private static EcoSystem ecosystem;
     private ArrayList<Network> networkList;
-    
-    
-    public static EcoSystem getInstance(){
-        if(ecosystem==null){
-            ecosystem=new EcoSystem();
+    private DoctorDirectory doctorList;
+
+    public DoctorDirectory getDoctorList() {
+        System.out.println("Inside Get Doctor List");
+        System.out.println(doctorList);
+        return doctorList;
+    }
+
+    public void setDoctorList(DoctorDirectory doctorList) {
+        this.doctorList = doctorList;
+    }
+
+    public static EcoSystem getInstance() {
+        if (ecosystem == null) {
+            ecosystem = new EcoSystem();
         }
         return ecosystem;
     }
-    
+
     private EcoSystem() {
         super(null);
+        System.out.println("Inside System Directory");
         networkList = new ArrayList<>();
+        this.doctorList = new DoctorDirectory();
     }
-    
+
     public ArrayList<Network> getNetworkList() {
         return networkList;
     }
-    
+
     public static void setInstance(EcoSystem system) {
-        ecosystem=system;
+        ecosystem = system;
     }
-    
+
     public Network createAndAddNetwork() {
         Network network = new Network();
         networkList.add(network);
@@ -53,40 +67,35 @@ public class EcoSystem extends Organization {
     @Override
     public HashSet<Role> getSupportedRole() {
         roles.add(new SystemAdminRole());
+        roles.add(new HospitalAdminRole());
         return roles;
     }
-    
+
     public static boolean checkIfUsernameIsUnique(String username) {
 
-      //  if (!this.getUserAccountDirectory().checkIfUsernameIsUnique(username)) {
-             for (Network network : ecosystem.getNetworkList()) {
-                 
-                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                    
-                    for (UserAccount ua : enterprise.getUserAccountDirectory().getUserAccountList()) {
-                        if(ua.getUsername().equals(username)){
+        //  if (!this.getUserAccountDirectory().checkIfUsernameIsUnique(username)) {
+        for (Network network : ecosystem.getNetworkList()) {
+
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+
+                for (UserAccount ua : enterprise.getUserAccountDirectory().getUserAccountList()) {
+                    if (ua.getUsername().equals(username)) {
+                        return false;
+                    }
+                }
+
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+                        if (ua.getUsername().equals(username)) {
                             return false;
                         }
                     }
-                    
-                        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
-                            for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
-                                 if(ua.getUsername().equals(username)){
-                            return false;
-                        }
-                    }
-                            }
-                        }
-                    }
-            
-      //  }
+                }
+            }
+        }
 
-       
-
+        //  }
         return true;
     }
-    
 
-
-    
 }
