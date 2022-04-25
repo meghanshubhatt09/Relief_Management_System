@@ -4,10 +4,13 @@
  */
 package ui.Community;
 
+import Business.Community.Community;
+import Business.Community.CommunityDirectory;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -23,13 +26,17 @@ public class ManageCommunityJPanel extends javax.swing.JPanel {
 //    private ClinicOrganization organization;
     private Enterprise enterprise;
     private UserAccount account;
-    private EcoSystem business;
+    private EcoSystem ecoSystem;
+    private Community community;
     public ManageCommunityJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem ecoSystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.account = account;
-        this.business = business;
+        this.ecoSystem = ecoSystem;
+        this.community = new Community();
+        
+        labelCount.setText(Integer.toString(ecoSystem.getCommunityList().getCommunityList().get(0).getCommunityMemberCount()));
     }
 
     /**
@@ -43,6 +50,10 @@ public class ManageCommunityJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        labelCount = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        txtCount = new javax.swing.JTextField();
 
         jLabel1.setText("Manage Community");
 
@@ -53,26 +64,54 @@ public class ManageCommunityJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setText("Community Member count");
+
+        jButton1.setText("Set Members");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBack)))
-                .addContainerGap(172, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(labelCount, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(134, 134, 134)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(btnBack))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(100, 100, 100)
+                            .addComponent(jButton1)
+                            .addGap(32, 32, 32)
+                            .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCount, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addGap(24, 24, 24))
         );
@@ -85,9 +124,61 @@ public class ManageCommunityJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+        try{
+            
+            CommunityDirectory com = new CommunityDirectory();
+            Community community = new Community();
+            community.setCommunityMemberCount(Integer.parseInt(txtCount.getText()));
+            com.getCommunityList().add(community);
+            ecoSystem.setCommunityList(com);
+            
+//            Community community = ecoSystem.getCommunityList().addCommunity();
+            System.out.print(community);
+             System.out.print("!!!!!!!!!!!!");
+            
+            labelCount.setText(Integer.toString(community.getCommunityMemberCount()));
+//            if(!txtCount.getText().equals("")){
+////            Community community = ecoSystem.getCommunityList().addCommunity();
+//            Community community = new Community();
+//            
+//            
+//            com.getCommunityList().add(community);
+//            ecoSystem.setCommunityList(com);
+//            labelCount.setText(Integer.toString(community.getCommunityMemberCount()));
+//        } else{
+//                JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+//
+//            }
+        
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Enter Numerical value", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
+//        try{
+////            System.out.print(txtCount.getText());
+//            
+//            community.setCommunityMemberCount(Integer.parseInt(txtCount.getText()));
+////            System.out.print(Integer.toString(community.getCommunityMemberCount()));
+//            labelCount.setText(Integer.toString(community.getCommunityMemberCount()));
+//            
+//        } catch(NullPointerException n){
+//            System.out.print(n);
+//        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel labelCount;
+    private javax.swing.JTextField txtCount;
     // End of variables declaration//GEN-END:variables
 }

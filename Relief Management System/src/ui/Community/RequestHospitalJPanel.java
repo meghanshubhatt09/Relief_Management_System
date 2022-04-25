@@ -24,13 +24,13 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
 //    private ClinicOrganization organization;
     private Enterprise enterprise;
     private UserAccount account;
-    private EcoSystem business;
+    private EcoSystem ecoSystem;
     public RequestHospitalJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem ecoSystem) {
         initComponents();
          this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.account = account;
-        this.business = business;
+        this.ecoSystem = ecoSystem;
     }
 
     /**
