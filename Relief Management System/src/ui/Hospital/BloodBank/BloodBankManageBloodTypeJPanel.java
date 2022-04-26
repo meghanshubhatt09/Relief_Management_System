@@ -41,7 +41,7 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.userProcessContainer = userProcessContainer;
         
-        bloodDonationAdd();
+        //bloodDonationAdd();
         populateBloodTable();
     }
 
@@ -215,6 +215,7 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
             communityDonationRequest.setBloodType(bloodBank);
             
             txtBloodGroupType.setText("");
+            bloodDonationAdd();
 
         }else{
             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -255,9 +256,9 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
              {
                  if (work.getReceiver() != null)
                  {  
-                    if (work.getStatus().equalsIgnoreCase("Pending"))
+                    if (work.getStatus().equalsIgnoreCase("Requested"))
                     {
-                        if (work.getBloodType().getBloodGroupType() == bloodBank.getBloodGroupType())
+                        if (work.getBloodType().getBloodGroupType().equals(bloodBank.getBloodGroupType()) )
                            {
                                
                             bloodBank.setBloodPackets(bloodBank.getBloodPackets() + work.getBloodType().getBloodPackets());
