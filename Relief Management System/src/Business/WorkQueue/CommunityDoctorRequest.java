@@ -11,6 +11,15 @@ package Business.WorkQueue;
 public class CommunityDoctorRequest extends WorkRequest{
     
     private int noDoctorRequired;
+    private int noPeopleAffected;
+
+    public int getNoPeopleAffected() {
+        return noPeopleAffected;
+    }
+
+    public void setNoPeopleAffected(int noPeopleAffected) {
+        this.noPeopleAffected = noPeopleAffected;
+    }
     private String location;
     private boolean add;
     private String requestedDate;

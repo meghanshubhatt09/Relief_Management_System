@@ -91,11 +91,11 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "No of Doctors required", "Date of requirement", "Time of requirement", "Venue", "Status"
+                "No of Doctors required", "No of People Affected", "Date of requirement", "Time of requirement", "Venue", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -512,12 +512,13 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
 
         for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
            if(work instanceof CommunityDoctorRequest){ 
-            Object[] row = new Object[5];
+            Object[] row = new Object[6];
             row[0] = ((CommunityDoctorRequest) work).getNoDoctorRequired();
-            row[1] = ((CommunityDoctorRequest) work).getRequestedDate();
-            row[2] = ((CommunityDoctorRequest) work).getRequestedTime();
-            row[3] = ((CommunityDoctorRequest) work).getLocation();
-            row[4] = work;
+            row[2] = ((CommunityDoctorRequest) work).getRequestedDate();
+            row[3] = ((CommunityDoctorRequest) work).getRequestedTime();
+            row[4] = ((CommunityDoctorRequest) work).getLocation();
+            row[5] = work;
+            row[1] = ((CommunityDoctorRequest) work).getNoPeopleAffected();
             model.addRow(row);
            }
         }

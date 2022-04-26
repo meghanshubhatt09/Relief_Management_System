@@ -29,7 +29,6 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
      * Creates new form RequestHospitalJPanel
      */
     private JPanel userProcessContainer;
-//    private ClinicOrganization organization;
     private Enterprise enterprise;
     private UserAccount account;
     private EcoSystem ecoSystem;
@@ -39,6 +38,7 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.account = account;
         this.ecoSystem = ecoSystem;
+        populateRequestTable();
     }
 
     /**
@@ -185,8 +185,7 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
          SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
          dateFormat.setLenient(false);
         try{
-            Date javaDate = dateFormat.parse(date);
-            //dateFormat.parse(date.trim());
+            Date dateJAVA = dateFormat.parse(date);
             return true;
         } catch (ParseException ex) {
             return false;
@@ -202,43 +201,31 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void populateRequestTable(){
-        System.out.println("check 10");
         DefaultTableModel model = (DefaultTableModel) tblRequest.getModel();
         model.setRowCount(0);
-        System.out.println("check 11");
         for(WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
-            System.out.println("check 0");
             if(work instanceof CommunityDoctorRequest){
-                System.out.println("check 12");
                 Object[] row = new Object[6];
                 row[0] = ((CommunityDoctorRequest) work).getNoDoctorRequired();
-                System.out.print(row[0]);
-                System.out.print("!!!!!!!!!!!!!!!!!!");
                 row[1] = ((CommunityDoctorRequest) work).getRequestedDate();
                 row[2] = ((CommunityDoctorRequest) work).getRequestedTime();
                 row[3] = ((CommunityDoctorRequest) work).getLocation();
                 row[5] = work;
-                System.out.println(work);
-                row[4] = txtPeopleCount.getText();
+                row[4] = ((CommunityDoctorRequest) work).getNoPeopleAffected() ;
                 model.addRow(row);
             
             }
         }
-        System.out.print("check 13");
         
     }
     
     private void btnSendRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestActionPerformed
         // TODO add your handling code here:
-        System.out.print("check 0");
         if(!txtDate.getText().equals("")){
-            System.out.print("check 1");
 
             CommunityDoctorRequest request = new CommunityDoctorRequest();
-            System.out.print("check 2");
 
             if(isDateValid(txtDate.getText())){
-                System.out.print("check 3");
                 request.setNoDoctorRequired(Integer.parseInt(txtDoctorCount.getText()));
                 request.setLocation(txtVenue.getText());
                 request.setRequestedDate(txtDate.getText());
@@ -246,13 +233,12 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
                 request.setPurpose(txtRequestType.getText());
                 request.setStatus("Requested");
                 request.setSender(account);
+                request.setNoPeopleAffected(Integer.parseInt(txtPeopleCount.getText()));
                 account.getWorkQueue().getWorkRequestList().add(request);
                 enterprise.getWorkQueue().getWorkRequestList().add(request);
                 ecoSystem.getWorkQueue().getWorkRequestList().add(request);
-                System.out.print("check 4");
             }
             populateRequestTable();
-            System.out.print("check 5");
         } else{
             JOptionPane.showMessageDialog(null,"Enter date in specified format", "Warning", JOptionPane.WARNING_MESSAGE);
         }
