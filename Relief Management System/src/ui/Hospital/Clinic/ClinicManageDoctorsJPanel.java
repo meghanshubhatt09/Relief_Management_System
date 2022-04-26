@@ -54,9 +54,7 @@ public class ClinicManageDoctorsJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         txtDoctorType = new javax.swing.JTextField();
-        txtNumDoctor = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
         btnAddDoctor = new javax.swing.JButton();
         btnDeleteDoctor = new javax.swing.JButton();
@@ -66,8 +64,6 @@ public class ClinicManageDoctorsJPanel extends javax.swing.JPanel {
         jLabel1.setText("Manage Doctors");
 
         jLabel2.setText("Doctor Type :");
-
-        jLabel3.setText("Numbers of Doctor :");
 
         txtDoctorType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,16 +124,10 @@ public class ClinicManageDoctorsJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(62, 62, 62)
-                                        .addComponent(txtDoctorType, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtNumDoctor)))
-                                .addGap(53, 53, 53)
+                                .addComponent(jLabel2)
+                                .addGap(62, 62, 62)
+                                .addComponent(txtDoctorType, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45)
                                 .addComponent(btnAddDoctor))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -164,13 +154,9 @@ public class ClinicManageDoctorsJPanel extends javax.swing.JPanel {
                 .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtDoctorType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtNumDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDoctorType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddDoctor))
-                .addGap(54, 54, 54))
+                .addGap(100, 100, 100))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -191,7 +177,7 @@ public class ClinicManageDoctorsJPanel extends javax.swing.JPanel {
         if(!txtDoctorType.getText().equals("")){
             Doctor doctor = ecoSystem.getDoctorList().addDoctor();
             doctor.setDocName(txtDoctorType.getText());
-            doctor.setQuantity(Integer.parseInt(txtNumDoctor.getText()));
+            doctor.setQuantity(0);
             populateDoctorTable();
             
             NGOWorkRequest nGOWorkRequest = new NGOWorkRequest();
@@ -201,7 +187,7 @@ public class ClinicManageDoctorsJPanel extends javax.swing.JPanel {
             communityDoctorRequest.setDoctor(doctor);
             
             txtDoctorType.setText("");
-            txtNumDoctor.setText("");
+            
         }else{
             JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -230,11 +216,9 @@ public class ClinicManageDoctorsJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnDeleteDoctor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblDoctor;
     private javax.swing.JTextField txtDoctorType;
-    private javax.swing.JTextField txtNumDoctor;
     // End of variables declaration//GEN-END:variables
 
     private void populateDoctorTable() {
