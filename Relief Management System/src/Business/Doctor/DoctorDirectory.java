@@ -12,34 +12,34 @@ import java.util.ArrayList;
  * @author meghanshubhatt
  */
 public class DoctorDirectory {
-        private ArrayList<Doctor> doctorList;
+        private ArrayList<Doctor> doctorTypeList;
         
           
      public DoctorDirectory(){
          System.out.println("Inside Doctor Directory");
-        doctorList= new ArrayList<>();
+        doctorTypeList= new ArrayList<>();
                 
     }
 
     public ArrayList<Doctor> getDoctorList() {
-        return this.doctorList;
+        return this.doctorTypeList;
         
     }
 
-    public void setDoctorList(ArrayList<Doctor> doctorList) {
-        this.doctorList = doctorList;
+    public void setDoctorList(ArrayList<Doctor> doctorTypeList) {
+        this.doctorTypeList = doctorTypeList;
     }
   
      
     public Doctor addDoctor() {
         Doctor doctor = new Doctor();
-        doctorList.add(doctor);
+        doctorTypeList.add(doctor);
         return doctor;
     }
     
     //Removing an Employee from the Directory
     public void removeDoctor(Doctor doctor) {
-        doctorList.remove(doctor);
+        doctorTypeList.remove(doctor);
     }
     
 }

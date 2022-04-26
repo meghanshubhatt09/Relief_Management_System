@@ -36,9 +36,9 @@ public class EnterpriseDirectory {
             enterprise = new NGOEnterprise(name);
             enterpriseList.add(enterprise);
         }
-        else if(type == Enterprise.EnterpriseType.EndUser)
+        else if(type == Enterprise.EnterpriseType.Community)
         {
-            enterprise = new EndUserEnterprise(name);
+            enterprise = new CommunityEnterprise(name);
             enterpriseList.add(enterprise);
         }
         else if(type == Enterprise.EnterpriseType.Donation){

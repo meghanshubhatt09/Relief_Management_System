@@ -11,6 +11,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CommunityDoctorRequest;
 import Business.WorkQueue.NGOWorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -192,8 +193,13 @@ public class ClinicManageDoctorsJPanel extends javax.swing.JPanel {
             doctor.setDocName(txtDoctorType.getText());
             doctor.setQuantity(Integer.parseInt(txtNumDoctor.getText()));
             populateDoctorTable();
+            
             NGOWorkRequest nGOWorkRequest = new NGOWorkRequest();
             nGOWorkRequest.setDoctor(doctor);
+            
+            CommunityDoctorRequest communityDoctorRequest = new CommunityDoctorRequest();
+            communityDoctorRequest.setDoctor(doctor);
+            
             txtDoctorType.setText("");
             txtNumDoctor.setText("");
         }else{
@@ -234,13 +240,12 @@ public class ClinicManageDoctorsJPanel extends javax.swing.JPanel {
     private void populateDoctorTable() {
        DefaultTableModel table= (DefaultTableModel) tblDoctor.getModel();
        table.setRowCount(0);
-        System.out.println(ecoSystem.getDoctorList());
       for (Doctor doctor : ecoSystem.getDoctorList().getDoctorList()) {
-//            
-//           Object[] row = new Object[2];
-//           row[0]= doctor;
-//           row[1]=doctor.getQuantity();
-//           table.addRow(row);
+            
+           Object[] row = new Object[2];
+           row[0]= doctor;
+           row[1]=doctor.getQuantity();
+           table.addRow(row);
     }  
     }
 }

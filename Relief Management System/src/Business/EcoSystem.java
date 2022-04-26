@@ -12,10 +12,12 @@ import Business.Role.Role;
 import Business.Role.SystemAdminRole;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Community.CommunityDirectory;
 import java.util.ArrayList;
 import java.util.HashSet;
 import Business.Doctor.DoctorDirectory;
 import Business.Doctor.Doctor;
+import Business.Role.ClinicAdminRole;
 import Business.Role.HospitalAdminRole;
 
 /**
@@ -26,7 +28,6 @@ public class EcoSystem extends Organization {
 
     private static EcoSystem ecosystem;
     private ArrayList<Network> networkList;
-    private DoctorDirectory doctorList;
     private FoodDirectory foodDirectory;
     private FoodInventory foodInventory;
 
@@ -47,15 +48,33 @@ public class EcoSystem extends Organization {
         this.foodDirectory = foodDirectory;
     }
     
+    private CommunityDirectory communityList;
 
-    public DoctorDirectory getDoctorList() {
-        System.out.println("Inside Get Doctor List");
-        System.out.println(doctorList);
-        return doctorList;
+    private DoctorDirectory doctorDirectoryList;
+    
+    private EcoSystem() {
+        super(null);
+        networkList = new ArrayList<>();
+        this.doctorDirectoryList = new DoctorDirectory();
+        this.communityList = new CommunityDirectory();
+        this.foodDirectory = new FoodDirectory();
+        this.foodInventory = new FoodInventory();
     }
 
-    public void setDoctorList(DoctorDirectory doctorList) {
-        this.doctorList = doctorList;
+      public CommunityDirectory getCommunityList() {
+        return communityList;
+    }
+
+    public void setCommunityList(CommunityDirectory communityList) {
+        this.communityList = communityList;
+    }
+
+    public DoctorDirectory getDoctorList() {
+        return doctorDirectoryList;
+    }
+
+    public void setDoctorList(DoctorDirectory doctorDirectoryList) {
+        this.doctorDirectoryList = doctorDirectoryList;
     }
 
     public static EcoSystem getInstance() {
@@ -63,15 +82,6 @@ public class EcoSystem extends Organization {
             ecosystem = new EcoSystem();
         }
         return ecosystem;
-    }
-
-    private EcoSystem() {
-        super(null);
-        System.out.println("Inside System Directory");
-        networkList = new ArrayList<>();
-        this.doctorList = new DoctorDirectory();
-        this.foodDirectory = new FoodDirectory();
-        this.foodInventory = new FoodInventory();
     }
 
     public ArrayList<Network> getNetworkList() {
@@ -92,6 +102,7 @@ public class EcoSystem extends Organization {
     public HashSet<Role> getSupportedRole() {
         roles.add(new SystemAdminRole());
         roles.add(new HospitalAdminRole());
+        roles.add(new ClinicAdminRole());
         return roles;
     }
 
