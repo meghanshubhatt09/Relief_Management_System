@@ -91,11 +91,11 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "No of Doctors required", "Date of requirement", "Time of requirement", "Venue", "Doctor Type", "Status"
+                "No of Doctors required", "No of People Affected", "Date of requirement", "Time of requirement", "Venue", "Doctor Type", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
