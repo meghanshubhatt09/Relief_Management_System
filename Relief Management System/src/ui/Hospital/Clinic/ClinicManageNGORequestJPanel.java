@@ -16,16 +16,15 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import javax.xml.validation.Validator;
 
 /**
  *
  * @author meghanshubhatt
  */
-public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
+public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ClinicManageCommunityRequestJPanel
+     * Creates new form ClinicManageNGORequestJPanel
      */
     JPanel userProcessContainer;
     OrganizationDirectory organizationDirectory;
@@ -33,9 +32,9 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
     EcoSystem ecoSystem;
     UserAccount userAccount;
     
-    
-    public ClinicManageCommunityRequestJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDirectory, Enterprise enterprise,EcoSystem ecoSystem,UserAccount userAccount) {
+    public ClinicManageNGORequestJPanel(JPanel userProcessContainer, OrganizationDirectory organizationDirectory, Enterprise enterprise,EcoSystem ecoSystem,UserAccount userAccount) {
         initComponents();
+
         this.userProcessContainer = userProcessContainer;
         this.organizationDirectory = organizationDirectory;
         this.enterprise = enterprise;
@@ -45,7 +44,46 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
         populateAvailableDoctorTbl();
         populateDoctorType();
         populateRequestTable();
+    }
+        private void populateAvailableDoctorTbl() {
+       DefaultTableModel model = (DefaultTableModel) tblAvailableDoctor.getModel();
+
+        model.setRowCount(0);
+
+        for (Doctor doctor : ecoSystem.getDoctorList().getDoctorList()) {
+
+            Object[] row = new Object[2];
+            row[0] = doctor;
+            row[1] = doctor.getQuantity();
+            model.addRow(row);
+
+        }
+    }
+
+    private void populateDoctorType() {
+        for (Doctor doctor : ecoSystem.getDoctorList().getDoctorList()){
+            cmbDocType.addItem(doctor.getDocName());
+        }
+    }
+
+    private void populateRequestTable() {
+        DefaultTableModel model = (DefaultTableModel) tblRequestTableCommunity.getModel();
         
+        model.setRowCount(0);
+        
+
+        for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
+           if(work instanceof NGOWorkRequest){ 
+            Object[] row = new Object[6];
+            row[0] = ((NGOWorkRequest) work).getNoDoctorRequired();
+            row[1] = ((NGOWorkRequest) work).getRequestedDate();
+            row[2] = ((NGOWorkRequest) work).getRequestedTime();
+            row[3] = ((NGOWorkRequest) work).getLocation();
+            row[4] = ((NGOWorkRequest) work).getDoctorType();
+            row[5] = work;
+            model.addRow(row);
+           }
+        }
     }
 
     /**
@@ -66,16 +104,16 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
         btnDeleteReqHosp = new javax.swing.JButton();
         btnApproveReqHospital = new javax.swing.JButton();
         btnRejectReqHospital = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblAvailableDoctor = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        btnAdd = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        btnDelete = new javax.swing.JButton();
         cmbDocType = new javax.swing.JComboBox<>();
         txtNoDoctors = new javax.swing.JTextField();
-        btnDelete = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel1.setText("Hospital Manage Request From Community");
@@ -136,6 +174,8 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setText("Doctors available at Hospital");
+
         tblAvailableDoctor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -154,18 +194,19 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblAvailableDoctor);
 
-        jLabel5.setText("Doctors available at Hospital");
-
-        btnBack.setBackground(new java.awt.Color(102, 217, 255));
-        btnBack.setText("<< Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setBackground(new java.awt.Color(102, 217, 255));
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
-        jLabel6.setBackground(new java.awt.Color(102, 217, 255));
-        jLabel6.setText("No. of Doctors:");
+        txtNoDoctors.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNoDoctorsKeyPressed(evt);
+            }
+        });
 
         btnAdd.setBackground(new java.awt.Color(102, 217, 255));
         btnAdd.setText("Add");
@@ -178,17 +219,14 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
         jLabel7.setBackground(new java.awt.Color(102, 217, 255));
         jLabel7.setText("Doctor Type:");
 
-        txtNoDoctors.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNoDoctorsKeyPressed(evt);
-            }
-        });
+        jLabel6.setBackground(new java.awt.Color(102, 217, 255));
+        jLabel6.setText("No. of Doctors:");
 
-        btnDelete.setBackground(new java.awt.Color(102, 217, 255));
-        btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setBackground(new java.awt.Color(102, 217, 255));
+        btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
 
@@ -290,7 +328,7 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the Request", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            CommunityDoctorRequest c =  (CommunityDoctorRequest)tblRequestTableCommunity.getValueAt(selectedRow, 4);
+            NGOWorkRequest c =  (NGOWorkRequest)tblRequestTableCommunity.getValueAt(selectedRow, 4);
             //NGOWorkRequest p=(NGOWorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 4);
 
             c.setStatus("Pending");
@@ -299,7 +337,6 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
             populateRequestTable();
 
         }
-
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
     private void btnDeleteReqHospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteReqHospActionPerformed
@@ -330,7 +367,7 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
         }
         else{
 
-            CommunityDoctorRequest p=(CommunityDoctorRequest) tblRequestTableCommunity.getValueAt(selectedRow, 4);
+            NGOWorkRequest p=(NGOWorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 4);
 
             int temp=0;
             if(p.getReceiver()!= null){
@@ -341,7 +378,8 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
                         return;
                     }
                     for (Doctor v : ecoSystem.getDoctorList().getDoctorList()) {
-                        if (v.getDocName() == p.getDoctorType()){
+                        if (v.getDocName() == p.getDoctorType())
+                        {
                         //if(p.getDocName().equals(v.getDocName())){
                             if(v.getQuantity()- p.getNoDoctorRequired()<0){
                                 JOptionPane.showMessageDialog(null, "Not enough Doctors available. Wait for sometime");
@@ -350,8 +388,8 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
                             temp=1;
                             v.setQuantity(v.getQuantity()- p.getNoDoctorRequired());
                             break;
+                        }
                             //}
-                        }   
 
                     }
                     if(temp==0){
@@ -385,7 +423,7 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
         }
         else{
 
-            CommunityDoctorRequest p=(CommunityDoctorRequest) tblRequestTableCommunity.getValueAt(selectedRow, 4);
+            NGOWorkRequest p=(NGOWorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 4);
             if(p.getStatus().equalsIgnoreCase("Approved")){
                 JOptionPane.showMessageDialog(null, "Cannot Reject the Approved request", "Warning", JOptionPane.WARNING_MESSAGE);
             }else if(p.getStatus().equalsIgnoreCase("Rejected")){
@@ -403,49 +441,6 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnRejectReqHospitalActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-        if(!txtNoDoctors.getText().equals("")){
-            int quant = Integer.parseInt(txtNoDoctors.getText());
-            String v =  (String) cmbDocType.getSelectedItem();
-            int temp = 0;
-            for (Doctor doctor : ecoSystem.getDoctorList().getDoctorList()) {
-                if (v.equals(doctor.getDocName())) {
-                    temp = 1;
-                    doctor.setQuantity(doctor.getQuantity() + quant);
-                }
-            }
-
-            if (temp == 0) {
-                
-                JOptionPane.showMessageDialog(null, "Add Doctor Type in Manage Doctor JPanel", "Warning", JOptionPane.WARNING_MESSAGE);
-//                Doctor doc = business.getDoctorList().addDoctor();
-//                doc.setQuantity(quant);
-//                doc.setDocName(v);
-//                NGOWorkRequest nGOWorkRequest = new NGOWorkRequest();
-//
-//                nGOWorkRequest.setDoctor(doc);
-                //nGOWorkRequest.setDocName(v);
-
-            }
-            populateAvailableDoctorTbl();
-        }else{
-            JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_btnAddActionPerformed
-
-    private void txtNoDoctorsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoDoctorsKeyPressed
-        // TODO add your handling code here:
-        //Validator.onlyInteger(evt, txtNoDoctors);
-    }//GEN-LAST:event_txtNoDoctorsKeyPressed
-
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int selectedRow= tblAvailableDoctor.getSelectedRow();
@@ -461,6 +456,49 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
             populateAvailableDoctorTbl();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void txtNoDoctorsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoDoctorsKeyPressed
+        // TODO add your handling code here:
+        //Validator.onlyInteger(evt, txtNoDoctors);
+    }//GEN-LAST:event_txtNoDoctorsKeyPressed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        if(!txtNoDoctors.getText().equals("")){
+            int quant = Integer.parseInt(txtNoDoctors.getText());
+            String v =  (String) cmbDocType.getSelectedItem();
+            int temp = 0;
+            for (Doctor doctor : ecoSystem.getDoctorList().getDoctorList()) {
+                if (v.equals(doctor.getDocName())) {
+                    temp = 1;
+                    doctor.setQuantity(doctor.getQuantity() + quant);
+                }
+            }
+
+            if (temp == 0) {
+
+                JOptionPane.showMessageDialog(null, "Add Doctor Type in Manage Doctor JPanel", "Warning", JOptionPane.WARNING_MESSAGE);
+                //                Doctor doc = business.getDoctorList().addDoctor();
+                //                doc.setQuantity(quant);
+                //                doc.setDocName(v);
+                //                NGOWorkRequest nGOWorkRequest = new NGOWorkRequest();
+                //
+                //                nGOWorkRequest.setDoctor(doc);
+                //nGOWorkRequest.setDocName(v);
+
+            }
+            populateAvailableDoctorTbl();
+        }else{
+            JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -484,45 +522,4 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblRequestTableCommunity;
     private javax.swing.JTextField txtNoDoctors;
     // End of variables declaration//GEN-END:variables
-
-    private void populateAvailableDoctorTbl() {
-       DefaultTableModel model = (DefaultTableModel) tblAvailableDoctor.getModel();
-
-        model.setRowCount(0);
-
-        for (Doctor doctor : ecoSystem.getDoctorList().getDoctorList()) {
-
-            Object[] row = new Object[2];
-            row[0] = doctor;
-            row[1] = doctor.getQuantity();
-            model.addRow(row);
-
-        }
-    }
-
-    private void populateDoctorType() {
-        for (Doctor doctor : ecoSystem.getDoctorList().getDoctorList()){
-            cmbDocType.addItem(doctor.getDocName());
-        }
-    }
-
-    private void populateRequestTable() {
-        DefaultTableModel model = (DefaultTableModel) tblRequestTableCommunity.getModel();
-        
-        model.setRowCount(0);
-        
-
-        for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
-           if(work instanceof CommunityDoctorRequest){ 
-            Object[] row = new Object[6];
-            row[0] = ((CommunityDoctorRequest) work).getNoDoctorRequired();
-            row[1] = ((CommunityDoctorRequest) work).getRequestedDate();
-            row[2] = ((CommunityDoctorRequest) work).getRequestedTime();
-            row[3] = ((CommunityDoctorRequest) work).getLocation();
-            row[4] = ((CommunityDoctorRequest) work).getDoctorType();
-            row[5] = work;
-            model.addRow(row);
-           }
-        }
-    }
 }

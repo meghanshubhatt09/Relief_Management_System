@@ -4,6 +4,7 @@
  */
 package Business;
 
+import Business.BloodBank.BloodBankDirectory;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.Role.Role;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import Business.Doctor.DoctorDirectory;
 import Business.Doctor.Doctor;
+import Business.Role.BloodBankAdminRole;
 import Business.Role.ClinicAdminRole;
 import Business.Role.HospitalAdminRole;
 
@@ -27,14 +29,23 @@ public class EcoSystem extends Organization {
     private static EcoSystem ecosystem;
     private ArrayList<Network> networkList;
     private CommunityDirectory communityList;
-
     private DoctorDirectory doctorDirectoryList;
+    private BloodBankDirectory bloodDirectory;
+
+    public BloodBankDirectory getBloodDirectory() {
+        return bloodDirectory;
+    }
+
+    public void setBloodDirectory(BloodBankDirectory bloodDirectory) {
+        this.bloodDirectory = bloodDirectory;
+    }
     
     private EcoSystem() {
         super(null);
         networkList = new ArrayList<>();
         this.doctorDirectoryList = new DoctorDirectory();
         this.communityList = new CommunityDirectory();
+        this.bloodDirectory = new BloodBankDirectory();
     }
 
       public CommunityDirectory getCommunityList() {
@@ -81,6 +92,7 @@ public class EcoSystem extends Organization {
         roles.add(new SystemAdminRole());
         roles.add(new HospitalAdminRole());
         roles.add(new ClinicAdminRole());
+        roles.add(new BloodBankAdminRole());
         return roles;
     }
 

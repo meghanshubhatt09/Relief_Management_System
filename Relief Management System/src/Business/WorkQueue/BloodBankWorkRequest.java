@@ -8,41 +8,41 @@ package Business.WorkQueue;
  *
  * @author meghanshubhatt
  */
-public class CommunityDoctorRequest extends WorkRequest{
-    
-    private int noDoctorRequired;
+public class BloodBankWorkRequest extends WorkRequest{
+    private int noOfPackets;
+    private String bloodGroup;
     private String location;
     private boolean add;
     private String requestedDate;
     private String requestedTime;
-    private String purpose;
-    private String doctorType;
-
-    public String getDoctorType() {
-        return doctorType;
-    }
-
-    public void setDoctorType(String doctorType) {
-        this.doctorType = doctorType;
-    }
     
-    public CommunityDoctorRequest(){
+    public BloodBankWorkRequest(){
         add = false;
     }
 
-    public int getNoDoctorRequired() {
-        return noDoctorRequired;
+    public String getBloodGroup() {
+        return bloodGroup;
     }
 
-    public void setNoDoctorRequired(int noDoctorRequired) {
-        this.noDoctorRequired = noDoctorRequired;
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+    
+    
+
+    public int getNoOfPackets() {
+        return noOfPackets;
+    }
+
+    public void setNoOfPackets(int noOfPackets) {
+        this.noOfPackets = noOfPackets;
     }
 
     public String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(String venue) {
         this.location = location;
     }
 
@@ -69,15 +69,6 @@ public class CommunityDoctorRequest extends WorkRequest{
     public void setRequestedTime(String requestedTime) {
         this.requestedTime = requestedTime;
     }
-
-    public String getPurpose() {
-        return purpose;
-    }
-
-    public void setPurpose(String purpose) {
-        this.purpose = purpose;
-    }
-    
     
     
 }
