@@ -50,6 +50,7 @@ public class EcoSystem extends Organization {
     
     private CommunityDirectory communityList;
 
+
     private DoctorDirectory doctorDirectoryList;
     
     private EcoSystem() {
