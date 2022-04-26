@@ -24,8 +24,8 @@ public class FoodAdminRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel UserContainer, UserAccount userAccount, Organization organization, Enterprise enterprise, EcoSystem system) {
-        //return new FoodAdminWAJPanel(UserContainer,userAccount,(FoodOrganization) organization,enterprise,system); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    return null;
+        return new FoodAdminWAJPanel(UserContainer,userAccount,(FoodOrganization) organization,enterprise,system); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+   
     }
     
     
