@@ -8,8 +8,14 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.ClinicOrganization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CommunityDoctorRequest;
 import java.awt.CardLayout;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.xml.validation.Validator;
 
 /**
  *
@@ -44,8 +50,23 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtRequestType = new javax.swing.JTextField();
+        txtDate = new javax.swing.JTextField();
+        txtTime = new javax.swing.JTextField();
+        txtVenue = new javax.swing.JTextField();
+        txtDoctorCount = new javax.swing.JTextField();
+        txtPeopleCount = new javax.swing.JTextField();
+        btnSendRequest = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Community Hospital Request");
 
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -54,6 +75,35 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setText("Request Type");
+
+        jLabel3.setText("Date (MM/DD/YYYY)");
+
+        jLabel4.setText("Time (HH:MM)");
+
+        jLabel5.setText("Venue :");
+
+        jLabel6.setText("Number of Doctors : ");
+
+        jLabel7.setText("Number of People Affected :");
+
+        btnSendRequest.setText("Send Request");
+        btnSendRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendRequestActionPerformed(evt);
+            }
+        });
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "No of Doctors", "Date of Request", "Time of Request", "Venue", "People Affected", "Status"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -61,24 +111,95 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(174, 174, 174)
-                        .addComponent(jLabel1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(205, 205, 205)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(btnBack)))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBack)))
-                .addContainerGap(192, Short.MAX_VALUE))
+                        .addGap(83, 83, 83)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(121, 121, 121)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtDate)
+                                .addComponent(txtTime)
+                                .addComponent(txtRequestType)
+                                .addComponent(txtVenue, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                            .addComponent(txtDoctorCount)
+                            .addComponent(txtPeopleCount))))
+                .addGap(35, 35, 35))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(btnSendRequest)))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtRequestType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtVenue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtDoctorCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtPeopleCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(btnSendRequest)
+                .addGap(46, 46, 46)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(112, 112, 112)
                 .addComponent(btnBack)
-                .addGap(40, 40, 40))
+                .addGap(184, 184, 184))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+     public static boolean isDateValid(String date){
+         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+         dateFormat.setLenient(false);
+        try{
+            Date javaDate = dateFormat.parse(date);
+            //dateFormat.parse(date.trim());
+            return true;
+        } catch (ParseException ex) {
+            return false;
+        }
+        
+         
+     }
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
@@ -86,9 +207,46 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnSendRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestActionPerformed
+        // TODO add your handling code here:
+        if(!txtDate.getText().equals("")){
+            CommunityDoctorRequest request = new CommunityDoctorRequest();
+            
+            if(isDateValid(txtDate.getText())){
+                request.setNoDoctorRequired(Integer.parseInt(txtDoctorCount.getText()));
+                request.setLocation(txtVenue.getText());
+                request.setRequestedDate(txtDate.getText());
+                request.setRequestedTime(txtTime.getText());
+                request.setPurpose(txtRequestType.getText());
+                request.setStatus("Requested");
+                request.setSender(account);
+                account.getWorkQueue().getWorkRequestList().add(request);
+                enterprise.getWorkQueue().getWorkRequestList().add(request);
+                ecoSystem.getWorkQueue().getWorkRequestList().add(request);
+            }
+        } else{
+            JOptionPane.showMessageDialog(null,"Enter date in specified format", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSendRequestActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnSendRequest;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField txtDate;
+    private javax.swing.JTextField txtDoctorCount;
+    private javax.swing.JTextField txtPeopleCount;
+    private javax.swing.JTextField txtRequestType;
+    private javax.swing.JTextField txtTime;
+    private javax.swing.JTextField txtVenue;
     // End of variables declaration//GEN-END:variables
 }

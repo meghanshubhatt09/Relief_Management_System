@@ -12,7 +12,7 @@ import Business.Organization.ClinicOrganization;
  */
 public class Doctor {
     
-    private String docName;
+    private String doctorType;
     private String doctorId;
     private static int docCount;
     private int quantity;
@@ -31,11 +31,11 @@ public class Doctor {
     
     
     public String getDocName() {
-        return docName;
+        return doctorType;
     }
 
-    public void setDocName(String docName) {
-        this.docName = docName;
+    public void setDocName(String doctorType) {
+        this.doctorType = doctorType;
     }
 
     public String getDoctorId() {
@@ -44,7 +44,7 @@ public class Doctor {
     
     @Override
     public String toString(){
-        return docName;
+        return doctorType;
     }
     
 }
