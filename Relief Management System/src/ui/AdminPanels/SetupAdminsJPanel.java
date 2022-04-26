@@ -15,6 +15,7 @@ import Business.Role.HospitalAdminRole;
 import Business.Role.EmergencyAdminRole;
 import Business.Role.EmergencyRequestAdminRole;
 import Business.Role.EndUserAdminRole;
+import Business.Role.FSAdminRole;
 import Business.Role.FoodAdminRole;
 import Business.Role.NGOAdminRole;
 import Business.Role.ShelterAdminRole;
@@ -291,6 +292,10 @@ public class SetupAdminsJPanel extends javax.swing.JPanel {
             else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.ServiceProvider) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ServiceProviderAdminRole());
             }
+             else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.FSDistributor) {
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new FSAdminRole());
+            }
+          
 //            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
 //                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
 //            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.NGO) {
