@@ -4,6 +4,16 @@
  */
 package ui.FoodAndShelter;
 
+import Buisness.FoodAndShelterDistributor.Food;
+import Buisness.FoodAndShelterDistributor.FoodDirectory;
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.OrganizationDirectory;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import javax.xml.validation.Validator;
 
 /**
@@ -15,8 +25,24 @@ public class CreateFoodJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreateFoodJPanel
      */
-    public CreateFoodJPanel() {
+    JPanel userProcessContainer;
+   Enterprise enterprise;
+   EcoSystem ecoSystem;
+   UserAccount userAccount;
+   OrganizationDirectory organizationDirectory;
+    public CreateFoodJPanel(JPanel userProcessContainer,
+   Enterprise enterprise,
+   EcoSystem ecoSystem,
+   UserAccount userAccount,
+   OrganizationDirectory organizationDirectory) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = userAccount;
+        this.organizationDirectory = organizationDirectory;
+        this.enterprise = enterprise;
+        this.ecoSystem = ecoSystem;
+        
+       populateFoodTable();
     }
 
     /**
@@ -58,18 +84,18 @@ public class CreateFoodJPanel extends javax.swing.JPanel {
         });
 
         jLabel4.setBackground(new java.awt.Color(102, 217, 255));
-        jLabel4.setText("Food Price :");
+        jLabel4.setText("Food Price in Dollars:");
 
         tblFood.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Food Type", "Price"
+                "Id", "Food Type", "Price"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -150,22 +176,40 @@ public class CreateFoodJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-//        userProcessContainer.remove(this);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.previous(userProcessContainer);
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-//        Vaccine v= business.getVaccineList().addVaccine();
-//        v.setVaccineName(txtFoodType.getText());
-//        v.setDisease((Disease) cmbDisease.getSelectedItem());
-//        v.setPrice(Integer.parseInt(txtFoodPrice.getText()));
-//        v.setFlag(false);
-//        populateVaccineTable();
+        FoodDirectory fd = new FoodDirectory();
+        if(!txtFoodType.getText().equals("")){
+            Food food = ecoSystem.getFoodDirectory().addFoodType();
+            food.setFoodType(txtFoodType.getText());
+            food.setPrice(Integer.parseInt(txtFoodPrice.getText()));
+            populateFoodTable();
+//            NGOWorkRequest nGOWorkRequest = new NGOWorkRequest();
+//            nGOWorkRequest.setDoctor(doctor);
+//            txtDoctorType.setText("");
+//            txtNumDoctor.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
 
     }//GEN-LAST:event_btnCreateActionPerformed
-
+ private void populateFoodTable() {
+       DefaultTableModel table= (DefaultTableModel) tblFood.getModel();
+       table.setRowCount(0);
+      for (Food food : ecoSystem.getFoodDirectory().getFoodList()) {
+//            
+           Object[] row = new Object[3];
+           row[0]= food.getFoodId();
+           row[1]= food.getFoodType();
+           row[2]=food.getPrice();
+           table.addRow(row);
+    }  
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
