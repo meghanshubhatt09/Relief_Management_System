@@ -36,7 +36,10 @@ public class ManageCommunityJPanel extends javax.swing.JPanel {
         this.ecoSystem = ecoSystem;
         this.community = new Community();
         
-        labelCount.setText(Integer.toString(ecoSystem.getCommunityList().getCommunityList().get(0).getCommunityMemberCount()));
+        if(ecoSystem.getCommunityList().getCommunityList().size() >= 1){
+            labelCount.setText(Integer.toString(ecoSystem.getCommunityList().getCommunityList().get(0).getCommunityMemberCount()));
+
+        }
     }
 
     /**

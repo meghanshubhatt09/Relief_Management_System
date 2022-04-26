@@ -9,12 +9,14 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.ClinicOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CommunityDoctorRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 import javax.xml.validation.Validator;
 
 /**
@@ -64,7 +66,7 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
         txtPeopleCount = new javax.swing.JTextField();
         btnSendRequest = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblRequest = new javax.swing.JTable();
 
         jLabel1.setText("Community Hospital Request");
 
@@ -94,7 +96,7 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -102,7 +104,7 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
                 "No of Doctors", "Date of Request", "Time of Request", "Venue", "People Affected", "Status"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblRequest);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -111,14 +113,8 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(205, 205, 205)
-                                .addComponent(jLabel1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(btnBack)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(205, 205, 205)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(83, 83, 83)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -129,22 +125,20 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
                         .addGap(121, 121, 121)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtDate)
-                                .addComponent(txtTime)
-                                .addComponent(txtRequestType)
-                                .addComponent(txtVenue, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
-                            .addComponent(txtDoctorCount)
-                            .addComponent(txtPeopleCount))))
-                .addGap(35, 35, 35))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtDoctorCount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                            .addComponent(txtDate, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTime, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtRequestType, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtVenue, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPeopleCount)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(223, 223, 223)
+                        .addGap(122, 122, 122)
+                        .addComponent(btnBack)
+                        .addGap(114, 114, 114)
                         .addComponent(btnSendRequest)))
                 .addContainerGap(72, Short.MAX_VALUE))
         );
@@ -178,12 +172,12 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel7)
                     .addComponent(txtPeopleCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(btnSendRequest)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSendRequest)
+                    .addComponent(btnBack))
                 .addGap(46, 46, 46)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112)
-                .addComponent(btnBack)
-                .addGap(184, 184, 184))
+                .addGap(319, 319, 319))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -207,12 +201,44 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void populateRequestTable(){
+        System.out.println("check 10");
+        DefaultTableModel model = (DefaultTableModel) tblRequest.getModel();
+        model.setRowCount(0);
+        System.out.println("check 11");
+        for(WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
+            System.out.println("check 0");
+            if(work instanceof CommunityDoctorRequest){
+                System.out.println("check 12");
+                Object[] row = new Object[6];
+                row[0] = ((CommunityDoctorRequest) work).getNoDoctorRequired();
+                System.out.print(row[0]);
+                System.out.print("!!!!!!!!!!!!!!!!!!");
+                row[1] = ((CommunityDoctorRequest) work).getRequestedDate();
+                row[2] = ((CommunityDoctorRequest) work).getRequestedTime();
+                row[3] = ((CommunityDoctorRequest) work).getLocation();
+                row[5] = work;
+                System.out.println(work);
+                row[4] = txtPeopleCount.getText();
+                model.addRow(row);
+            
+            }
+        }
+        System.out.print("check 13");
+        
+    }
+    
     private void btnSendRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestActionPerformed
         // TODO add your handling code here:
+        System.out.print("check 0");
         if(!txtDate.getText().equals("")){
+            System.out.print("check 1");
+
             CommunityDoctorRequest request = new CommunityDoctorRequest();
-            
+            System.out.print("check 2");
+
             if(isDateValid(txtDate.getText())){
+                System.out.print("check 3");
                 request.setNoDoctorRequired(Integer.parseInt(txtDoctorCount.getText()));
                 request.setLocation(txtVenue.getText());
                 request.setRequestedDate(txtDate.getText());
@@ -223,7 +249,10 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
                 account.getWorkQueue().getWorkRequestList().add(request);
                 enterprise.getWorkQueue().getWorkRequestList().add(request);
                 ecoSystem.getWorkQueue().getWorkRequestList().add(request);
+                System.out.print("check 4");
             }
+            populateRequestTable();
+            System.out.print("check 5");
         } else{
             JOptionPane.showMessageDialog(null,"Enter date in specified format", "Warning", JOptionPane.WARNING_MESSAGE);
         }
@@ -241,7 +270,7 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblRequest;
     private javax.swing.JTextField txtDate;
     private javax.swing.JTextField txtDoctorCount;
     private javax.swing.JTextField txtPeopleCount;
