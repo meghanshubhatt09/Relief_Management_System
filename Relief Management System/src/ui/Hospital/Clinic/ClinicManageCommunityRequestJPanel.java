@@ -95,7 +95,9 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
+
                 false, false, false, false, false, false, false
+
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -290,7 +292,7 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the Request", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            CommunityDoctorRequest c =  (CommunityDoctorRequest)tblRequestTableCommunity.getValueAt(selectedRow, 4);
+            CommunityDoctorRequest c =  (CommunityDoctorRequest)tblRequestTableCommunity.getValueAt(selectedRow, 6);
             //NGOWorkRequest p=(NGOWorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 4);
 
             c.setStatus("Pending");
@@ -310,7 +312,7 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
         }
         else{
 
-            WorkRequest p=(WorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 4);
+            WorkRequest p=(WorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 6);
 
             userAccount.getWorkQueue().getWorkRequestList().remove(p);
             ecoSystem.getWorkQueue().getWorkRequestList().remove(p);
@@ -330,7 +332,7 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
         }
         else{
 
-            CommunityDoctorRequest p=(CommunityDoctorRequest) tblRequestTableCommunity.getValueAt(selectedRow, 4);
+            CommunityDoctorRequest p=(CommunityDoctorRequest) tblRequestTableCommunity.getValueAt(selectedRow, 6);
 
             int temp=0;
             if(p.getReceiver()!= null){
@@ -385,7 +387,7 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
         }
         else{
 
-            CommunityDoctorRequest p=(CommunityDoctorRequest) tblRequestTableCommunity.getValueAt(selectedRow, 4);
+            CommunityDoctorRequest p=(CommunityDoctorRequest) tblRequestTableCommunity.getValueAt(selectedRow, 6);
             if(p.getStatus().equalsIgnoreCase("Approved")){
                 JOptionPane.showMessageDialog(null, "Cannot Reject the Approved request", "Warning", JOptionPane.WARNING_MESSAGE);
             }else if(p.getStatus().equalsIgnoreCase("Rejected")){
@@ -514,12 +516,12 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
 
         for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
            if(work instanceof CommunityDoctorRequest){ 
-            Object[] row = new Object[6];
+            Object[] row = new Object[7];
             row[0] = ((CommunityDoctorRequest) work).getNoDoctorRequired();
             row[2] = ((CommunityDoctorRequest) work).getRequestedDate();
             row[3] = ((CommunityDoctorRequest) work).getRequestedTime();
             row[4] = ((CommunityDoctorRequest) work).getLocation();
-            row[5] = work;
+            row[6] = work;
             row[1] = ((CommunityDoctorRequest) work).getNoPeopleAffected();
             model.addRow(row);
            }
