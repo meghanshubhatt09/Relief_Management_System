@@ -106,7 +106,7 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "No of Doctors", "Date of Request", "Time of Request", "Venue", "People Affected", "Status"
+                "No of Doctors", "Date of Request", "Time of Request", "Venue", "People Affected", "Doctor Type", "Status"
             }
         ));
         jScrollPane1.setViewportView(tblRequest);
@@ -222,13 +222,14 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for(WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
             if(work instanceof CommunityDoctorRequest){
-                Object[] row = new Object[6];
+                Object[] row = new Object[7];
                 row[0] = ((CommunityDoctorRequest) work).getNoDoctorRequired();
                 row[1] = ((CommunityDoctorRequest) work).getRequestedDate();
                 row[2] = ((CommunityDoctorRequest) work).getRequestedTime();
                 row[3] = ((CommunityDoctorRequest) work).getLocation();
-                row[5] = work;
+                row[6] = work;
                 row[4] = ((CommunityDoctorRequest) work).getNoPeopleAffected() ;
+                row[5] = ((CommunityDoctorRequest) work).getDoctorType();
                 model.addRow(row);
             
             }
@@ -260,6 +261,7 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
                 request.setStatus("Requested");
                 request.setSender(account);
                 request.setNoPeopleAffected(Integer.parseInt(txtPeopleCount.getText()));
+                request.setDoctorType(doctorTypeComboBox.getSelectedItem().toString());
                 account.getWorkQueue().getWorkRequestList().add(request);
                 enterprise.getWorkQueue().getWorkRequestList().add(request);
                 ecoSystem.getWorkQueue().getWorkRequestList().add(request);

@@ -523,6 +523,7 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
             row[4] = ((CommunityDoctorRequest) work).getLocation();
             row[6] = work;
             row[1] = ((CommunityDoctorRequest) work).getNoPeopleAffected();
+            row[5] = ((CommunityDoctorRequest) work).getDoctorType();
             model.addRow(row);
            }
         }
