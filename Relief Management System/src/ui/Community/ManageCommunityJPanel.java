@@ -27,16 +27,43 @@ public class ManageCommunityJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount account;
     private EcoSystem ecoSystem;
-    private Community community;
+//    private Community community;
     public ManageCommunityJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem ecoSystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.account = account;
         this.ecoSystem = ecoSystem;
-        this.community = new Community();
+//        this.community = new Community();
         
-        labelCount.setText(Integer.toString(ecoSystem.getCommunityList().getCommunityList().get(0).getCommunityMemberCount()));
+        System.out.println(ecoSystem.getCommunityList().getCommunityList().size());
+        System.out.println("//////////");
+        
+        if(ecoSystem.getCommunityList().getCommunityList().size() >= 1){
+            System.out.println("here");
+            for(Community c : ecoSystem.getCommunityList().getCommunityList()){
+                System.out.println("here 1");
+                 System.out.println(c.getCommunityName());
+                  System.out.println(enterprise.getName());
+                if(c.getCommunityName().equals(enterprise.getName())){
+                    System.out.println("here2");
+                    System.out.println(c.getCommunityName());
+                    labelCount.setText(Integer.toString(c.getCommunityMemberCount()));
+                }
+            
+            }
+        }
+        
+//        if(ecoSystem.getCommunityList().getCommunityList().size() >= 1){
+//            System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!");
+//            System.out.println(account.getUsername());
+//            for ( Community community : ecoSystem.getCommunityList().getCommunityList()){
+//                community.
+//            }
+//            System.out.println(ecoSystem.getCommunityList().getCommunityList().get(0));
+//            labelCount.setText(Integer.toString(ecoSystem.getCommunityList().getCommunityList().get(0).getCommunityMemberCount()));
+//
+//        }
     }
 
     /**
@@ -131,11 +158,13 @@ public class ManageCommunityJPanel extends javax.swing.JPanel {
         
         try{
             
-            CommunityDirectory com = new CommunityDirectory();
-            Community community = new Community();
+//            CommunityDirectory com = new CommunityDirectory();
+//            Community community = new Community();
+             Community community =  ecoSystem.getCommunityList().addCommunity();
             community.setCommunityMemberCount(Integer.parseInt(txtCount.getText()));
-            com.getCommunityList().add(community);
-            ecoSystem.setCommunityList(com);
+            community.setCommunityName(enterprise.getName());
+//            com.getCommunityList().add(community);
+//            ecoSystem.setCommunityList(com);
             
 //            Community community = ecoSystem.getCommunityList().addCommunity();
             System.out.print(community);

@@ -5,6 +5,8 @@
 package Business;
 
 import Business.BloodBank.BloodBankDirectory;
+import Buisness.FoodAndShelterDistributor.FoodDirectory;
+import Buisness.ServiceProvider.Food.FoodInventory;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.Role.Role;
@@ -28,7 +30,29 @@ public class EcoSystem extends Organization {
 
     private static EcoSystem ecosystem;
     private ArrayList<Network> networkList;
+    private FoodDirectory foodDirectory;
+    private FoodInventory foodInventory;
+
+    public FoodInventory getFoodInventory() {
+        return foodInventory;
+    }
+
+    public void setFoodInventory(FoodInventory foodInventory) {
+        this.foodInventory = foodInventory;
+    }
+    
+
+    public FoodDirectory getFoodDirectory() {
+        return foodDirectory;
+    }
+
+    public void setFoodDirectory(FoodDirectory foodDirectory) {
+        this.foodDirectory = foodDirectory;
+    }
+    
     private CommunityDirectory communityList;
+
+
     private DoctorDirectory doctorDirectoryList;
     private BloodBankDirectory bloodDirectory;
 
@@ -46,6 +70,8 @@ public class EcoSystem extends Organization {
         this.doctorDirectoryList = new DoctorDirectory();
         this.communityList = new CommunityDirectory();
         this.bloodDirectory = new BloodBankDirectory();
+        this.foodDirectory = new FoodDirectory();
+        this.foodInventory = new FoodInventory();
     }
 
       public CommunityDirectory getCommunityList() {
@@ -70,8 +96,6 @@ public class EcoSystem extends Organization {
         }
         return ecosystem;
     }
-
-
 
     public ArrayList<Network> getNetworkList() {
         return networkList;

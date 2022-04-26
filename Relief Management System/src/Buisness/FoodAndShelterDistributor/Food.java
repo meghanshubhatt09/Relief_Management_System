@@ -1,4 +1,4 @@
-package Buisness.FoodAndShelter;
+package Buisness.FoodAndShelterDistributor;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,13 +13,13 @@ public class Food {
     private String foodType;
     private String foodId;
     private int quantity;
-    private  int price;
+    private int price;
     private boolean flag;
     private double totalPrice;
     private static int fCount;
 
     public Food() {
-        foodId= "FOOD"+(++fCount);
+        foodId= "FOOD"+" "+(++fCount);
     }
 
     public String getFoodType() {
@@ -76,6 +76,11 @@ public class Food {
 
     public static void setfCount(int fCount) {
         Food.fCount = fCount;
+    }
+    
+    @Override
+    public String toString(){
+        return this.foodId;
     }
     
     

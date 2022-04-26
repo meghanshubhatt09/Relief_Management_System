@@ -516,11 +516,11 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
            if(work instanceof CommunityDoctorRequest){ 
             Object[] row = new Object[6];
             row[0] = ((CommunityDoctorRequest) work).getNoDoctorRequired();
-            row[1] = ((CommunityDoctorRequest) work).getRequestedDate();
-            row[2] = ((CommunityDoctorRequest) work).getRequestedTime();
-            row[3] = ((CommunityDoctorRequest) work).getLocation();
-            row[4] = ((CommunityDoctorRequest) work).getDoctorType();
+            row[2] = ((CommunityDoctorRequest) work).getRequestedDate();
+            row[3] = ((CommunityDoctorRequest) work).getRequestedTime();
+            row[4] = ((CommunityDoctorRequest) work).getLocation();
             row[5] = work;
+            row[1] = ((CommunityDoctorRequest) work).getNoPeopleAffected();
             model.addRow(row);
            }
         }
