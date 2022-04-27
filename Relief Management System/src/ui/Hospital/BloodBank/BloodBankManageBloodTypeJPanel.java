@@ -41,7 +41,7 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.userProcessContainer = userProcessContainer;
         
-        //bloodDonationAdd();
+        bloodDonationAdd();
         populateBloodTable();
     }
 
@@ -62,6 +62,7 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtBloodGroupType = new javax.swing.JTextField();
         btnAddDoctor = new javax.swing.JButton();
+        btnRefreshData = new javax.swing.JButton();
 
         jLabel1.setText("Manage Blood Type");
 
@@ -115,6 +116,13 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnRefreshData.setText("Refresh");
+        btnRefreshData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshDataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,16 +140,21 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel2)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(66, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnRefreshData)
+                .addGap(142, 142, 142))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(457, 457, 457)
-                    .addComponent(btnDeleteDoctor)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(153, 153, 153)
-                    .addComponent(txtBloodGroupType, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(45, 45, 45)
-                    .addComponent(btnAddDoctor)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(457, 457, 457)
+                            .addComponent(btnDeleteDoctor))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(153, 153, 153)
+                            .addComponent(txtBloodGroupType, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(45, 45, 45)
+                            .addComponent(btnAddDoctor)))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -158,7 +171,9 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(jLabel2)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(btnRefreshData)
+                .addGap(23, 23, 23))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap(211, Short.MAX_VALUE)
@@ -222,11 +237,17 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAddDoctorActionPerformed
 
+    private void btnRefreshDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshDataActionPerformed
+        // TODO add your handling code here:
+        bloodDonationAdd();
+    }//GEN-LAST:event_btnRefreshDataActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddDoctor;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDeleteDoctor;
+    private javax.swing.JButton btnRefreshData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -251,17 +272,21 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
         
          for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList())
              for (BloodBank bloodBank : ecoSystem.getBloodDirectory().getBloodBankList()){
-         
+               
              if (work instanceof CommunityDonationRequest)
+//                     System.out.println(((CommunityDonationRequest) work).getNoBloodPacketsRequired()
+//                     );
              {
+            
                  if (work.getReceiver() != null)
                  {  
                     if (work.getStatus().equalsIgnoreCase("Requested"))
                     {
-                        if (work.getBloodType().getBloodGroupType().equals(bloodBank.getBloodGroupType()) )
+                        if (((CommunityDonationRequest) work).getRequestedBloodType().equals(bloodBank.getBloodGroupType()) )
                            {
+                              
                                
-                            bloodBank.setBloodPackets(bloodBank.getBloodPackets() + work.getBloodType().getBloodPackets());
+                            bloodBank.setBloodPackets(bloodBank.getBloodPackets() + ((CommunityDonationRequest) work).getNoBloodPacketsRequired());
                             work.setStatus("Approved");
 
                            }

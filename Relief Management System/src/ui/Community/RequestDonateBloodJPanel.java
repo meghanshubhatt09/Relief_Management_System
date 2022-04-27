@@ -11,6 +11,7 @@ import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.CommunityBloodRequest;
 import Business.WorkQueue.CommunityDoctorRequest;
+import Business.WorkQueue.CommunityDonationRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.text.ParseException;
@@ -222,7 +223,7 @@ public class RequestDonateBloodJPanel extends javax.swing.JPanel {
     private void btnSubmitDonateBloodRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitDonateBloodRequestActionPerformed
         // TODO add your handling code here:
         if(!txtDate.getText().equals("")){
-            CommunityBloodRequest request = new CommunityBloodRequest();
+            CommunityDonationRequest request = new CommunityDonationRequest();
             
             if(isDateValid(txtDate.getText())){
                 request.setRequestedBloodType(bloodGroupComboBox.getSelectedItem().toString());
@@ -248,14 +249,14 @@ public class RequestDonateBloodJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblRequest.getModel();
         model.setRowCount(0);
         for(WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
-            if(work instanceof CommunityBloodRequest){
+            if(work instanceof CommunityDonationRequest){
                 Object[] row = new Object[6];
-                row[0] = ((CommunityBloodRequest) work).getRequestedBloodType() ;
-                row[2] = ((CommunityBloodRequest) work).getRequestedDate();
-                row[3] = ((CommunityBloodRequest) work).getRequestedTime();
-                row[4] = ((CommunityBloodRequest) work).getLocation();
+                row[0] = ((CommunityDonationRequest) work).getRequestedBloodType() ;
+                row[2] = ((CommunityDonationRequest) work).getRequestedDate();
+                row[3] = ((CommunityDonationRequest) work).getRequestedTime();
+                row[4] = ((CommunityDonationRequest) work).getLocation();
                 row[5] = work;
-                row[1] = ((CommunityBloodRequest) work).getNoBloodPacketsRequired() ;
+                row[1] = ((CommunityDonationRequest) work).getNoBloodPacketsRequired() ;
                 model.addRow(row);
             
             }
