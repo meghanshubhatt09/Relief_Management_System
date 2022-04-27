@@ -20,6 +20,7 @@ import Business.Doctor.DoctorDirectory;
 import Business.Doctor.Doctor;
 import Business.Role.BloodBankAdminRole;
 import Business.Role.ClinicAdminRole;
+import Business.Role.DonationAdminRole;
 import Business.Role.HospitalAdminRole;
 
 /**
@@ -117,6 +118,7 @@ public class EcoSystem extends Organization {
         roles.add(new HospitalAdminRole());
         roles.add(new ClinicAdminRole());
         roles.add(new BloodBankAdminRole());
+        roles.add(new DonationAdminRole());
         return roles;
     }
 

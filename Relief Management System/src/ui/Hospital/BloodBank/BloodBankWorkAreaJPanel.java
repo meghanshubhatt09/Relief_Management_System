@@ -53,6 +53,11 @@ public class BloodBankWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setText("Blood Bank Work Area");
 
         jButton3.setText("Manage Blood Request");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         btnManageBloodType.setText("Manage Blood Bank Data");
         btnManageBloodType.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +102,14 @@ public class BloodBankWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageBloodTypeActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        BloodBankManageCommunityRequestJPanel bankManageCommunityRequestJPanel = new BloodBankManageCommunityRequestJPanel(userProcessContainer, enterprise.getOrganizationDirectory(),enterprise,userAccount,ecoSystem);
+        userProcessContainer.add("BloodBankManageCommunityRequestJPanel", bankManageCommunityRequestJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

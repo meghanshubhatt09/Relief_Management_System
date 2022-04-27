@@ -5,6 +5,7 @@
 package Business.Enterprise;
 
 import Business.Role.Role;
+import Business.Role.NGOAdminRole;
 import java.util.HashSet;
 
 /**
@@ -19,7 +20,8 @@ public class NGOEnterprise extends Enterprise{
 
     @Override
     public HashSet<Role> getSupportedRole() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        roles.add(new NGOAdminRole());
+        return roles;
     }
     
 }
