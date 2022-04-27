@@ -31,7 +31,7 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount account;
     private EcoSystem ecoSystem;
-    public RequestBloodFromBankJPanel() {
+    public RequestBloodFromBankJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem ecoSystem) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
