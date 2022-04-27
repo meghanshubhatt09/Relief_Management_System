@@ -279,7 +279,7 @@ public class ManageFoodInventory extends javax.swing.JPanel {
             if (work.getStatus().equals("Approved")) {
                 System.out.println("Approved 1");
                 for (Food f : ecoSystem.getFoodInventory().getFoodInventory()) {
-                    if (f.getFoodType().equals(work.getFoodType()) && !work.getStatus().equals("Processed")) {
+                    if (f.getFoodType().equals(work.getFoodType())) {
                         f.setQuantity(f.getQuantity() + work.getQuantity());
                         work.setStatus("Processed");
                         flag = true;
@@ -289,6 +289,7 @@ public class ManageFoodInventory extends javax.swing.JPanel {
                     Food food = new Food();
                     food.setFoodType(work.getFoodType());
                     food.setQuantity(work.getQuantity());
+                    work.setStatus("Processed");
                     ecoSystem.getFoodInventory().getFoodInventory().add(food);
                 }
             }
