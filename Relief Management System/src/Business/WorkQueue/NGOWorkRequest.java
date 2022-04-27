@@ -14,6 +14,15 @@ public class NGOWorkRequest extends WorkRequest{
     private boolean add;
     private String requestedDate;
     private String requestedTime;
+    private String doctorType;
+
+    public String getDoctorType() {
+        return doctorType;
+    }
+
+    public void setDoctorType(String doctorType) {
+        this.doctorType = doctorType;
+    }
     
     
     public NGOWorkRequest(){

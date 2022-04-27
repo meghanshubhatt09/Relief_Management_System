@@ -297,6 +297,12 @@ public class SetupAdminsJPanel extends javax.swing.JPanel {
              else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.FSDistributor) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new FSAdminRole());
             }
+            else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Donation) {
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DonationAdminRole());
+            }
+             else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.NGO) {
+               account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new NGOAdminRole());
+            }
           
 //            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
 //                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());

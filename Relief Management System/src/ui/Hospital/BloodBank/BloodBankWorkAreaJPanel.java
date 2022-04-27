@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.BloodOrganization;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -19,12 +20,19 @@ public class BloodBankWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form BloodBankWorkAreaJPanel
      */
-    public BloodBankWorkAreaJPanel() {
-        initComponents();
-    }
+    
+    JPanel userProcessContainer;
+    UserAccount userAccount;
+    Enterprise enterprise;
+    EcoSystem ecoSystem;
 
-    public BloodBankWorkAreaJPanel(JPanel UserContainer, UserAccount userAccount, BloodOrganization bloodOrganization, Enterprise enterprise, EcoSystem system) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+    public BloodBankWorkAreaJPanel(JPanel UserContainer, UserAccount userAccount, BloodOrganization bloodOrganization, Enterprise enterprise, EcoSystem ecoSystem) {
+        initComponents();
+        this.userProcessContainer = UserContainer;
+        this.userAccount = userAccount;
+        this.enterprise = enterprise;
+        this.ecoSystem = ecoSystem;
     }
 
 
@@ -38,19 +46,75 @@ public class BloodBankWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        btnManageBloodType = new javax.swing.JButton();
+
+        jLabel1.setText("Blood Bank Work Area");
+
+        jButton3.setText("Manage Blood Request Community");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        btnManageBloodType.setText("Manage Blood Bank Data");
+        btnManageBloodType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageBloodTypeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnManageBloodType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(jLabel1)))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addGap(46, 46, 46)
+                .addComponent(btnManageBloodType)
+                .addGap(34, 34, 34)
+                .addComponent(jButton3)
+                .addContainerGap(170, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnManageBloodTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageBloodTypeActionPerformed
+        // TODO add your handling code here:
+        BloodBankManageBloodTypeJPanel bankManageBloodTypeJPanel = new BloodBankManageBloodTypeJPanel(userProcessContainer, enterprise.getOrganizationDirectory(),enterprise,userAccount,ecoSystem);
+        userProcessContainer.add("BloodBankManageBloodTypeJPanel", bankManageBloodTypeJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageBloodTypeActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        BloodBankManageCommunityRequestJPanel bankManageCommunityRequestJPanel = new BloodBankManageCommunityRequestJPanel(userProcessContainer, enterprise.getOrganizationDirectory(),enterprise,userAccount,ecoSystem);
+        userProcessContainer.add("BloodBankManageCommunityRequestJPanel", bankManageCommunityRequestJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnManageBloodType;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.WorkQueue;
+import Business.BloodBank.BloodBank;
 import Business.Doctor.Doctor;
 import Business.UserAccount.UserAccount;
 import java.util.Date;
@@ -19,6 +20,15 @@ public abstract class WorkRequest {
     private Date requestDate;
     private Date resolveDate;
     private Doctor doctor;
+    private BloodBank bloodType;
+
+    public BloodBank getBloodType() {
+        return bloodType;
+    }
+
+    public void setBloodType(BloodBank bloodType) {
+        this.bloodType = bloodType;
+    }
 
     public Doctor getDoctor() {
         return doctor;
