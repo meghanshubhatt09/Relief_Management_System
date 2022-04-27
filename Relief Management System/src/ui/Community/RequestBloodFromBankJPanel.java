@@ -51,7 +51,7 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblRequestTableCommunity = new javax.swing.JTable();
+        tblRequestBloodTableCommunity = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -64,7 +64,7 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         txtPurpose = new javax.swing.JTextField();
 
-        tblRequestTableCommunity.setModel(new javax.swing.table.DefaultTableModel(
+        tblRequestBloodTableCommunity.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -80,7 +80,7 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tblRequestTableCommunity);
+        jScrollPane1.setViewportView(tblRequestBloodTableCommunity);
 
         jLabel1.setText("Request Blood");
 
@@ -232,19 +232,19 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
      
      
      private void populateRequestTable() {
-        DefaultTableModel model = (DefaultTableModel) tblRequestTableCommunity.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblRequestBloodTableCommunity.getModel();
         
         model.setRowCount(0);
         
 
         for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
-           if(work instanceof BloodBankWorkRequest){ 
+           if(work instanceof CommunityBloodRequest){ 
             Object[] row = new Object[6];
-            row[0] = ((BloodBankWorkRequest) work).getBloodGroup();
-            row[1] = ((BloodBankWorkRequest) work).getNoOfPackets();
-            row[2] = ((BloodBankWorkRequest) work).getRequestedDate();
-            row[3] = ((BloodBankWorkRequest) work).getResolveDate() ;
-            row[4] = ((BloodBankWorkRequest) work).getLocation();
+            row[0] = ((CommunityBloodRequest) work).getRequestedBloodType() ;
+            row[1] = ((CommunityBloodRequest) work).getNoBloodPacketsRequired() ;
+            row[2] = ((CommunityBloodRequest) work).getRequestDate() ;
+            row[3] = ((CommunityBloodRequest) work).getResolveDate() ;
+            row[4] = ((CommunityBloodRequest) work).getLocation();
             row[5] = work;
             model.addRow(row);
            }
@@ -263,7 +263,7 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblRequestTableCommunity;
+    private javax.swing.JTable tblRequestBloodTableCommunity;
     private javax.swing.JTextField txtPacketCount;
     private javax.swing.JTextField txtPurpose;
     private javax.swing.JTextField txtVenue;
