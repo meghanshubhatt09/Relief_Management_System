@@ -328,8 +328,8 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the Request", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            NGOWorkRequest c =  (NGOWorkRequest)tblRequestTableCommunity.getValueAt(selectedRow, 4);
-            //NGOWorkRequest p=(NGOWorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 4);
+            NGOWorkRequest c =  (NGOWorkRequest)tblRequestTableCommunity.getValueAt(selectedRow, 5);
+          
 
             c.setStatus("Pending");
             c.setReceiver(userAccount);
@@ -347,7 +347,7 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
         }
         else{
 
-            WorkRequest p=(WorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 4);
+            WorkRequest p=(WorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 5);
 
             userAccount.getWorkQueue().getWorkRequestList().remove(p);
             ecoSystem.getWorkQueue().getWorkRequestList().remove(p);
@@ -367,7 +367,7 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
         }
         else{
 
-            NGOWorkRequest p=(NGOWorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 4);
+            NGOWorkRequest p=(NGOWorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 5);
 
             int temp=0;
             if(p.getReceiver()!= null){
@@ -423,7 +423,7 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
         }
         else{
 
-            NGOWorkRequest p=(NGOWorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 4);
+            NGOWorkRequest p=(NGOWorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 5);
             if(p.getStatus().equalsIgnoreCase("Approved")){
                 JOptionPane.showMessageDialog(null, "Cannot Reject the Approved request", "Warning", JOptionPane.WARNING_MESSAGE);
             }else if(p.getStatus().equalsIgnoreCase("Rejected")){
@@ -478,13 +478,7 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
             if (temp == 0) {
 
                 JOptionPane.showMessageDialog(null, "Add Doctor Type in Manage Doctor JPanel", "Warning", JOptionPane.WARNING_MESSAGE);
-                //                Doctor doc = business.getDoctorList().addDoctor();
-                //                doc.setQuantity(quant);
-                //                doc.setDocName(v);
-                //                NGOWorkRequest nGOWorkRequest = new NGOWorkRequest();
-                //
-                //                nGOWorkRequest.setDoctor(doc);
-                //nGOWorkRequest.setDocName(v);
+
 
             }
             populateAvailableDoctorTbl();

@@ -4,6 +4,7 @@
  */
 package ui.NGO;
 
+import Business.Doctor.Doctor;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.ClinicOrganization;
@@ -18,6 +19,7 @@ import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -43,6 +45,8 @@ public class NGOManageRequestHospitalJPanel extends javax.swing.JPanel {
          this.enterprise = enterprise;
         this.userAccount= userAccount;
         this.ecoSystem= ecoSystem;
+        populateWorkQueueTable();
+        populateDoctorTypeComboBox();
     }
 
     /**
@@ -73,6 +77,8 @@ public class NGOManageRequestHospitalJPanel extends javax.swing.JPanel {
         tblNgoManageRequestHospital = new javax.swing.JTable();
         btnBackNgoHospital = new javax.swing.JButton();
         btnDeleteReqNgo = new javax.swing.JButton();
+        doctorTypeComboBox = new javax.swing.JComboBox<>();
+        jLabel11 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel1.setText("NGO Manage Hospital Request");
@@ -127,11 +133,11 @@ public class NGOManageRequestHospitalJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "No of Doctors required", "Date of requirement", "Time of requirement", "Venue", "Status"
+                "No of Doctors required", "Date of requirement", "Time of requirement", "Venue", "Doctor Type", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -156,6 +162,10 @@ public class NGOManageRequestHospitalJPanel extends javax.swing.JPanel {
             }
         });
 
+        doctorTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel11.setText("Doctor Type:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -167,63 +177,76 @@ public class NGOManageRequestHospitalJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(491, 491, 491))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnBackNgoHospital)
+                                .addGap(440, 440, 440)
+                                .addComponent(btnDeleteReqNgo))))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(40, 40, 40)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel6)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel10))
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel8)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel5)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel9)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtTimeNGOHospital, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                                        .addComponent(txtVenueNGOHospital, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                                        .addComponent(txtDoctorsNGOHospital, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
+                                        .addComponent(txtDateNGOHospital))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(36, 36, 36)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel11)
+                                    .addGap(49, 49, 49)))
+                            .addComponent(doctorTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel10))
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel8))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtTimeNGOHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtVenueNGOHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDoctorsNGOHospital, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(26, 26, 26)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9)
-                                .addGap(50, 50, 50)
-                                .addComponent(txtDateNGOHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(36, 36, 36)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(64, 64, 64)
-                            .addComponent(jLabel4)
-                            .addGap(491, 491, 491))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(btnBackNgoHospital)
-                            .addGap(440, 440, 440)
-                            .addComponent(btnDeleteReqNgo)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(239, 239, 239)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(239, 239, 239)
+                                .addComponent(jLabel1)))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtDateNGOHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtDateNGOHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(doctorTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -278,6 +301,7 @@ public class NGOManageRequestHospitalJPanel extends javax.swing.JPanel {
                 request.setRequestedTime(txtTimeNGOHospital.getText());
                 request.setStatus("Requested");
                 request.setSender(userAccount);
+                request.setDoctorType(doctorTypeComboBox.getSelectedItem().toString());
                 userAccount.getWorkQueue().getWorkRequestList().add(request);
                 ecoSystem.getWorkQueue().getWorkRequestList().add(request);
                 enterprise.getWorkQueue().getWorkRequestList().add(request);
@@ -309,7 +333,7 @@ public class NGOManageRequestHospitalJPanel extends javax.swing.JPanel {
         }
         else{
 
-            WorkRequest p=(WorkRequest) tblNgoManageRequestHospital.getValueAt(selectedRow, 4);
+            WorkRequest p=(WorkRequest) tblNgoManageRequestHospital.getValueAt(selectedRow, 5);
 
             userAccount.getWorkQueue().getWorkRequestList().remove(p);
             ecoSystem.getWorkQueue().getWorkRequestList().remove(p);
@@ -326,8 +350,10 @@ public class NGOManageRequestHospitalJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBackNgoHospital;
     private javax.swing.JButton btnCreateHospital;
     private javax.swing.JButton btnDeleteReqNgo;
+    private javax.swing.JComboBox<String> doctorTypeComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -406,15 +432,25 @@ public static String generateHash(String password) {
         
         for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
            if(work instanceof NGOWorkRequest){ 
-            Object[] row = new Object[5];
+            Object[] row = new Object[6];
             row[0] = ((NGOWorkRequest) work).getNoDoctorRequired();
             row[1] = ((NGOWorkRequest) work).getRequestedDate();
             row[2] = ((NGOWorkRequest) work).getRequestedTime();
             row[3] = ((NGOWorkRequest) work).getLocation();
-            row[4] = work;
+            row[4] = ((NGOWorkRequest) work).getDoctorType();
+            row[5] = work;
             model.addRow(row);
            }
         }
+    }
+
+    private void populateDoctorTypeComboBox() {
+                DefaultComboBoxModel modelDoctorType = new DefaultComboBoxModel();
+        for (Doctor doctor : ecoSystem.getDoctorList().getDoctorList()) {
+            modelDoctorType.addElement(doctor.getDocName());
+        }
+        
+        doctorTypeComboBox.setModel(modelDoctorType);
     }
 
 }

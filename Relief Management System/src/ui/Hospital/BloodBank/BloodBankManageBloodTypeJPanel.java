@@ -62,7 +62,6 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtBloodGroupType = new javax.swing.JTextField();
         btnAddDoctor = new javax.swing.JButton();
-        btnRefreshData = new javax.swing.JButton();
 
         jLabel1.setText("Manage Blood Type");
 
@@ -116,13 +115,6 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnRefreshData.setText("Refresh");
-        btnRefreshData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshDataActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,10 +132,6 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel2)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(66, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnRefreshData)
-                .addGap(142, 142, 142))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,9 +159,7 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(btnRefreshData)
-                .addGap(23, 23, 23))
+                .addContainerGap(81, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap(211, Short.MAX_VALUE)
@@ -237,17 +223,11 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAddDoctorActionPerformed
 
-    private void btnRefreshDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshDataActionPerformed
-        // TODO add your handling code here:
-        bloodDonationAdd();
-    }//GEN-LAST:event_btnRefreshDataActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddDoctor;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDeleteDoctor;
-    private javax.swing.JButton btnRefreshData;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -277,13 +257,15 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
 //                     System.out.println(((CommunityDonationRequest) work).getNoBloodPacketsRequired()
 //                     );
              {
+     
             
-                 if (work.getReceiver() != null)
-                 {  
+                   
                     if (work.getStatus().equalsIgnoreCase("Requested"))
                     {
+                        System.out.println("BLOOD BANK"+work);
                         if (((CommunityDonationRequest) work).getRequestedBloodType().equals(bloodBank.getBloodGroupType()) )
                            {
+                               System.out.println("ui.Hospital.BloodBank.BloodBankManageBloodTypeJPanel.bloodDonationAdd()"+bloodBank.getBloodGroupType());
                               
                                
                             bloodBank.setBloodPackets(bloodBank.getBloodPackets() + ((CommunityDonationRequest) work).getNoBloodPacketsRequired());
@@ -291,7 +273,7 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
 
                            }
                     }
-                 }
+                 
                  
              }
              

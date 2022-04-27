@@ -428,13 +428,7 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
             if (temp == 0) {
                 
                 JOptionPane.showMessageDialog(null, "Add Doctor Type in Manage Doctor JPanel", "Warning", JOptionPane.WARNING_MESSAGE);
-//                Doctor doc = business.getDoctorList().addDoctor();
-//                doc.setQuantity(quant);
-//                doc.setDocName(v);
-//                NGOWorkRequest nGOWorkRequest = new NGOWorkRequest();
-//
-//                nGOWorkRequest.setDoctor(doc);
-                //nGOWorkRequest.setDocName(v);
+
 
             }
             populateAvailableDoctorTbl();
