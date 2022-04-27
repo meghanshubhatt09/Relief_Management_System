@@ -13,6 +13,7 @@ import Business.WorkQueue.BloodBankWorkRequest;
 import Business.WorkQueue.NGOWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -93,7 +94,7 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Blood Type", "No of Blood Packets Required", "Date of requirement", "Time of requirement", "Venue", "Status"
+                "Blood Type", "No of Blood Packets Required", "Date of requirement", "Date of resolution", "Venue", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -301,6 +302,8 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
 
                     p.setStatus("Approved");
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
+                    Date date = new Date();
+                    p.setResolveDate(date);
                     populateBloodTable();
                     //populateAvailableDoctorTbl();
                     populateRequestTable();
@@ -373,7 +376,7 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
             row[0] = ((BloodBankWorkRequest) work).getBloodGroup();
             row[1] = ((BloodBankWorkRequest) work).getNoOfPackets();
             row[2] = ((BloodBankWorkRequest) work).getRequestedDate();
-            row[3] = ((BloodBankWorkRequest) work).getRequestedTime();
+            row[3] = ((BloodBankWorkRequest) work).getResolveDate() ;
             row[4] = ((BloodBankWorkRequest) work).getLocation();
             row[5] = work;
             model.addRow(row);

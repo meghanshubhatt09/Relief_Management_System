@@ -8,12 +8,15 @@ import Business.BloodBank.BloodBank;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.BloodBankWorkRequest;
 import Business.WorkQueue.CommunityBloodRequest;
 import Business.WorkQueue.CommunityDonationRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -35,6 +38,7 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
         this.account = account;
         this.ecoSystem = ecoSystem;
         populateBloodGroupComboBox();
+        populateRequestTable();
     }
 
     /**
@@ -65,7 +69,7 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Blood Type", "No of Blood Packets Required", "Date of requirement", "Time of requirement", "Venue", "Status"
+                "Blood Type", "No of Blood Packets Required", "Date of requirement", "Date of resolution", "Venue", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -208,6 +212,8 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
         enterprise.getWorkQueue().getWorkRequestList().add(request);
         ecoSystem.getWorkQueue().getWorkRequestList().add(request);
         
+        populateRequestTable();
+        
     }//GEN-LAST:event_btnSubmitRequestActionPerformed
 
     private void txtPurposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPurposeActionPerformed
@@ -222,6 +228,27 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
         }
         
         bloodGroupComboBox.setModel(modelDoctorType);
+    }
+     
+     
+     private void populateRequestTable() {
+        DefaultTableModel model = (DefaultTableModel) tblRequestTableCommunity.getModel();
+        
+        model.setRowCount(0);
+        
+
+        for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
+           if(work instanceof BloodBankWorkRequest){ 
+            Object[] row = new Object[6];
+            row[0] = ((BloodBankWorkRequest) work).getBloodGroup();
+            row[1] = ((BloodBankWorkRequest) work).getNoOfPackets();
+            row[2] = ((BloodBankWorkRequest) work).getRequestedDate();
+            row[3] = ((BloodBankWorkRequest) work).getResolveDate() ;
+            row[4] = ((BloodBankWorkRequest) work).getLocation();
+            row[5] = work;
+            model.addRow(row);
+           }
+        }
     }
     
     
