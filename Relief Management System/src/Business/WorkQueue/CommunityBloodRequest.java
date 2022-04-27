@@ -16,7 +16,18 @@ public class CommunityBloodRequest extends WorkRequest{
     private String requestedDate;
     private String requestedTime;
     private String purpose;
-    private String BloodType;
+    private String requestedBloodType;
+
+    public String getRequestedBloodType() {
+        return requestedBloodType;
+    }
+
+    public void setRequestedBloodType(String requestedBloodType) {
+        this.requestedBloodType = requestedBloodType;
+    }
+
+   
+    
 
     public CommunityBloodRequest(){
         add = false;
@@ -72,9 +83,7 @@ public class CommunityBloodRequest extends WorkRequest{
 
 
 
-    public void setBloodType(String BloodType) {
-        this.BloodType = BloodType;
-    }
+   
 
     
 }
