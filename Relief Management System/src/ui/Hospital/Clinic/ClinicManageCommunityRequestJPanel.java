@@ -13,6 +13,7 @@ import Business.WorkQueue.CommunityDoctorRequest;
 import Business.WorkQueue.NGOWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -91,13 +92,11 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "No of Doctors required", "No of People Affected", "Date of requirement", "Time of requirement", "Venue", "Doctor Type", "Status"
+                "No of Doctors required", "No of People Affected", "Date of requirement", "Date of resolution", "Venue", "Doctor Type", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-
                 false, false, false, false, false, false, false
-
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -362,6 +361,8 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
                     }
 
                     p.setStatus("Approved");
+                    Date resolveDate = new Date();
+                    p.setResolveDate(resolveDate);
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
                     populateAvailableDoctorTbl();
                     populateRequestTable();
@@ -396,6 +397,8 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
                 if (p.getStatus().equalsIgnoreCase("Pending")) {
                     p.setStatus("Rejected");
                     p.setReceiver(userAccount);
+                    Date resolveDate = new Date();
+                    p.setResolveDate(resolveDate);
                 }else{
                     JOptionPane.showMessageDialog(null, "Please assign first");
                 }
@@ -512,8 +515,8 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
            if(work instanceof CommunityDoctorRequest){ 
             Object[] row = new Object[7];
             row[0] = ((CommunityDoctorRequest) work).getNoDoctorRequired();
-            row[2] = ((CommunityDoctorRequest) work).getRequestedDate();
-            row[3] = ((CommunityDoctorRequest) work).getRequestedTime();
+            row[2] = ((CommunityDoctorRequest) work).getRequestDate() ;
+            row[3] = ((CommunityDoctorRequest) work).getResolveDate() ;
             row[4] = ((CommunityDoctorRequest) work).getLocation();
             row[6] = work;
             row[1] = ((CommunityDoctorRequest) work).getNoPeopleAffected();
