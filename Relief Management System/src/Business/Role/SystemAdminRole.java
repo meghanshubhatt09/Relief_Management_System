@@ -12,7 +12,7 @@ import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
 
 import javax.swing.JPanel;
-import ui.AdminPanels.AdminWorkAreaJPanel;
+import ui.AdminPanels.SystemAdminWorkAreaJPanel;
 /**
  *
  * @author meghanshubhatt
@@ -27,7 +27,7 @@ public class SystemAdminRole  extends Role{
     @Override
 
     public JPanel createWorkArea(JPanel UserContainer, UserAccount userAccount, Organization organization, Enterprise enterprise, EcoSystem ecoSystem) {
-        return new AdminWorkAreaJPanel(UserContainer,ecoSystem);
+        return new SystemAdminWorkAreaJPanel(UserContainer,ecoSystem);
     }
         
 

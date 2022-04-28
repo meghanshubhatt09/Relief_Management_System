@@ -60,17 +60,16 @@ public class ServiceProviderAdminJPanel extends javax.swing.JPanel {
         ManageOrgBtn = new javax.swing.JButton();
         ManageEmpBtn = new javax.swing.JButton();
         CreateCredBtn = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jSeparator3 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 255));
 
         SPTitle.setFont(new java.awt.Font("Malayalam MN", 1, 24)); // NOI18N
         SPTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        SPTitle.setText("Service Provider Panel");
+        SPTitle.setText("SERVICE PROVIDER");
 
+        ManageOrgBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         ManageOrgBtn.setText("Manage Organization");
         ManageOrgBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,6 +77,7 @@ public class ServiceProviderAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        ManageEmpBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         ManageEmpBtn.setText("Manage Employer");
         ManageEmpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,6 +85,7 @@ public class ServiceProviderAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        CreateCredBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         CreateCredBtn.setText("Employer Credential");
         CreateCredBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,56 +93,48 @@ public class ServiceProviderAdminJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton4.setText("jButton4");
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/collaboration.png"))); // NOI18N
 
-        jButton5.setText("jButton5");
-
-        jButton6.setText("jButton6");
-
-        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/collaboration.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SPTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(ManageOrgBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ManageEmpBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CreateCredBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4)
-                .addGap(18, 18, 18)
-                .addComponent(jButton5)
-                .addGap(18, 18, 18)
-                .addComponent(jButton6)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(95, 95, 95)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SPTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(74, 74, 74)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CreateCredBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ManageEmpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ManageOrgBtn))
+                        .addGap(72, 72, 72)
+                        .addComponent(jLabel2)))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(SPTitle)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ManageOrgBtn)
-                            .addComponent(ManageEmpBtn)
-                            .addComponent(CreateCredBtn)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton4)
-                            .addComponent(jButton5)
-                            .addComponent(jButton6))))
-                .addGap(0, 253, Short.MAX_VALUE))
+                        .addGap(141, 141, 141)
+                        .addComponent(ManageOrgBtn)
+                        .addGap(80, 80, 80)
+                        .addComponent(ManageEmpBtn)
+                        .addGap(80, 80, 80)
+                        .addComponent(CreateCredBtn)
+                        .addContainerGap(159, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(192, 192, 192)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -176,9 +169,7 @@ public class ServiceProviderAdminJPanel extends javax.swing.JPanel {
     private javax.swing.JButton ManageEmpBtn;
     private javax.swing.JButton ManageOrgBtn;
     private javax.swing.JLabel SPTitle;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
