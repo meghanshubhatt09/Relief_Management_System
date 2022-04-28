@@ -56,6 +56,7 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnRequestServiceProvider = new javax.swing.JButton();
         btnRequestHospital = new javax.swing.JButton();
         btnDonateBlood = new javax.swing.JButton();
+        btnRequestBlood = new javax.swing.JButton();
 
         enterpriseNameLabel.setText("jTextField1");
 
@@ -80,6 +81,13 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnRequestBlood.setText("Request Blood");
+        btnRequestBlood.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRequestBloodActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -96,8 +104,10 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(123, 123, 123)
                         .addComponent(btnRequestHospital))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(btnDonateBlood)))
+                        .addGap(141, 141, 141)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnRequestBlood)
+                            .addComponent(btnDonateBlood))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -114,7 +124,9 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnRequestHospital)
                 .addGap(34, 34, 34)
                 .addComponent(btnDonateBlood)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(btnRequestBlood)
+                .addContainerGap(75, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -144,9 +156,18 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnDonateBloodActionPerformed
 
+    private void btnRequestBloodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestBloodActionPerformed
+        // TODO add your handling code here:
+        RequestBloodFromBankJPanel requestBloodFromBank = new RequestBloodFromBankJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
+        userProcessContainer.add("requestBloodFromBank",requestBloodFromBank);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnRequestBloodActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDonateBlood;
+    private javax.swing.JButton btnRequestBlood;
     private javax.swing.JButton btnRequestHospital;
     private javax.swing.JButton btnRequestServiceProvider;
     private javax.swing.JTextField enterpriseNameLabel;

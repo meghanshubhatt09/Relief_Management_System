@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -134,7 +134,7 @@
                 <Column editable="false" title="Blood Type" type="java.lang.Object"/>
                 <Column editable="false" title="No of Blood Packets Required" type="java.lang.Object"/>
                 <Column editable="false" title="Date of requirement" type="java.lang.Object"/>
-                <Column editable="false" title="Time of requirement" type="java.lang.Object"/>
+                <Column editable="false" title="Date of resolution" type="java.lang.Object"/>
                 <Column editable="false" title="Venue" type="java.lang.Object"/>
                 <Column editable="false" title="Status" type="java.lang.Object"/>
               </Table>

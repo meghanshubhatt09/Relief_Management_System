@@ -13,8 +13,8 @@ public class CommunityBloodRequest extends WorkRequest{
     private int noBloodPacketsRequired;
     private String location;
     private boolean add;
-    private String requestedDate;
-    private String requestedTime;
+//    private String requestedDate;
+//    private String requestedTime;
     private String purpose;
     private String requestedBloodType;
 
@@ -57,21 +57,21 @@ public class CommunityBloodRequest extends WorkRequest{
         this.add = add;
     }
 
-    public String getRequestedDate() {
-        return requestedDate;
-    }
-
-    public void setRequestedDate(String requestedDate) {
-        this.requestedDate = requestedDate;
-    }
-
-    public String getRequestedTime() {
-        return requestedTime;
-    }
-
-    public void setRequestedTime(String requestedTime) {
-        this.requestedTime = requestedTime;
-    }
+//    public String getRequestedDate() {
+//        return requestedDate;
+//    }
+//
+//    public void setRequestedDate(String requestedDate) {
+//        this.requestedDate = requestedDate;
+//    }
+//
+//    public String getRequestedTime() {
+//        return requestedTime;
+//    }
+//
+//    public void setRequestedTime(String requestedTime) {
+//        this.requestedTime = requestedTime;
+//    }
 
     public String getPurpose() {
         return purpose;

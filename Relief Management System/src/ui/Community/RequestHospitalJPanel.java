@@ -56,14 +56,10 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtRequestType = new javax.swing.JTextField();
-        txtDate = new javax.swing.JTextField();
-        txtTime = new javax.swing.JTextField();
         txtVenue = new javax.swing.JTextField();
         txtDoctorCount = new javax.swing.JTextField();
         txtPeopleCount = new javax.swing.JTextField();
@@ -84,10 +80,6 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Request Type");
 
-        jLabel3.setText("Date (MM/DD/YYYY)");
-
-        jLabel4.setText("Time (HH:MM)");
-
         jLabel5.setText("Venue :");
 
         jLabel6.setText("Number of Doctors : ");
@@ -106,7 +98,7 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "No of Doctors", "Date of Request", "Time of Request", "Venue", "People Affected", "Doctor Type", "Status"
+                "No of Doctors", "Date of Request", "Date of Resolution", "Venue", "People Affected", "Doctor Type", "Status"
             }
         ));
         jScrollPane1.setViewportView(tblRequest);
@@ -122,79 +114,73 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(205, 205, 205)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(83, 83, 83)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(10, 10, 10))
-                            .addComponent(jLabel8))
-                        .addGap(121, 121, 121)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtDoctorCount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-                            .addComponent(txtDate, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTime, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtRequestType, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtVenue, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPeopleCount)
-                            .addComponent(doctorTypeComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnBack)
+                                .addGap(67, 67, 67)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel2))
+                                        .addGap(10, 10, 10)))
+                                .addGap(121, 121, 121)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtDoctorCount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                                    .addComponent(txtRequestType, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtVenue, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtPeopleCount)
+                                    .addComponent(doctorTypeComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(btnBack)
-                        .addGap(114, 114, 114)
+                        .addGap(223, 223, 223)
                         .addComponent(btnSendRequest)))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 72, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel1)
-                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(btnBack)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtRequestType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtVenue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtDoctorCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtPeopleCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(doctorTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSendRequest)
-                    .addComponent(btnBack))
-                .addGap(46, 46, 46)
+                .addGap(18, 18, 18)
+                .addComponent(btnSendRequest)
+                .addGap(34, 34, 34)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(319, 319, 319))
+                .addContainerGap(418, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -224,8 +210,8 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
             if(work instanceof CommunityDoctorRequest){
                 Object[] row = new Object[7];
                 row[0] = ((CommunityDoctorRequest) work).getNoDoctorRequired();
-                row[1] = ((CommunityDoctorRequest) work).getRequestedDate();
-                row[2] = ((CommunityDoctorRequest) work).getRequestedTime();
+                row[1] = ((CommunityDoctorRequest) work).getRequestDate() ;
+                row[2] = ((CommunityDoctorRequest) work).getResolveDate() ;
                 row[3] = ((CommunityDoctorRequest) work).getLocation();
                 row[6] = work;
                 row[4] = ((CommunityDoctorRequest) work).getNoPeopleAffected() ;
@@ -248,15 +234,15 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
     
     private void btnSendRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestActionPerformed
         // TODO add your handling code here:
-        if(!txtDate.getText().equals("")){
+     
 
             CommunityDoctorRequest request = new CommunityDoctorRequest();
 
-            if(isDateValid(txtDate.getText())){
                 request.setNoDoctorRequired(Integer.parseInt(txtDoctorCount.getText()));
                 request.setLocation(txtVenue.getText());
-                request.setRequestedDate(txtDate.getText());
-                request.setRequestedTime(txtTime.getText());
+                Date requestDate = new Date();
+                request.setRequestDate(requestDate); ;
+//                request.setRequestedTime(txtTime.getText());
                 request.setPurpose(txtRequestType.getText());
                 request.setStatus("Requested");
                 request.setSender(account);
@@ -265,11 +251,11 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
                 account.getWorkQueue().getWorkRequestList().add(request);
                 enterprise.getWorkQueue().getWorkRequestList().add(request);
                 ecoSystem.getWorkQueue().getWorkRequestList().add(request);
-            }
+            
             populateRequestTable();
-        } else{
-            JOptionPane.showMessageDialog(null,"Enter date in specified format", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
+        
+//            JOptionPane.showMessageDialog(null,"Enter date in specified format", "Warning", JOptionPane.WARNING_MESSAGE);
+        
     }//GEN-LAST:event_btnSendRequestActionPerformed
 
 
@@ -279,19 +265,15 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> doctorTypeComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblRequest;
-    private javax.swing.JTextField txtDate;
     private javax.swing.JTextField txtDoctorCount;
     private javax.swing.JTextField txtPeopleCount;
     private javax.swing.JTextField txtRequestType;
-    private javax.swing.JTextField txtTime;
     private javax.swing.JTextField txtVenue;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,9 +10,11 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.BloodBankWorkRequest;
+import Business.WorkQueue.CommunityBloodRequest;
 import Business.WorkQueue.NGOWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -93,7 +95,7 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Blood Type", "No of Blood Packets Required", "Date of requirement", "Time of requirement", "Venue", "Status"
+                "Blood Type", "No of Blood Packets Required", "Date of requirement", "Date of resolution", "Venue", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -233,7 +235,7 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the row to assign the Request", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            BloodBankWorkRequest c =  (BloodBankWorkRequest)tblRequestTableCommunity.getValueAt(selectedRow, 5);
+            CommunityBloodRequest c =  (CommunityBloodRequest)tblRequestTableCommunity.getValueAt(selectedRow, 5);
             c.setStatus("Pending");
             c.setReceiver(userAccount);
             populateRequestTable();
@@ -269,7 +271,7 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
         }
         else{
 
-            BloodBankWorkRequest p=(BloodBankWorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 5);
+            CommunityBloodRequest p=(CommunityBloodRequest) tblRequestTableCommunity.getValueAt(selectedRow, 5);
 
             int temp=0;
             if(p.getReceiver()!= null){
@@ -280,15 +282,15 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
                         return;
                     }
                     for (BloodBank v : ecoSystem.getBloodDirectory().getBloodBankList()) {
-                        if (v.getBloodGroupType() == p.getBloodGroup())
+                        if (v.getBloodGroupType().equals(p.getRequestedBloodType()) )
                         {
                             //if(p.getDocName().equals(v.getDocName())){
-                                if(v.getBloodPackets()- p.getNoOfPackets()<0){
+                                if(v.getBloodPackets()- p.getNoBloodPacketsRequired() <0){
                                     JOptionPane.showMessageDialog(null, "Not enough Blood available. Wait for sometime");
                                     return;
                                 }
                                 temp=1;
-                                v.setBloodPackets(v.getBloodPackets()-p.getNoOfPackets());
+                                v.setBloodPackets(v.getBloodPackets()-p.getNoBloodPacketsRequired() );
                                 break;
                             }
                             //}
@@ -301,6 +303,8 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
 
                     p.setStatus("Approved");
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
+                    Date date = new Date();
+                    p.setResolveDate(date);
                     populateBloodTable();
                     //populateAvailableDoctorTbl();
                     populateRequestTable();
@@ -326,7 +330,7 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
         }
         else{
 
-            BloodBankWorkRequest p=(BloodBankWorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 5);
+            CommunityBloodRequest p=(CommunityBloodRequest) tblRequestTableCommunity.getValueAt(selectedRow, 5);
             if(p.getStatus().equalsIgnoreCase("Approved")){
                 JOptionPane.showMessageDialog(null, "Cannot Reject the Approved request", "Warning", JOptionPane.WARNING_MESSAGE);
             }else if(p.getStatus().equalsIgnoreCase("Rejected")){
@@ -368,13 +372,13 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
         
 
         for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
-           if(work instanceof BloodBankWorkRequest){ 
+           if(work instanceof CommunityBloodRequest){ 
             Object[] row = new Object[6];
-            row[0] = ((BloodBankWorkRequest) work).getBloodGroup();
-            row[1] = ((BloodBankWorkRequest) work).getNoOfPackets();
-            row[2] = ((BloodBankWorkRequest) work).getRequestedDate();
-            row[3] = ((BloodBankWorkRequest) work).getRequestedTime();
-            row[4] = ((BloodBankWorkRequest) work).getLocation();
+            row[0] = ((CommunityBloodRequest) work).getRequestedBloodType() ;
+            row[1] = ((CommunityBloodRequest) work).getNoBloodPacketsRequired() ;
+            row[2] = ((CommunityBloodRequest) work).getRequestDate()  ;
+            row[3] = ((CommunityBloodRequest) work).getResolveDate() ;
+            row[4] = ((CommunityBloodRequest) work).getLocation();
             row[5] = work;
             model.addRow(row);
            }
