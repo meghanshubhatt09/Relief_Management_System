@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.FoodOrgWorkRequest;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -42,6 +43,7 @@ public class ManageFoodReqJPanel extends javax.swing.JPanel {
         this.organizationDirectory = organizationDirectory;
         this.enterprise = enterprise;
         this.ecoSystem = ecoSystem;
+        jAvaFoodTable1.getTableHeader().setDefaultRenderer(new HeaderColors());
         
         populateTable();
     }
