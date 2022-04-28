@@ -13,6 +13,15 @@ public class CommunityFoodRequest extends WorkRequest{
     private String location;
     private String purpose;
     private String requestedFoodType;
+    private int noOfPackets;
+
+    public int getNoOfPackets() {
+        return noOfPackets;
+    }
+
+    public void setNoOfPackets(int noOfPackets) {
+        this.noOfPackets = noOfPackets;
+    }
 
     public int getNoPeopleRequestingFood() {
         return noPeopleRequestingFood;

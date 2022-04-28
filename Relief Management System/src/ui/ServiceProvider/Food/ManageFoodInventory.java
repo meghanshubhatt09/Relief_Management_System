@@ -13,6 +13,7 @@ import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
 import Business.Utils.HeaderColors;
+import Business.WorkQueue.CommunityFoodRequest;
 import Business.WorkQueue.FoodOrgWorkQueue;
 import Business.WorkQueue.FoodOrgWorkRequest;
 import Business.WorkQueue.WorkQueue;
@@ -250,21 +251,36 @@ public class ManageFoodInventory extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void fillTheRequestedTable() {
-        DefaultTableModel table = (DefaultTableModel) jAvaFoodTable1.getModel();
-        table.setRowCount(0);
-
-        for (int i = 0; i < ecoSystem.getWorkQueue().getWorkRequestList().size(); i++) {
-            FoodOrgWorkRequest work = (FoodOrgWorkRequest) ecoSystem.getWorkQueue().getWorkRequestList().get(i);
-            Object[] row = new Object[7];
-            row[0] = work.getFoodReqId();
-            row[1] = work.getFoodType();
-            row[2] = work.getQuantity();
-            row[3] = work.getTotalPrice();
-            row[4] = work.getRequestDate();
-            row[5] = work.getResolveDate();
-            row[6] = work;
-            table.addRow(row);
+        DefaultTableModel model = (DefaultTableModel) jAvaFoodTable1.getModel();
+        model.setRowCount(0);
+        
+        for(WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
+            if(work instanceof FoodOrgWorkRequest){
+                Object[] row = new Object[7];
+                row[0] = ((FoodOrgWorkRequest) work).getFoodReqId() ;
+                row[3] = ((FoodOrgWorkRequest) work).getRequestDate() ;
+                row[1] = ((FoodOrgWorkRequest) work).getFoodType() ;
+                row[2] = ((FoodOrgWorkRequest) work).getQuantity() ;
+                row[6] = work;
+                row[5] = ((FoodOrgWorkRequest) work).getResolveDate() ;
+                row[4] = ((FoodOrgWorkRequest) work).getRequestDate();
+                model.addRow(row);
+            
+            }
         }
+
+//        for (int i = 0; i < ecoSystem.getWorkQueue().getWorkRequestList().size(); i++) {
+//            FoodOrgWorkRequest work = (FoodOrgWorkRequest) ecoSystem.getWorkQueue().getWorkRequestList().get(i);
+//            Object[] row = new Object[7];
+//            row[0] = work.getFoodReqId();
+//            row[1] = work.getFoodType();
+//            row[2] = work.getQuantity();
+//            row[3] = work.getTotalPrice();
+//            row[4] = work.getRequestDate();
+//            row[5] = work.getResolveDate();
+//            row[6] = work;
+//            table.addRow(row);
+//        }
     }
 
     private void calculateTotalPrice() {
@@ -277,25 +293,29 @@ public class ManageFoodInventory extends javax.swing.JPanel {
 
     private void updateFoodInventory() {
         boolean flag = false;
-        for (int i = 0; i < ecoSystem.getWorkQueue().getWorkRequestList().size(); i++) {
-            FoodOrgWorkRequest work = (FoodOrgWorkRequest) ecoSystem.getWorkQueue().getWorkRequestList().get(i);
-            if (work.getStatus().equals("Approved")) {
+        for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()) {
+//            FoodOrgWorkRequest work = (FoodOrgWorkRequest) ecoSystem.getWorkQueue().getWorkRequestList().get(i);
+
+             if(work instanceof FoodOrgWorkRequest){
+              if (work.getStatus().equals("Approved")) {
                 System.out.println("Approved 1");
                 for (Food f : ecoSystem.getFoodInventory().getFoodInventory()) {
-                    if (f.getFoodType().equals(work.getFoodType())) {
-                        f.setQuantity(f.getQuantity() + work.getQuantity());
+                    if (f.getFoodType().equals(((FoodOrgWorkRequest) work).getFoodType())) {
+                        f.setQuantity(f.getQuantity() + ((FoodOrgWorkRequest) work).getQuantity());
                         work.setStatus("Processed");
                         flag = true;
                     }
                 }
                 if (!flag) {
                     Food food = new Food();
-                    food.setFoodType(work.getFoodType());
-                    food.setQuantity(work.getQuantity());
+                    food.setFoodType(((FoodOrgWorkRequest) work).getFoodType());
+                    food.setQuantity(((FoodOrgWorkRequest) work).getQuantity());
                     work.setStatus("Processed");
                     ecoSystem.getFoodInventory().getFoodInventory().add(food);
                 }
             }
+             }
+           
 
         }
     }

@@ -48,21 +48,21 @@ public class FoodAdminWAJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnManageInventory = new javax.swing.JButton();
+        btnCommunityFoodRequests = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
-        jButton1.setText("Manage Inventory");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnManageInventory.setText("Manage Inventory");
+        btnManageInventory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnManageInventoryActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Community Food Requests");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnCommunityFoodRequests.setText("Community Food Requests");
+        btnCommunityFoodRequests.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCommunityFoodRequestsActionPerformed(evt);
             }
         });
 
@@ -77,42 +77,46 @@ public class FoodAdminWAJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCommunityFoodRequests, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addGap(192, 192, 192))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(btnManageInventory)
                         .addGap(220, 220, 220))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnManageInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCommunityFoodRequests, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(108, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnCommunityFoodRequestsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCommunityFoodRequestsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-         ManageFoodInventory manageFoodInventory = new ManageFoodInventory(userProcessContainer, enterprise, ecoSystem, userAccount,enterprise.getOrganizationDirectory());
-        userProcessContainer.add("ManageFoodInventory", manageFoodInventory);
+        ManageCommunityFoodRequestJPanel  manageCommunityFoodRequestJPanel = new ManageCommunityFoodRequestJPanel(userProcessContainer, enterprise.getOrganizationDirectory(), enterprise, ecoSystem, userAccount);
+        userProcessContainer.add("manageCommunityFoodRequestJPanel",manageCommunityFoodRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCommunityFoodRequestsActionPerformed
+
+    private void btnManageInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageInventoryActionPerformed
+        // TODO add your handling code here:
+         ManageFoodInventory manageFoodInventory = new ManageFoodInventory(userProcessContainer, enterprise, ecoSystem, userAccount,enterprise.getOrganizationDirectory());
+        userProcessContainer.add("manageFoodInventory", manageFoodInventory);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageInventoryActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnCommunityFoodRequests;
+    private javax.swing.JButton btnManageInventory;
     private javax.swing.JButton jButton3;
     // End of variables declaration//GEN-END:variables
 }
