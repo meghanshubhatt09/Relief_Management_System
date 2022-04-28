@@ -4,12 +4,18 @@
  */
 package ui.Community;
 
+import Buisness.FoodAndShelterDistributor.Food;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.ClinicOrganization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CommunityFoodRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -37,6 +43,8 @@ public class RequestServiceProviderJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.account = account;
         this.ecoSystem = ecoSystem;
+        
+        populateFoodTypeComboBox();
     }
 
     /**
@@ -50,6 +58,17 @@ public class RequestServiceProviderJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
+        txtPurpose = new javax.swing.JTextField();
+        btnSendRequest = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblRequest = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        foodTypeComboBox = new javax.swing.JComboBox<>();
+        txtVenue = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtPeopleCount = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setText("Service Provider");
 
@@ -59,6 +78,42 @@ public class RequestServiceProviderJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+
+        txtPurpose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPurposeActionPerformed(evt);
+            }
+        });
+
+        btnSendRequest.setText("Send Request");
+        btnSendRequest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSendRequestActionPerformed(evt);
+            }
+        });
+
+        tblRequest.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Food Type", "Number of People Affected", "Venue", "Requested Date", "Purpose", "Status"
+            }
+        ));
+        jScrollPane1.setViewportView(tblRequest);
+
+        jLabel7.setText("Number of People Affected :");
+
+        foodTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel2.setText("Food Type");
+
+        jLabel5.setText("Venue :");
+
+        jLabel3.setText("Purpose:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -72,16 +127,65 @@ public class RequestServiceProviderJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(btnBack)))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(173, 173, 173)
+                            .addComponent(btnSendRequest))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(16, 16, 16)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel7)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(108, 108, 108)
+                                    .addComponent(jLabel3)))
+                            .addGap(192, 192, 192)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(foodTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtVenue)
+                                .addComponent(txtPeopleCount)
+                                .addComponent(txtPurpose, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 375, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addGap(33, 33, 33))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
+                        .addComponent(foodTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(21, 21, 21)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(txtVenue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(31, 31, 31)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(txtPeopleCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(33, 33, 33)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(txtPurpose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(77, 77, 77)
+                    .addComponent(btnSendRequest)
+                    .addGap(78, 78, 78)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -92,9 +196,70 @@ public class RequestServiceProviderJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void txtPurposeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPurposeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPurposeActionPerformed
+
+    
+     private void populateFoodTypeComboBox(){
+        DefaultComboBoxModel modelDoctorType = new DefaultComboBoxModel();
+        for (Food food : ecoSystem.getFoodDirectory().getFoodList() ) {
+            modelDoctorType.addElement(food.getFoodType());
+        }
+        
+        foodTypeComboBox.setModel(modelDoctorType);
+    }
+    
+    private void btnSendRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestActionPerformed
+        // TODO add your handling code here:
+        CommunityFoodRequest request =  new CommunityFoodRequest();
+        Date date = new Date();
+        request.setRequestDate(date);
+        request.setLocation(txtVenue.getText());
+        request.setNoPeopleRequestingFood(Integer.parseInt(txtPeopleCount.getText()));
+        request.setStatus("Requested");
+        request.setPurpose(txtPurpose.getText());
+        request.setRequestedFoodType(foodTypeComboBox.getSelectedItem().toString());
+        account.getWorkQueue().getWorkRequestList().add(request);
+        enterprise.getWorkQueue().getWorkRequestList().add(request);
+        ecoSystem.getWorkQueue().getWorkRequestList().add(request);
+        populateRequestTable();
+    }//GEN-LAST:event_btnSendRequestActionPerformed
+
+    
+    private void populateRequestTable(){
+        DefaultTableModel model = (DefaultTableModel) tblRequest.getModel();
+        model.setRowCount(0);
+        for(WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
+            if(work instanceof CommunityFoodRequest){
+                Object[] row = new Object[6];
+                row[0] = ((CommunityFoodRequest) work).getRequestedFoodType() ;
+                row[3] = ((CommunityFoodRequest) work).getRequestDate() ;
+                row[1] = ((CommunityFoodRequest) work).getNoPeopleRequestingFood() ;
+                row[2] = ((CommunityFoodRequest) work).getLocation() ;
+                row[5] = work;
+                row[4] = ((CommunityFoodRequest) work).getPurpose() ;
+                model.addRow(row);
+            
+            }
+        }
+        
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnSendRequest;
+    private javax.swing.JComboBox<String> foodTypeComboBox;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblRequest;
+    private javax.swing.JTextField txtPeopleCount;
+    private javax.swing.JTextField txtPurpose;
+    private javax.swing.JTextField txtVenue;
     // End of variables declaration//GEN-END:variables
 }
