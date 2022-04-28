@@ -12,6 +12,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.FoodOrgWorkQueue;
 import Business.WorkQueue.FoodOrgWorkRequest;
 import Business.WorkQueue.WorkQueue;
@@ -50,6 +51,8 @@ public class ManageFoodInventory extends javax.swing.JPanel {
         this.organizationDirectory = organizationDirectory;
         this.enterprise = enterprise;
         this.ecoSystem = ecoSystem;
+        jAvaFoodTable1.getTableHeader().setDefaultRenderer(new HeaderColors());
+        jAvaFoodTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         
         
         populateFoodTypeComboBox();

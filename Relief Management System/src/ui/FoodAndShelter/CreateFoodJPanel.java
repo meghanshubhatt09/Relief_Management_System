@@ -10,6 +10,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -41,6 +42,7 @@ public class CreateFoodJPanel extends javax.swing.JPanel {
         this.organizationDirectory = organizationDirectory;
         this.enterprise = enterprise;
         this.ecoSystem = ecoSystem;
+        tblFood.getTableHeader().setDefaultRenderer(new HeaderColors());
         
        populateFoodTable();
     }
