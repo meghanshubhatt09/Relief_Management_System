@@ -8,6 +8,7 @@ import Business.Doctor.Doctor;
 import Business.EcoSystem;
 import ui.AdminPanels.*;
 import Business.Enterprise.Enterprise;
+import Business.RoundedBorder;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -31,9 +32,13 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.ecoSystem = ecoSystem;
         this.userAccount = userAccount;
+                
+        btnCreateManageOrganization.setBorder(new RoundedBorder(20));
+        btnEmployeeCreation.setBorder(new RoundedBorder(20));
+        btnUserAccountsManage.setBorder(new RoundedBorder(20));
         
-        enterpriseNameLabel.setText(enterprise.getName());
-        System.out.println("ui.Hospital.HospitalAdminWorkAreaJPanel.<init>() "+ecoSystem);
+        //enterpriseNameLabel.setText(enterprise.getName());
+        //System.out.println("ui.Hospital.HospitalAdminWorkAreaJPanel.<init>() "+ecoSystem);
     }
 
     /**
@@ -45,26 +50,14 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnCreateManageOrganization = new javax.swing.JButton();
+        btnEmployeeCreation = new javax.swing.JButton();
+        btnUserAccountsManage = new javax.swing.JButton();
+        SPTitle = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        enterpriseNameLabel = new javax.swing.JTextField();
-        btnCreateManageOrganization = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        btnEmployeeCreation = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        btnUserAccountsManage = new javax.swing.JButton();
 
-        jLabel1.setText("Hospital Admin Panel");
-
-        jLabel2.setText("Enterprise Name:");
-
-        enterpriseNameLabel.setEditable(false);
-        enterpriseNameLabel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enterpriseNameLabelActionPerformed(evt);
-            }
-        });
+        setBackground(new java.awt.Color(204, 204, 255));
 
         btnCreateManageOrganization.setText("Organization");
         btnCreateManageOrganization.addActionListener(new java.awt.event.ActionListener() {
@@ -73,18 +66,12 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("Create or manage a organization : ");
-
-        jLabel4.setText("Employee Creation :");
-
         btnEmployeeCreation.setText("Create Employee");
         btnEmployeeCreation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEmployeeCreationActionPerformed(evt);
             }
         });
-
-        jLabel5.setText("Manage Users :");
 
         btnUserAccountsManage.setText("Manage User Accounts");
         btnUserAccountsManage.addActionListener(new java.awt.event.ActionListener() {
@@ -93,68 +80,54 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        SPTitle.setFont(new java.awt.Font("Malayalam MN", 1, 24)); // NOI18N
+        SPTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        SPTitle.setText("HOSPITAL");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/medical.png"))); // NOI18N
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/medical.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(104, 104, 104)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(SPTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel2)
+                        .addGap(96, 96, 96)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnUserAccountsManage, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCreateManageOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCreateManageOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(81, 81, 81))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(enterpriseNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
-                                .addComponent(btnUserAccountsManage, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
-                                .addComponent(btnEmployeeCreation, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(81, 81, 81))))
+                                .addComponent(btnEmployeeCreation, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(71, 71, 71)
+                                .addComponent(jLabel1)))))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(enterpriseNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCreateManageOrganization)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEmployeeCreation)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
+                .addComponent(SPTitle)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(btnUserAccountsManage))
-                .addContainerGap(128, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(124, 124, 124)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(btnCreateManageOrganization)
+                        .addGap(60, 60, 60)
+                        .addComponent(btnEmployeeCreation)
+                        .addGap(67, 67, 67)
+                        .addComponent(btnUserAccountsManage)))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void enterpriseNameLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterpriseNameLabelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_enterpriseNameLabelActionPerformed
 
     private void btnCreateManageOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateManageOrganizationActionPerformed
         // TODO add your handling code here:
@@ -183,14 +156,11 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel SPTitle;
     private javax.swing.JButton btnCreateManageOrganization;
     private javax.swing.JButton btnEmployeeCreation;
     private javax.swing.JButton btnUserAccountsManage;
-    private javax.swing.JTextField enterpriseNameLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 }
