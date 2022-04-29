@@ -32,8 +32,9 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
         this.organizationDirectory = organizationDirectory;
         this.userProcessContainer = userProcessContainer;
         organizationJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
-        populateOrganizationFilterComboBox();
+        //populateOrganizationFilterComboBox();
         populateOrgComboBox();
+        
         
         
     }
@@ -58,7 +59,6 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         comboBoxOrganiztionFilter = new javax.swing.JComboBox();
-        btnFilterTable = new javax.swing.JButton();
         btnDeleteEmployee = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
@@ -146,14 +146,6 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
             }
         });
 
-        btnFilterTable.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        btnFilterTable.setText("Filter");
-        btnFilterTable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFilterTableActionPerformed(evt);
-            }
-        });
-
         btnDeleteEmployee.setBackground(new java.awt.Color(255, 153, 153));
         btnDeleteEmployee.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnDeleteEmployee.setText("Delete Employee");
@@ -200,10 +192,7 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
                                 .addComponent(backJButton)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(comboBoxOrganiztionFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44)
-                                .addComponent(btnFilterTable))
+                            .addComponent(comboBoxOrganiztionFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(237, 237, 237)
@@ -217,11 +206,10 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backJButton))
-                .addGap(5, 5, 5)
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(comboBoxOrganiztionFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFilterTable))
+                    .addComponent(comboBoxOrganiztionFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
@@ -236,7 +224,7 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
                     .addComponent(btnCreateEmployee))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -267,19 +255,17 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void comboBoxOrganiztionEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxOrganiztionEmployeeActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+        populateOrganizationFilterComboBox();
+          Organization organization = (Organization) comboBoxOrganiztionEmployee.getSelectedItem();
+        fillTheTable(organization);
+        
     }//GEN-LAST:event_comboBoxOrganiztionEmployeeActionPerformed
 
     private void comboBoxOrganiztionFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxOrganiztionFilterActionPerformed
         // TODO add your handling code here:
 
     }//GEN-LAST:event_comboBoxOrganiztionFilterActionPerformed
-
-    private void btnFilterTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterTableActionPerformed
-        // TODO add your handling code here:
-        Organization organization = (Organization) comboBoxOrganiztionFilter.getSelectedItem();
-        fillTheTable(organization);
-    }//GEN-LAST:event_btnFilterTableActionPerformed
 
     private void btnDeleteEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeActionPerformed
         // TODO add your handling code here:
@@ -325,7 +311,6 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btnCreateEmployee;
     private javax.swing.JButton btnDeleteEmployee;
-    private javax.swing.JButton btnFilterTable;
     private javax.swing.JComboBox comboBoxOrganiztionEmployee;
     private javax.swing.JComboBox comboBoxOrganiztionFilter;
     private javax.swing.JLabel jLabel1;
@@ -344,6 +329,8 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
        for (Organization organization: organizationDirectory.getOrganizationList()){
            comboBoxOrganiztionEmployee.addItem(organization);
        }
+       populateOrganizationFilterComboBox();
+      
     }
 
     private void fillTheTable(Organization organization) {
@@ -364,9 +351,17 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
     private void populateOrganizationFilterComboBox() {
         comboBoxOrganiztionFilter.removeAllItems();
         
-        for (Organization organization : organizationDirectory.getOrganizationList()){
-            comboBoxOrganiztionFilter.addItem(organization);
-        }
+        Organization organization = (Organization) comboBoxOrganiztionEmployee.getSelectedItem();
+        comboBoxOrganiztionFilter.addItem(organization.getType());
+//        for (Organization organization : organizationDirectory.getOrganizationList()){
+//            //System.out.println("ui.Hospital.HospitalCreateEmployee.populateOrganizationFilterComboBox()"+organization.getName());
+//            //System.out.println("ui.Hospital.HospitalCreateEmployee.populateOrganizationFilterComboBox()"+organization.getType());
+//            comboBoxOrganiztionFilter.addItem(organization.getType());
+//        }
+        
+        
+        
+    
         
         
         
