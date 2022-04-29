@@ -9,6 +9,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import ui.Doctor.DoctorWorkAreaJPanel;
 
 //import userinterface.Hospital.Clinic.Pharmacy.DoctorJPanel;
 
@@ -20,7 +21,7 @@ public class DoctorAdminRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel UserContainer, UserAccount userAccount, Organization organization, Enterprise enterprise, EcoSystem system) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new DoctorWorkAreaJPanel(UserContainer,userAccount,organization,enterprise,system);
     }
     
 }
