@@ -5,34 +5,28 @@
 package Business.Organization;
 
 import Business.Role.FireDepartmentAdmin;
-import Business.Role.PoliceAdminRole;
 import Business.Role.Role;
 import java.util.HashSet;
 
 /**
  *
- * @author meghanshubhatt
+ * @author arjun
  */
-public class PoliceOrganization extends Organization {
+public class FireDepartmentOrganization extends Organization{
 
-//    @Override
-//    public HashSet<Role> getSupportedRole() {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
-    
-    public PoliceOrganization(String name) {
+    public FireDepartmentOrganization(String name) {
         super(name);
     }
 
     @Override
     public HashSet<Role> getSupportedRole() {
-        roles.add(new PoliceAdminRole() );
+        roles.add(new FireDepartmentAdmin() );
         return roles;
      
             }
      @Override
      public Type getType() {
-        return Organization.Type.PoliceOrganization;
+        return Organization.Type.FireDepartmentOrganization;
     } 
     
 }

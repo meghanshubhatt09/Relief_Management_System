@@ -48,6 +48,9 @@ public class EnterpriseDirectory {
          else if(type == Enterprise.EnterpriseType.FSDistributor){
              enterprise = new FoodAndShelterDistributor(name);
             enterpriseList.add(enterprise);
+        } else if (type == Enterprise.EnterpriseType.Emergency){
+            enterprise = new Emergency(name);
+            enterpriseList.add(enterprise);
         }
         return enterprise;
     }
