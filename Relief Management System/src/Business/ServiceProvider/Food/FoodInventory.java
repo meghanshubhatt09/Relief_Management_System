@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Buisness.ServiceProvider.Food;
+package Business.ServiceProvider.Food;
 
-import Buisness.FoodAndShelterDistributor.Food;
+import Business.FoodAndShelterDistributor.Food;
 import java.util.ArrayList;
 
 /**
