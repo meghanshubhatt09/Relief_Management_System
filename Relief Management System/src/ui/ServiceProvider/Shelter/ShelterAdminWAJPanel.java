@@ -4,6 +4,16 @@
  */
 package ui.ServiceProvider.Shelter;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Organization.FoodOrganization;
+import Business.Organization.OrganizationDirectory;
+import Business.Organization.ShelterOrganization;
+import Business.RoundedBorder;
+import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author rk
@@ -13,8 +23,25 @@ public class ShelterAdminWAJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ShelterAdminWAJPanel
      */
-    public ShelterAdminWAJPanel() {
+    JPanel userProcessContainer;
+    UserAccount userAccount;
+    ShelterOrganization shelterOrganization;
+    Enterprise enterprise;
+    EcoSystem ecoSystem;
+    public ShelterAdminWAJPanel(JPanel userProcessContainer,
+    UserAccount userAccount,
+    ShelterOrganization shelterOrganization,
+    Enterprise enterprise,
+    EcoSystem ecoSystem) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = userAccount;
+        this.shelterOrganization = shelterOrganization;
+        this.enterprise = enterprise;
+        this.ecoSystem = ecoSystem;
+        
+        jCreateShelterBtn.setBorder(new RoundedBorder(20));
+        jManageReq.setBorder(new RoundedBorder(20));
     }
 
     /**
@@ -26,19 +53,94 @@ public class ShelterAdminWAJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jCreateShelterBtn = new javax.swing.JButton();
+        jManageReq = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel1.setFont(new java.awt.Font("Malayalam MN", 1, 24)); // NOI18N
+        jLabel1.setText("SHELTER ORGANIZATION");
+
+        jCreateShelterBtn.setText("Create Shelter");
+        jCreateShelterBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCreateShelterBtnActionPerformed(evt);
+            }
+        });
+
+        jManageReq.setText("Manage Community Request");
+        jManageReq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jManageReqActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shelter.png"))); // NOI18N
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shelter.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jManageReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jCreateShelterBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(jLabel1)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jCreateShelterBtn)
+                        .addGap(42, 42, 42)
+                        .addComponent(jManageReq)))
+                .addContainerGap(138, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jManageReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jManageReqActionPerformed
+        // TODO add your handling code here:
+         ManageCommunityShelterReqJPanel communityShelterReqJPanel = new ManageCommunityShelterReqJPanel(userProcessContainer,userAccount,enterprise.getOrganizationDirectory(),enterprise, ecoSystem);
+        userProcessContainer.add("ManageCommunityShelterReqJPanel", communityShelterReqJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jManageReqActionPerformed
+
+    private void jCreateShelterBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCreateShelterBtnActionPerformed
+        // TODO add your handling code here:
+        CreateShelterJPanel createShelterJPanel = new CreateShelterJPanel(userProcessContainer,userAccount,enterprise.getOrganizationDirectory(),enterprise, ecoSystem);
+        userProcessContainer.add("CreateShelterJPanel", createShelterJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jCreateShelterBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jCreateShelterBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton jManageReq;
     // End of variables declaration//GEN-END:variables
 }
