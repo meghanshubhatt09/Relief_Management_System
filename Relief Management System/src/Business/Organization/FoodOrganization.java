@@ -14,8 +14,8 @@ import java.util.HashSet;
  */
 public class FoodOrganization extends Organization {
 
-    public FoodOrganization() {
-        super(Organization.Type.FoodOrganization.getValue());
+    public FoodOrganization(String name) {
+        super(name);
     }
 
     @Override
@@ -23,5 +23,10 @@ public class FoodOrganization extends Organization {
          roles.add(new FoodAdminRole());
         return roles;
     }
+    
+    @Override
+     public Type getType() {
+        return Organization.Type.FoodOrganization;
+    } 
     
 }

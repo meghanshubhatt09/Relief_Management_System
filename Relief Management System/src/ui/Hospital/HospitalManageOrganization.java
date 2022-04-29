@@ -187,7 +187,7 @@ public class HospitalManageOrganization extends javax.swing.JPanel {
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
         Type type = (Type) organizationJComboBox.getSelectedItem();
-        organizationDirectory.createOrganization(type);
+        organizationDirectory.createOrganization(type,null,null);
         filltheTable();
     }//GEN-LAST:event_addJButtonActionPerformed
 

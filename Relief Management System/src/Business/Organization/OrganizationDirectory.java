@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.Organization;
+import Business.Location.LocationPoint;
 import Business.Organization.Organization.Type;
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ public class OrganizationDirectory {
     }
     
     
-    public Organization createOrganization(Type type){
+    public Organization createOrganization(Type type, String name, LocationPoint locationPoint ){
         Organization organization = null;
         if (type.getValue().equals(Type.NGOOrganization.getValue())){
             organization = new NGOOrganization();
@@ -41,7 +42,7 @@ public class OrganizationDirectory {
             organizationList.add(organization);
         }
          else if (type.getValue().equals(Type.FoodOrganization.getValue())){
-            organization = new FoodOrganization();
+            organization = new FoodOrganization(name);
             organizationList.add(organization);
         }
          else if (type.getValue().equals(Type.ShelterOrganization.getValue())){

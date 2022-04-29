@@ -10,6 +10,7 @@ import Business.WorkQueue.WorkQueue;
 import java.util.ArrayList;
 import java.util.HashSet;
 import Business.Employee.Employee;
+import Business.Location.LocationPoint;
 /**
  *
  * @author meghanshubhatt
@@ -23,6 +24,34 @@ public abstract class Organization {
     private int organizationID;
     private Employee employee;
     private Role role;
+    private LocationPoint locationPoint;
+    private double nearestLocationPoint;
+    private Type type;
+
+    public LocationPoint getLocationPoint() {
+        return locationPoint;
+    }
+
+    public void setLocationPoint(LocationPoint locationPoint) {
+        this.locationPoint = locationPoint;
+    }
+
+    public double getNearestLocationPoint() {
+        return nearestLocationPoint;
+    }
+
+    public void setNearestLocationPoint(double nearestLocationPoint) {
+        this.nearestLocationPoint = nearestLocationPoint;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+    
 
     public Role getRole() {
         return role;
