@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.FoodOrganization;
 import Business.Organization.Organization;
+import Business.RoundedBorder;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -37,6 +38,10 @@ public class FoodAdminWAJPanel extends javax.swing.JPanel {
         this.foodOrganization = foodOrganization;
         this.enterprise = enterprise;
         this.ecoSystem = ecoSystem;
+        
+        jMngInvBtn.setBorder(new RoundedBorder(20));
+        jFoodReqBtn.setBorder(new RoundedBorder(20));
+        jShelterReqBtn.setBorder(new RoundedBorder(20));
     }
 
     /**
@@ -48,26 +53,28 @@ public class FoodAdminWAJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jMngInvBtn = new javax.swing.JButton();
+        jFoodReqBtn = new javax.swing.JButton();
+        jShelterReqBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        jButton1.setText("Manage Inventory");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        setBackground(new java.awt.Color(204, 204, 255));
+
+        jMngInvBtn.setText("Manage Inventory");
+        jMngInvBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jMngInvBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Community Food Requests");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jFoodReqBtn.setText("Community Food Requests");
+        jFoodReqBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jFoodReqBtnActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Community Shelter Requests");
+        jShelterReqBtn.setText("Community Shelter Requests");
 
         jLabel1.setFont(new java.awt.Font("Malayalam MN", 1, 18)); // NOI18N
         jLabel1.setText("FOOD ORGANIZATION");
@@ -77,48 +84,54 @@ public class FoodAdminWAJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(199, 199, 199)
-                .addComponent(jLabel1)
-                .addContainerGap(194, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jShelterReqBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jFoodReqBtn)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(199, 199, 199)
+                            .addComponent(jLabel1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(jMngInvBtn)))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(jMngInvBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jFoodReqBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jShelterReqBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jFoodReqBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFoodReqBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        ManageCommunityFoodRequestJPanel communityFoodRequestJPanel = new ManageCommunityFoodRequestJPanel(userProcessContainer,enterprise.getOrganizationDirectory(), enterprise, ecoSystem,userAccount);
+        userProcessContainer.add("communityFoodRequestJPanel", communityFoodRequestJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jFoodReqBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jMngInvBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMngInvBtnActionPerformed
         // TODO add your handling code here:
          ManageFoodInventory manageFoodInventory = new ManageFoodInventory(userProcessContainer, enterprise, ecoSystem, userAccount,enterprise.getOrganizationDirectory());
         userProcessContainer.add("ManageFoodInventory", manageFoodInventory);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jMngInvBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jFoodReqBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jMngInvBtn;
+    private javax.swing.JButton jShelterReqBtn;
     // End of variables declaration//GEN-END:variables
 }

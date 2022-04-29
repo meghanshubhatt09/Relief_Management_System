@@ -131,6 +131,7 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel4.setText("Request for Doctors");
 
+        tblRequestTableCommunity.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tblRequestTableCommunity.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -147,6 +148,7 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblRequestTableCommunity.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(tblRequestTableCommunity);
 
         btnAssignToMe.setBackground(new java.awt.Color(102, 217, 255));
@@ -188,6 +190,7 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel5.setText("Doctors available at Hospital");
 
+        tblAvailableDoctor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tblAvailableDoctor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -204,6 +207,7 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblAvailableDoctor.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane2.setViewportView(tblAvailableDoctor);
 
         btnDelete.setBackground(new java.awt.Color(255, 153, 153));

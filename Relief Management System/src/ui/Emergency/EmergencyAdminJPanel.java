@@ -7,6 +7,7 @@ package ui.Emergency;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -122,27 +123,27 @@ public class EmergencyAdminJPanel extends javax.swing.JPanel {
 
     private void btnUserAccountsManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserAccountsManageActionPerformed
         // TODO add your handling code here:
-//        HospitalManageUserAccounts hospitalManageUserAccounts = new HospitalManageUserAccounts(userProcessContainer, enterprise);
-//        userProcessContainer.add("HospitalManageUserAccounts", hospitalManageUserAccounts);
-//
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        EmergencyManageUserAccount emergencyManageUserAccount = new EmergencyManageUserAccount(userProcessContainer, enterprise);
+        userProcessContainer.add("emergencyManageUserAccount", emergencyManageUserAccount);
+
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnUserAccountsManageActionPerformed
 
     private void btnCreateManageOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateManageOrganizationActionPerformed
         // TODO add your handling code here:
-//        HospitalManageOrganization hospitalManageOrganization = new HospitalManageOrganization(userProcessContainer, enterprise.getOrganizationDirectory());
-//        userProcessContainer.add("hospitalManageOrganization", hospitalManageOrganization);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        EmergencyManageOrganization emergencyManageOrganization = new EmergencyManageOrganization(userProcessContainer, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("emergencyManageOrganization", emergencyManageOrganization);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnCreateManageOrganizationActionPerformed
 
     private void btnEmployeeCreationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeCreationActionPerformed
         // TODO add your handling code here:
-//        HospitalCreateEmployee hospitalCreateEmployee = new HospitalCreateEmployee(userProcessContainer, enterprise.getOrganizationDirectory());
-//        userProcessContainer.add("hospitalCreateEmployee", hospitalCreateEmployee);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        EmergencyCreateEmployee emergencyCreateEmployee = new EmergencyCreateEmployee(userProcessContainer, enterprise.getOrganizationDirectory());
+        userProcessContainer.add("emergencyCreateEmployee", emergencyCreateEmployee);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnEmployeeCreationActionPerformed
 
 
