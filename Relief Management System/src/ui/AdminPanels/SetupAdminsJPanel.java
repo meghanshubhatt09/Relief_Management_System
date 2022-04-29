@@ -5,6 +5,7 @@
 package ui.AdminPanels;
 import Business.EcoSystem;
 import Business.Employee.Employee;
+import Business.Enterprise.Emergency;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Role.BloodBankAdminRole;
@@ -304,6 +305,8 @@ public class SetupAdminsJPanel extends javax.swing.JPanel {
             }
              else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.NGO) {
                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new NGOAdminRole());
+            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Emergency){
+                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new EmergencyAdminRole());
             }
           
 //            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
