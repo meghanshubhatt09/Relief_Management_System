@@ -15,8 +15,8 @@ import java.util.HashSet;
  */
 public class ShelterOrganization extends Organization {
 
-    public ShelterOrganization() {
-        super(Organization.Type.ShelterOrganization.getValue());
+    public ShelterOrganization(String name) {
+        super(name);
     }
 
     @Override
@@ -25,5 +25,10 @@ public class ShelterOrganization extends Organization {
     roles.add(new ShelterAdminRole());
         return roles;
     }
+    
+      @Override
+     public Type getType() {
+        return Organization.Type.ShelterOrganization;
+    } 
     
 }

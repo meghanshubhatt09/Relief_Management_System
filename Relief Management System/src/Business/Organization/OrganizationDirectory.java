@@ -46,7 +46,7 @@ public class OrganizationDirectory {
             organizationList.add(organization);
         }
          else if (type.getValue().equals(Type.ShelterOrganization.getValue())){
-            organization = new ShelterOrganization();
+            organization = new ShelterOrganization(name);
             organizationList.add(organization);
         }
          else if (type.getValue().equals(Type.EmergencyRequestOrganization.getValue())){

@@ -31,7 +31,7 @@ public class SPCreateEmployee extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         organizationJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         
-        populateOrganizationFilterComboBox();
+        
         populateOrgComboBox();
     }
 
@@ -46,6 +46,7 @@ public class SPCreateEmployee extends javax.swing.JPanel {
        for (Organization organization: organizationDirectory.getOrganizationList()){
            comboBoxOrganiztionEmployee.addItem(organization);
        }
+       populateOrganizationFilterComboBox();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -61,7 +62,6 @@ public class SPCreateEmployee extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         organizationJTable = new javax.swing.JTable();
         btnDeleteEmployee = new javax.swing.JButton();
-        btnFilterTable = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         comboBoxOrganiztionFilter = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
@@ -148,14 +148,6 @@ public class SPCreateEmployee extends javax.swing.JPanel {
             }
         });
 
-        btnFilterTable.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        btnFilterTable.setText("Filter");
-        btnFilterTable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFilterTableActionPerformed(evt);
-            }
-        });
-
         jLabel4.setFont(new java.awt.Font("Malayalam MN", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Service Provider Create Employee Panel");
@@ -208,9 +200,7 @@ public class SPCreateEmployee extends javax.swing.JPanel {
                                     .addGap(161, 161, 161)
                                     .addComponent(jLabel1)
                                     .addGap(18, 18, 18)
-                                    .addComponent(comboBoxOrganiztionFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btnFilterTable)))
+                                    .addComponent(comboBoxOrganiztionFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(58, 58, 58))))
                 .addGap(0, 72, Short.MAX_VALUE))
         );
@@ -220,12 +210,11 @@ public class SPCreateEmployee extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backJButton))
-                .addGap(42, 42, 42)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboBoxOrganiztionFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnFilterTable))
-                .addGap(19, 19, 19)
+                    .addComponent(jLabel1))
+                .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -252,13 +241,27 @@ public class SPCreateEmployee extends javax.swing.JPanel {
 
     private void btnCreateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEmployeeActionPerformed
 
-        Organization organization = (Organization) comboBoxOrganiztionEmployee.getSelectedItem();
+//        Organization organization = (Organization) comboBoxOrganiztionEmployee.getSelectedItem();
+//        String name = txtEmployeeName.getText();
+//
+//        organization.getEmployeeDirectory().createEmployee(name);
+//        fillTheTable(organization);
+        
+          Organization organization = (Organization) comboBoxOrganiztionEmployee.getSelectedItem();
         String name = txtEmployeeName.getText();
-
-        organization.getEmployeeDirectory().createEmployee(name);
-        fillTheTable(organization);
+        
+        if("".equals(name)) {
+            JOptionPane.showMessageDialog(null, "Please enter name");
+        }else {
+            organization.getEmployeeDirectory().createEmployee(name);
+            fillTheTable(organization);
+            resetFields();
+            JOptionPane.showMessageDialog(null, "Employee created successfully");
+        }
     }//GEN-LAST:event_btnCreateEmployeeActionPerformed
-
+    public void resetFields() {
+        txtEmployeeName.setText("");
+    }
     private void txtEmployeeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmployeeNameActionPerformed
@@ -270,6 +273,12 @@ public class SPCreateEmployee extends javax.swing.JPanel {
 
     private void comboBoxOrganiztionEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxOrganiztionEmployeeActionPerformed
         // TODO add your handling code here:
+        Organization organization = (Organization) comboBoxOrganiztionEmployee.getSelectedItem();
+
+        if (organization != null){
+            fillTheTable(organization);
+        }
+        populateOrganizationFilterComboBox();
     }//GEN-LAST:event_comboBoxOrganiztionEmployeeActionPerformed
 
     private void btnDeleteEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteEmployeeActionPerformed
@@ -307,12 +316,6 @@ public class SPCreateEmployee extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnDeleteEmployeeActionPerformed
 
-    private void btnFilterTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterTableActionPerformed
-        // TODO add your handling code here:
-        Organization organization = (Organization) comboBoxOrganiztionFilter.getSelectedItem();
-        fillTheTable(organization);
-    }//GEN-LAST:event_btnFilterTableActionPerformed
-
     private void comboBoxOrganiztionFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxOrganiztionFilterActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxOrganiztionFilterActionPerformed
@@ -335,12 +338,8 @@ public class SPCreateEmployee extends javax.swing.JPanel {
     private void populateOrganizationFilterComboBox() {
         comboBoxOrganiztionFilter.removeAllItems();
         
-        for (Organization organization : organizationDirectory.getOrganizationList()){
-            comboBoxOrganiztionFilter.addItem(organization);
-        }
-        
-        
-        
+        Organization organization = (Organization) comboBoxOrganiztionEmployee.getSelectedItem();
+        comboBoxOrganiztionFilter.addItem(organization.getType());   
         
     }
 
@@ -348,7 +347,6 @@ public class SPCreateEmployee extends javax.swing.JPanel {
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btnCreateEmployee;
     private javax.swing.JButton btnDeleteEmployee;
-    private javax.swing.JButton btnFilterTable;
     private javax.swing.JComboBox comboBoxOrganiztionEmployee;
     private javax.swing.JComboBox comboBoxOrganiztionFilter;
     private javax.swing.JLabel jLabel1;
