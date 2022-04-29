@@ -28,8 +28,8 @@ public class HeaderColors extends DefaultTableCellRenderer {
     @Override
     public Component getTableCellRendererComponent(JTable myTable, Object value, boolean selected, boolean focused, int row, int column) {
         super.getTableCellRendererComponent(myTable, value, selected, focused, row, column);
-        setBackground(new java.awt.Color(215, 81, 100));
-        setForeground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(255, 204, 51));//[255,204,51]
+        setForeground(new java.awt.Color(10, 10, 10)); //10, 10, 10
         myTable.setFillsViewportHeight(true);
         setBorder(BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         myTable.setShowGrid(true);
