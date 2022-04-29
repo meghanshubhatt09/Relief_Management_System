@@ -12,6 +12,7 @@ import Business.Organization.OrganizationDirectory;
 import Business.Role.DoctorAdminRole;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -39,6 +40,7 @@ public class ClinicCreateDoctorUser extends javax.swing.JPanel {
         this.ecoSystem = ecoSystem;
         this.userAccount = userAccount;
         this.organizationDirectory = organizationDirectory;
+        tblUserAccounts.getTableHeader().setDefaultRenderer(new HeaderColors());
         fillTheTable();
         
 //        System.out.println("organizationDirectory"+organizationDirectory.getOrganizationList());
@@ -83,6 +85,10 @@ public class ClinicCreateDoctorUser extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         txtEmployeeName = new javax.swing.JTextField();
         btnCreateUserAccount = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(204, 204, 255));
 
         btnBack.setBackground(new java.awt.Color(102, 217, 255));
         btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -93,6 +99,7 @@ public class ClinicCreateDoctorUser extends javax.swing.JPanel {
             }
         });
 
+        tblUserAccounts.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tblUserAccounts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -116,6 +123,7 @@ public class ClinicCreateDoctorUser extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblUserAccounts.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(tblUserAccounts);
 
         jLabel2.setBackground(new java.awt.Color(102, 217, 255));
@@ -138,6 +146,11 @@ public class ClinicCreateDoctorUser extends javax.swing.JPanel {
                 btnCreateUserAccountActionPerformed(evt);
             }
         });
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/department128x.png"))); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Malayalam MN", 1, 18)); // NOI18N
+        jLabel4.setText("Create Doctor Employee Panel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -170,7 +183,12 @@ public class ClinicCreateDoctorUser extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnBack)))
+                        .addComponent(btnBack)
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(283, 283, 283)
+                        .addComponent(jLabel5)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -194,10 +212,14 @@ public class ClinicCreateDoctorUser extends javax.swing.JPanel {
                         .addComponent(btnCreateUserAccount))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btnBack)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBack)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(17, 17, 17)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -251,6 +273,8 @@ public class ClinicCreateDoctorUser extends javax.swing.JPanel {
     private javax.swing.JButton btnCreateUserAccount;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblUserAccounts;

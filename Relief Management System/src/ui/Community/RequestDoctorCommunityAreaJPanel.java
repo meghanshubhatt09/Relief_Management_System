@@ -7,6 +7,7 @@ package ui.Community;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.PatientDoctorRequest;
 import Business.WorkQueue.WorkRequest;
 import java.util.Date;
@@ -35,6 +36,7 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.enterprise = enterprise;
         this.ecoSystem = ecoSystem;
+        tblRequestTablePatient.getTableHeader().setDefaultRenderer(new HeaderColors());
         
         fillTheRequestTable();
         
@@ -62,6 +64,8 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
         txtPurposeVisit = new javax.swing.JTextField();
         btnCreate = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 255));
+
         tblRequestTablePatient.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -83,12 +87,16 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("Patient Request");
 
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setText("Patient Name: ");
 
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel3.setText("Patient Age: ");
 
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel4.setText("Patient Gender: ");
 
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel5.setText("Purpose of Visit: ");
 
         txtPurposeVisit.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +147,7 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(357, 357, 357)
                         .addComponent(btnCreate)))
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
