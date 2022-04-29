@@ -9,6 +9,7 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.Utils.HeaderColors;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -30,7 +31,7 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
         initComponents();
         this.organizationDirectory = organizationDirectory;
         this.userProcessContainer = userProcessContainer;
-        
+        organizationJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateOrganizationFilterComboBox();
         populateOrgComboBox();
         
@@ -59,8 +60,11 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
         comboBoxOrganiztionFilter = new javax.swing.JComboBox();
         btnFilterTable = new javax.swing.JButton();
         btnDeleteEmployee = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
-        jLabel4.setFont(new java.awt.Font("Malayalam MN", 1, 14)); // NOI18N
+        setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel4.setFont(new java.awt.Font("Malayalam MN", 1, 18)); // NOI18N
         jLabel4.setText("Hospital Create Employee Panel");
 
         organizationJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -92,6 +96,7 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
         }
 
         jLabel3.setBackground(new java.awt.Color(102, 217, 255));
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel3.setText("Organization");
 
         comboBoxOrganiztionEmployee.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +106,7 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
         });
 
         jLabel2.setBackground(new java.awt.Color(102, 217, 255));
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setText("Name");
 
         txtEmployeeName.addActionListener(new java.awt.event.ActionListener() {
@@ -115,6 +121,7 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
         });
 
         btnCreateEmployee.setBackground(new java.awt.Color(102, 217, 255));
+        btnCreateEmployee.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnCreateEmployee.setText("Create Employee");
         btnCreateEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,6 +137,7 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel1.setText("Organiztion Filter :");
 
         comboBoxOrganiztionFilter.addActionListener(new java.awt.event.ActionListener() {
@@ -138,6 +146,7 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
             }
         });
 
+        btnFilterTable.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnFilterTable.setText("Filter");
         btnFilterTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,12 +154,16 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
             }
         });
 
+        btnDeleteEmployee.setBackground(new java.awt.Color(255, 153, 153));
+        btnDeleteEmployee.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnDeleteEmployee.setText("Delete Employee");
         btnDeleteEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteEmployeeActionPerformed(evt);
             }
         });
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/department128x.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -160,23 +173,22 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel2))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(comboBoxOrganiztionEmployee, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(51, 51, 51)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(comboBoxOrganiztionEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnCreateEmployee))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnDeleteEmployee))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,9 +204,11 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
                                 .addComponent(comboBoxOrganiztionFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(44, 44, 44)
                                 .addComponent(btnFilterTable))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(237, 237, 237)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -215,12 +229,14 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
                     .addComponent(comboBoxOrganiztionEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(btnDeleteEmployee))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtEmployeeName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCreateEmployee))
-                .addGap(0, 0, 0))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -316,6 +332,7 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable organizationJTable;
     private javax.swing.JTextField txtEmployeeName;

@@ -7,6 +7,7 @@ package ui.Hospital.BloodBank;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.BloodOrganization;
+import Business.RoundedBorder;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -33,6 +34,8 @@ public class BloodBankWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.enterprise = enterprise;
         this.ecoSystem = ecoSystem;
+        btnManageBloodType.setBorder(new RoundedBorder(20));
+        jButton3.setBorder(new RoundedBorder(20));
     }
 
 
@@ -49,8 +52,13 @@ public class BloodBankWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         btnManageBloodType = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
-        jLabel1.setText("Blood Bank Work Area");
+        setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel1.setText("                         Blood Bank Work Area");
 
         jButton3.setText("Manage Blood Request Community");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -66,32 +74,41 @@ public class BloodBankWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/blood.png"))); // NOI18N
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/blood.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnManageBloodType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jLabel1)))
-                .addContainerGap(129, Short.MAX_VALUE))
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnManageBloodType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(46, 46, 46)
-                .addComponent(btnManageBloodType)
-                .addGap(34, 34, 34)
+                .addGap(86, 86, 86)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnManageBloodType)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addGap(17, 17, 17)
                 .addComponent(jButton3)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -116,5 +133,7 @@ public class BloodBankWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageBloodType;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }

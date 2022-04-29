@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -35,7 +36,7 @@ public class HospitalManageUserAccounts extends javax.swing.JPanel {
         initComponents();
         this.enterprise = enterprise;
         this.userProcessContainer = userProcessContainer; 
-        
+        tblUserAccounts.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateOrganizationComboBox();
         fillTheTable();
         
@@ -65,10 +66,15 @@ public class HospitalManageUserAccounts extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
         btnCreateUserAccount = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("Manage User Accounts");
 
         btnBack.setBackground(new java.awt.Color(102, 217, 255));
+        btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +108,7 @@ public class HospitalManageUserAccounts extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblUserAccounts);
 
         jLabel5.setBackground(new java.awt.Color(102, 217, 255));
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel5.setText("Organization");
 
         comboBoxOrganiztion.addActionListener(new java.awt.event.ActionListener() {
@@ -111,24 +118,31 @@ public class HospitalManageUserAccounts extends javax.swing.JPanel {
         });
 
         jLabel3.setBackground(new java.awt.Color(102, 217, 255));
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel3.setText("Employee");
 
         jLabel4.setBackground(new java.awt.Color(102, 217, 255));
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel4.setText("Role");
 
         jLabel2.setBackground(new java.awt.Color(102, 217, 255));
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setText("User Name");
 
         jLabel6.setBackground(new java.awt.Color(102, 217, 255));
+        jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel6.setText("Password");
 
         btnCreateUserAccount.setBackground(new java.awt.Color(102, 217, 255));
+        btnCreateUserAccount.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnCreateUserAccount.setText("Create");
         btnCreateUserAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateUserAccountActionPerformed(evt);
             }
         });
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/employee128x.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -167,8 +181,11 @@ public class HospitalManageUserAccounts extends javax.swing.JPanel {
                                     .addComponent(comboBoxOrganiztion, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCreateUserAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCreateUserAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(289, 289, 289)
+                        .addComponent(jLabel7)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -206,7 +223,9 @@ public class HospitalManageUserAccounts extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17)
                 .addComponent(btnCreateUserAccount)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -255,6 +274,7 @@ public class HospitalManageUserAccounts extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblUserAccounts;
     private javax.swing.JTextField txtPassword;

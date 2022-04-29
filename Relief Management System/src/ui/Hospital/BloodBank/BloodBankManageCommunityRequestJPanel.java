@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.BloodBankWorkRequest;
 import Business.WorkQueue.CommunityBloodRequest;
 import Business.WorkQueue.NGOWorkRequest;
@@ -45,6 +46,8 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.organizationDirectory = organizationDirectory;
         populateRequestTable();
+        tblBloodBank.getTableHeader().setDefaultRenderer(new HeaderColors());
+        tblRequestTableCommunity.getTableHeader().setDefaultRenderer(new HeaderColors());
         
         populateBloodTable();
         
@@ -73,10 +76,13 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
         tblBloodBank = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("Manage Blood Request From Community");
 
         btnBack.setBackground(new java.awt.Color(102, 217, 255));
+        btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,9 +91,11 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
         });
 
         jLabel2.setBackground(new java.awt.Color(102, 217, 255));
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setText("Purpose :");
 
         jLabel4.setBackground(new java.awt.Color(102, 217, 255));
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel4.setText("Request for Blood");
 
         tblRequestTableCommunity.setModel(new javax.swing.table.DefaultTableModel(
@@ -109,6 +117,7 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblRequestTableCommunity);
 
         btnAssignToMe.setBackground(new java.awt.Color(102, 217, 255));
+        btnAssignToMe.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnAssignToMe.setText("Assign to me");
         btnAssignToMe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +125,8 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnDeleteReqHosp.setBackground(new java.awt.Color(102, 217, 255));
+        btnDeleteReqHosp.setBackground(new java.awt.Color(255, 153, 153));
+        btnDeleteReqHosp.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnDeleteReqHosp.setText("Delete Request");
         btnDeleteReqHosp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,6 +135,7 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
         });
 
         btnApproveReqHospital.setBackground(new java.awt.Color(102, 217, 255));
+        btnApproveReqHospital.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnApproveReqHospital.setText("Approve Request");
         btnApproveReqHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +143,8 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnRejectReqHospital.setBackground(new java.awt.Color(102, 217, 255));
+        btnRejectReqHospital.setBackground(new java.awt.Color(255, 153, 153));
+        btnRejectReqHospital.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnRejectReqHospital.setText("Reject Request");
         btnRejectReqHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,6 +171,7 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tblBloodBank);
 
         jLabel5.setBackground(new java.awt.Color(102, 217, 255));
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel5.setText("Blood Available");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -166,42 +179,45 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBack)
-                        .addGap(93, 93, 93)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(btnAssignToMe)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnDeleteReqHosp)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnApproveReqHospital)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnRejectReqHospital))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(61, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(btnAssignToMe)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnDeleteReqHosp)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnApproveReqHospital)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnRejectReqHospital)))
+                            .addContainerGap(122, Short.MAX_VALUE)))))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addGap(61, 61, 61)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnBack))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnBack)
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,11 +229,11 @@ public class BloodBankManageCommunityRequestJPanel extends javax.swing.JPanel {
                     .addComponent(btnApproveReqHospital)
                     .addComponent(btnDeleteReqHosp)
                     .addComponent(btnAssignToMe))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
