@@ -350,7 +350,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             row[1] = ((PatientDoctorRequest) work).getPatientAge();
             row[2] = ((PatientDoctorRequest) work).getPatientGender();
             row[3] = ((PatientDoctorRequest) work).getPurposeOfVisit();
-            row[4] = ((PatientDoctorRequest) work).getRequestedDate();
+            row[4] = ((PatientDoctorRequest) work).getRequestDate();
             row[5] = ((PatientDoctorRequest) work).getResolveDate();
             row[6] = ((PatientDoctorRequest) work).getDoctorName();
             row[7] = work;

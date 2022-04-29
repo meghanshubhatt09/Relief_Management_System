@@ -241,7 +241,7 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
                 request.setNoDoctorRequired(Integer.parseInt(txtDoctorCount.getText()));
                 request.setLocation(txtVenue.getText());
                 Date requestDate = new Date();
-                request.setRequestDate(requestDate); ;
+                request.setRequestDate(requestDate); 
 //                request.setRequestedTime(txtTime.getText());
                 request.setPurpose(txtRequestType.getText());
                 request.setStatus("Requested");
