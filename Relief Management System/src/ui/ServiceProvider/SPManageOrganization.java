@@ -55,9 +55,11 @@ public class SPManageOrganization extends javax.swing.JPanel {
         model.setRowCount(0);
         
         for (Organization organization : organizationDirectory.getOrganizationList()){
-            Object[] row = new Object[2];
+            Object[] row = new Object[4];
             row[0] = organization.getOrganizationID();
             row[1] = organization.getName();
+            row[2] = organization.getType().getValue();
+            row[3] = organization.getLocationPoint();
             
             model.addRow(row);
         }
@@ -67,7 +69,7 @@ public class SPManageOrganization extends javax.swing.JPanel {
         organizationJComboBox.removeAllItems();
         organizationJComboBox.addItem(Organization.Type.FoodOrganization);
         organizationJComboBox.addItem(Organization.Type.ShelterOrganization);
-        organizationJComboBox.addItem(Organization.Type.EmergencyRequestOrganization);
+        //organizationJComboBox.addItem(Organization.Type.EmergencyRequestOrganization);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
