@@ -14,8 +14,8 @@ import java.util.HashSet;
  */
 public class BloodOrganization extends Organization{
 
-    public BloodOrganization() {
-        super(Organization.Type.BloodOrganization.getValue());
+    public BloodOrganization(String name) {
+        super(name);
     }
 
     @Override
@@ -23,5 +23,9 @@ public class BloodOrganization extends Organization{
         roles.add(new BloodBankAdminRole());
         return roles;
     }
+     @Override
+     public Type getType() {
+        return Organization.Type.BloodOrganization;
+    } 
     
 }

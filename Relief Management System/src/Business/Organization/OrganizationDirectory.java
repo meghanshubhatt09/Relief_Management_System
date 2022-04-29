@@ -34,11 +34,11 @@ public class OrganizationDirectory {
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.ClinicOrganization.getValue())){
-            organization = new ClinicOrganization();
+            organization = new ClinicOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.BloodOrganization.getValue())){
-            organization = new BloodOrganization();
+            organization = new BloodOrganization(name);
             organizationList.add(organization);
         }
          else if (type.getValue().equals(Type.FoodOrganization.getValue())){
