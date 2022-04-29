@@ -10,6 +10,7 @@ import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
 import Business.Utils.HeaderColors;
 import Business.WorkQueue.FoodOrgWorkRequest;
+import Business.WorkQueue.WorkRequest;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -183,20 +184,26 @@ public class ManageFoodReqJPanel extends javax.swing.JPanel {
            
         DefaultTableModel table= (DefaultTableModel) jAvaFoodTable1.getModel();
         table.setRowCount(0);
-            for (int i = 0; i < ecoSystem.getWorkQueue().getWorkRequestList().size(); i++) {
-            
-            FoodOrgWorkRequest work = (FoodOrgWorkRequest) ecoSystem.getWorkQueue().getWorkRequestList().get(i);
-            Object[] row = new Object[7];
-            row[0] = work.getFoodReqId();
-            row[1] = work.getFoodType();
-            row[2] = work.getQuantity();
-            row[3] = work.getTotalPrice();
+        
+         for(WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
+            if(work instanceof FoodOrgWorkRequest){
+                Object[] row = new Object[7];
+             row[0] = ((FoodOrgWorkRequest) work).getFoodReqId();
+            row[1] = ((FoodOrgWorkRequest) work).getFoodType();
+            row[2] = ((FoodOrgWorkRequest) work).getQuantity() ;
+            row[3] = ((FoodOrgWorkRequest) work).getTotalPrice();
             row[4] = work.getRequestDate();
             row[5] = work.getResolveDate();
             row[6] = work;
             table.addRow(row);
+            }}
+//            for (int i = 0; i < ecoSystem.getWorkQueue().getWorkRequestList().size(); i++) {
+            
+//            FoodOrgWorkRequest work = (FoodOrgWorkRequest) ecoSystem.getWorkQueue().getWorkRequestList().get(i);
+            
+           
           
-            }
+//            }
             
            
     }
