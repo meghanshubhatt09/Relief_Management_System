@@ -57,6 +57,7 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnRequestHospital = new javax.swing.JButton();
         btnDonateBlood = new javax.swing.JButton();
         btnRequestBlood = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         enterpriseNameLabel.setText("jTextField1");
 
@@ -88,6 +89,13 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Request Shelter");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,10 +106,12 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(123, 123, 123)
                         .addComponent(btnRequestHospital))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRequestBlood)
-                            .addComponent(btnDonateBlood))))
+                        .addGap(133, 133, 133)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnRequestBlood)
+                                .addComponent(btnDonateBlood)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(114, Short.MAX_VALUE)
@@ -126,7 +136,9 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnDonateBlood)
                 .addGap(35, 35, 35)
                 .addComponent(btnRequestBlood)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(153, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -164,6 +176,14 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnRequestBloodActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        RequestShelterJPanel requestShelterJPanel = new RequestShelterJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
+        userProcessContainer.add("RequestShelterJPanel",requestShelterJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDonateBlood;
@@ -171,5 +191,6 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnRequestHospital;
     private javax.swing.JButton btnRequestServiceProvider;
     private javax.swing.JTextField enterpriseNameLabel;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

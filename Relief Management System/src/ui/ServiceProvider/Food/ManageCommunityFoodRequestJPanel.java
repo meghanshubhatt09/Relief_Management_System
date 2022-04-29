@@ -4,7 +4,7 @@
  */
 package ui.ServiceProvider.Food;
 
-import Buisness.FoodAndShelterDistributor.Food;
+import Business.FoodAndShelterDistributor.Food;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.OrganizationDirectory;

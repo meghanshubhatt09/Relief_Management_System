@@ -4,10 +4,10 @@
  */
 package ui.FoodAndShelter;
 
-import Buisness.FoodAndShelterDistributor.Food;
-import Buisness.FoodAndShelterDistributor.FoodDirectory;
+import Business.FoodAndShelterDistributor.Food;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.FoodAndShelterDistributor.FoodDirectory;
 import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
 import Business.Utils.HeaderColors;

@@ -25,7 +25,8 @@ public abstract class Enterprise extends Organization{
         NGO("NGO"),
         Donation("Donation"),
         FSDistributor("FSDistributor"),
-        Community("Community");
+        Community("Community"),
+        Emergency("Emergency");
         
         private String value;
 

@@ -4,31 +4,29 @@
  */
 package Business.Organization;
 
-import Business.Role.FoodAdminRole;
+import Business.Role.FireDepartmentAdmin;
 import Business.Role.Role;
-import Business.Role.ShelterAdminRole;
 import java.util.HashSet;
 
 /**
  *
- * @author rk
+ * @author arjun
  */
-public class ShelterOrganization extends Organization {
+public class FireDepartmentOrganization extends Organization{
 
-    public ShelterOrganization(String name) {
+    public FireDepartmentOrganization(String name) {
         super(name);
     }
 
     @Override
     public HashSet<Role> getSupportedRole() {
-        
-    roles.add(new ShelterAdminRole());
+        roles.add(new FireDepartmentAdmin() );
         return roles;
-    }
-    
-      @Override
+     
+            }
+     @Override
      public Type getType() {
-        return Organization.Type.ShelterOrganization;
+        return Organization.Type.FireDepartmentOrganization;
     } 
     
 }

@@ -5,8 +5,6 @@
 package Business;
 
 import Business.BloodBank.BloodBankDirectory;
-import Buisness.FoodAndShelterDistributor.FoodDirectory;
-import Buisness.ServiceProvider.Food.FoodInventory;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.Role.Role;
@@ -18,10 +16,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import Business.Doctor.DoctorDirectory;
 import Business.Doctor.Doctor;
+import Business.FoodAndShelterDistributor.FoodDirectory;
 import Business.Role.BloodBankAdminRole;
 import Business.Role.ClinicAdminRole;
 import Business.Role.DonationAdminRole;
 import Business.Role.HospitalAdminRole;
+import Business.ServiceProvider.Food.FoodInventory;
+import Business.ServiceProvider.Shelter.ShelterDirectory;
 
 /**
  *
@@ -33,6 +34,17 @@ public class EcoSystem extends Organization {
     private ArrayList<Network> networkList;
     private FoodDirectory foodDirectory;
     private FoodInventory foodInventory;
+     private ShelterDirectory shelterDirectory;
+
+    public ShelterDirectory getShelterDirectory() {
+        return shelterDirectory;
+    }
+
+    public void setShelterDirectory(ShelterDirectory shelterDirectory) {
+        this.shelterDirectory = shelterDirectory;
+    }
+     
+     
 
     public FoodInventory getFoodInventory() {
         return foodInventory;
@@ -73,6 +85,7 @@ public class EcoSystem extends Organization {
         this.bloodDirectory = new BloodBankDirectory();
         this.foodDirectory = new FoodDirectory();
         this.foodInventory = new FoodInventory();
+        this.shelterDirectory = new ShelterDirectory();
     }
 
       public CommunityDirectory getCommunityList() {
