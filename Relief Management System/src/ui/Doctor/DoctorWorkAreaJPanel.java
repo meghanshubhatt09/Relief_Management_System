@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.CommunityDoctorRequest;
 import Business.WorkQueue.PatientDoctorRequest;
 import Business.WorkQueue.WorkRequest;
@@ -39,11 +40,17 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.ecoSystem = system;
         this.enterprise = enterprise;
+        tblRequestTablePatient.getTableHeader().setDefaultRenderer(new HeaderColors());
         
         //System.out.println("ui.Doctor.DoctorWorkAreaJPanel.<init>()"+userAccount.getUsername());
         
         lblDoctorName.setText(userAccount.getUsername());
         fillThePatientRequestTable();
+        
+        
+  
+        
+        
        
     }
 
@@ -67,6 +74,8 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         lblDoctorName = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 204, 255));
+
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("Manage Patient Request");
 
@@ -74,6 +83,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel4.setText("Patient Request");
 
+        tblRequestTablePatient.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tblRequestTablePatient.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -90,6 +100,8 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblRequestTablePatient.setGridColor(new java.awt.Color(0, 0, 0));
+        tblRequestTablePatient.setShowGrid(true);
         jScrollPane1.setViewportView(tblRequestTablePatient);
 
         btnAssignToMe.setBackground(new java.awt.Color(102, 217, 255));
@@ -132,16 +144,18 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel5.setText("Welcome ");
 
+        lblDoctorName.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel4))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAssignToMe)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -201,13 +215,22 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             PatientDoctorRequest c =  (PatientDoctorRequest)tblRequestTablePatient.getValueAt(selectedRow, 7);
             
             if (c.getDoctorName() == null){
-            
+                
+                if (doctorAvailCheck()){
             c.setDoctorName(userAccount.getUsername());
-
+            //c.setAdd(true);
             c.setStatus("Pending");
             c.setReceiver(userAccount);
 
             fillThePatientRequestTable();
+                }
+            else
+                {
+                    JOptionPane.showMessageDialog(null, "Please completed before assigned task", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
+            
+            
+
             }
             else
             {
@@ -266,6 +289,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                     p.setStatus("Approved");
                     Date resolveDate = new Date();
                     p.setResolveDate(resolveDate);
+                    //p.setAdd(false);
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
                     fillThePatientRequestTable();     
                     }
@@ -308,6 +332,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                     p.setReceiver(userAccount);
                     Date resolveDate = new Date();
                     p.setResolveDate(resolveDate);
+                    //p.setAdd(false);
                 }else{
                     JOptionPane.showMessageDialog(null, "Please assign first");
                 }
@@ -350,7 +375,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
             row[1] = ((PatientDoctorRequest) work).getPatientAge();
             row[2] = ((PatientDoctorRequest) work).getPatientGender();
             row[3] = ((PatientDoctorRequest) work).getPurposeOfVisit();
-            row[4] = ((PatientDoctorRequest) work).getRequestedDate();
+            row[4] = ((PatientDoctorRequest) work).getRequestDate();
             row[5] = ((PatientDoctorRequest) work).getResolveDate();
             row[6] = ((PatientDoctorRequest) work).getDoctorName();
             row[7] = work;
@@ -360,5 +385,34 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         }
         
         
+    }
+    
+    
+    public boolean doctorAvailCheck(){
+           for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
+           if(work instanceof PatientDoctorRequest){ 
+//               System.out.println("Check Error"+((PatientDoctorRequest) work).getDoctorName());
+//               System.out.println("Check Error"+work.getStatus());
+                
+                if (((PatientDoctorRequest) work).getDoctorName() == null)
+                {
+                    return true;
+                }
+                
+
+               if (((PatientDoctorRequest) work).getDoctorName().equals(userAccount.getUsername()) && work.getStatus().equals("Pending"))
+               {
+                   return false;
+                   
+               }
+               
+               
+              
+               
+               
+           }
+        }
+              return true;
+    
     }
 }

@@ -41,7 +41,7 @@
                               </Group>
                               <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="txtDoctorCount" alignment="0" pref="63" max="32767" attributes="0"/>
+                                  <Component id="txtDoctorCount" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtRequestType" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtVenue" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtPeopleCount" max="32767" attributes="0"/>
