@@ -26,7 +26,8 @@ public class OrganizationDirectory {
     public Organization createOrganization(Type type, String name, LocationPoint locationPoint ){
         Organization organization = null;
         if (type.getValue().equals(Type.NGOOrganization.getValue())){
-            organization = new NGOOrganization();
+            organization = new NGOOrganization(name);
+            organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.DonationOrganization.getValue())){

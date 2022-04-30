@@ -10,7 +10,6 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -134,7 +133,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageEnterpriseAdmin = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         manageEnterpriseAdminLabel = new javax.swing.JLabel();
-        lblSelectedNode1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
@@ -148,15 +146,15 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1338, 840));
         setLayout(new java.awt.BorderLayout());
 
-        systemAdminPanel.setBackground(new java.awt.Color(194, 192, 212));
+        systemAdminPanel.setBackground(new java.awt.Color(198, 210, 198));
         systemAdminPanel.setPreferredSize(new java.awt.Dimension(1338, 840));
 
-        jPanel3.setBackground(new java.awt.Color(194, 192, 212));
+        jPanel3.setBackground(new java.awt.Color(198, 210, 198));
         jPanel3.setMinimumSize(new java.awt.Dimension(280, 148));
         jPanel3.setPreferredSize(new java.awt.Dimension(280, 148));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        manageNetworkPanel.setBackground(new java.awt.Color(194, 192, 212));
+        manageNetworkPanel.setBackground(new java.awt.Color(198, 210, 198));
         manageNetworkPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 manageNetworkPanelMousePressed(evt);
@@ -199,7 +197,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jPanel3.add(manageNetworkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 280, -1));
 
-        manageEnterprise.setBackground(new java.awt.Color(194, 192, 212));
+        manageEnterprise.setBackground(new java.awt.Color(198, 210, 198));
         manageEnterprise.setPreferredSize(new java.awt.Dimension(264, 48));
         manageEnterprise.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -241,7 +239,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jPanel3.add(manageEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 48, 280, 50));
 
-        manageEnterpriseAdmin.setBackground(new java.awt.Color(194, 192, 212));
+        manageEnterpriseAdmin.setBackground(new java.awt.Color(198, 210, 198));
         manageEnterpriseAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 manageEnterpriseAdminMousePressed(evt);
@@ -282,16 +280,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jPanel3.add(manageEnterpriseAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 88, 280, 40));
 
-        lblSelectedNode1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jPanel3.add(lblSelectedNode1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 230, 30));
-
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel7.setText("Selected Node:");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 140, 30));
 
-        jScrollPane2.setBackground(new java.awt.Color(194, 192, 212));
+        jScrollPane2.setBackground(new java.awt.Color(198, 210, 198));
 
-        jTree1.setBackground(new java.awt.Color(194, 192, 212));
+        jTree1.setBackground(new java.awt.Color(198, 210, 198));
         jTree1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jTree1.setForeground(new java.awt.Color(0, 0, 0));
         jTree1.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
@@ -306,6 +301,8 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jSeparator2.setBackground(new java.awt.Color(0, 51, 51));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 280, -1));
+
+        seeMapPanel.setBackground(new java.awt.Color(198, 210, 198));
 
         jLabel8.setBackground(new java.awt.Color(194, 192, 212));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -328,9 +325,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(seeMapPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mapOrganizations, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addComponent(mapOrganizations, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                .addGap(16, 16, 16))
         );
         seeMapPanelLayout.setVerticalGroup(
             seeMapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,9 +341,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel3.add(seeMapPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 270, 40));
+        jPanel3.add(seeMapPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 260, 40));
 
-        rightSystemAdminPanel.setBackground(new java.awt.Color(194, 192, 212));
+        rightSystemAdminPanel.setBackground(new java.awt.Color(198, 210, 198));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
         rightSystemAdminPanel.setLayout(new java.awt.CardLayout());
 
@@ -422,10 +419,10 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
         // TODO add your handling code here:
-         DefaultMutableTreeNode selectedNode= (DefaultMutableTreeNode)jTree1.getLastSelectedPathComponent();
-        if(selectedNode!=null){
-            lblSelectedNode1.setText(selectedNode.toString());
-        }
+//         DefaultMutableTreeNode selectedNode= (DefaultMutableTreeNode)jTree1.getLastSelectedPathComponent();
+//        if(selectedNode!=null){
+//            lblSelectedNode1.setText(selectedNode.toString());
+//        }
     }//GEN-LAST:event_jTree1ValueChanged
 
     private void mapOrganizationsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapOrganizationsMousePressed
@@ -459,7 +456,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTree jTree1;
-    private javax.swing.JLabel lblSelectedNode1;
     private javax.swing.JPanel manageEnterprise;
     private javax.swing.JPanel manageEnterpriseAdmin;
     private javax.swing.JLabel manageEnterpriseAdminLabel;
