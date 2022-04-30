@@ -31,7 +31,8 @@ public class OrganizationDirectory {
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.DonationOrganization.getValue())){
-            organization = new DonationOrganization();
+            organization = new DonationOrganization(name);
+            organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.ClinicOrganization.getValue())){

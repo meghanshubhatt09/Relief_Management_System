@@ -13,8 +13,8 @@ import java.util.HashSet;
  */
 public class DonationOrganization extends Organization{
 
-    public DonationOrganization() {
-        super(Organization.Type.DonationOrganization.getValue());
+    public DonationOrganization(String name) {
+        super(name);
     }
 
     @Override
@@ -22,4 +22,9 @@ public class DonationOrganization extends Organization{
         return null; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+     @Override
+     public Type getType() {
+        return Organization.Type.DonationOrganization;
+    
+}
 }
