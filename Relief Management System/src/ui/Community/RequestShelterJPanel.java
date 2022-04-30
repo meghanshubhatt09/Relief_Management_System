@@ -78,11 +78,11 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Shelter Name", "#People", "Request Date", "Resolved Date", "Status"
+                "ID", "Shelter Name", "People", "Request Date", "Resolved Date", "Status", "Sender", "Receiver"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

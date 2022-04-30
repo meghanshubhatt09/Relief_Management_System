@@ -95,13 +95,13 @@ public class RequestServiceProviderJPanel extends javax.swing.JPanel {
 
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Food Type", "Number of People Affected", "Venue", "Requested Date", "Resolution Date", "Number of Packets", "Status"
+                "Food Type", "Number of People Affected", "Venue", "Requested Date", "Resolution Date", "Number of Packets", "Status", "Sender", "Receiver"
             }
         ));
         jScrollPane1.setViewportView(tblRequest);
@@ -152,8 +152,8 @@ public class RequestServiceProviderJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(124, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,9 +180,9 @@ public class RequestServiceProviderJPanel extends javax.swing.JPanel {
                     .addComponent(txtPurpose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSendRequest)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -229,8 +229,8 @@ public class RequestServiceProviderJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblRequest.getModel();
         model.setRowCount(0);
         for(WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
-            if(work instanceof CommunityFoodRequest){
-                Object[] row = new Object[7];
+            if(work instanceof CommunityFoodRequest && work.getSender() == account){
+                Object[] row = new Object[9];
                 row[0] = ((CommunityFoodRequest) work).getRequestedFoodType() ;
                 row[3] = ((CommunityFoodRequest) work).getRequestDate() ;
                 row[1] = ((CommunityFoodRequest) work).getNoPeopleRequestingFood() ;
@@ -238,6 +238,13 @@ public class RequestServiceProviderJPanel extends javax.swing.JPanel {
                 row[6] = work;
                 row[5] = ((CommunityFoodRequest) work).getNoOfPackets() ;
                 row[4] = ((CommunityFoodRequest) work).getResolveDate();
+                row[7] = ((CommunityFoodRequest) work).getSender().getUsername();
+                
+                if(((CommunityFoodRequest) work).getReceiver() != null){
+                row[8] = ((CommunityFoodRequest) work).getReceiver().getUsername();
+                }
+                
+                
                 model.addRow(row);
             
             }

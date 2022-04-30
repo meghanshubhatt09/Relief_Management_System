@@ -17,6 +17,15 @@ public class CommunityBloodRequest extends WorkRequest{
 //    private String requestedTime;
     private String purpose;
     private String requestedBloodType;
+    private String zip;
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
 
     public String getRequestedBloodType() {
         return requestedBloodType;
