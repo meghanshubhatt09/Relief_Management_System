@@ -294,7 +294,7 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
             if(p.getReceiver()!= null){
                 if (p.getStatus().equalsIgnoreCase("Pending")) {
                     UserAccount a =p.getSender();
-                    if(ecoSystem.getPoliceStationList().getPoliceStationList().size()<= 0){
+                    if(ecoSystem.getPoliceStationList().getPoliceStationList().size()< 0){
                         System.out.print("inside the size being 0");
                         JOptionPane.showMessageDialog(null, "No Doctors available.");
                         return;
@@ -317,7 +317,7 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
                     for(PoliceStation v : ecoSystem.getPoliceStationList().getPoliceStationList()) {
                         if(v.getPoliceType().equals(p.getPoliceType())){
                             System.out.print("ok the type is same");
-                            if(v.getUnitCount() - Integer.parseInt(txtCount.getText()) <= 0) {
+                            if(v.getUnitCount() - Integer.parseInt(txtCount.getText()) < 0) {
                                 JOptionPane.showMessageDialog(null, "Not enough Police force available. Wait for sometime");
                                     return;
                             }
