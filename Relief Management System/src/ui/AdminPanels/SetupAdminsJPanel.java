@@ -38,6 +38,7 @@ public class SetupAdminsJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private EcoSystem ecoSystem;
+     Employee employee;
     /**
      * Creates new form SetupAdminsJPanel
      */
@@ -280,13 +281,26 @@ public class SetupAdminsJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
+         try{
         Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
 
+        
         String username = usernameJTextField.getText();
         String password = String.valueOf(passwordJPasswordField.getPassword());
         String name = nameJTextField.getText();
 
-        Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
+        if("".equals(usernameJTextField.getText())){
+            JOptionPane.showMessageDialog(null, "Please enter the username", "Warning", JOptionPane.WARNING_MESSAGE);
+               return;
+        }
+        else if("".equals(String.valueOf(passwordJPasswordField.getPassword()))) {
+            JOptionPane.showMessageDialog(null, "Please set a password");
+            return;
+        }
+        else{
+             employee = enterprise.getEmployeeDirectory().createEmployee(name);
+        }
+          
         if (EcoSystem.checkIfUsernameIsUnique(username)) {
             UserAccount account = null;
             if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
@@ -309,23 +323,14 @@ public class SetupAdminsJPanel extends javax.swing.JPanel {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new EmergencyAdminRole());
             }
           
-//            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
-//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
-//            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.NGO) {
-//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new NGOAdmin());
-//            }  else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Sponsor) {
-//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new SponsorAdmin());
-//            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.BloodBank) {
-//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new BloodBankAdminRole());
-//            } else{
-//                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ResearchLabAdminRole());
-//            }
-         
-
             filltheTable();
         }
         else {
             JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        }
+        catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Error Occured!!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
        
     }//GEN-LAST:event_submitJButtonActionPerformed

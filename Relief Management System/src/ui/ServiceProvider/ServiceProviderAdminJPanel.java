@@ -6,10 +6,12 @@ package ui.ServiceProvider;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.RoundedBorder;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import ui.Hospital.HospitalCreateEmployee;
@@ -45,6 +47,25 @@ public class ServiceProviderAdminJPanel extends javax.swing.JPanel {
         ManageEmpBtn.setBorder(new RoundedBorder(20));
         CreateCredBtn.setBorder(new RoundedBorder(20));
         //ManageOrgBtn.setBorder(new RoundedBorder(20));
+        
+//        Network network = null;
+//        for(Network n:ecoSystem.getNetworkList())
+//        {
+//            for(Enterprise e:n.getEnterpriseDirectory().getEnterpriseList())
+//            {
+//                if (enterprise.equals(e)){
+//                    network = n;
+//                    break;
+//                }
+//            }
+//            
+//        }
+//        
+//        System.out.println("Network Name "+network);
+//        System.out.println("Network Name "+network.getLocationPoint());
+        
+        
+        
     }
 
     /**
@@ -140,7 +161,7 @@ public class ServiceProviderAdminJPanel extends javax.swing.JPanel {
 
     private void ManageOrgBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageOrgBtnActionPerformed
         // TODO add your handling code here:
-        SPManageOrganization sPManageOrganization = new SPManageOrganization(enterprise.getOrganizationDirectory(),userProcessContainer);
+        SPManageOrganization sPManageOrganization = new SPManageOrganization(enterprise,enterprise.getOrganizationDirectory(),userProcessContainer,ecoSystem);
         userProcessContainer.add("SPManageOrganization", sPManageOrganization);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -149,18 +170,28 @@ public class ServiceProviderAdminJPanel extends javax.swing.JPanel {
 
     private void ManageEmpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageEmpBtnActionPerformed
         // TODO add your handling code here:
+        try{
         SPCreateEmployee sPCreateEmployee = new SPCreateEmployee(enterprise.getOrganizationDirectory(),userProcessContainer);
         userProcessContainer.add("SPCreateEmployee", sPCreateEmployee);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Please Create Organization First!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_ManageEmpBtnActionPerformed
 
     private void CreateCredBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateCredBtnActionPerformed
         // TODO add your handling code here:
+        try{
         SPManageUserAccount sPManageUserAccount = new SPManageUserAccount(userProcessContainer, enterprise);
         userProcessContainer.add("SPManageUserAccount", sPManageUserAccount);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(Exception e){
+             JOptionPane.showMessageDialog(null, "Some Error Occurred!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_CreateCredBtnActionPerformed
 
 

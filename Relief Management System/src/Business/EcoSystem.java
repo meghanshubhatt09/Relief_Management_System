@@ -18,6 +18,7 @@ import Business.Doctor.DoctorDirectory;
 import Business.Doctor.Doctor;
 import Business.FoodAndShelterDistributor.FoodDirectory;
 import Business.PoliceStation.PoliceStationDirectory;
+import Business.Location.LocationPoint;
 import Business.Role.BloodBankAdminRole;
 import Business.Role.ClinicAdminRole;
 import Business.Role.DonationAdminRole;
@@ -38,7 +39,20 @@ public class EcoSystem extends Organization {
     private FoodDirectory foodDirectory;
     private FoodInventory foodInventory;
      private ShelterDirectory shelterDirectory;
+
     private PoliceStationDirectory policeStationList;
+
+      private LocationPoint locationPoint;
+
+    public LocationPoint getLocationPoint() {
+        return locationPoint;
+    }
+
+    public void setLocationPoint(LocationPoint locationPoint) {
+        this.locationPoint = locationPoint;
+    }
+      
+      
 
     public ShelterDirectory getShelterDirectory() {
         return shelterDirectory;

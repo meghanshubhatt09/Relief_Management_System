@@ -4,6 +4,7 @@
  */
 package Business.Network;
 import Business.Enterprise.EnterpriseDirectory;
+import Business.Location.LocationPoint;
 import Business.Organization.Organization;
 import Business.Role.Role;
 import java.util.ArrayList;
@@ -13,11 +14,20 @@ import java.util.ArrayList;
  */
 public class Network {
     private String name;
+    private LocationPoint locationPoint;
     private EnterpriseDirectory enterpriseDirectory;
 
     public Network() {
        
         enterpriseDirectory = new EnterpriseDirectory();
+    }
+
+    public LocationPoint getLocationPoint() {
+        return locationPoint;
+    }
+
+    public void setLocationPoint(LocationPoint locationPoint) {
+        this.locationPoint = locationPoint;
     }
     
 

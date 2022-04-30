@@ -12,9 +12,11 @@ import Business.Organization.Organization;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import ui.GoogleMaps.MapPanel;
 
 /**
  *
@@ -79,8 +81,20 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }
     
     private void manageNetwork(){ 
+        try{
         NetworkMangWAJPanel networkMangWAJPanel = new NetworkMangWAJPanel(ecosystem,rightSystemAdminPanel);
         rightSystemAdminPanel.add("networkMangWAJPanel", networkMangWAJPanel);
+        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
+        layout.next(rightSystemAdminPanel);
+        }
+        catch(Exception NullPointerException){
+            JOptionPane.showMessageDialog(null,"Please create the network");
+        }
+     }
+    
+     private void openMap(){ 
+         MapPanel muajp = new MapPanel(rightSystemAdminPanel,ecosystem);
+        rightSystemAdminPanel.add("OrganizationLocationJPanel", muajp);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
      }
@@ -125,6 +139,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
         jSeparator2 = new javax.swing.JSeparator();
+        seeMapPanel = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        mapOrganizations = new javax.swing.JLabel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(194, 192, 212));
@@ -290,6 +307,45 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 280, -1));
 
+        jLabel8.setBackground(new java.awt.Color(194, 192, 212));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/location 32x.png"))); // NOI18N
+
+        mapOrganizations.setBackground(new java.awt.Color(194, 192, 212));
+        mapOrganizations.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        mapOrganizations.setText("See All Organizations");
+        mapOrganizations.setPreferredSize(new java.awt.Dimension(115, 16));
+        mapOrganizations.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                mapOrganizationsMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout seeMapPanelLayout = new javax.swing.GroupLayout(seeMapPanel);
+        seeMapPanel.setLayout(seeMapPanelLayout);
+        seeMapPanelLayout.setHorizontalGroup(
+            seeMapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(seeMapPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mapOrganizations, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        seeMapPanelLayout.setVerticalGroup(
+            seeMapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(seeMapPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(seeMapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(seeMapPanelLayout.createSequentialGroup()
+                        .addComponent(mapOrganizations, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        jPanel3.add(seeMapPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 270, 40));
+
         rightSystemAdminPanel.setBackground(new java.awt.Color(194, 192, 212));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
         rightSystemAdminPanel.setLayout(new java.awt.CardLayout());
@@ -313,7 +369,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageNetworkMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageNetworkMousePressed
-        manageNetwork();
+
+        manageNetwork();    
+       
     }//GEN-LAST:event_manageNetworkMousePressed
 
     private void manageNetworkPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageNetworkPanelMousePressed
@@ -322,16 +380,44 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_manageNetworkPanelMousePressed
 
     private void manageEnterpriseLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageEnterpriseLabelMousePressed
-      manageEnterprise();
+     
+       try{
+            if(!ecosystem.getNetworkList().isEmpty()){
+           manageEnterprise();
+            }
+            else{
+                 JOptionPane.showMessageDialog(this,"Please create the network first!");
+            }
+        }
+            
+        catch(Exception e){
+            
+        }
+      
+      
     }//GEN-LAST:event_manageEnterpriseLabelMousePressed
 
     private void manageEnterpriseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageEnterpriseMousePressed
         // TODO add your handling code here:
       //manageEnterprise();
+
     }//GEN-LAST:event_manageEnterpriseMousePressed
 
     private void manageEnterpriseAdminMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageEnterpriseAdminMousePressed
-       manageEnterpriseAdmin();
+       
+       
+       try{
+            if(!ecosystem.getNetworkList().isEmpty()){
+          manageEnterpriseAdmin();
+            }
+            else{
+                 JOptionPane.showMessageDialog(this,"Please create the network and enterprise first!!");
+            }
+        }
+            
+        catch(Exception e){
+            
+        }
     }//GEN-LAST:event_manageEnterpriseAdminMousePressed
 
     private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
@@ -342,12 +428,33 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jTree1ValueChanged
 
+    private void mapOrganizationsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapOrganizationsMousePressed
+        // TODO add your handling code here:
+        try{
+            if(!ecosystem.getNetworkList().isEmpty()){
+          openMap();
+            }
+            else{
+                 JOptionPane.showMessageDialog(this,"Please create the network");
+            }
+        }
+            
+        catch(Exception e){
+            
+        }
+        
+     
+        
+        
+    }//GEN-LAST:event_mapOrganizationsMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
@@ -359,7 +466,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel manageEnterpriseLabel;
     private javax.swing.JLabel manageNetwork;
     private javax.swing.JPanel manageNetworkPanel;
+    private javax.swing.JLabel mapOrganizations;
     private javax.swing.JPanel rightSystemAdminPanel;
+    private javax.swing.JPanel seeMapPanel;
     private javax.swing.JPanel systemAdminPanel;
     // End of variables declaration//GEN-END:variables
 }
