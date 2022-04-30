@@ -13,13 +13,18 @@ import java.util.HashSet;
  */
 public class NGOOrganization extends Organization{
 
-    public NGOOrganization() {
-        super(Type.NGOOrganization.getValue());
+    public NGOOrganization(String name) {
+        super(name);
     }
 
     @Override
     public HashSet<Role> getSupportedRole() {
         return null; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+     @Override
+     public Type getType() {
+        return Organization.Type.NGOOrganization;
+    } 
     
 }
