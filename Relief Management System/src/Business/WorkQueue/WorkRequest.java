@@ -21,6 +21,16 @@ public abstract class WorkRequest {
     private Date resolveDate;
     private Doctor doctor;
     private BloodBank bloodType;
+    private String zipCode;
+    
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
 
     public BloodBank getBloodType() {
         return bloodType;

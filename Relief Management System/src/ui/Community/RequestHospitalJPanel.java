@@ -98,7 +98,7 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "No of Doctors", "Date of Request", "Date of Resolution", "Venue", "People Affected", "Doctor Type", "Status"
+                "No of Doctors", "Date of Request", "Date of Resolution", "Venue", "People Affected", "Doctor Type", "Status", "Sender", "Receiver"
             }
         ));
         jScrollPane1.setViewportView(tblRequest);
@@ -132,19 +132,18 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
                                         .addGap(10, 10, 10)))
                                 .addGap(121, 121, 121)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtDoctorCount, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                                    .addComponent(txtDoctorCount, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtRequestType, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtVenue, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtPeopleCount)
                                     .addComponent(doctorTypeComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(223, 223, 223)
-                        .addComponent(btnSendRequest)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 72, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                        .addComponent(btnSendRequest))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,9 +177,9 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
                     .addComponent(doctorTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnSendRequest)
-                .addGap(34, 34, 34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(418, Short.MAX_VALUE))
+                .addContainerGap(441, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -207,8 +206,8 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblRequest.getModel();
         model.setRowCount(0);
         for(WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
-            if(work instanceof CommunityDoctorRequest){
-                Object[] row = new Object[7];
+            if(work instanceof CommunityDoctorRequest && work.getSender() == account){
+                Object[] row = new Object[9];
                 row[0] = ((CommunityDoctorRequest) work).getNoDoctorRequired();
                 row[1] = ((CommunityDoctorRequest) work).getRequestDate() ;
                 row[2] = ((CommunityDoctorRequest) work).getResolveDate() ;
@@ -216,6 +215,12 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
                 row[6] = work;
                 row[4] = ((CommunityDoctorRequest) work).getNoPeopleAffected() ;
                 row[5] = ((CommunityDoctorRequest) work).getDoctorType();
+                row[7] = ((CommunityDoctorRequest) work).getSender().getUsername();
+                
+                if(((CommunityDoctorRequest) work).getReceiver() != null){
+                row[8] = ((CommunityDoctorRequest) work).getReceiver().getUsername();
+                }
+                
                 model.addRow(row);
             
             }

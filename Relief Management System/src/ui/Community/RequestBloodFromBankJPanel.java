@@ -69,11 +69,11 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Blood Type", "No of Blood Packets Required", "Date of requirement", "Date of resolution", "Venue", "Status"
+                "Blood Type", "No of Blood Packets Required", "Request Date", "Resolve Date", "Location", "Status", "Sender", "Receiver"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -112,7 +112,7 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setText("jLabel5");
+        jLabel5.setText("Purpose");
 
         txtPurpose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,15 +127,10 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addComponent(jButton1)
-                        .addGap(173, 173, 173)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSubmitRequest)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(183, 183, 183)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(214, 214, 214)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,8 +144,14 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
                             .addComponent(txtPacketCount, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(bloodGroupComboBox, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtVenue)
-                            .addComponent(txtPurpose))))
-                .addContainerGap(64, Short.MAX_VALUE))
+                            .addComponent(txtPurpose)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(286, 286, 286)
+                        .addComponent(btnSubmitRequest)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,11 +177,11 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtPurpose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSubmitRequest)
-                .addGap(133, 133, 133)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(128, 128, 128))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -207,6 +208,7 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
         request.setRequestDate(date);
         request.setStatus("Requested");
         request.setSender(account);
+        //request.setReceiver(" ");
         request.setPurpose(txtPurpose.getText());
         account.getWorkQueue().getWorkRequestList().add(request);
         enterprise.getWorkQueue().getWorkRequestList().add(request);
@@ -238,14 +240,19 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
         
 
         for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
-           if(work instanceof CommunityBloodRequest){ 
-            Object[] row = new Object[6];
+           if(work instanceof CommunityBloodRequest && work.getSender() == account){ 
+            Object[] row = new Object[8];
             row[0] = ((CommunityBloodRequest) work).getRequestedBloodType() ;
             row[1] = ((CommunityBloodRequest) work).getNoBloodPacketsRequired() ;
             row[2] = ((CommunityBloodRequest) work).getRequestDate() ;
             row[3] = ((CommunityBloodRequest) work).getResolveDate() ;
             row[4] = ((CommunityBloodRequest) work).getLocation();
             row[5] = work;
+            row[6] = ((CommunityBloodRequest) work).getSender().getUsername();
+            if(((CommunityBloodRequest) work).getReceiver()!= null){
+                row[7] = ((CommunityBloodRequest) work).getReceiver().getUsername();
+            }
+            
             model.addRow(row);
            }
         }

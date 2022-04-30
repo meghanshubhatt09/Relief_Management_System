@@ -59,10 +59,11 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnRequestBlood = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btnRequestHospital1 = new javax.swing.JButton();
+        btnPoliceService = new javax.swing.JButton();
 
         enterpriseNameLabel.setText("jTextField1");
 
-        btnRequestServiceProvider.setText("Request Other Services");
+        btnRequestServiceProvider.setText("Request Food");
         btnRequestServiceProvider.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRequestServiceProviderActionPerformed(evt);
@@ -104,53 +105,63 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnPoliceService.setText("Request Police Service");
+        btnPoliceService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPoliceServiceActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnRequestServiceProvider)
-                        .addGap(139, 139, 139))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(enterpriseNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
+                        .addGap(79, 79, 79)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnRequestBlood)
-                                .addComponent(btnDonateBlood))))
+                            .addComponent(btnRequestHospital)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnRequestHospital1)
+                                .addGap(10, 10, 10))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
+                        .addGap(123, 123, 123)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnRequestHospital1)
-                            .addComponent(btnRequestHospital))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnRequestBlood)
+                            .addComponent(btnDonateBlood)
+                            .addComponent(jButton1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(btnPoliceService))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
+                        .addComponent(enterpriseNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(btnRequestServiceProvider)))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(enterpriseNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnRequestServiceProvider)
-                .addGap(32, 32, 32)
+                .addGap(30, 30, 30)
                 .addComponent(btnRequestHospital)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(btnDonateBlood)
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addComponent(btnRequestBlood)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(btnRequestHospital1)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnPoliceService)
+                .addContainerGap(80, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -204,9 +215,18 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnRequestHospital1ActionPerformed
 
+    private void btnPoliceServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliceServiceActionPerformed
+        // TODO add your handling code here:
+        RequestPoliceJPanel requestPoliceJPanel = new RequestPoliceJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
+        userProcessContainer.add("requestPoliceJPanel",requestPoliceJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+         layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnPoliceServiceActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDonateBlood;
+    private javax.swing.JButton btnPoliceService;
     private javax.swing.JButton btnRequestBlood;
     private javax.swing.JButton btnRequestHospital;
     private javax.swing.JButton btnRequestHospital1;
