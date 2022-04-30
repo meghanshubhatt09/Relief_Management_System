@@ -238,11 +238,21 @@ public class HospitalCreateEmployee extends javax.swing.JPanel {
         Organization organization = (Organization) comboBoxOrganiztionEmployee.getSelectedItem();
         String name = txtEmployeeName.getText();
         
-        organization.getEmployeeDirectory().createEmployee(name);
-        fillTheTable(organization);
+        if("".equals(name)) {
+            JOptionPane.showMessageDialog(null, "Please enter name");
+        }else {
+            organization.getEmployeeDirectory().createEmployee(name);
+            fillTheTable(organization);
+            resetFields();
+            JOptionPane.showMessageDialog(null, "Employee created successfully");
+        }
+        
+ 
 
     }//GEN-LAST:event_btnCreateEmployeeActionPerformed
-
+    public void resetFields() {
+        txtEmployeeName.setText("");
+    }
     private void txtEmployeeNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmployeeNameActionPerformed

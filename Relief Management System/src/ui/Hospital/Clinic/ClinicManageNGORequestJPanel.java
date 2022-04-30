@@ -479,7 +479,14 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         if(!txtNoDoctors.getText().equals("")){
-            int quant = Integer.parseInt(txtNoDoctors.getText());
+            int quant = 0;
+            try{
+            quant = Integer.parseInt(txtNoDoctors.getText());
+            }
+            catch(Exception e)
+                    {
+            JOptionPane.showMessageDialog(null, "Enter a proper value !", "Warning", JOptionPane.WARNING_MESSAGE);            
+                    }
             String v =  (String) cmbDocType.getSelectedItem();
             int temp = 0;
             for (Doctor doctor : ecoSystem.getDoctorList().getDoctorList()) {

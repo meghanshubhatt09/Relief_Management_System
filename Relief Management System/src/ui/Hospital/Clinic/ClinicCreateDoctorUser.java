@@ -88,7 +88,7 @@ public class ClinicCreateDoctorUser extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(255, 255, 255));
 
         btnBack.setBackground(new java.awt.Color(102, 217, 255));
         btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -234,6 +234,11 @@ public class ClinicCreateDoctorUser extends javax.swing.JPanel {
         
         String employeeName = txtEmployeeName.getText();
         
+        if ("".equals(employeeName)) {
+                JOptionPane.showMessageDialog(null, "Please enter employee name!!", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        
         Organization organization = null;
         for(Organization o:organizationDirectory.getOrganizationList()){
             //System.out.println("ui.Hospital.Clinic.ClinicCreateDoctorUser.<init>() "+organization.getEmployeeDirectory().getEmployeeList());
@@ -252,6 +257,17 @@ public class ClinicCreateDoctorUser extends javax.swing.JPanel {
         String userName = txtUserName.getText();
         String password = txtPassword.getText();
         Role role = new DoctorAdminRole();
+        
+        if ("".equals(userName)) {
+                JOptionPane.showMessageDialog(null, "Please enter user name!!", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        if ("".equals(password)) {
+                JOptionPane.showMessageDialog(null, "Please enter password name!!", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        
+       
         
         
         if(EcoSystem.checkIfUsernameIsUnique(userName)){
