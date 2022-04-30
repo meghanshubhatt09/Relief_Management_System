@@ -11,6 +11,7 @@ import Business.Enterprise.Enterprise;
 import Business.RoundedBorder;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import ui.Hospital.Clinic.ClinicManageDoctorsJPanel;
 /**
@@ -139,10 +140,18 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnEmployeeCreationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeCreationActionPerformed
         // TODO add your handling code here:
+        
+        try {
+        
         HospitalCreateEmployee hospitalCreateEmployee = new HospitalCreateEmployee(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("hospitalCreateEmployee", hospitalCreateEmployee);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Please create the organiztion", "Warning", JOptionPane.WARNING_MESSAGE);
+            
+        }
     }//GEN-LAST:event_btnEmployeeCreationActionPerformed
 
     private void btnUserAccountsManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserAccountsManageActionPerformed

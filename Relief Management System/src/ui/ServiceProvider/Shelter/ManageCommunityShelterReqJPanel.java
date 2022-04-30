@@ -4,16 +4,20 @@
  */
 package ui.ServiceProvider.Shelter;
 
+import Business.BloodBank.BloodBank;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.OrganizationDirectory;
 import Business.ServiceProvider.Shelter.Shelter;
 import Business.UserAccount.UserAccount;
 import Business.Utils.HeaderColors;
+import Business.WorkQueue.CommunityBloodRequest;
+import Business.WorkQueue.CommunityDoctorRequest;
 import Business.WorkQueue.CommunityFoodRequest;
 import Business.WorkQueue.CommunityShelterRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -256,11 +260,81 @@ public class ManageCommunityShelterReqJPanel extends javax.swing.JPanel {
     }
     private void btnDeleteReqHospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteReqHospActionPerformed
         // TODO add your handling code here:
-        
+                int selectedRow= tblRequestTableCommunity.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null, "Please select the row to delete the request", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+
+            WorkRequest p=(WorkRequest) tblRequestTableCommunity.getValueAt(selectedRow, 5);
+
+            userAccount.getWorkQueue().getWorkRequestList().remove(p);
+            ecoSystem.getWorkQueue().getWorkRequestList().remove(p);
+            enterprise.getWorkQueue().getWorkRequestList().remove(p);
+
+            JOptionPane.showMessageDialog(null, "You have successfully deleted the request");
+            fillTheRequestedTable();
+        }
     }//GEN-LAST:event_btnDeleteReqHospActionPerformed
 
     private void btnApproveReqHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveReqHospitalActionPerformed
         // TODO add your handling code here:
+      int selectedRow= tblRequestTableCommunity.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null, "Please select the row to assign the account", "Warning", JOptionPane.WARNING_MESSAGE);
+        }        
+        else{
+
+            CommunityShelterRequest p=(CommunityShelterRequest) tblRequestTableCommunity.getValueAt(selectedRow, 5);
+
+            int temp=0;
+            if(p.getReceiver()!= null){
+                if (p.getStatus().equalsIgnoreCase("Pending")) {
+                    UserAccount a =p.getSender();
+                    if(ecoSystem.getShelterDirectory().getShelterList().size()<= 0){
+                        JOptionPane.showMessageDialog(null, "No Food available.");
+                        return;
+                    }
+                    for (Shelter shelter : ecoSystem.getShelterDirectory().getShelterList()) {
+                        if (shelter.getShelterName().equals(p.getShelterName()) )
+                        {
+                            //if(p.getDocName().equals(v.getDocName())){
+                                if(shelter.getCapacity()- p.getCapacityRequired() <0){
+                                    JOptionPane.showMessageDialog(null, "Not enough capacity available. Wait for sometime");
+                                    return;
+                                }
+                                temp=1;
+                                shelter.setCapacity(shelter.getCapacity()-p.getCapacityRequired());
+                               
+                                break;
+                            }
+                            //}
+
+                    }
+                    if(temp==0){
+                        JOptionPane.showMessageDialog(null, "No Blood of this type available");
+                        return;
+                    }
+
+                    p.setStatus("Approved");
+                    JOptionPane.showMessageDialog(null, "You have successfully completed the request");
+                    Date date = new Date();
+                    p.setResolveDate(date);
+                    fillTheRequestedTable();
+
+                } else if(p.getStatus().equalsIgnoreCase("Rejected")){
+                    JOptionPane.showMessageDialog(null, "You cannot approve the rejected request.");
+
+                }else {
+                    JOptionPane.showMessageDialog(null, "Cannot Approve the request 2 times.");
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Please assign first");
+            }
+
+        }
+        
 
        
 
@@ -269,6 +343,30 @@ public class ManageCommunityShelterReqJPanel extends javax.swing.JPanel {
 
     private void btnRejectReqHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectReqHospitalActionPerformed
         // TODO add your handling code here:
+        int selectedRow= tblRequestTableCommunity.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null, "Please select the row to reject the Request", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+
+            CommunityShelterRequest p=(CommunityShelterRequest) tblRequestTableCommunity.getValueAt(selectedRow, 5);
+            if(p.getStatus().equalsIgnoreCase("Approved")){
+                JOptionPane.showMessageDialog(null, "Cannot Reject the Approved request", "Warning", JOptionPane.WARNING_MESSAGE);
+            }else if(p.getStatus().equalsIgnoreCase("Rejected")){
+                JOptionPane.showMessageDialog(null, "Cannot Reject the request 2 times", "Warning", JOptionPane.WARNING_MESSAGE);
+            }else{
+                if (p.getStatus().equalsIgnoreCase("Pending")) {
+                    p.setStatus("Rejected");
+                    p.setReceiver(userAccount);
+                    Date resolveDate = new Date();
+                    p.setResolveDate(resolveDate);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Please assign first");
+                }
+            }
+            fillTheRequestedTable();
+
+        }
         
     }//GEN-LAST:event_btnRejectReqHospitalActionPerformed
 

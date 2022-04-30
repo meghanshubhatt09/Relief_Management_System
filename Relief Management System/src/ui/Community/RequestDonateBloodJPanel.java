@@ -91,7 +91,7 @@ public class RequestDonateBloodJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Time of Requirement");
 
-        jLabel6.setText("Venue");
+        jLabel6.setText("Location");
 
         btnSubmitDonateBloodRequest.setText("Submit");
         btnSubmitDonateBloodRequest.addActionListener(new java.awt.event.ActionListener() {
@@ -111,13 +111,13 @@ public class RequestDonateBloodJPanel extends javax.swing.JPanel {
 
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Blood Type", "No of Blood Packets", "Date of Requirememnts", "Time of Requirements", "Venue", "Status"
+                "Blood Type", "Blood Packets", "Request Date", "Resolve Date", "Location", "Status", "Sender", "Receiver"
             }
         ));
         jScrollPane1.setViewportView(tblRequest);
@@ -144,27 +144,26 @@ public class RequestDonateBloodJPanel extends javax.swing.JPanel {
                         .addComponent(bloodGroupComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(198, 198, 198))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 42, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPurpose, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtVenue, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtDate)
-                                            .addComponent(txtBloodPacketCount)
-                                            .addComponent(txtTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))))))
-                        .addGap(195, 195, 195))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 335, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPurpose, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtVenue, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtDate)
+                                    .addComponent(txtBloodPacketCount)
+                                    .addComponent(txtTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))))
+                        .addGap(195, 195, 195))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(344, 344, 344)
                 .addComponent(btnSubmitDonateBloodRequest)
@@ -249,14 +248,22 @@ public class RequestDonateBloodJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblRequest.getModel();
         model.setRowCount(0);
         for(WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
-            if(work instanceof CommunityDonationRequest){
-                Object[] row = new Object[6];
+            if(work instanceof CommunityDonationRequest && work.getSender() == account){
+                Object[] row = new Object[8];
                 row[0] = ((CommunityDonationRequest) work).getRequestedBloodType() ;
                 row[2] = ((CommunityDonationRequest) work).getRequestedDate();
                 row[3] = ((CommunityDonationRequest) work).getRequestedTime();
                 row[4] = ((CommunityDonationRequest) work).getLocation();
                 row[5] = work;
                 row[1] = ((CommunityDonationRequest) work).getNoBloodPacketsRequired() ;
+                row[6] = ((CommunityDonationRequest) work).getSender().getUsername();
+                
+                if(((CommunityDonationRequest) work).getReceiver() != null){
+                row[7] = ((CommunityDonationRequest) work).getReceiver().getUsername();
+                }
+                
+                
+
                 model.addRow(row);
             
             }

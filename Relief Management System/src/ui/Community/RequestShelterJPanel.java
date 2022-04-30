@@ -78,11 +78,11 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Shelter Name", "#People", "Request Date", "Resolved Date", "Status"
+                "ID", "Shelter Name", "People", "Request Date", "Resolved Date", "Status", "Sender", "Receiver"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -112,8 +112,6 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shelter.png"))); // NOI18N
 
