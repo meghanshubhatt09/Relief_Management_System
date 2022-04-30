@@ -42,11 +42,11 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="btnAssignToMe" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="btnDeleteReqHosp" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnDeleteReqPolice" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnApproveReqHospital" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnApproveReqPolice" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnRejectReqHospital" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnRejectReqPolice" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
@@ -99,9 +99,9 @@
                   <Component id="jLabel2" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="274" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnRejectReqHospital" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnApproveReqHospital" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnDeleteReqHosp" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnRejectReqPolice" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnApproveReqPolice" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnDeleteReqPolice" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnAssignToMe" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -129,7 +129,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAssignToMeActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnDeleteReqHosp">
+    <Component class="javax.swing.JButton" name="btnDeleteReqPolice">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="ff" type="rgb"/>
@@ -140,10 +140,10 @@
         <Property name="text" type="java.lang.String" value="Delete Request"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteReqHospActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteReqPoliceActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnApproveReqHospital">
+    <Component class="javax.swing.JButton" name="btnApproveReqPolice">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="d9" red="66" type="rgb"/>
@@ -154,10 +154,10 @@
         <Property name="text" type="java.lang.String" value="Approve Request"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnApproveReqHospitalActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnApproveReqPoliceActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnRejectReqHospital">
+    <Component class="javax.swing.JButton" name="btnRejectReqPolice">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="99" green="99" red="ff" type="rgb"/>
@@ -168,7 +168,7 @@
         <Property name="text" type="java.lang.String" value="Reject Request"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRejectReqHospitalActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRejectReqPoliceActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">

@@ -51,9 +51,9 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         btnAssignToMe = new javax.swing.JButton();
-        btnDeleteReqHosp = new javax.swing.JButton();
-        btnApproveReqHospital = new javax.swing.JButton();
-        btnRejectReqHospital = new javax.swing.JButton();
+        btnDeleteReqPolice = new javax.swing.JButton();
+        btnApproveReqPolice = new javax.swing.JButton();
+        btnRejectReqPolice = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblAvailablePolice = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -74,30 +74,30 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnDeleteReqHosp.setBackground(new java.awt.Color(255, 153, 153));
-        btnDeleteReqHosp.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        btnDeleteReqHosp.setText("Delete Request");
-        btnDeleteReqHosp.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteReqPolice.setBackground(new java.awt.Color(255, 153, 153));
+        btnDeleteReqPolice.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnDeleteReqPolice.setText("Delete Request");
+        btnDeleteReqPolice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteReqHospActionPerformed(evt);
+                btnDeleteReqPoliceActionPerformed(evt);
             }
         });
 
-        btnApproveReqHospital.setBackground(new java.awt.Color(102, 217, 255));
-        btnApproveReqHospital.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        btnApproveReqHospital.setText("Approve Request");
-        btnApproveReqHospital.addActionListener(new java.awt.event.ActionListener() {
+        btnApproveReqPolice.setBackground(new java.awt.Color(102, 217, 255));
+        btnApproveReqPolice.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnApproveReqPolice.setText("Approve Request");
+        btnApproveReqPolice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnApproveReqHospitalActionPerformed(evt);
+                btnApproveReqPoliceActionPerformed(evt);
             }
         });
 
-        btnRejectReqHospital.setBackground(new java.awt.Color(255, 153, 153));
-        btnRejectReqHospital.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        btnRejectReqHospital.setText("Reject Request");
-        btnRejectReqHospital.addActionListener(new java.awt.event.ActionListener() {
+        btnRejectReqPolice.setBackground(new java.awt.Color(255, 153, 153));
+        btnRejectReqPolice.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnRejectReqPolice.setText("Reject Request");
+        btnRejectReqPolice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRejectReqHospitalActionPerformed(evt);
+                btnRejectReqPoliceActionPerformed(evt);
             }
         });
 
@@ -184,11 +184,11 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(btnAssignToMe)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(btnDeleteReqHosp)
+                                            .addComponent(btnDeleteReqPolice)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(btnApproveReqHospital)
+                                            .addComponent(btnApproveReqPolice)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(btnRejectReqHospital))
+                                            .addComponent(btnRejectReqPolice))
                                         .addGroup(layout.createSequentialGroup()
                                             .addGap(6, 6, 6)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,9 +224,9 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(274, 274, 274)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnRejectReqHospital)
-                        .addComponent(btnApproveReqHospital)
-                        .addComponent(btnDeleteReqHosp)
+                        .addComponent(btnRejectReqPolice)
+                        .addComponent(btnApproveReqPolice)
+                        .addComponent(btnDeleteReqPolice)
                         .addComponent(btnAssignToMe))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jLabel5)
@@ -254,7 +254,7 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
-    private void btnDeleteReqHospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteReqHospActionPerformed
+    private void btnDeleteReqPoliceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteReqPoliceActionPerformed
         // TODO add your handling code here:
         int selectedRow= tblRequest.getSelectedRow();
         if(selectedRow<0){
@@ -271,9 +271,9 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "You have successfully deleted the request");
             populateRequestTable();
         }
-    }//GEN-LAST:event_btnDeleteReqHospActionPerformed
+    }//GEN-LAST:event_btnDeleteReqPoliceActionPerformed
 
-    private void btnApproveReqHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveReqHospitalActionPerformed
+    private void btnApproveReqPoliceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveReqPoliceActionPerformed
         // TODO add your handling code here:
 
         int selectedRow= tblRequest.getSelectedRow();
@@ -352,9 +352,9 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
             }
 
         }
-    }//GEN-LAST:event_btnApproveReqHospitalActionPerformed
+    }//GEN-LAST:event_btnApproveReqPoliceActionPerformed
 
-    private void btnRejectReqHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectReqHospitalActionPerformed
+    private void btnRejectReqPoliceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectReqPoliceActionPerformed
         // TODO add your handling code here:
         int selectedRow= tblRequest.getSelectedRow();
         if(selectedRow<0){
@@ -380,7 +380,7 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
             populateRequestTable();
 
         }
-    }//GEN-LAST:event_btnRejectReqHospitalActionPerformed
+    }//GEN-LAST:event_btnRejectReqPoliceActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
@@ -438,11 +438,11 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnApproveReqHospital;
+    private javax.swing.JButton btnApproveReqPolice;
     private javax.swing.JButton btnAssignToMe;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnDeleteReqHosp;
-    private javax.swing.JButton btnRejectReqHospital;
+    private javax.swing.JButton btnDeleteReqPolice;
+    private javax.swing.JButton btnRejectReqPolice;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

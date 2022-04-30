@@ -69,11 +69,11 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Blood Type", "No of Blood Packets Required", "Date of requirement", "Date of resolution", "Venue", "Status"
+                "Blood Type", "No of Blood Packets Required", "Request Date", "Resolve Date", "Location", "Status", "Sender", "Receiver"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -208,6 +208,7 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
         request.setRequestDate(date);
         request.setStatus("Requested");
         request.setSender(account);
+        //request.setReceiver(" ");
         request.setPurpose(txtPurpose.getText());
         account.getWorkQueue().getWorkRequestList().add(request);
         enterprise.getWorkQueue().getWorkRequestList().add(request);
@@ -239,14 +240,19 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
         
 
         for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
-           if(work instanceof CommunityBloodRequest){ 
-            Object[] row = new Object[6];
+           if(work instanceof CommunityBloodRequest && work.getSender() == account){ 
+            Object[] row = new Object[8];
             row[0] = ((CommunityBloodRequest) work).getRequestedBloodType() ;
             row[1] = ((CommunityBloodRequest) work).getNoBloodPacketsRequired() ;
             row[2] = ((CommunityBloodRequest) work).getRequestDate() ;
             row[3] = ((CommunityBloodRequest) work).getResolveDate() ;
             row[4] = ((CommunityBloodRequest) work).getLocation();
             row[5] = work;
+            row[6] = ((CommunityBloodRequest) work).getSender().getUsername();
+            if(((CommunityBloodRequest) work).getReceiver()!= null){
+                row[7] = ((CommunityBloodRequest) work).getReceiver().getUsername();
+            }
+            
             model.addRow(row);
            }
         }

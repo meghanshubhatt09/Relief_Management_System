@@ -26,6 +26,7 @@ public class CommunityDoctorRequest extends WorkRequest{
     private String requestedTime;
     private String purpose;
     private String doctorType;
+    private String zip;
 
     public String getDoctorType() {
         return doctorType;

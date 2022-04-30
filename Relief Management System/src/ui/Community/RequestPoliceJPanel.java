@@ -80,7 +80,7 @@ public class RequestPoliceJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Police Dispatched", "People Affected", "Request Date", "Resolution Date", "Venue", "Police Type", "Severity", "Status"
+                "Police Dispatched", "People Affected", "Request Date", "Resolution Date", "Venue", "Police Type", "Severity", "Status", "Sender", "Receiver"
             }
         ));
         jScrollPane1.setViewportView(tblRequest);
@@ -195,8 +195,8 @@ public class RequestPoliceJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblRequest.getModel();
         model.setRowCount(0);
         for(WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
-            if(work instanceof CommunityPoliceRequest){
-                Object[] row = new Object[8];
+            if(work instanceof CommunityPoliceRequest && work.getSender() == account){
+                Object[] row = new Object[10];
                 row[0] = ((CommunityPoliceRequest) work).getPoliceCount() ;
                 row[1] = ((CommunityPoliceRequest) work).getNoPeopleAffected() ;
                 row[2] = ((CommunityPoliceRequest) work).getRequestDate() ;
@@ -205,6 +205,11 @@ public class RequestPoliceJPanel extends javax.swing.JPanel {
                 row[4] = ((CommunityPoliceRequest) work).getLocation() ;
                 row[5] = ((CommunityPoliceRequest) work).getPoliceType();
                 row[6] = ((CommunityPoliceRequest) work).getPurpose() ;
+                row[8] = ((CommunityPoliceRequest) work).getSender();
+                if(((CommunityPoliceRequest) work).getReceiver() != null){
+                     row[9] = ((CommunityPoliceRequest) work).getReceiver().getUsername() ;
+                }
+               
 
                 model.addRow(row);
             

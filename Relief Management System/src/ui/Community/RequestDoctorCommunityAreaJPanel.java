@@ -71,11 +71,11 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Patient Name", "Age", "Gender", "Purpose of Visit", "Date of requirement", "Date of resolution", "Doctor Name", "Status"
+                "Patient Name", "Age", "Gender", "Purpose of Visit", "Request Date", "Resolve Date", "Doctor Name", "Status", "Sender", "Receiver"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -230,8 +230,8 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
         
 
         for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
-           if(work instanceof PatientDoctorRequest){ 
-            Object[] row = new Object[8];
+           if(work instanceof PatientDoctorRequest && work.getSender() == userAccount){ 
+            Object[] row = new Object[10];
             row[0] = ((PatientDoctorRequest) work).getPatientName();
             row[1] = ((PatientDoctorRequest) work).getPatientAge();
             row[2] = ((PatientDoctorRequest) work).getPatientGender();
@@ -240,6 +240,13 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
             row[5] = ((PatientDoctorRequest) work).getResolveDate();
             row[6] = ((PatientDoctorRequest) work).getDoctorName();
             row[7] = work;
+            row[8] = ((PatientDoctorRequest) work).getSender().getUsername();
+            
+            if(((PatientDoctorRequest) work).getReceiver() != null){
+            row[9] = ((PatientDoctorRequest) work).getReceiver().getUsername();
+            }
+            
+            
   
             model.addRow(row);
            }
