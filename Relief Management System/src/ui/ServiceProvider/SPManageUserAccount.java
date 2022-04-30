@@ -264,22 +264,41 @@ public class SPManageUserAccount extends javax.swing.JPanel {
     }//GEN-LAST:event_comboBoxOrganiztionActionPerformed
 
     private void btnCreateUserAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserAccountActionPerformed
-        String userName = txtUserName.getText();
-        String password = txtPassword.getText();
-        if(EcoSystem.checkIfUsernameIsUnique(userName)){
-            Organization organization = (Organization) comboBoxOrganiztion.getSelectedItem();
-            Employee employee = (Employee) comboBoxEmployee.getSelectedItem();
-            Role role = (Role) myRole.get(comboBoxRole.getSelectedItem());
 
-            organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+        try {
+            String userName = txtUserName.getText();
+            String password = txtPassword.getText();
 
-            fillTheTable();
-        }
-        else{
+            if ("".equals(userName)) {
+                JOptionPane.showMessageDialog(null, "Please enter username!!", "Warning", JOptionPane.WARNING_MESSAGE);
+                //return;
+            } else if ("".equals(password)) {
+                JOptionPane.showMessageDialog(null, "Please enter password!!", "Warning", JOptionPane.WARNING_MESSAGE);
+                //return;
+            } else {
+                if (EcoSystem.checkIfUsernameIsUnique(userName)) {
+                    Organization organization = (Organization) comboBoxOrganiztion.getSelectedItem();
+                    Employee employee = (Employee) comboBoxEmployee.getSelectedItem();
+                    Role role = (Role) myRole.get(comboBoxRole.getSelectedItem());
+
+                    organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+
+                    fillTheTable();
+                    resetFields();;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnCreateUserAccountActionPerformed
 
+       public void resetFields() {
+        txtUserName.setText("");
+        txtPassword.setText("");
+    }
+    
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);

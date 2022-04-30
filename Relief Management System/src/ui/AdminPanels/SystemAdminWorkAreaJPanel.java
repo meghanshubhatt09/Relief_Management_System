@@ -12,6 +12,7 @@ import Business.Organization.Organization;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -80,10 +81,15 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }
     
     private void manageNetwork(){ 
+        try{
         NetworkMangWAJPanel networkMangWAJPanel = new NetworkMangWAJPanel(ecosystem,rightSystemAdminPanel);
         rightSystemAdminPanel.add("networkMangWAJPanel", networkMangWAJPanel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
+        }
+        catch(Exception NullPointerException){
+            JOptionPane.showMessageDialog(null,"Please create the network");
+        }
      }
     
      private void openMap(){ 
@@ -363,7 +369,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageNetworkMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageNetworkMousePressed
-        manageNetwork();
+
+        manageNetwork();    
+       
     }//GEN-LAST:event_manageNetworkMousePressed
 
     private void manageNetworkPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageNetworkPanelMousePressed
@@ -372,16 +380,44 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_manageNetworkPanelMousePressed
 
     private void manageEnterpriseLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageEnterpriseLabelMousePressed
-      manageEnterprise();
+     
+       try{
+            if(!ecosystem.getNetworkList().isEmpty()){
+           manageEnterprise();
+            }
+            else{
+                 JOptionPane.showMessageDialog(this,"Please create the network first!");
+            }
+        }
+            
+        catch(Exception e){
+            
+        }
+      
+      
     }//GEN-LAST:event_manageEnterpriseLabelMousePressed
 
     private void manageEnterpriseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageEnterpriseMousePressed
         // TODO add your handling code here:
       //manageEnterprise();
+
     }//GEN-LAST:event_manageEnterpriseMousePressed
 
     private void manageEnterpriseAdminMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageEnterpriseAdminMousePressed
-       manageEnterpriseAdmin();
+       
+       
+       try{
+            if(!ecosystem.getNetworkList().isEmpty()){
+          manageEnterpriseAdmin();
+            }
+            else{
+                 JOptionPane.showMessageDialog(this,"Please create the network and enterprise first!!");
+            }
+        }
+            
+        catch(Exception e){
+            
+        }
     }//GEN-LAST:event_manageEnterpriseAdminMousePressed
 
     private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
@@ -394,7 +430,20 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void mapOrganizationsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapOrganizationsMousePressed
         // TODO add your handling code here:
-        openMap();
+        try{
+            if(!ecosystem.getNetworkList().isEmpty()){
+          openMap();
+            }
+            else{
+                 JOptionPane.showMessageDialog(this,"Please create the network");
+            }
+        }
+            
+        catch(Exception e){
+            
+        }
+        
+     
         
         
     }//GEN-LAST:event_mapOrganizationsMousePressed
