@@ -240,13 +240,7 @@ public class SPCreateEmployee extends javax.swing.JPanel {
     }//GEN-LAST:event_backJButtonActionPerformed
 
     private void btnCreateEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateEmployeeActionPerformed
-
-//        Organization organization = (Organization) comboBoxOrganiztionEmployee.getSelectedItem();
-//        String name = txtEmployeeName.getText();
-//
-//        organization.getEmployeeDirectory().createEmployee(name);
-//        fillTheTable(organization);
-        
+     
           Organization organization = (Organization) comboBoxOrganiztionEmployee.getSelectedItem();
         String name = txtEmployeeName.getText();
         

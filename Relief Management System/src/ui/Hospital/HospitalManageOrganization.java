@@ -152,6 +152,7 @@ public class HospitalManageOrganization extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jLabel5.setText("Set Location");
 
+        JLocation.setEditable(false);
         JLocation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         JLocation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,20 +252,23 @@ public class HospitalManageOrganization extends javax.swing.JPanel {
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
-//        Type type = (Type) organizationJComboBox.getSelectedItem();
-//        organizationDirectory.createOrganization(type,txtOrganiztionName.getText(),null);
-//        filltheTable();
-        
+        try{
         Organization.Type type = (Organization.Type) organizationJComboBox.getSelectedItem();
         if("".equals(txtOrganiztionName.getText())) {
-            JOptionPane.showMessageDialog(null, "Enter organization name!"); 
+            JOptionPane.showMessageDialog(null, "Enter organization name!");
+            return;
         }else if("".equals(JLocation.getText())) {
-            JOptionPane.showMessageDialog(null, "Please set a location"); 
+            JOptionPane.showMessageDialog(null, "Please set a location");
+            return;
         }else {
             enterprise.getOrganizationDirectory().createOrganization(type, txtOrganiztionName.getText(), locationPoint);
             filltheTable();
             resetFields();
             JOptionPane.showMessageDialog(null, "Organization is created successfully");
+        }
+        }
+        catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Some Error Occurred!!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
         
     }//GEN-LAST:event_addJButtonActionPerformed
