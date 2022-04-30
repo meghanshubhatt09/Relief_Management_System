@@ -5,6 +5,7 @@
 package ui.AdminPanels;
 
 import Business.EcoSystem;
+import Business.Location.LocationPoint;
 import Business.Network.Network;
 import Business.RoundedBorder;
 import Business.Utils.HeaderColors;
@@ -13,6 +14,8 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import ui.GoogleMaps.NetworkMapJPanel1;
+import ui.GoogleMaps.OrganizationMapJPanel;
 
 /**
  *
@@ -25,6 +28,7 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
      */
     EcoSystem ecoSystem;    
     JPanel userProcessContainer;
+    LocationPoint locationPoint;
     public NetworkMangWAJPanel(EcoSystem ecoSystem,    
     JPanel userProcessContainer) {
         initComponents();
@@ -53,6 +57,9 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         submitJButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        JLocation = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(194, 192, 212));
 
@@ -75,25 +82,18 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
         networkJTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         networkJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Name"
+                "Name", "Location"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
-                false
+                false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -117,31 +117,61 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/worldwide_network.png"))); // NOI18N
 
+        jLabel5.setBackground(new java.awt.Color(102, 217, 255));
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jLabel5.setText("Set Location");
+
+        JLocation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        JLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JLocationActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jButton1.setText("Set Location");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(289, 289, 289)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(38, 38, 38)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(38, 38, 38)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel5))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(JLocation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                                        .addComponent(nameJTextField, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(152, 152, 152)
+                                            .addComponent(btnDelete))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jButton1)))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(submitJButton))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnDelete, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addGap(330, 330, 330)
+                        .addComponent(submitJButton)))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,15 +181,20 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(btnDelete)
-                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDelete)
                     .addComponent(jLabel1)
-                    .addComponent(submitJButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(nameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(JLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addComponent(submitJButton)
+                .addGap(25, 25, 25)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -168,11 +203,18 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
 
         model.setRowCount(0);
         for (Network network : ecoSystem.getNetworkList()) {
-            Object[] row = new Object[1];
+            Object[] row = new Object[2];
             row[0] = network;
+            row[1] = network.getLocationPoint();
             model.addRow(row);
         }
     }
+    
+    public void populateLongituteLatitude(LocationPoint locationPoint) {
+        this.locationPoint = locationPoint;
+        JLocation.setText(locationPoint.getLatitude() + ", " + locationPoint.getLongitude());
+    }
+
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
@@ -203,24 +245,43 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
         {
             JOptionPane.showMessageDialog(null,"Please provide the name of the network!!");
         }
+        else if("".equals(JLocation.getText())) {
+            JOptionPane.showMessageDialog(null, "Please set a location"); 
+        }
         else
         {
         String name = nameJTextField.getText();
 
         Network network = ecoSystem.createAndAddNetwork();
         network.setName(name);
+        network.setLocationPoint(locationPoint);
 
         fillNetworkTable();
         JOptionPane.showMessageDialog(null, "Added the nework!!");
         }
     }//GEN-LAST:event_submitJButtonActionPerformed
 
+    private void JLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JLocationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JLocationActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        NetworkMapJPanel1 muajp = new NetworkMapJPanel1(userProcessContainer,ecoSystem);
+        userProcessContainer.add("OrganizationLocationJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField JLocation;
     private javax.swing.JButton btnDelete;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JTable networkJTable;

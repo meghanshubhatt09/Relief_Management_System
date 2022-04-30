@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.Enterprise;
+import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 /**
@@ -12,6 +13,15 @@ import Business.Organization.OrganizationDirectory;
 public abstract class Enterprise extends Organization{
     private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
+    private Network network;
+
+    public Network getNetwork() {
+        return network;
+    }
+
+    public void setNetwork(Network network) {
+        this.network = network;
+    }
     
     public Enterprise(String name, EnterpriseType type) {
         super(name);
