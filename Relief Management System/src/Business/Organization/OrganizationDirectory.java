@@ -35,18 +35,22 @@ public class OrganizationDirectory {
         }
         else if (type.getValue().equals(Type.ClinicOrganization.getValue())){
             organization = new ClinicOrganization(name);
+             organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.BloodOrganization.getValue())){
             organization = new BloodOrganization(name);
+             organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
         }
          else if (type.getValue().equals(Type.FoodOrganization.getValue())){
             organization = new FoodOrganization(name);
+            organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
         }
          else if (type.getValue().equals(Type.ShelterOrganization.getValue())){
             organization = new ShelterOrganization(name);
+            organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
         }
          else if (type.getValue().equals(Type.EmergencyRequestOrganization.getValue())){

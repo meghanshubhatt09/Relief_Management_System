@@ -7,10 +7,16 @@ package ui.ServiceProvider.Shelter;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.OrganizationDirectory;
+import Business.ServiceProvider.Shelter.Shelter;
 import Business.UserAccount.UserAccount;
 import Business.Utils.HeaderColors;
+import Business.WorkQueue.CommunityFoodRequest;
+import Business.WorkQueue.CommunityShelterRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -37,6 +43,9 @@ public class ManageCommunityShelterReqJPanel extends javax.swing.JPanel {
         this.organizationDirectory = organizationDirectory;
         this.enterprise = enterprise;
         this.ecoSystem = ecoSystem;
+        
+        populateShelterTable();
+        fillTheRequestedTable();
         
         jShelterTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         tblRequestTableCommunity.getTableHeader().setDefaultRenderer(new HeaderColors());
@@ -217,8 +226,34 @@ public class ManageCommunityShelterReqJPanel extends javax.swing.JPanel {
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
         // TODO add your handling code here:
         
+         int selectedRow= tblRequestTableCommunity.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null, "Please select the row to assign the Request", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else{
+            CommunityShelterRequest c =  (CommunityShelterRequest)tblRequestTableCommunity.getValueAt(selectedRow, 5);
+            c.setStatus("Pending");
+            c.setReceiver(userAccount);
+            fillTheRequestedTable();
+
+        }
+        
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
+    private void populateShelterTable() {
+
+        DefaultTableModel table = (DefaultTableModel) jShelterTable.getModel();
+        table.setRowCount(0);
+        for (Shelter shelter : ecoSystem.getShelterDirectory().getShelterList()) {
+//            
+            Object[] row = new Object[4];
+            row[0] = shelter.getShelterId();
+            row[1] = shelter.getShelterName();
+            row[2] = shelter.getCapacity();
+            row[3] = shelter.getLocation();
+            table.addRow(row);
+        }
+    }
     private void btnDeleteReqHospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteReqHospActionPerformed
         // TODO add your handling code here:
         
@@ -244,7 +279,24 @@ public class ManageCommunityShelterReqJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
-
+ private void fillTheRequestedTable() {
+        DefaultTableModel model = (DefaultTableModel) tblRequestTableCommunity.getModel();
+        model.setRowCount(0);
+        
+        for(WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
+            if(work instanceof CommunityShelterRequest){
+                Object[] row = new Object[6];
+                row[0] = ((CommunityShelterRequest) work).getReqId();
+                row[3] = ((CommunityShelterRequest) work).getRequestDate() ;
+                row[1] = ((CommunityShelterRequest) work).getShelterName();
+                row[2] = ((CommunityShelterRequest) work).getCapacityRequired();
+                row[5] = work;
+                row[4] = ((CommunityShelterRequest) work).getResolveDate();
+                model.addRow(row);
+            
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApproveReqHospital;
     private javax.swing.JButton btnAssignToMe;
