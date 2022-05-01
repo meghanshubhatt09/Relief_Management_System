@@ -99,11 +99,11 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "No of Doctors required", "No of People Affected", "Date of requirement", "Date of resolution", "Venue", "Doctor Type", "Status"
+                "No of Doctors required", "No of People Affected", "Date of requirement", "Date of resolution", "Location", "Doctor Type", "Status", "Sender", "Receiver"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -542,7 +542,9 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
 
         for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
            if(work instanceof CommunityDoctorRequest){ 
-            Object[] row = new Object[7];
+               
+               if(((CommunityDoctorRequest) work).getReceiver()==null || ((CommunityDoctorRequest) work).getReceiver() == userAccount){
+                Object[] row = new Object[9];
             row[0] = ((CommunityDoctorRequest) work).getNoDoctorRequired();
             row[2] = ((CommunityDoctorRequest) work).getRequestDate() ;
             row[3] = ((CommunityDoctorRequest) work).getResolveDate() ;
@@ -550,7 +552,16 @@ public class ClinicManageCommunityRequestJPanel extends javax.swing.JPanel {
             row[6] = work;
             row[1] = ((CommunityDoctorRequest) work).getNoPeopleAffected();
             row[5] = ((CommunityDoctorRequest) work).getDoctorType();
+            row[7] = ((CommunityDoctorRequest) work).getSender();
+            
+            if(((CommunityDoctorRequest) work).getReceiver() != null){
+            row[8] = ((CommunityDoctorRequest) work).getReceiver();
+            }
             model.addRow(row);
+               
+               }
+               
+           
            }
         }
     }

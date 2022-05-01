@@ -103,7 +103,7 @@ public class ManageFireStationJPanel extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/administratorBig.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jLabel1.setText("Manage Police Station");
+        jLabel1.setText("Manage Fire Station");
 
         btnBack.setBackground(new java.awt.Color(102, 217, 255));
         btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -193,14 +193,73 @@ public class ManageFireStationJPanel extends javax.swing.JPanel {
 
     private void btnAddDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDoctorActionPerformed
         // TODO add your handling code here:
-        FireDepartmentDirectory fireDepartmentDirectory = new FireDepartmentDirectory();
+        int flag = 0;
+        
+        
+        try{
+            if(Integer.parseInt(txtUnitSize.getText()) <= 0 ){
+        JOptionPane.showMessageDialog(null, "Enter Proper value", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+        }
+            
+        } catch( NumberFormatException n){
+        JOptionPane.showMessageDialog(null, "Enter Proper numeric value", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
+        
         if(!unitTypeComboBox.getSelectedItem().toString().equals("")){
 
-            FireDepartment fireDepartment = ecoSystem.getFireDepartmentDirectory().addFireDepartment()  ;
-            fireDepartment.setFireDepartmentType(unitTypeComboBox.getSelectedItem().toString());  ;
-            fireDepartment.setUnitCount(Integer.parseInt(txtUnitSize.getText())); ;
-
-            populateFireDepartmentTable();
+            System.out.println("check a");
+            
+            if(ecoSystem.getFireDepartmentDirectory().getFireDepartmentList().size() == 0){
+            System.out.println("check b");
+                FireDepartment fireDepartment = ecoSystem.getFireDepartmentDirectory().addFireDepartment()  ;
+                fireDepartment.setFireDepartmentType(unitTypeComboBox.getSelectedItem().toString());  
+                fireDepartment.setUnitCount(Integer.parseInt(txtUnitSize.getText())); 
+                populateFireDepartmentTable();
+                
+            } else{
+            System.out.println("check c");
+                for (FireDepartment fireDepartment1 : ecoSystem.getFireDepartmentDirectory().getFireDepartmentList() ) {
+               System.out.println("check d");
+                 if(fireDepartment1.getFireDepartmentType().equals(unitTypeComboBox.getSelectedItem().toString())){
+                     System.out.println("check e");
+                     fireDepartment1.setUnitCount(fireDepartment1.getUnitCount() + Integer.parseInt(txtUnitSize.getText()));
+                     flag = 1;
+                     populateFireDepartmentTable();
+                     return;
+                 } 
+                 
+                 
+             }
+                
+                if(flag == 0){
+                    System.out.println("check f");
+                FireDepartment fireDepartment = ecoSystem.getFireDepartmentDirectory().addFireDepartment()  ;
+                fireDepartment.setFireDepartmentType(unitTypeComboBox.getSelectedItem().toString());  
+                fireDepartment.setUnitCount(Integer.parseInt(txtUnitSize.getText()));
+                populateFireDepartmentTable();
+                }
+            
+            }
+             populateFireDepartmentTable();
+//            FireDepartment fireDepartment = ecoSystem.getFireDepartmentDirectory().addFireDepartment()  ;
+//            
+//            
+//            
+//            
+//            
+//             
+//            
+//             if(flag == 0){
+//             FireDepartmentDirectory fireDepartmentDirectory = new FireDepartmentDirectory();
+//             fireDepartment.setFireDepartmentType(unitTypeComboBox.getSelectedItem().toString());  
+//            fireDepartment.setUnitCount(Integer.parseInt(txtUnitSize.getText())); 
+//             }
+//            
+//
+//            populateFireDepartmentTable();
 
             //            CommunityBloodRequest communityBloodRequest = new CommunityBloodRequest();
             //            communityBloodRequest.setBloodType(bloodBank);
@@ -231,9 +290,9 @@ public class ManageFireStationJPanel extends javax.swing.JPanel {
         }
         else{
 
-            PoliceStation p=(PoliceStation) tblPolice.getValueAt(selectedRow, 0);
+            FireDepartment p=(FireDepartment) tblPolice.getValueAt(selectedRow, 0);
 
-            ecoSystem.getPoliceStationList().removePolice(p); ;
+            ecoSystem.getFireDepartmentDirectory().removeFireDepartment(p); ;
             JOptionPane.showMessageDialog(null, "You have successfully deleted the police details");
            populateFireDepartmentTable();
         }

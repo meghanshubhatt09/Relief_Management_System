@@ -110,9 +110,9 @@ public class RequestServiceProviderJPanel extends javax.swing.JPanel {
 
         foodTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel2.setText("Food Type");
+        jLabel2.setText("Food Type :");
 
-        jLabel5.setText("Venue :");
+        jLabel5.setText("Location:");
 
         jLabel3.setText("Number of Packets: ");
 
