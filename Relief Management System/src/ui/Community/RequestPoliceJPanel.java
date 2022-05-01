@@ -12,6 +12,7 @@ import Business.WorkQueue.CommunityPoliceRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -165,8 +166,13 @@ public class RequestPoliceJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSendRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestActionPerformed
+
         // TODO add your handling code here:
 
+        if(txtPeopleCount.getText().isEmpty() || txtVenue.getText().isEmpty()){
+        JOptionPane.showMessageDialog(null, "Please enter all the values", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+        }
         CommunityPoliceRequest request = new CommunityPoliceRequest();
 
        // request.setNoDoctorRequired(Integer.parseInt(txtDoctorCount.getText()));
@@ -177,7 +183,15 @@ public class RequestPoliceJPanel extends javax.swing.JPanel {
        // request.setPurpose(txtRequestType.getText());
         request.setStatus("Requested");
         request.setSender(account);
-        request.setNoPeopleAffected(Integer.parseInt(txtPeopleCount.getText()));
+        
+        try{
+                request.setNoPeopleAffected(Integer.parseInt(txtPeopleCount.getText()));
+
+        }catch(NumberFormatException e){
+        JOptionPane.showMessageDialog(null, "Please enter numeric value", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+        }
+        
         request.setPoliceType(doctorTypeComboBox.getSelectedItem().toString());
         request.setPurpose(emergencyTypeComboBox.getSelectedItem().toString());
         account.getWorkQueue().getWorkRequestList().add(request);

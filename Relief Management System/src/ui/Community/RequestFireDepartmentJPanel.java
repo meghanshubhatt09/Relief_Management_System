@@ -13,6 +13,7 @@ import Business.WorkQueue.CommunityPoliceRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -182,6 +183,11 @@ public class RequestFireDepartmentJPanel extends javax.swing.JPanel {
     private void btnSendRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestActionPerformed
         // TODO add your handling code here:
 
+        if(txtPeopleCount.getText().isEmpty() || txtVenue.getText().isEmpty()){
+        JOptionPane.showMessageDialog(this, "Please add all the fields");
+        return;
+        }
+        
         CommunityFireRequest request = new CommunityFireRequest();
 
         // request.setNoDoctorRequired(Integer.parseInt(txtDoctorCount.getText()));
@@ -192,9 +198,24 @@ public class RequestFireDepartmentJPanel extends javax.swing.JPanel {
         // request.setPurpose(txtRequestType.getText());
         request.setStatus("Requested");
         request.setSender(account);
-        request.setNoPeopleAffected(Integer.parseInt(txtPeopleCount.getText()));
+        
+        try{
+                request.setNoPeopleAffected(Integer.parseInt(txtPeopleCount.getText()));
+
+        } catch(NumberFormatException e){
+        JOptionPane.showMessageDialog(this, "Please enter numeric value");
+        return;
+        }
+        
+        try{
         request.setFireDepartmentType(doctorTypeComboBox.getSelectedItem().toString());
         request.setPurpose(emergencyTypeComboBox.getSelectedItem().toString());
+        }catch(NullPointerException n){
+        JOptionPane.showMessageDialog(this, "Please choose one option");
+        return;
+        }
+        
+        
         account.getWorkQueue().getWorkRequestList().add(request);
         enterprise.getWorkQueue().getWorkRequestList().add(request);
         ecoSystem.getWorkQueue().getWorkRequestList().add(request);

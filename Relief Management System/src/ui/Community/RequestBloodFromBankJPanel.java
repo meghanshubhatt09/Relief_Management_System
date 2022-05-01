@@ -16,6 +16,7 @@ import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -98,7 +99,7 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
         jLabel3.setText("No of packets:");
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLabel4.setText("Venue :");
+        jLabel4.setText("Location :");
 
         bloodGroupComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -232,10 +233,33 @@ public class RequestBloodFromBankJPanel extends javax.swing.JPanel {
     private void btnSubmitRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitRequestActionPerformed
         // TODO add your handling code here:
         
+        if(txtPacketCount.getText().isEmpty() || txtPurpose.getText().isEmpty() || txtVenue.getText().isEmpty()){
+        JOptionPane.showMessageDialog(this, "Please add all the fields");
+        return;
+        }
+        
+        
         CommunityBloodRequest request = new CommunityBloodRequest();
         
+        
+        try{
         request.setRequestedBloodType(bloodGroupComboBox.getSelectedItem().toString());
-        request.setNoBloodPacketsRequired(Integer.parseInt(txtPacketCount.getText()));
+        } catch(NullPointerException n){
+        JOptionPane.showMessageDialog(this, "Please wait for blood bank");
+        return ;
+        }
+        
+        
+        
+        try{
+                request.setNoBloodPacketsRequired(Integer.parseInt(txtPacketCount.getText()));
+
+        } catch(NumberFormatException n){
+                JOptionPane.showMessageDialog(this, "Please add numerical value");
+                return;
+
+        }
+        
         request.setLocation(txtVenue.getText());
         Date date = new Date();
         request.setRequestDate(date);

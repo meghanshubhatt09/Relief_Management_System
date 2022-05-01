@@ -12,6 +12,7 @@ import Business.WorkQueue.PatientDoctorRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -203,9 +204,24 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
         
+        if(txtPatientAge.getText().isEmpty() || txtPatientGender.getText().isEmpty() || txtPatientName.getText().isEmpty() || txtPurposeVisit.getText().isEmpty()){
+         JOptionPane.showMessageDialog(this, "Please add all the fields");
+        return;
+        
+        
+        }
+        
         PatientDoctorRequest request = new PatientDoctorRequest();
         request.setPatientName(txtPatientName.getText());
-        request.setPatientAge(Integer.parseInt(txtPatientAge.getText()));
+        
+        try{
+                request.setPatientAge(Integer.parseInt(txtPatientAge.getText()));
+
+        }catch(NumberFormatException e){
+         JOptionPane.showMessageDialog(this, "Please enter numeric value for age field");
+        return;
+        }
+        
         request.setPatientGender(txtPatientGender.getText());
         request.setPurposeOfVisit(txtPurposeVisit.getText());
         

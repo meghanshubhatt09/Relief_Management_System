@@ -297,13 +297,13 @@ public class MainJFrame extends javax.swing.JFrame {
                 }
             }
         }
-       jUserLabel.setText("Hello " + userAccount.getEmployee().getName() + "!!");
+       
         if (userAccount == null) {
             JOptionPane.showMessageDialog(null, "Invalid Credentails!");
             return;
         } else {
            
-            
+            jUserLabel.setText("Welcome " + userAccount.getEmployee().getName() + "!!");
             loginJPanel.setVisible(false);
             UserContainer.setVisible(true);
             leftPanel.setVisible(true);
