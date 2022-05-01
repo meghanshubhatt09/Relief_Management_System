@@ -76,6 +76,7 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         SPTitle = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        labelLocation = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -166,10 +167,18 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
         SPTitle.setFont(new java.awt.Font("Malayalam MN", 1, 24)); // NOI18N
         SPTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SPTitle.setText("Community Panel");
-        add(SPTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 280, -1));
+        add(SPTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 250, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/iconfinder_website_-_male_user_3440844 (1).png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        labelLocation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/location 32x.png"))); // NOI18N
+        labelLocation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                labelLocationMousePressed(evt);
+            }
+        });
+        add(labelLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestServiceProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestServiceProviderActionPerformed
@@ -238,6 +247,14 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
          layout.next(userProcessContainer);
     }//GEN-LAST:event_btnFireRequestActionPerformed
 
+    private void labelLocationMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLocationMousePressed
+        // TODO add your handling code here:
+        CommunitySetUpInformation communitySetUpInformation = new CommunitySetUpInformation(userProcessContainer, enterprise.getOrganizationDirectory(), enterprise, ecoSystem, userAccount);
+        userProcessContainer.add("CommunitySetUpInformation", communitySetUpInformation);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_labelLocationMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel SPTitle;
@@ -251,5 +268,6 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnRequestShelter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel labelLocation;
     // End of variables declaration//GEN-END:variables
 }

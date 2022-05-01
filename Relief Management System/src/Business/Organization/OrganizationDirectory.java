@@ -74,6 +74,11 @@ public class OrganizationDirectory {
             organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
         }
+          else if (type.getValue().equals(Type.Community.getValue())){
+            organization = new Community(name);
+            organization.setLocationPoint(locationPoint);
+            organizationList.add(organization);
+        }
 
         
         return organization;

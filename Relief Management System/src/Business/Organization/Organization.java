@@ -74,7 +74,8 @@ public abstract class Organization {
         ShelterOrganization("Shelter Organization"),
         EmergencyRequestOrganization("Emergency Request Organization"),
         PoliceOrganization("Police Organization"),
-        FireDepartmentOrganization("Fire Department Organization");
+        FireDepartmentOrganization("Fire Department Organization"),
+        Community("Community");
         
         private String value;
         private Type(String value) {

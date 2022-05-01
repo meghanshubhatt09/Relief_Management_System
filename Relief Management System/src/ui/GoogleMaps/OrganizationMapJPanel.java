@@ -30,6 +30,7 @@ import org.jxmapviewer.viewer.GeoPosition;
 import org.jxmapviewer.viewer.TileFactoryInfo;
 import org.jxmapviewer.viewer.WaypointPainter;
 import ui.AdminPanels.NetworkMangWAJPanel;
+import ui.Community.CommunitySetUpInformation;
 import ui.Donation.DonationSetUpInformation;
 import ui.Emergency.EmergencyManageOrganization;
 import ui.FoodAndShelter.SetLocationJPanel;
@@ -190,6 +191,10 @@ public class OrganizationMapJPanel extends javax.swing.JPanel {
         } 
                else if (userProcessContainer.getComponent(componentArray.length - 1) instanceof EmergencyManageOrganization) {
             EmergencyManageOrganization orgManagement = (EmergencyManageOrganization) userProcessContainer.getComponent(componentArray.length - 1);
+            orgManagement.populateLongituteLatitude(locationPoint);
+        } 
+                   else if (userProcessContainer.getComponent(componentArray.length - 1) instanceof CommunitySetUpInformation) {
+            CommunitySetUpInformation orgManagement = (CommunitySetUpInformation) userProcessContainer.getComponent(componentArray.length - 1);
             orgManagement.populateLongituteLatitude(locationPoint);
         } 
         
