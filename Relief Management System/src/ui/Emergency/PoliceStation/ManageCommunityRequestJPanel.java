@@ -66,6 +66,8 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
         txtCount = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         btnAssignToMe.setBackground(new java.awt.Color(102, 217, 255));
         btnAssignToMe.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnAssignToMe.setText("Assign to me");
@@ -120,16 +122,17 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblAvailablePolice);
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setText("Police Manage Request From Community");
 
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel5.setText("Police Data");
 
         jLabel2.setBackground(new java.awt.Color(102, 217, 255));
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
 
         btnBack.setBackground(new java.awt.Color(102, 217, 255));
-        btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnBack.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnBack.setText("<< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +141,7 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
         });
 
         jLabel4.setBackground(new java.awt.Color(102, 217, 255));
-        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel4.setText("Request for Police Assistance");
 
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
@@ -146,11 +149,20 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Police Dispatched", "People Affected", "Request Date", "Resolution Date", "Location", "Police Type", "Severity", "Status", "Sender", "Receiver"
+                "Police Dispatched", "People Affected", "Request Date", "Resolved Date", "Location", "Police Type", "Severity", "Status", "Sender", "Receiver"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblRequest);
 
+        txtCount.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtCount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCountActionPerformed(evt);
@@ -166,84 +178,76 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(133, 133, 133)
                         .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)))
-                .addContainerGap(225, Short.MAX_VALUE))
+                        .addGap(28, 28, 28)
+                        .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBack)
+                        .addGap(97, 97, 97)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(42, 42, 42)
+                            .addComponent(btnAssignToMe)
+                            .addGap(49, 49, 49)
+                            .addComponent(btnDeleteReqPolice)
+                            .addGap(67, 67, 67)
+                            .addComponent(btnApproveReqPolice)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRejectReqPolice))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(50, 50, 50)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 742, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(143, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(41, 41, 41)
+                    .addGap(42, 42, 42)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(1, 1, 1)
+                            .addGap(12, 12, 12)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(btnAssignToMe)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(btnDeleteReqPolice)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(btnApproveReqPolice)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(btnRejectReqPolice))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(6, 6, 6)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jLabel5)))))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnBack)
-                            .addGap(64, 64, 64)
-                            .addComponent(jLabel1)))
-                    .addContainerGap(201, Short.MAX_VALUE)))
+                                .addComponent(jLabel5)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addContainerGap(142, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBack)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(332, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAssignToMe)
+                    .addComponent(btnDeleteReqPolice)
+                    .addComponent(btnApproveReqPolice)
+                    .addComponent(btnRejectReqPolice))
+                .addContainerGap(305, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnBack))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGap(41, 41, 41)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(274, 274, 274)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnRejectReqPolice)
-                        .addComponent(btnApproveReqPolice)
-                        .addComponent(btnDeleteReqPolice)
-                        .addComponent(btnAssignToMe))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGap(309, 309, 309)
                     .addComponent(jLabel5)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(40, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 

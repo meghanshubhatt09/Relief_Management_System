@@ -53,7 +53,7 @@ public class NGOWorkAreaJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 204, 255));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setText("                 NGO Admin Work Area");
 
         btnHospital.setBackground(new java.awt.Color(255, 255, 255));
@@ -94,38 +94,44 @@ public class NGOWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
+                        .addGap(38, 38, 38)
                         .addComponent(jLabel2)
-                        .addGap(27, 27, 27)
+                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnDonation, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel3))
+                            .addComponent(btnDonation1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnDonation, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(btnDonation1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(77, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 457, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(106, 106, 106)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(btnDonation, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17))
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(26, 26, 26)
-                .addComponent(btnDonation1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(149, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(129, 129, 129)
+                                .addComponent(btnDonation1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(195, 195, 195)
+                                .addComponent(btnDonation, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
