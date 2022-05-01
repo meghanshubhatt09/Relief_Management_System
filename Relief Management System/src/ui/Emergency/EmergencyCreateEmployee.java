@@ -53,6 +53,8 @@ public class EmergencyCreateEmployee extends javax.swing.JPanel {
         backJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         comboBoxOrganiztionFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxOrganiztionFilterActionPerformed(evt);
@@ -60,7 +62,7 @@ public class EmergencyCreateEmployee extends javax.swing.JPanel {
         });
 
         jLabel4.setFont(new java.awt.Font("Malayalam MN", 1, 18)); // NOI18N
-        jLabel4.setText("Hospital Create Employee Panel");
+        jLabel4.setText("Emergency Create Employee Panel");
 
         btnDeleteEmployee.setBackground(new java.awt.Color(255, 153, 153));
         btnDeleteEmployee.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N

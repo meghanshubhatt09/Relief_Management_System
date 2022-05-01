@@ -56,6 +56,7 @@ public class MainJFrame extends javax.swing.JFrame {
         leftPanel = new javax.swing.JPanel();
         jLogoutLabel = new javax.swing.JLabel();
         btnBackLabel = new javax.swing.JLabel();
+        jUserLabel = new javax.swing.JLabel();
         UserContainer = new javax.swing.JPanel();
         loginJPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -90,6 +91,9 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jUserLabel.setBackground(new java.awt.Color(255, 255, 255));
+        jUserLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
@@ -99,7 +103,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jLogoutLabel)
                 .addGap(28, 28, 28)
                 .addComponent(btnBackLabel)
-                .addContainerGap(1317, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jUserLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1066, Short.MAX_VALUE))
         );
         leftPanelLayout.setVerticalGroup(
             leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +113,8 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(leftPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLogoutLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBackLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnBackLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(jUserLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -211,7 +218,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(293, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,7 +231,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelLogin)
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addContainerGap(277, Short.MAX_VALUE))
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
@@ -290,6 +297,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 }
             }
         }
+       jUserLabel.setText("Hello " + userAccount.getEmployee().getName() + "!!");
         if (userAccount == null) {
             JOptionPane.showMessageDialog(null, "Invalid Credentails!");
             return;
@@ -375,6 +383,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTxtUsername;
+    private javax.swing.JLabel jUserLabel;
     private javax.swing.JPanel leftPanel;
     private javax.swing.JPanel loginJPanel;
     // End of variables declaration//GEN-END:variables
