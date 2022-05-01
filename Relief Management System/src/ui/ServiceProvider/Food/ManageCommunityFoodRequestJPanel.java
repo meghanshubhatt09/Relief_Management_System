@@ -9,6 +9,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.CommunityDoctorRequest;
 import Business.WorkQueue.CommunityFoodRequest;
 import Business.WorkQueue.FoodOrgWorkRequest;
@@ -42,6 +43,9 @@ public class ManageCommunityFoodRequestJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.ecoSystem = ecoSystem;
         this.userAccount = userAccount;
+        
+        tblRequestTableCommunity.getTableHeader().setDefaultRenderer(new HeaderColors());
+        tblfoodStatus.getTableHeader().setDefaultRenderer(new HeaderColors());
         
         populateFoodInventory();
         populateRequestTable();

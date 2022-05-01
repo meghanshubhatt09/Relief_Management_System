@@ -8,6 +8,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -137,18 +138,28 @@ public class EmergencyAdminJPanel extends javax.swing.JPanel {
 
     private void btnCreateManageOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateManageOrganizationActionPerformed
         // TODO add your handling code here:
+        try{
         EmergencyManageOrganization emergencyManageOrganization = new EmergencyManageOrganization(userProcessContainer, enterprise.getOrganizationDirectory(),ecoSystem,enterprise);
         userProcessContainer.add("emergencyManageOrganization", emergencyManageOrganization);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "Some error occurred!!");
+        }
     }//GEN-LAST:event_btnCreateManageOrganizationActionPerformed
 
     private void btnEmployeeCreationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeCreationActionPerformed
         // TODO add your handling code here:
+        try{
         EmergencyCreateEmployee emergencyCreateEmployee = new EmergencyCreateEmployee(userProcessContainer, enterprise.getOrganizationDirectory());
         userProcessContainer.add("emergencyCreateEmployee", emergencyCreateEmployee);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+           JOptionPane.showMessageDialog(this, "Some error occurred!!"); 
+        }
     }//GEN-LAST:event_btnEmployeeCreationActionPerformed
 
 
