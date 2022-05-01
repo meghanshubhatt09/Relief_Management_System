@@ -83,7 +83,7 @@
                   <Component id="btnDeleteRequest" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnAssignToMe" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="35" max="32767" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -216,7 +216,7 @@
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/images/managerWork24x.png"/>
+          <Image iconType="3" name="/images/location 32x.png"/>
         </Property>
       </Properties>
       <Events>

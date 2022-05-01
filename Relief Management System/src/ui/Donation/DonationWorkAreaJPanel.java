@@ -132,7 +132,7 @@ public class DonationWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/managerWork24x.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/location 32x.png"))); // NOI18N
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel5MousePressed(evt);
@@ -193,7 +193,7 @@ public class DonationWorkAreaJPanel extends javax.swing.JPanel {
                     .addComponent(btnApproveReqSponsor)
                     .addComponent(btnDeleteRequest)
                     .addComponent(btnAssignToMe))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
