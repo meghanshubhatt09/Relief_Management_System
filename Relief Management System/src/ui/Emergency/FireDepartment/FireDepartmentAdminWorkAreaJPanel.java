@@ -8,6 +8,11 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CommunityFireRequest;
+import Business.WorkQueue.CommunityPoliceRequest;
+import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -31,6 +36,7 @@ public class FireDepartmentAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.ecoSystem = ecoSystem;
         this.userAccount = userAccount;
         this.organization = organization;
+         handleRequest();
     }
 
     /**
@@ -42,19 +48,113 @@ public class FireDepartmentAdminWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        btnManageFireStation = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
+        jLabel1.setText("Fire Department");
+
+        jButton3.setText("Manage  Community Request");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        btnManageFireStation.setText("Manage Fire Station");
+        btnManageFireStation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageFireStationActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/blood.png"))); // NOI18N
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/blood.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(219, 219, 219)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(219, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(51, 51, 51)
+                    .addComponent(jLabel3)
+                    .addGap(18, 18, 18)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnManageFireStation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(18, 18, 18)
+                    .addComponent(jLabel2)
+                    .addContainerGap(51, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(349, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(123, 123, 123)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnManageFireStation)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2))
+                    .addGap(17, 17, 17)
+                    .addComponent(jButton3)
+                    .addContainerGap(124, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+
+        ManageCommunityRequestJPanel  manageCommunityRequestJPanel = new ManageCommunityRequestJPanel(userProcessContainer, enterprise.getOrganizationDirectory(),enterprise,userAccount,ecoSystem);
+        userProcessContainer.add("manageCommunityRequestJPanel",manageCommunityRequestJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnManageFireStationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageFireStationActionPerformed
+        // TODO add your handling code here:
+        ManageFireStationJPanel managePoliceStationJPanel = new ManageFireStationJPanel(userProcessContainer, enterprise.getOrganizationDirectory(),enterprise,userAccount,ecoSystem);
+        userProcessContainer.add("managePoliceStationJPanel", managePoliceStationJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnManageFireStationActionPerformed
+
+    
+    public void  handleRequest(){
+     for(WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
+            if(work instanceof CommunityFireRequest ){ 
+                
+                if(((CommunityFireRequest) work).isIsAlert() == true){
+                    String str = "Emergency Alert at " +((CommunityFireRequest) work).getSender().getUsername();
+                JOptionPane.showMessageDialog(null, str, "Warning", JOptionPane.WARNING_MESSAGE);
+                    
+                }
+                
+                
+            
+                    ((CommunityFireRequest) work).setIsAlert(false);
+            
+            
+            } }
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnManageFireStation;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
