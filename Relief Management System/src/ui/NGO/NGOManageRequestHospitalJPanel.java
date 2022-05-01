@@ -239,36 +239,43 @@ public class NGOManageRequestHospitalJPanel extends javax.swing.JPanel {
     private void btnCreateHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateHospitalActionPerformed
         // TODO add your handling code here:
         
-        
-        
-        
-        
-        
-        if(!txtVenueNGOHospital.getText().equals("")){
+       
             NGOWorkRequest request= new NGOWorkRequest();
             //request.setVaccine((Vaccine)comboVaccine.getSelectedItem());
-            if(isDateValid(txtVenueNGOHospital.getText())){
+                try{
                 request.setNoDoctorRequired(Integer.parseInt(txtDoctorsNGOHospital.getText()));
                 request.setLocation(txtVenueNGOHospital.getText());
                 request.setRequestDate(new Date());
                 //request.setResolveDate(]txtTimeNGOHospital.getText());
                 request.setStatus("Requested");
                 request.setSender(userAccount);
+                try{
                 request.setDoctorType(doctorTypeComboBox.getSelectedItem().toString());
+                }
+                catch(Exception e)
+                        {
+                           JOptionPane.showMessageDialog(null, "No doctor Available at this moment", "Warning", JOptionPane.WARNING_MESSAGE); 
+                           return;
+                        }
                 userAccount.getWorkQueue().getWorkRequestList().add(request);
                 ecoSystem.getWorkQueue().getWorkRequestList().add(request);
                 enterprise.getWorkQueue().getWorkRequestList().add(request);
-            }else{
-                JOptionPane.showMessageDialog(null, "Enter date in MM/DD/YYYY format", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
+                resetFields();
+                }
+                catch(Exception e)
+                        {
+                            JOptionPane.showMessageDialog(null, "Please fill the form correctly", "Warning", JOptionPane.WARNING_MESSAGE);
+                        }
+            
            
 
             populateWorkQueueTable();
-        }else{
-            JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
+        
     }//GEN-LAST:event_btnCreateHospitalActionPerformed
-
+   public void resetFields() {
+        txtDoctorsNGOHospital.setText("");
+        txtVenueNGOHospital.setText("");
+    }
     private void btnBackNgoHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackNgoHospitalActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
@@ -381,8 +388,8 @@ public static String generateHash(String password) {
            if(work instanceof NGOWorkRequest){ 
             Object[] row = new Object[6];
             row[0] = ((NGOWorkRequest) work).getNoDoctorRequired();
-            row[1] = ((NGOWorkRequest) work).getRequestedDate();
-            row[2] = ((NGOWorkRequest) work).getRequestedTime();
+            row[1] = ((NGOWorkRequest) work).getRequestDate();
+            row[2] = ((NGOWorkRequest) work).getResolveDate();
             row[3] = ((NGOWorkRequest) work).getLocation();
             row[4] = ((NGOWorkRequest) work).getDoctorType();
             row[5] = work;

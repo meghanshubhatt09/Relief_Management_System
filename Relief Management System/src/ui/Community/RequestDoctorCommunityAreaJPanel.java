@@ -181,12 +181,18 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
         userAccount.getWorkQueue().getWorkRequestList().add(request);
         enterprise.getWorkQueue().getWorkRequestList().add(request);
         ecoSystem.getWorkQueue().getWorkRequestList().add(request);
+        resetFields();
         
         
         
         fillTheRequestTable();
     }//GEN-LAST:event_btnCreateActionPerformed
-
+   public void resetFields() {
+        txtPatientAge.setText("");
+        txtPatientGender.setText("");
+        txtPatientName.setText("");
+        txtPurposeVisit.setText("");
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);

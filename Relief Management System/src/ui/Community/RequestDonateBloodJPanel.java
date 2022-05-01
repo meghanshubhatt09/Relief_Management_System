@@ -260,10 +260,16 @@ public class RequestDonateBloodJPanel extends javax.swing.JPanel {
                 account.getWorkQueue().getWorkRequestList().add(request);
                 enterprise.getWorkQueue().getWorkRequestList().add(request);
                 ecoSystem.getWorkQueue().getWorkRequestList().add(request);
+                resetFields();
             populateRequestTable();
      
     }//GEN-LAST:event_btnSubmitDonateBloodRequestActionPerformed
-
+   public void resetFields() {
+        txtBloodPacketCount.setText("");
+        txtPurpose.setText("");
+        txtVenue.setText("");
+        txtVenue.setText("");
+    }
     private void txtVenueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVenueActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtVenueActionPerformed

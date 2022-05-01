@@ -11,6 +11,7 @@ import Business.Utils.HeaderColors;
 import Business.WorkQueue.DonationWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -82,7 +83,7 @@ public class DonationWorkAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Requested Amount", "Date of requirement", "Time of requirement", "Venue", "Status"
+                "Requested Amount", "Date of requirement", "Resolve Date", "Venue", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -250,6 +251,8 @@ public class DonationWorkAreaJPanel extends javax.swing.JPanel {
                     if (p.getStatus().equalsIgnoreCase("Pending")) {
                         p.setStatus("Approved");
                         p.setReceiver(userAccount);
+                        Date date = new Date();
+                        p.setResolveDate(date);
                     }else{
                         JOptionPane.showMessageDialog(null, "Please assign first");
                     }
@@ -318,8 +321,8 @@ public class DonationWorkAreaJPanel extends javax.swing.JPanel {
            if(work instanceof DonationWorkRequest){ 
             Object[] row = new Object[5];
             row[0] = ((DonationWorkRequest) work).getRequestedAmount();
-            row[1] = ((DonationWorkRequest) work).getRequestedDate();
-            row[2] = ((DonationWorkRequest) work).getRequestedTime();
+            row[1] = ((DonationWorkRequest) work).getRequestDate();
+            row[2] = ((DonationWorkRequest) work).getResolveDate();
             row[3] = ((DonationWorkRequest) work).getLocation();
             row[4] = work;
             model.addRow(row);
