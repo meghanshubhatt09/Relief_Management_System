@@ -211,11 +211,32 @@ public class RequestDonateBloodJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
             CommunityDonationRequest request = new CommunityDonationRequest();
+            if(txtBloodPacketCount.getText().isEmpty() || txtPurpose.getText().isEmpty() || txtVenue.getText().isEmpty()){
+        JOptionPane.showMessageDialog(this, "Please add all the fields");
+        return;
+        }
+            
+            
+            try{
+                    request.setRequestedBloodType(bloodGroupComboBox.getSelectedItem().toString());
+
+            }catch(NullPointerException n){
+            JOptionPane.showMessageDialog(this, "Please wait for blood bank");
+        return ;
+            }
+            
+            
+            try{
+                request.setNoBloodPacketsRequired(Integer.parseInt(txtBloodPacketCount.getText()));
+
+        } catch(NumberFormatException n){
+                JOptionPane.showMessageDialog(this, "Please add numerical value");
+                return;
+
+        }
             
 
-                request.setRequestedBloodType(bloodGroupComboBox.getSelectedItem().toString());
                 request.setLocation(txtVenue.getText());
-                request.setNoBloodPacketsRequired(Integer.parseInt(txtBloodPacketCount.getText()));
                 request.setPurpose(txtPurpose.getText());
                 Date date = new Date();
                 request.setRequestDate(date);
@@ -236,8 +257,8 @@ public class RequestDonateBloodJPanel extends javax.swing.JPanel {
             if(work instanceof CommunityDonationRequest && work.getSender() == account){
                 Object[] row = new Object[8];
                 row[0] = ((CommunityDonationRequest) work).getRequestedBloodType() ;
-                row[2] = ((CommunityDonationRequest) work).getRequestedDate();
-                row[3] = ((CommunityDonationRequest) work).getRequestedTime();
+                row[2] = ((CommunityDonationRequest) work).getRequestDate() ;
+                row[3] = ((CommunityDonationRequest) work).getResolveDate() ;
                 row[4] = ((CommunityDonationRequest) work).getLocation();
                 row[5] = work;
                 row[1] = ((CommunityDonationRequest) work).getNoBloodPacketsRequired() ;

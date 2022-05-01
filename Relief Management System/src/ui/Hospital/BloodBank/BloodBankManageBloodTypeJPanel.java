@@ -17,6 +17,7 @@ import Business.WorkQueue.CommunityBloodRequest;
 import Business.WorkQueue.CommunityDonationRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -284,6 +285,9 @@ public class BloodBankManageBloodTypeJPanel extends javax.swing.JPanel {
                                
                             bloodBank.setBloodPackets(bloodBank.getBloodPackets() + ((CommunityDonationRequest) work).getNoBloodPacketsRequired());
                             work.setStatus("Approved");
+                            work.setReceiver(userAccount);
+                            Date resolveDate = new Date();
+                            work.setResolveDate(resolveDate);
 
                            }
                     }
