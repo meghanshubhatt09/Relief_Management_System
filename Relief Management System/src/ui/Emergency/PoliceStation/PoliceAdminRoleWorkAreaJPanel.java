@@ -9,6 +9,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -20,14 +21,15 @@ public class PoliceAdminRoleWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form PoliceAdminRoleWorkAreaJPanel
      */
-     JPanel userProcessContainer;
+    JPanel userProcessContainer;
     Enterprise enterprise;
     EcoSystem ecoSystem;
     UserAccount userAccount;
-     Organization organization;
-    public PoliceAdminRoleWorkAreaJPanel(JPanel userProcessContainer , UserAccount userAccount,  Organization organization,Enterprise enterprise, EcoSystem ecoSystem) {
+    Organization organization;
+
+    public PoliceAdminRoleWorkAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, Organization organization, Enterprise enterprise, EcoSystem ecoSystem) {
         initComponents();
-         this.userProcessContainer = userProcessContainer;
+        this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.ecoSystem = ecoSystem;
         this.userAccount = userAccount;
@@ -55,7 +57,7 @@ public class PoliceAdminRoleWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setText("Police Station Work Area");
 
         jButton3.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jButton3.setText("Manage  Community Request");
+        jButton3.setText("Manage Community Request");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -90,7 +92,7 @@ public class PoliceAdminRoleWorkAreaJPanel extends javax.swing.JPanel {
                             .addComponent(btnManageBloodType, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -111,20 +113,28 @@ public class PoliceAdminRoleWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-
-        ManageCommunityRequestJPanel  manageCommunityRequestJPanel = new ManageCommunityRequestJPanel(userProcessContainer, enterprise.getOrganizationDirectory(),enterprise,userAccount,ecoSystem);
-        userProcessContainer.add("manageCommunityRequestJPanel",manageCommunityRequestJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        try {
+            ManageCommunityRequestJPanel manageCommunityRequestJPanel = new ManageCommunityRequestJPanel(userProcessContainer, enterprise.getOrganizationDirectory(), enterprise, userAccount, ecoSystem);
+            userProcessContainer.add("manageCommunityRequestJPanel", manageCommunityRequestJPanel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Some error occurred!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnManageBloodTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageBloodTypeActionPerformed
         // TODO add your handling code here:
-        ManagePoliceStationJPanel managePoliceStationJPanel = new ManagePoliceStationJPanel(userProcessContainer, enterprise.getOrganizationDirectory(),enterprise,userAccount,ecoSystem);
-        userProcessContainer.add("managePoliceStationJPanel", managePoliceStationJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.next(userProcessContainer);
+        try {
+            ManagePoliceStationJPanel managePoliceStationJPanel = new ManagePoliceStationJPanel(userProcessContainer, enterprise.getOrganizationDirectory(), enterprise, userAccount, ecoSystem);
+            userProcessContainer.add("managePoliceStationJPanel", managePoliceStationJPanel);
+            CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "Some error occurred!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnManageBloodTypeActionPerformed
 
 

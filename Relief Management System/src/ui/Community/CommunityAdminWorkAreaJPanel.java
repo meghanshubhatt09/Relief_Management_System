@@ -183,76 +183,122 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnRequestServiceProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestServiceProviderActionPerformed
         // TODO add your handling code here:
+        try{
         RequestServiceProviderJPanel requestServiceProviderJPanel = new RequestServiceProviderJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
         userProcessContainer.add("requestServiceProviderJPanel",requestServiceProviderJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Some error occurred!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
         
     }//GEN-LAST:event_btnRequestServiceProviderActionPerformed
 
     private void btnRequestHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestHospitalActionPerformed
         // TODO add your handling code here:
+        try{
         RequestHospitalJPanel requestHospitalJPanel = new RequestHospitalJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
         userProcessContainer.add("requestHospitalJPanel",requestHospitalJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Some error occurred!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnRequestHospitalActionPerformed
 
     private void btnDonateBloodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonateBloodActionPerformed
         // TODO add your handling code here:
+        try{
         RequestDonateBloodJPanel requestDonateBloodJPanel = new RequestDonateBloodJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
         userProcessContainer.add("requestDonateBloodJPanel",requestDonateBloodJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Some error occurred!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
         
     }//GEN-LAST:event_btnDonateBloodActionPerformed
 
     private void btnRequestBloodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestBloodActionPerformed
         // TODO add your handling code here:
+        try{
         RequestBloodFromBankJPanel requestBloodFromBank = new RequestBloodFromBankJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
         userProcessContainer.add("requestBloodFromBank",requestBloodFromBank);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Some error occurred!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnRequestBloodActionPerformed
 
     private void btnRequestShelterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestShelterActionPerformed
         // TODO add your handling code here:
+        try{
         RequestShelterJPanel requestShelterJPanel = new RequestShelterJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
         userProcessContainer.add("RequestShelterJPanel",requestShelterJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Some error occurred!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnRequestShelterActionPerformed
 
     private void btnRequestHealthAidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestHealthAidActionPerformed
         // TODO add your handling code here:
+        try{
         RequestDoctorCommunityAreaJPanel requestDoctorCommunityAreaJPanel = new RequestDoctorCommunityAreaJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
         userProcessContainer.add("RequestDoctorCommunityAreaJPanel",requestDoctorCommunityAreaJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Some error occurred!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnRequestHealthAidActionPerformed
 
     private void btnPoliceServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliceServiceActionPerformed
         // TODO add your handling code here:
+        try{
         RequestPoliceJPanel requestPoliceJPanel = new RequestPoliceJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
         userProcessContainer.add("requestPoliceJPanel",requestPoliceJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
          layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Some error occurred!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+      
     }//GEN-LAST:event_btnPoliceServiceActionPerformed
 
     private void btnFireRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFireRequestActionPerformed
         // TODO add your handling code here:
+        try{
           RequestFireDepartmentJPanel requestFireDepartmentJPanel = new  RequestFireDepartmentJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
          userProcessContainer.add("requestFireDepartmentJPanel",requestFireDepartmentJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
          layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Some error occurred!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnFireRequestActionPerformed
 
     private void labelLocationMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLocationMousePressed
         // TODO add your handling code here:
+        try{
         CommunitySetUpInformation communitySetUpInformation = new CommunitySetUpInformation(userProcessContainer, enterprise.getOrganizationDirectory(), enterprise, ecoSystem, userAccount);
         userProcessContainer.add("CommunitySetUpInformation", communitySetUpInformation);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Some error occurred!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_labelLocationMousePressed
 
 

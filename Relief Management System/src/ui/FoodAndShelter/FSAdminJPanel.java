@@ -9,6 +9,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import ui.NGO.SetupNGOInfoJPanel;
 
@@ -155,28 +156,43 @@ public class FSAdminJPanel extends javax.swing.JPanel {
 
     private void btnManageReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageReqActionPerformed
         // TODO add your handling code here:
+        try{
         ManageFoodReqJPanel manageFoodReqJPanel = new ManageFoodReqJPanel(userProcessContainer, enterprise, ecoSystem, userAccount,enterprise.getOrganizationDirectory());
         userProcessContainer.add("ManageFoodReqJPanel", manageFoodReqJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Please Create Organization First!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
    
     }//GEN-LAST:event_btnManageReqActionPerformed
 
     private void btnCreateFoodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateFoodActionPerformed
         // TODO add your handling code here:
+        try{
           CreateFoodJPanel createFoodJPanel = new CreateFoodJPanel(userProcessContainer, enterprise, ecoSystem, userAccount,enterprise.getOrganizationDirectory());
         userProcessContainer.add("CreateFoodJPanel", createFoodJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Please Create Organization First!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
         
       
     }//GEN-LAST:event_btnCreateFoodActionPerformed
 
     private void btnManageReq1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageReq1ActionPerformed
-         SetLocationJPanel setLocationJPanel = new SetLocationJPanel(userProcessContainer, enterprise.getOrganizationDirectory(), enterprise, ecoSystem, userAccount);
+         try{
+        SetLocationJPanel setLocationJPanel = new SetLocationJPanel(userProcessContainer, enterprise.getOrganizationDirectory(), enterprise, ecoSystem, userAccount);
         userProcessContainer.add("SetLocationJPanel", setLocationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+         }
+        catch(NullPointerException e){
+                 JOptionPane.showMessageDialog(null, "Please Create Organization First!!", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
     }//GEN-LAST:event_btnManageReq1ActionPerformed
 
 

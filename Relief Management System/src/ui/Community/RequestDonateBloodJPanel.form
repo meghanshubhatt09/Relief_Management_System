@@ -42,10 +42,10 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtVenue" min="-2" pref="133" max="-2" attributes="0"/>
-                                          <Component id="bloodGroupComboBox" min="-2" pref="133" max="-2" attributes="0"/>
-                                          <Component id="txtBloodPacketCount" min="-2" pref="123" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtVenue" pref="133" max="32767" attributes="0"/>
+                                          <Component id="bloodGroupComboBox" pref="133" max="32767" attributes="0"/>
+                                          <Component id="txtBloodPacketCount" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>

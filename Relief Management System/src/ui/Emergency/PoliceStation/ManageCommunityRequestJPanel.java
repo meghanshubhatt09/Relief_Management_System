@@ -10,6 +10,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.OrganizationDirectory;
 import Business.PoliceStation.PoliceStation;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.CommunityPoliceRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -37,6 +38,8 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = userAccount;
         this.userProcessContainer = userProcessContainer;
+        tblAvailablePolice.getTableHeader().setDefaultRenderer(new HeaderColors());
+        tblRequest.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateAvailablePoliceTbl();
         populateRequestTable();
     }
