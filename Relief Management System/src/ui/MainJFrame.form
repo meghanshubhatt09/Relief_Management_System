@@ -51,7 +51,9 @@
                   <Component id="jLogoutLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="btnBackLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="1317" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="jUserLabel" min="-2" pref="221" max="-2" attributes="0"/>
+                  <EmptySpace pref="1066" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -61,7 +63,8 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLogoutLabel" max="32767" attributes="0"/>
-                      <Component id="btnBackLabel" max="32767" attributes="0"/>
+                      <Component id="btnBackLabel" pref="38" max="32767" attributes="0"/>
+                      <Component id="jUserLabel" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -88,6 +91,16 @@
           <Events>
             <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnBackLabelMousePressed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jUserLabel">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Dialog" size="18" style="1"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -171,7 +184,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="18" max="32767" attributes="0"/>
+                      <EmptySpace pref="293" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -186,7 +199,7 @@
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabelLogin" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="267" max="32767" attributes="0"/>
+                      <EmptySpace pref="277" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jLabel1" alignment="1" pref="0" max="32767" attributes="0"/>
               </Group>

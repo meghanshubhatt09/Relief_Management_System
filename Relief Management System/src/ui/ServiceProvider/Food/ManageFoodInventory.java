@@ -19,6 +19,7 @@ import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -93,6 +94,8 @@ public class ManageFoodInventory extends javax.swing.JPanel {
         jAvaFoodTable1 = new javax.swing.JTable();
         backJButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Malayalam MN", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("FOOD INVENTORY");
@@ -123,6 +126,12 @@ public class ManageFoodInventory extends javax.swing.JPanel {
         });
 
         jLabel5.setText("Quantity:");
+
+        jTxtFoodQnty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTxtFoodQntyActionPerformed(evt);
+            }
+        });
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -246,33 +255,42 @@ public class ManageFoodInventory extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        System.out.println("jButton1ActionPerformed");
-        
-        
-        quantity = Integer.parseInt(jTxtFoodQnty.getText());
-        selectedFoodType = jComboBoxFoodType.getSelectedItem().toString();
-        FoodOrgWorkRequest foodOrgWorkRequest = new FoodOrgWorkRequest(selectedFoodType,quantity);
-        calculateTotalPrice();
-        foodOrgWorkRequest.setTotalPrice(totalPrice);
-        foodOrgWorkRequest.setRequestDate(new Date());
-        foodOrgWorkRequest.setStatus("Requested");
-        foodOrgWorkRequest.setSender(userAccount);
-        ecoSystem.getWorkQueue().getWorkRequestList().add(foodOrgWorkRequest);
-        
+        try {
+            if ("".equals(jTxtFoodQnty.getText())) {
+                JOptionPane.showMessageDialog(null, "Enter the quantity!");
+            } else {
+                quantity = Integer.parseInt(jTxtFoodQnty.getText());
+                selectedFoodType = jComboBoxFoodType.getSelectedItem().toString();
+                FoodOrgWorkRequest foodOrgWorkRequest = new FoodOrgWorkRequest(selectedFoodType, quantity);
+                calculateTotalPrice();
+                foodOrgWorkRequest.setTotalPrice(totalPrice);
+                foodOrgWorkRequest.setRequestDate(new Date());
+                foodOrgWorkRequest.setStatus("Requested");
+                foodOrgWorkRequest.setSender(userAccount);
+                ecoSystem.getWorkQueue().getWorkRequestList().add(foodOrgWorkRequest);
+                resetFields();
+                fillTheRequestedTable();
 
-        fillTheRequestedTable();
-       
-            
-        
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Quantity should be integer value!!");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+       public void resetFields() {
+        jTxtFoodQnty.setText("");
+       
+    }
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
         userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
+
+    private void jTxtFoodQntyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtFoodQntyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTxtFoodQntyActionPerformed
 
     private void fillTheRequestedTable() {
         DefaultTableModel model = (DefaultTableModel) jAvaFoodTable1.getModel();
