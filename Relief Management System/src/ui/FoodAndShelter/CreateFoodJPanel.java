@@ -218,24 +218,28 @@ public class CreateFoodJPanel extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        FoodDirectory fd = new FoodDirectory();
-        try{
-        if("".equals(txtFoodType.getText())) {
-            JOptionPane.showMessageDialog(null, "Enter the food type!"); 
-        }else if("".equals(txtFoodPrice.getText())) {
-            JOptionPane.showMessageDialog(null, "Please set the food price!!"); 
-        }else {
-            Food food = ecoSystem.getFoodDirectory().addFoodType();
-            food.setFoodType(txtFoodType.getText());
-            food.setPrice(Double.parseDouble(txtFoodPrice.getText()));
-            populateFoodTable();
-            resetFields();
-            JOptionPane.showMessageDialog(null, "Food is created successfully");
+
+        String foodType = txtFoodType.getText();
+        if ("".equals(foodType)) {
+            JOptionPane.showMessageDialog(null, "Enter the food type!");
+            return;
         }
-        }
-        catch(NumberFormatException e){
+        try {
+            double foodPrice = Double.parseDouble(txtFoodPrice.getText());
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Food price should be integer value!!");
+            txtFoodPrice.setText("");
+            return;
         }
+
+        Food food = ecoSystem.getFoodDirectory().addFoodType();
+        food.setFoodType(txtFoodType.getText());
+        food.setPrice(Double.parseDouble(txtFoodPrice.getText()));
+        populateFoodTable();
+        resetFields();
+        JOptionPane.showMessageDialog(null, "Food is created successfully");
+
+
     }//GEN-LAST:event_btnCreateActionPerformed
 
       public void resetFields() {
@@ -245,16 +249,16 @@ public class CreateFoodJPanel extends javax.swing.JPanel {
     private void txtFoodPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFoodPriceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFoodPriceActionPerformed
- private void populateFoodTable() {
-       DefaultTableModel table= (DefaultTableModel) tblFood.getModel();
-       table.setRowCount(0);
-      for (Food food : ecoSystem.getFoodDirectory().getFoodList()) {            
-           Object[] row = new Object[3];
-           row[0]= food.getFoodId();
-           row[1]= food.getFoodType();
-           row[2]=food.getPrice();
-           table.addRow(row);
-    }  
+    private void populateFoodTable() {
+        DefaultTableModel table = (DefaultTableModel) tblFood.getModel();
+        table.setRowCount(0);
+        for (Food food : ecoSystem.getFoodDirectory().getFoodList()) {            
+            Object[] row = new Object[3];
+            row[0] = food.getFoodId();
+            row[1] = food.getFoodType();
+            row[2] = food.getPrice();
+            table.addRow(row);
+        }  
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

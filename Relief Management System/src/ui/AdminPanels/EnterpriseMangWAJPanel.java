@@ -215,14 +215,24 @@ public class EnterpriseMangWAJPanel extends javax.swing.JPanel {
         }
 
         String name = nameJTextField.getText();
-
+        
+        if("".equals(name)){
+           JOptionPane.showMessageDialog(null, "Please enter the name of enterprise!!"); 
+           return;
+        }
         Enterprise enterprise = network.getEnterpriseDirectory().createAndAddEnterprise(name, type);
 
+        resetFields();
         filltheTable();
         JOptionPane.showMessageDialog(null, "Enterprise Created "+name);
       
     }//GEN-LAST:event_submitJButtonActionPerformed
 
+     public void resetFields() {
+        nameJTextField.setText("");
+       
+    }
+     
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         int selectedRow= enterpriseJTable.getSelectedRow();
