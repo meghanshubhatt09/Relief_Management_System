@@ -61,11 +61,11 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
         JLocation = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(194, 192, 212));
+        setBackground(new java.awt.Color(198, 210, 198));
 
         nameJTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel4.setBackground(new java.awt.Color(194, 192, 212));
+        jLabel4.setBackground(new java.awt.Color(198, 210, 198));
         jLabel4.setFont(new java.awt.Font("Malayalam MN", 1, 24)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("MANAGE NETWORK");

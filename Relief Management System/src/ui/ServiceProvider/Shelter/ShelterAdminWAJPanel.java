@@ -64,6 +64,7 @@ public class ShelterAdminWAJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Malayalam MN", 1, 24)); // NOI18N
         jLabel1.setText("SHELTER ORGANIZATION");
 
+        jCreateShelterBtn.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jCreateShelterBtn.setText("Create Shelter");
         jCreateShelterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +72,8 @@ public class ShelterAdminWAJPanel extends javax.swing.JPanel {
             }
         });
 
-        jManageReq.setText("Manage Community Request");
+        jManageReq.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
+        jManageReq.setText("Manage Request");
         jManageReq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jManageReqActionPerformed(evt);
@@ -100,7 +102,7 @@ public class ShelterAdminWAJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(112, 112, 112)
                         .addComponent(jLabel1)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,13 +111,16 @@ public class ShelterAdminWAJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(89, 89, 89)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jCreateShelterBtn)
-                        .addGap(42, 42, 42)
-                        .addComponent(jManageReq)))
-                .addContainerGap(138, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(138, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jCreateShelterBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jManageReq, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(118, 118, 118))))
         );
     }// </editor-fold>//GEN-END:initComponents
 

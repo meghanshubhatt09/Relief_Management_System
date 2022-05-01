@@ -377,25 +377,18 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         graphPanelLayout.setHorizontalGroup(
             graphPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(graphPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mapOrganizations1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(mapOrganizations1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         graphPanelLayout.setVerticalGroup(
             graphPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(graphPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(graphPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(graphPanelLayout.createSequentialGroup()
-                        .addComponent(mapOrganizations1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+            .addComponent(mapOrganizations1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel3.add(graphPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 240, 40));
+        jPanel3.add(graphPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 220, 40));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(198, 210, 198));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
