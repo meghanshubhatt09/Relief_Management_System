@@ -266,10 +266,33 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
     private void btnSendRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestActionPerformed
         // TODO add your handling code here:
      
+        if(txtDoctorCount.getText().isEmpty() || txtPeopleCount.getText().isEmpty() || txtRequestType.getText().isEmpty() || txtVenue.getText().isEmpty()){
+         JOptionPane.showMessageDialog(this, "Please add all the fields");
+        return;
+        }
 
             CommunityDoctorRequest request = new CommunityDoctorRequest();
 
-                request.setNoDoctorRequired(Integer.parseInt(txtDoctorCount.getText()));
+            try{
+                    request.setNoDoctorRequired(Integer.parseInt(txtDoctorCount.getText()));
+                    request.setNoPeopleAffected(Integer.parseInt(txtPeopleCount.getText()));
+
+                
+            } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Please enter numeric value");
+        return;
+            }
+            
+            try{
+                    request.setDoctorType(doctorTypeComboBox.getSelectedItem().toString());
+
+            }catch(NullPointerException n){
+             JOptionPane.showMessageDialog(this, "Please wait for clinic to update data");
+        return;
+            }
+            
+            
+            
                 request.setLocation(txtVenue.getText());
                 Date requestDate = new Date();
                 request.setRequestDate(requestDate); 
@@ -277,8 +300,6 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
                 request.setPurpose(txtRequestType.getText());
                 request.setStatus("Requested");
                 request.setSender(account);
-                request.setNoPeopleAffected(Integer.parseInt(txtPeopleCount.getText()));
-                request.setDoctorType(doctorTypeComboBox.getSelectedItem().toString());
                 account.getWorkQueue().getWorkRequestList().add(request);
                 enterprise.getWorkQueue().getWorkRequestList().add(request);
                 ecoSystem.getWorkQueue().getWorkRequestList().add(request);

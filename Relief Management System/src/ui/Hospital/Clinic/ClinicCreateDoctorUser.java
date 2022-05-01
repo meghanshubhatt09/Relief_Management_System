@@ -232,6 +232,13 @@ public class ClinicCreateDoctorUser extends javax.swing.JPanel {
 
     private void btnCreateUserAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserAccountActionPerformed
         
+        
+        if(txtEmployeeName.getText().isEmpty() || txtPassword.getText().isEmpty() || txtUserName.getText().isEmpty()){
+         JOptionPane.showMessageDialog(this, "Please add all the fields");
+        return;
+        }
+        
+        
         String employeeName = txtEmployeeName.getText();
         
         if ("".equals(employeeName)) {
