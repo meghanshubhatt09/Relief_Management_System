@@ -14,6 +14,7 @@ import Business.WorkQueue.CommunityDoctorRequest;
 import Business.WorkQueue.NGOWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -81,8 +82,8 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
                if(((NGOWorkRequest) work).getReceiver() == null || ((NGOWorkRequest) work).getReceiver() == userAccount){
                Object[] row = new Object[8];
             row[0] = ((NGOWorkRequest) work).getNoDoctorRequired();
-            row[1] = ((NGOWorkRequest) work).getRequestedDate();
-            row[2] = ((NGOWorkRequest) work).getRequestedTime();
+            row[1] = ((NGOWorkRequest) work).getRequestDate();
+            row[2] = ((NGOWorkRequest) work).getResolveDate();
             row[3] = ((NGOWorkRequest) work).getLocation();
             row[4] = ((NGOWorkRequest) work).getDoctorType();
             row[5] = work;
@@ -147,7 +148,7 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "No of Doctors required", "Date of requirement", "Time of requirement", "Position", "Doctor Type", "Status", "Sender", "Receiver"
+                "No of Doctors required", "Date of requirement", "Resolve Date", "Position", "Doctor Type", "Status", "Sender", "Receiver"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -422,6 +423,8 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
                     }
 
                     p.setStatus("Approved");
+                    Date resolveDate = new Date();
+                    p.setResolveDate(resolveDate);
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
                     populateAvailableDoctorTbl();
                     populateRequestTable();

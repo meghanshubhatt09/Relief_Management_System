@@ -61,12 +61,6 @@ public class NGOManageRequestDonationJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtDateNGOSponsor = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        txtTimeNGOSponsor = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtVenueNGOSponsor = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -87,22 +81,6 @@ public class NGOManageRequestDonationJPanel extends javax.swing.JPanel {
         jLabel2.setBackground(new java.awt.Color(102, 217, 255));
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setText("Purpose :");
-
-        jLabel5.setBackground(new java.awt.Color(102, 217, 255));
-        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLabel5.setText("Date ");
-
-        jLabel9.setBackground(new java.awt.Color(102, 217, 255));
-        jLabel9.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLabel9.setText("(MM/DD/YYYY)");
-
-        jLabel6.setBackground(new java.awt.Color(102, 217, 255));
-        jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLabel6.setText("Time ");
-
-        jLabel10.setBackground(new java.awt.Color(102, 217, 255));
-        jLabel10.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jLabel10.setText("(HH:MM)");
 
         jLabel7.setBackground(new java.awt.Color(102, 217, 255));
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -140,7 +118,7 @@ public class NGOManageRequestDonationJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Requested Amount", "Date of requirement", "Time of requirement", "Venue", "Status"
+                "Requested Amount", "Date of requirement", "Resolve Date", "Venue", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -176,69 +154,49 @@ public class NGOManageRequestDonationJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnDeleteRequestSponser, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(17, 17, 17)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtPurpose, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnDeleteRequestSponser, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel9))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel6)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel10))
                                             .addComponent(jLabel7)
-                                            .addComponent(jLabel8))
-                                        .addGap(70, 70, 70)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnCreateSponsor)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(txtDateNGOSponsor)
-                                                .addComponent(txtTimeNGOSponsor)
-                                                .addComponent(txtVenueNGOSponsor)
-                                                .addComponent(txtAmountNGOSponsor, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addComponent(jLabel4)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(btnBackNgoSponsor)
-                            .addGap(115, 115, 115)
-                            .addComponent(jLabel1))))
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel2))
+                                        .addGap(78, 78, 78)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(btnCreateSponsor)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(txtVenueNGOSponsor)
+                                                    .addComponent(txtAmountNGOSponsor, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(txtPurpose, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnBackNgoSponsor))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(207, 207, 207)
+                        .addComponent(jLabel1)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnBackNgoSponsor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBackNgoSponsor)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPurpose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtDateNGOSponsor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtTimeNGOSponsor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txtVenueNGOSponsor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -254,7 +212,7 @@ public class NGOManageRequestDonationJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnDeleteRequestSponser)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -269,31 +227,34 @@ public class NGOManageRequestDonationJPanel extends javax.swing.JPanel {
 
     private void btnCreateSponsorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateSponsorActionPerformed
         // TODO add your handling code here:
-        if(!txtDateNGOSponsor.getText().equals("")){
+      {
             DonationWorkRequest request= new DonationWorkRequest();
-            if(isDateValid(txtDateNGOSponsor.getText())){
-
+       
+                try{
                 request.setPurpose(txtPurpose.getText());
                 request.setRequestedAmount(Double.parseDouble(txtAmountNGOSponsor.getText()));
                 request.setLocation(txtVenueNGOSponsor.getText());
-                request.setRequestedDate(txtDateNGOSponsor.getText());
-                request.setRequestedTime(txtTimeNGOSponsor.getText());
+                Date date = new Date();
+                request.setRequestDate(date);
+                //request.setRequestedDate(txtDateNGOSponsor.getText());
+                //request.setRequestedTime(txtTimeNGOSponsor.getText());
                 request.setStatus("Requested");
                 request.setSender(userAccount);
                 userAccount.getWorkQueue().getWorkRequestList().add(request);
                 ecoSystem.getWorkQueue().getWorkRequestList().add(request);
                 enterprise.getWorkQueue().getWorkRequestList().add(request);
+                }
+                catch (Exception e)
+                {
+                    JOptionPane.showMessageDialog(null, "Please check the inserted value !", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
             }
-            else{
-                JOptionPane.showMessageDialog(null, "Enter date in MM/DD/YYYY format", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
+
 
 
 
             populateTheRequestTable();
-        }else{
-            JOptionPane.showMessageDialog(null, "Enter value", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
+
     }//GEN-LAST:event_btnCreateSponsorActionPerformed
 
     private void btnBackNgoSponsorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackNgoSponsorActionPerformed
@@ -329,20 +290,14 @@ public class NGOManageRequestDonationJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnCreateSponsor;
     private javax.swing.JButton btnDeleteRequestSponser;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblNgoManageRequestSponsor;
     private javax.swing.JTextField txtAmountNGOSponsor;
-    private javax.swing.JTextField txtDateNGOSponsor;
     private javax.swing.JTextField txtPurpose;
-    private javax.swing.JTextField txtTimeNGOSponsor;
     private javax.swing.JTextField txtVenueNGOSponsor;
     // End of variables declaration//GEN-END:variables
 
@@ -356,8 +311,8 @@ public class NGOManageRequestDonationJPanel extends javax.swing.JPanel {
            if(work instanceof DonationWorkRequest){ 
             Object[] row = new Object[5];
             row[0] = ((DonationWorkRequest) work).getRequestedAmount();
-            row[1] = ((DonationWorkRequest) work).getRequestedDate();
-            row[2] = ((DonationWorkRequest) work).getRequestedTime();
+            row[1] = ((DonationWorkRequest) work).getRequestDate();
+            row[2] = ((DonationWorkRequest) work).getResolveDate();
             row[3] = ((DonationWorkRequest) work).getLocation();
             row[4] = work;
             model.addRow(row);

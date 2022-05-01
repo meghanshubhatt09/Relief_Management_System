@@ -9,6 +9,7 @@ import Business.Enterprise.Enterprise;
 import Business.RoundedBorder;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -32,6 +33,7 @@ public class NGOWorkAreaJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         btnDonation.setBorder(new RoundedBorder(20));
         btnHospital.setBorder(new RoundedBorder(20));
+        btnDonation1.setBorder(new RoundedBorder(20));
         //valueLabel.setText(enterprise.getName());
     }
 
@@ -137,27 +139,46 @@ public class NGOWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHospitalActionPerformed
         // TODO add your handling code here:
+        try
+        {
         NGOManageRequestHospitalJPanel nGOManageRequestHospitalJPanel = new NGOManageRequestHospitalJPanel(userProcessContainer, enterprise.getOrganizationDirectory(), enterprise, ecoSystem, userAccount);
         userProcessContainer.add("NGOManageRequestHospitalJPanel", nGOManageRequestHospitalJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "Some error has occured", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnHospitalActionPerformed
 
     private void btnDonationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonationActionPerformed
         // TODO add your handling code here:
+        try{
         NGOManageRequestDonationJPanel nGOManageRequestDonationJPanel = new NGOManageRequestDonationJPanel(userProcessContainer, enterprise.getOrganizationDirectory(), enterprise, ecoSystem, userAccount);
         userProcessContainer.add("NGOManageRequestDonationJPanel", nGOManageRequestDonationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(null, "Some error has occured", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
     }//GEN-LAST:event_btnDonationActionPerformed
 
     private void btnDonation1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonation1ActionPerformed
         // TODO add your handling code here:
         
+        try{
          SetupNGOInfoJPanel setupNGOInfoJPanel = new SetupNGOInfoJPanel(userProcessContainer, enterprise.getOrganizationDirectory(), enterprise, ecoSystem, userAccount);
         userProcessContainer.add("SetupNGOInfoJPanel", setupNGOInfoJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(Exception e)
+                {
+                    JOptionPane.showMessageDialog(null, "Some error has occured", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
     }//GEN-LAST:event_btnDonation1ActionPerformed
 
 

@@ -190,7 +190,7 @@ public class HospitalManageOrganization extends javax.swing.JPanel {
                                         .addComponent(jLabel2)
                                         .addGap(33, 33, 33)
                                         .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(38, 38, 38)
                                 .addComponent(btnDeleteRequest))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
