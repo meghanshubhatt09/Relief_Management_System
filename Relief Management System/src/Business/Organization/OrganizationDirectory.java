@@ -56,14 +56,17 @@ public class OrganizationDirectory {
             organizationList.add(organization);
         }
          else if (type.getValue().equals(Type.EmergencyRequestOrganization.getValue())){
-            organization = new EmergencyRequestOrganization();
+            organization = new EmergencyRequestOrganization(name);
+            organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
         } else if (type.getValue().equals(Type.FireDepartmentOrganization.getValue())){
             organization = new FireDepartmentOrganization(name);
+            organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
         
         } else if (type.getValue().equals(Type.PoliceOrganization.getValue())){
             organization = new PoliceOrganization(name);
+            organization.setLocationPoint(locationPoint);
             organizationList.add(organization);
         }
            else if (type.getValue().equals(Type.FSOrganization.getValue())){

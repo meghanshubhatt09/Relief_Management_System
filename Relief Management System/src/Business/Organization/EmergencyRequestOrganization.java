@@ -15,14 +15,19 @@ import java.util.HashSet;
  */
 public class EmergencyRequestOrganization extends Organization {
 
-    public EmergencyRequestOrganization() {
-        super(Organization.Type.EmergencyRequestOrganization.getValue());
+    public EmergencyRequestOrganization(String name) {
+        super(name);
     }
 
     @Override
     public HashSet<Role> getSupportedRole() {
         roles.add(new EmergencyRequestAdminRole());
         return roles;
+    }
+    
+       @Override
+     public Type getType() {
+        return Organization.Type.EmergencyRequestOrganization;
     }
     
 }
