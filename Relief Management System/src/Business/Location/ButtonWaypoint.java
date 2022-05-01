@@ -5,6 +5,10 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
+/**
+ *
+ * @author rk
+ */
 public class ButtonWaypoint extends JButton {
 
     public ButtonWaypoint() {

@@ -6,6 +6,10 @@ import javax.swing.JButton;
 import org.jxmapviewer.viewer.DefaultWaypoint;
 import org.jxmapviewer.viewer.GeoPosition;
 
+/**
+ *
+ * @author rk
+ */
 public class MyWaypoint extends DefaultWaypoint {
 
     public String getName() {

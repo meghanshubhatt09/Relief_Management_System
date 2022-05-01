@@ -65,7 +65,7 @@ public class EnterpriseMangWAJPanel extends javax.swing.JPanel {
         nameJTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(194, 192, 212));
+        setBackground(new java.awt.Color(198, 210, 198));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jLabel3.setText("Enterprise Type");
