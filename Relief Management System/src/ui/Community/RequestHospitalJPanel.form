@@ -126,12 +126,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Request Type"/>
+        <Property name="text" type="java.lang.String" value="Request Type :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Venue :"/>
+        <Property name="text" type="java.lang.String" value="Location :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
@@ -174,7 +174,7 @@
                 <Column editable="true" title="No of Doctors" type="java.lang.Object"/>
                 <Column editable="true" title="Date of Request" type="java.lang.Object"/>
                 <Column editable="true" title="Date of Resolution" type="java.lang.Object"/>
-                <Column editable="true" title="Venue" type="java.lang.Object"/>
+                <Column editable="true" title="Location" type="java.lang.Object"/>
                 <Column editable="true" title="People Affected" type="java.lang.Object"/>
                 <Column editable="true" title="Doctor Type" type="java.lang.Object"/>
                 <Column editable="true" title="Status" type="java.lang.Object"/>
