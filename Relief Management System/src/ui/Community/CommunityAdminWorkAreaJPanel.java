@@ -8,8 +8,10 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.ClinicOrganization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.CommunityFireRequest;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -60,6 +62,7 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         btnRequestHospital1 = new javax.swing.JButton();
         btnPoliceService = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         enterpriseNameLabel.setText("jTextField1");
 
@@ -112,6 +115,14 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        jToggleButton1.setBackground(new java.awt.Color(204, 0, 0));
+        jToggleButton1.setText("Raise Alert");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,14 +143,17 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
                             .addComponent(btnDonateBlood)
                             .addComponent(jButton1)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(btnPoliceService))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(145, 145, 145)
                         .addComponent(enterpriseNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(130, 130, 130)
-                        .addComponent(btnRequestServiceProvider)))
+                        .addComponent(btnRequestServiceProvider))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(btnPoliceService))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jToggleButton1)))
                 .addContainerGap(140, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -161,7 +175,9 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnRequestHospital1)
                 .addGap(18, 18, 18)
                 .addComponent(btnPoliceService)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToggleButton1)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -223,6 +239,26 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
          layout.next(userProcessContainer);
     }//GEN-LAST:event_btnPoliceServiceActionPerformed
 
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        RequestFireDepartmentJPanel requestFireDepartmentJPanel = new  RequestFireDepartmentJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
+         userProcessContainer.add("requestFireDepartmentJPanel",requestFireDepartmentJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+         layout.next(userProcessContainer);
+        
+        
+//        CommunityFireRequest request = new CommunityFireRequest();
+//        boolean status = true;
+//        request.setIsAlert(status);
+//        request.setSender(userAccount);
+//        userAccount.getWorkQueue().getWorkRequestList().add(request);
+//        enterprise.getWorkQueue().getWorkRequestList().add(request);
+//        ecoSystem.getWorkQueue().getWorkRequestList().add(request);
+//        JOptionPane.showMessageDialog(null, "Alert Raised", "Warning", JOptionPane.WARNING_MESSAGE);
+
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDonateBlood;
@@ -233,5 +269,6 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnRequestServiceProvider;
     private javax.swing.JTextField enterpriseNameLabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

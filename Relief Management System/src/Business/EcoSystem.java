@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import Business.Doctor.DoctorDirectory;
 import Business.Doctor.Doctor;
+import Business.FireDepartment.FireDepartmentDirectory;
 import Business.FoodAndShelterDistributor.FoodDirectory;
 import Business.PoliceStation.PoliceStationDirectory;
 import Business.Location.LocationPoint;
@@ -41,6 +42,7 @@ public class EcoSystem extends Organization {
      private ShelterDirectory shelterDirectory;
 
     private PoliceStationDirectory policeStationList;
+    private FireDepartmentDirectory fireDepartmentDirectory;
 
       private LocationPoint locationPoint;
 
@@ -113,6 +115,15 @@ public class EcoSystem extends Organization {
         this.foodInventory = new FoodInventory();
         this.shelterDirectory = new ShelterDirectory();
         this.policeStationList = new PoliceStationDirectory();
+        this.fireDepartmentDirectory = new FireDepartmentDirectory();
+    }
+
+    public FireDepartmentDirectory getFireDepartmentDirectory() {
+        return fireDepartmentDirectory;
+    }
+
+    public void setFireDepartmentDirectory(FireDepartmentDirectory fireDepartmentDirectory) {
+        this.fireDepartmentDirectory = fireDepartmentDirectory;
     }
 
       public CommunityDirectory getCommunityList() {
