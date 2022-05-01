@@ -182,7 +182,7 @@ public class MapPanel extends javax.swing.JPanel {
             for(Organization organization: enterprise.getOrganizationDirectory().getOrganizationList()){
                 double geoLat = organization.getLocationPoint().getLatitude();
                  double geoLon = organization.getLocationPoint().getLongitude();
-                 addWaypoint(new MyWaypoint(organization.getName(), event, new GeoPosition(geoLat,geoLon)));
+                 addWaypoint(new MyWaypoint(organization.getName() + " " + organization.getType() , event, new GeoPosition(geoLat,geoLon)));
             }
         }
    

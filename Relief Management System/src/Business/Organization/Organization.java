@@ -67,6 +67,7 @@ public abstract class Organization {
     public enum Type{
         NGOOrganization("NGO Organization"),
         DonationOrganization("Donation Organization"),
+        FSOrganization("FS Organization"),
         BloodOrganization("Blood Organization"),
         ClinicOrganization("Clinic Organization"),
         FoodOrganization("Food Organization"),
