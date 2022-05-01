@@ -60,7 +60,7 @@ public class FireDepartmentAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setText("Fire Department");
 
         jButton3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButton3.setText("Manage  Community Request");
+        jButton3.setText("Manage Community Request");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

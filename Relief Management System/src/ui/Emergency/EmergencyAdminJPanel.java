@@ -129,11 +129,16 @@ public class EmergencyAdminJPanel extends javax.swing.JPanel {
 
     private void btnUserAccountsManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserAccountsManageActionPerformed
         // TODO add your handling code here:
+        try{
         EmergencyManageUserAccount emergencyManageUserAccount = new EmergencyManageUserAccount(userProcessContainer, enterprise);
         userProcessContainer.add("emergencyManageUserAccount", emergencyManageUserAccount);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Some error occurred!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnUserAccountsManageActionPerformed
 
     private void btnCreateManageOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateManageOrganizationActionPerformed

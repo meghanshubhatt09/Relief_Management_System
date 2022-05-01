@@ -161,10 +161,15 @@ public class ServiceProviderAdminJPanel extends javax.swing.JPanel {
 
     private void ManageOrgBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageOrgBtnActionPerformed
         // TODO add your handling code here:
+        try{
         SPManageOrganization sPManageOrganization = new SPManageOrganization(enterprise,enterprise.getOrganizationDirectory(),userProcessContainer,ecoSystem);
         userProcessContainer.add("SPManageOrganization", sPManageOrganization);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+             JOptionPane.showMessageDialog(null, "Some error occurred!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
         
     }//GEN-LAST:event_ManageOrgBtnActionPerformed
 
