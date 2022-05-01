@@ -190,6 +190,18 @@ public class ManagePoliceStationJPanel extends javax.swing.JPanel {
     private void btnAddDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDoctorActionPerformed
         // TODO add your handling code here:
        // PoliceStationDirectory policeStationDirectory = new PoliceStationDirectory();
+       
+        try{
+            if(Integer.parseInt(txtUnitSize.getText()) <= 0 ){
+        JOptionPane.showMessageDialog(null, "Enter Proper value", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+        }
+            
+        } catch( NumberFormatException n){
+        JOptionPane.showMessageDialog(null, "Enter Proper numeric value", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+       
+       
         int flag = 0;
         if(!unitTypeComboBox.getSelectedItem().toString().equals("")){
             System.out.println("check a");

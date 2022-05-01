@@ -195,6 +195,19 @@ public class ManageFireStationJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int flag = 0;
         
+        
+        try{
+            if(Integer.parseInt(txtUnitSize.getText()) <= 0 ){
+        JOptionPane.showMessageDialog(null, "Enter Proper value", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+        }
+            
+        } catch( NumberFormatException n){
+        JOptionPane.showMessageDialog(null, "Enter Proper numeric value", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
+        
         if(!unitTypeComboBox.getSelectedItem().toString().equals("")){
 
             System.out.println("check a");
