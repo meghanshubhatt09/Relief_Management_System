@@ -73,6 +73,7 @@ public class OrganizationRequestGraph extends javax.swing.JPanel {
         jLabel1.setText("Network: ");
 
         jPanelMap.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelMap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanelMap.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -98,7 +99,7 @@ public class OrganizationRequestGraph extends javax.swing.JPanel {
                     .addComponent(jLabel1))
                 .addGap(56, 56, 56)
                 .addComponent(jPanelMap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(375, Short.MAX_VALUE))
+                .addContainerGap(373, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -111,7 +112,7 @@ public class OrganizationRequestGraph extends javax.swing.JPanel {
     public void populateBarGraph()
     {
          barChart = ChartFactory.createBarChart(
-         "Work Request Status Across Organiztion",           
+         "Work Request Status Across Organization",           
          "Enterprises",            
          "Requests",            
          createDataBase(),          
