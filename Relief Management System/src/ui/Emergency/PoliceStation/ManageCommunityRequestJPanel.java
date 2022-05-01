@@ -276,6 +276,17 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
     private void btnApproveReqPoliceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveReqPoliceActionPerformed
         // TODO add your handling code here:
 
+         try{
+            if(Integer.parseInt(txtCount.getText()) <= 0 ){
+        JOptionPane.showMessageDialog(null, "Enter Proper value", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+        }
+            
+        } catch( NumberFormatException n){
+        JOptionPane.showMessageDialog(null, "Enter Proper numeric value", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
         int selectedRow= tblRequest.getSelectedRow();
         
         if(txtCount.getText().isEmpty()){
