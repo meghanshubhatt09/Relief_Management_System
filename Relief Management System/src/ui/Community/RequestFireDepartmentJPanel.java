@@ -62,8 +62,12 @@ public class RequestFireDepartmentJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         doctorTypeComboBox = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(txtVenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 184, -1));
+        add(txtPeopleCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 240, 184, -1));
 
         btnSendRequest.setBackground(new java.awt.Color(102, 217, 255));
         btnSendRequest.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -73,9 +77,11 @@ public class RequestFireDepartmentJPanel extends javax.swing.JPanel {
                 btnSendRequestActionPerformed(evt);
             }
         });
+        add(btnSendRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setText("Community Fire Request");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(273, 36, 343, -1));
 
         tblRequest.setFont(new java.awt.Font("Lucida Grande", 1, 12)); // NOI18N
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
@@ -89,6 +95,8 @@ public class RequestFireDepartmentJPanel extends javax.swing.JPanel {
         tblRequest.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(tblRequest);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 920, 215));
+
         btnBack.setBackground(new java.awt.Color(102, 217, 255));
         btnBack.setText("<<Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -96,88 +104,32 @@ public class RequestFireDepartmentJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel8.setText("Respondant Type:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setText("Emergency Type");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
 
         emergencyTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "low", "medium", "high", "immediate" }));
+        add(emergencyTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 184, -1));
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel5.setText("Location");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, -1, -1));
 
-        doctorTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "First Response", "Patrol team", "Intelligence Squad", "Emergency Dispatch", "Federal Team" }));
+        doctorTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "First Response", "Patrol team", "Emergency Dispatch" }));
+        add(doctorTypeComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 180, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel7.setText("Number of People Affected :");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtVenue, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(emergencyTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(doctorTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPeopleCount, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(288, 288, 288)
-                        .addComponent(btnSendRequest)))
-                .addContainerGap(181, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(btnBack))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(273, 273, 273)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnBack)
-                .addGap(1, 1, 1)
-                .addComponent(jLabel1)
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(emergencyTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(doctorTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(txtPeopleCount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtVenue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnSendRequest)
-                .addContainerGap(105, Short.MAX_VALUE))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fireWorkRequest512xx.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, 720, 470));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSendRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestActionPerformed
@@ -269,6 +221,7 @@ public class RequestFireDepartmentJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> emergencyTypeComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

@@ -149,12 +149,10 @@
     <Component class="javax.swing.JComboBox" name="unitTypeComboBox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
+          <StringArray count="3">
             <StringItem index="0" value="First Response"/>
             <StringItem index="1" value="Patrol team"/>
-            <StringItem index="2" value="Intelligence Squad"/>
-            <StringItem index="3" value="Emergency Dispatch"/>
-            <StringItem index="4" value="Federal Team"/>
+            <StringItem index="2" value="Emergency Dispatch"/>
           </StringArray>
         </Property>
       </Properties>

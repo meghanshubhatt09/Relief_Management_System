@@ -92,7 +92,7 @@ public class ManageFireStationJPanel extends javax.swing.JPanel {
             }
         });
 
-        unitTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "First Response", "Patrol team", "Intelligence Squad", "Emergency Dispatch", "Federal Team" }));
+        unitTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "First Response", "Patrol team", "Emergency Dispatch" }));
 
         btnAddDoctor.setBackground(new java.awt.Color(102, 217, 255));
         btnAddDoctor.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
