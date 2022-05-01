@@ -228,7 +228,7 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
             }
             
             
-            
+                
                 request.setLocation(txtVenue.getText());
                 Date requestDate = new Date();
                 request.setRequestDate(requestDate); 
@@ -239,13 +239,18 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
                 account.getWorkQueue().getWorkRequestList().add(request);
                 enterprise.getWorkQueue().getWorkRequestList().add(request);
                 ecoSystem.getWorkQueue().getWorkRequestList().add(request);
-            
+                resetFields();
             populateRequestTable();
         
 //            JOptionPane.showMessageDialog(null,"Enter date in specified format", "Warning", JOptionPane.WARNING_MESSAGE);
         
     }//GEN-LAST:event_btnSendRequestActionPerformed
-
+   public void resetFields() {
+        txtDoctorCount.setText("");
+        txtPeopleCount.setText("");
+        txtRequestType.setText("");
+        txtVenue.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
