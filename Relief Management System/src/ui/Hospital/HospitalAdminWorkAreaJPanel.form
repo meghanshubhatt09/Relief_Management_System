@@ -72,6 +72,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnCreateManageOrganization">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="13" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Organization"/>
       </Properties>
       <Events>
@@ -80,6 +83,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnEmployeeCreation">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="13" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Create Employee"/>
       </Properties>
       <Events>
@@ -88,6 +94,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnUserAccountsManage">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="13" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Manage User Accounts"/>
       </Properties>
       <Events>

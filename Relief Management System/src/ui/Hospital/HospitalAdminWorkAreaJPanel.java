@@ -60,6 +60,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 204, 255));
 
+        btnCreateManageOrganization.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnCreateManageOrganization.setText("Organization");
         btnCreateManageOrganization.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +68,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnEmployeeCreation.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnEmployeeCreation.setText("Create Employee");
         btnEmployeeCreation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +76,7 @@ public class HospitalAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnUserAccountsManage.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnUserAccountsManage.setText("Manage User Accounts");
         btnUserAccountsManage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
