@@ -59,7 +59,7 @@ public class DonationSetUpInformation extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jOrgName = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -72,7 +72,7 @@ public class DonationSetUpInformation extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bar-chart.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/department128x.png"))); // NOI18N
 
         jButton2.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jButton2.setText("Add");
@@ -112,7 +112,7 @@ public class DonationSetUpInformation extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bar-chart.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/department128x.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -124,11 +124,9 @@ public class DonationSetUpInformation extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(btnBackNgoSponsor))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jLabel1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
+                                .addGap(197, 197, 197)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5))
@@ -137,14 +135,19 @@ public class DonationSetUpInformation extends javax.swing.JPanel {
                                     .addComponent(jOrgName, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(JLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(104, 104, 104)
+                                .addGap(285, 285, 285)
                                 .addComponent(jButton1))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(121, 121, 121)
+                                .addGap(302, 302, 302)
                                 .addComponent(jButton2)))
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel2)))
+                        .addComponent(jLabel1)))
                 .addContainerGap(85, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(63, 63, 63)
+                    .addComponent(jLabel3)
+                    .addContainerGap(578, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,9 +168,13 @@ public class DonationSetUpInformation extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
-                    .addComponent(jLabel2))
+                        .addComponent(jButton2)))
                 .addContainerGap(144, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(127, 127, 127)
+                    .addComponent(jLabel3)
+                    .addContainerGap(148, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -224,7 +231,7 @@ public class DonationSetUpInformation extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jOrgName;

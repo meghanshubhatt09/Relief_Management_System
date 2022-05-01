@@ -66,6 +66,11 @@ public class OrganizationDirectory {
             organization = new PoliceOrganization(name);
             organizationList.add(organization);
         }
+           else if (type.getValue().equals(Type.FSOrganization.getValue())){
+            organization = new FSOrganization(name);
+            organization.setLocationPoint(locationPoint);
+            organizationList.add(organization);
+        }
 
         
         return organization;
