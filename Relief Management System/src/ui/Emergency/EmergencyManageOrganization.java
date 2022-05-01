@@ -4,6 +4,9 @@
  */
 package ui.Emergency;
 
+import Business.EcoSystem;
+import Business.Enterprise.Enterprise;
+import Business.Location.LocationPoint;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
@@ -11,6 +14,7 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import ui.GoogleMaps.OrganizationMapJPanel;
 
 /**
  *
@@ -23,10 +27,16 @@ public class EmergencyManageOrganization extends javax.swing.JPanel {
      */
     private OrganizationDirectory organizationDirectory;
     private JPanel userProcessContainer;
-    public EmergencyManageOrganization(JPanel userProcessContainer,OrganizationDirectory organizationDirectory) {
+    private final EcoSystem ecoSystem;
+     private final Enterprise enterprise;
+    private LocationPoint locationPoint;
+    public EmergencyManageOrganization(JPanel userProcessContainer,OrganizationDirectory organizationDirectory
+    ,EcoSystem ecoSystem, Enterprise enterprise) {
         initComponents();
          this.userProcessContainer = userProcessContainer;
         this.organizationDirectory = organizationDirectory;
+        this.ecoSystem = ecoSystem;
+        this.enterprise = enterprise;
         filltheTable();
         filltheCombobox();
     }
@@ -51,6 +61,9 @@ public class EmergencyManageOrganization extends javax.swing.JPanel {
         txtEmergencyOrganiztionName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        JLocation = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -61,6 +74,7 @@ public class EmergencyManageOrganization extends javax.swing.JPanel {
         });
 
         backJButton.setBackground(new java.awt.Color(102, 217, 255));
+        backJButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         backJButton.setText("<< Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,20 +93,20 @@ public class EmergencyManageOrganization extends javax.swing.JPanel {
 
         tblOrganizationEmergency.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Type", "Name"
+                "ID", "Type", "Name", "Location"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -120,6 +134,7 @@ public class EmergencyManageOrganization extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel4.setText("Organization Name ");
 
+        txtEmergencyOrganiztionName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtEmergencyOrganiztionName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmergencyOrganiztionNameActionPerformed(evt);
@@ -133,6 +148,26 @@ public class EmergencyManageOrganization extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setText("Organization Type ");
 
+        jLabel5.setBackground(new java.awt.Color(102, 217, 255));
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jLabel5.setText("Set Location");
+
+        JLocation.setEditable(false);
+        JLocation.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        JLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JLocationActionPerformed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jButton1.setText("Set Location");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,25 +180,34 @@ public class EmergencyManageOrganization extends javax.swing.JPanel {
                         .addGap(93, 93, 93)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(290, 290, 290)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(103, 103, 103)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addGap(201, 201, 201)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(33, 33, 33)
+                                    .addComponent(organizationEmergencyJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnDeleteRequest))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(154, 154, 154)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtEmergencyOrganiztionName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(36, 36, 36)
-                                .addComponent(txtEmergencyOrganiztionName, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 603, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(33, 33, 33)
-                                .addComponent(organizationEmergencyJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnDeleteRequest)))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                                .addComponent(jLabel5)
+                                .addGap(40, 40, 40)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(JLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,17 +223,27 @@ public class EmergencyManageOrganization extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(organizationEmergencyJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDeleteRequest))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addJButton)
-                    .addComponent(jLabel4)
-                    .addComponent(txtEmergencyOrganiztionName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(txtEmergencyOrganiztionName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(JLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addComponent(addJButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(109, 109, 109))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+     public void populateLongituteLatitude(LocationPoint locationPoint) {
+        this.locationPoint = locationPoint;
+        JLocation.setText(locationPoint.getLatitude() + ", " + locationPoint.getLongitude());
+    }
     private void organizationEmergencyJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationEmergencyJComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_organizationEmergencyJComboBoxActionPerformed
@@ -204,12 +258,24 @@ public class EmergencyManageOrganization extends javax.swing.JPanel {
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
 
         Type type = (Type) organizationEmergencyJComboBox.getSelectedItem();
-        System.out.println("Type !!!!!");
-        System.out.println(type);
-        organizationDirectory.createOrganization(type,txtEmergencyOrganiztionName.getText(),null);
-        filltheTable();
+
+        if ("".equals(txtEmergencyOrganiztionName.getText())) {
+            JOptionPane.showMessageDialog(null, "Enter organization name!");
+        } else if ("".equals(JLocation.getText())) {
+            JOptionPane.showMessageDialog(null, "Please set a location");
+        } else {
+            enterprise.getOrganizationDirectory().createOrganization(type, txtEmergencyOrganiztionName.getText(), locationPoint);
+            filltheTable();
+            resetFields();
+            JOptionPane.showMessageDialog(null, "Organization is created successfully");
+        }
     }//GEN-LAST:event_addJButtonActionPerformed
 
+    public void resetFields() {
+        txtEmergencyOrganiztionName.setText("");
+        JLocation.setText("");
+    }
+ 
     private void btnDeleteRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRequestActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblOrganizationEmergency.getSelectedRow();
@@ -239,16 +305,30 @@ public class EmergencyManageOrganization extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmergencyOrganiztionNameActionPerformed
 
+    private void JLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JLocationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JLocationActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        OrganizationMapJPanel muajp = new OrganizationMapJPanel(userProcessContainer,ecoSystem,enterprise);
+        userProcessContainer.add("OrganizationLocationJPanel", muajp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
      private void filltheTable() {
         DefaultTableModel model = (DefaultTableModel) tblOrganizationEmergency.getModel();
         
         model.setRowCount(0);
         
         for (Organization organization : organizationDirectory.getOrganizationList()){
-            Object[] row = new Object[3];
+            Object[] row = new Object[4];
             row[0] = organization.getOrganizationID();
             row[1] = organization.getType().getValue();
             row[2] = organization.getName();
+            row[3] = organization.getLocationPoint();
+            
             
             model.addRow(row);
         }
@@ -263,13 +343,16 @@ public class EmergencyManageOrganization extends javax.swing.JPanel {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField JLocation;
     private javax.swing.JButton addJButton;
     private javax.swing.JButton backJButton;
     private javax.swing.JButton btnDeleteRequest;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox organizationEmergencyJComboBox;
     private javax.swing.JTable tblOrganizationEmergency;

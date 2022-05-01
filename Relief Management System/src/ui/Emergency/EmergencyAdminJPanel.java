@@ -137,7 +137,7 @@ public class EmergencyAdminJPanel extends javax.swing.JPanel {
 
     private void btnCreateManageOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateManageOrganizationActionPerformed
         // TODO add your handling code here:
-        EmergencyManageOrganization emergencyManageOrganization = new EmergencyManageOrganization(userProcessContainer, enterprise.getOrganizationDirectory());
+        EmergencyManageOrganization emergencyManageOrganization = new EmergencyManageOrganization(userProcessContainer, enterprise.getOrganizationDirectory(),ecoSystem,enterprise);
         userProcessContainer.add("emergencyManageOrganization", emergencyManageOrganization);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
