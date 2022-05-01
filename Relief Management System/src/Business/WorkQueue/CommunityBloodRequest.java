@@ -35,9 +35,6 @@ public class CommunityBloodRequest extends WorkRequest{
         this.requestedBloodType = requestedBloodType;
     }
 
-   
-    
-
     public CommunityBloodRequest(){
         add = false;
     }

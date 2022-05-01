@@ -113,6 +113,16 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }
+    
+    
+    private void OrganiztionRequestGraphOpen(){
+     OrganizationRequestGraph organizationRequestGraph = new OrganizationRequestGraph(rightSystemAdminPanel, ecosystem);
+        rightSystemAdminPanel.add("OrganizationRequestGraph", organizationRequestGraph);
+
+        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
+        layout.next(rightSystemAdminPanel);
+    
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -140,6 +150,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         seeMapPanel = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         mapOrganizations = new javax.swing.JLabel();
+        graphPanel = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        mapOrganizations1 = new javax.swing.JLabel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(194, 192, 212));
@@ -325,9 +338,9 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(seeMapPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(mapOrganizations, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                .addGap(16, 16, 16))
+                .addGap(22, 22, 22))
         );
         seeMapPanelLayout.setVerticalGroup(
             seeMapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,7 +354,48 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel3.add(seeMapPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 260, 40));
+        jPanel3.add(seeMapPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 260, 40));
+
+        graphPanel.setBackground(new java.awt.Color(198, 210, 198));
+
+        jLabel9.setBackground(new java.awt.Color(194, 192, 212));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/stats.png"))); // NOI18N
+
+        mapOrganizations1.setBackground(new java.awt.Color(194, 192, 212));
+        mapOrganizations1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        mapOrganizations1.setText("Organization Req Graph");
+        mapOrganizations1.setPreferredSize(new java.awt.Dimension(115, 16));
+        mapOrganizations1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                mapOrganizations1MousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout graphPanelLayout = new javax.swing.GroupLayout(graphPanel);
+        graphPanel.setLayout(graphPanelLayout);
+        graphPanelLayout.setHorizontalGroup(
+            graphPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(graphPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mapOrganizations1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        graphPanelLayout.setVerticalGroup(
+            graphPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(graphPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(graphPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(graphPanelLayout.createSequentialGroup()
+                        .addComponent(mapOrganizations1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        jPanel3.add(graphPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 240, 40));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(198, 210, 198));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
@@ -445,13 +499,32 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_mapOrganizationsMousePressed
 
+    private void mapOrganizations1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mapOrganizations1MousePressed
+        // TODO add your handling code here:
+     try{
+            if(!ecosystem.getNetworkList().isEmpty()){
+          OrganiztionRequestGraphOpen();
+            }
+            else{
+                 JOptionPane.showMessageDialog(this,"Please create the network");
+            }
+        }
+            
+        catch(Exception e){
+            
+        }
+        
+    }//GEN-LAST:event_mapOrganizations1MousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel graphPanel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
@@ -463,6 +536,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel manageNetwork;
     private javax.swing.JPanel manageNetworkPanel;
     private javax.swing.JLabel mapOrganizations;
+    private javax.swing.JLabel mapOrganizations1;
     private javax.swing.JPanel rightSystemAdminPanel;
     private javax.swing.JPanel seeMapPanel;
     private javax.swing.JPanel systemAdminPanel;
