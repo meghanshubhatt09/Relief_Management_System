@@ -145,7 +145,7 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Police Dispatched", "People Affected", "Request Date", "Resolution Date", "Venue", "Police Type", "Severity", "Status"
+                "Police Dispatched", "People Affected", "Request Date", "Resolution Date", "Location", "Police Type", "Severity", "Status", "Sender", "Receiver"
             }
         ));
         jScrollPane1.setViewportView(tblRequest);
@@ -276,6 +276,17 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
     private void btnApproveReqPoliceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveReqPoliceActionPerformed
         // TODO add your handling code here:
 
+         try{
+            if(Integer.parseInt(txtCount.getText()) <= 0 ){
+        JOptionPane.showMessageDialog(null, "Enter Proper value", "Warning", JOptionPane.WARNING_MESSAGE);
+        return;
+        }
+            
+        } catch( NumberFormatException n){
+        JOptionPane.showMessageDialog(null, "Enter Proper numeric value", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
         int selectedRow= tblRequest.getSelectedRow();
         
         if(txtCount.getText().isEmpty()){
@@ -418,7 +429,10 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for(WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
             if(work instanceof CommunityPoliceRequest){
-                Object[] row = new Object[8];
+                
+                 if(((CommunityPoliceRequest) work).getReceiver() == null || ((CommunityPoliceRequest) work).getReceiver() == userAccount ){
+                 
+                      Object[] row = new Object[10];
                 row[0] = ((CommunityPoliceRequest) work).getPoliceCount() ;
                 row[1] = ((CommunityPoliceRequest) work).getNoPeopleAffected() ;
                 row[2] = ((CommunityPoliceRequest) work).getRequestDate() ;
@@ -427,8 +441,16 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
                 row[4] = ((CommunityPoliceRequest) work).getLocation() ;
                 row[5] = ((CommunityPoliceRequest) work).getPoliceType();
                 row[6] = ((CommunityPoliceRequest) work).getPurpose() ;
+                row[8] = ((CommunityPoliceRequest) work).getSender();
+                
+                if(((CommunityPoliceRequest) work).getReceiver() != null){
+                    row[9] = ((CommunityPoliceRequest) work).getReceiver();
+                }
 
                 model.addRow(row);
+                 }
+                
+               
             
             }
         }

@@ -78,9 +78,9 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText("Request Type");
+        jLabel2.setText("Request Type :");
 
-        jLabel5.setText("Venue :");
+        jLabel5.setText("Location :");
 
         jLabel6.setText("Number of Doctors : ");
 
@@ -98,7 +98,7 @@ public class RequestHospitalJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "No of Doctors", "Date of Request", "Date of Resolution", "Venue", "People Affected", "Doctor Type", "Status", "Sender", "Receiver"
+                "No of Doctors", "Date of Request", "Date of Resolution", "Location", "People Affected", "Doctor Type", "Status", "Sender", "Receiver"
             }
         ));
         jScrollPane1.setViewportView(tblRequest);

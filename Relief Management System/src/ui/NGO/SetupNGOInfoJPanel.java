@@ -54,6 +54,7 @@ public class SetupNGOInfoJPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jOrgName = new javax.swing.JTextField();
+        btnBackNgoSponsor = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 255));
 
@@ -99,6 +100,15 @@ public class SetupNGOInfoJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnBackNgoSponsor.setBackground(new java.awt.Color(102, 217, 255));
+        btnBackNgoSponsor.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnBackNgoSponsor.setText("<< Back");
+        btnBackNgoSponsor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackNgoSponsorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,6 +136,10 @@ public class SetupNGOInfoJPanel extends javax.swing.JPanel {
                 .addGap(305, 305, 305)
                 .addComponent(jButton2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnBackNgoSponsor)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +158,9 @@ public class SetupNGOInfoJPanel extends javax.swing.JPanel {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(btnBackNgoSponsor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel2))
@@ -189,6 +205,14 @@ public class SetupNGOInfoJPanel extends javax.swing.JPanel {
     private void jOrgNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOrgNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jOrgNameActionPerformed
+
+    private void btnBackNgoSponsorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackNgoSponsorActionPerformed
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackNgoSponsorActionPerformed
  public void populateLongituteLatitude(LocationPoint locationPoint) {
         this.locationPoint = locationPoint;
         JLocation.setText(locationPoint.getLatitude() + ", " + locationPoint.getLongitude());
@@ -196,6 +220,7 @@ public class SetupNGOInfoJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JLocation;
+    private javax.swing.JButton btnBackNgoSponsor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
