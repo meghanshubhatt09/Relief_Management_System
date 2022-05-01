@@ -101,11 +101,11 @@ public class ManageCommunityShelterReqJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Shelter Name", "#People", "Request Date", "Resolved Date", "Status"
+                "ID", "Shelter Name", "#People", "Request Date", "Resolved Date", "Status", "Sender", "Receiver"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -383,14 +383,25 @@ public class ManageCommunityShelterReqJPanel extends javax.swing.JPanel {
         
         for(WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
             if(work instanceof CommunityShelterRequest){
-                Object[] row = new Object[6];
+                
+                if(((CommunityShelterRequest) work).getReceiver() == null || ((CommunityShelterRequest) work).getReceiver() == userAccount){
+            
+             Object[] row = new Object[8];
                 row[0] = ((CommunityShelterRequest) work).getReqId();
                 row[3] = ((CommunityShelterRequest) work).getRequestDate() ;
                 row[1] = ((CommunityShelterRequest) work).getShelterName();
                 row[2] = ((CommunityShelterRequest) work).getCapacityRequired();
                 row[5] = work;
                 row[4] = ((CommunityShelterRequest) work).getResolveDate();
+                row[6] = ((CommunityShelterRequest) work).getSender();
+                
+                if(((CommunityShelterRequest) work).getReceiver()!=null){
+                row[7] = ((CommunityShelterRequest) work).getReceiver();
+                }
                 model.addRow(row);
+            }
+                
+               
             
             }
         }

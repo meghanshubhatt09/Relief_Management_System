@@ -60,7 +60,7 @@ public class RequestPoliceJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         emergencyTypeComboBox = new javax.swing.JComboBox<>();
 
-        jLabel5.setText("Location");
+        jLabel5.setText("Location :");
 
         doctorTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "First Response", "Patrol team", "Intelligence Squad", "Emergency Dispatch", "Federal Team" }));
 
@@ -94,7 +94,7 @@ public class RequestPoliceJPanel extends javax.swing.JPanel {
 
         jLabel8.setText("Police Type:");
 
-        jLabel2.setText("Emergency type");
+        jLabel2.setText("Emergency type :");
 
         emergencyTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "low", "medium", "high", "immediate" }));
 

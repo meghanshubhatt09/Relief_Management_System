@@ -77,14 +77,24 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
 
         for (WorkRequest work : ecoSystem.getWorkQueue().getWorkRequestList()){
            if(work instanceof NGOWorkRequest){ 
-            Object[] row = new Object[6];
+               
+               if(((NGOWorkRequest) work).getReceiver() == null || ((NGOWorkRequest) work).getReceiver() == userAccount){
+               Object[] row = new Object[8];
             row[0] = ((NGOWorkRequest) work).getNoDoctorRequired();
             row[1] = ((NGOWorkRequest) work).getRequestedDate();
             row[2] = ((NGOWorkRequest) work).getRequestedTime();
             row[3] = ((NGOWorkRequest) work).getLocation();
             row[4] = ((NGOWorkRequest) work).getDoctorType();
             row[5] = work;
+            row[6] = ((NGOWorkRequest) work).getSender();
+            
+            if(((NGOWorkRequest) work).getReceiver() != null){
+            row[7] = ((NGOWorkRequest) work).getReceiver();
+            }
+            
             model.addRow(row);
+               }
+            
            }
         }
     }
@@ -121,7 +131,7 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jLabel1.setText("Hospital Manage Request From Community");
+        jLabel1.setText("Hospital Manage Request From NGO");
 
         jLabel2.setBackground(new java.awt.Color(102, 217, 255));
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -137,11 +147,11 @@ public class ClinicManageNGORequestJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "No of Doctors required", "Date of requirement", "Time of requirement", "Venue", "Doctor Type", "Status"
+                "No of Doctors required", "Date of requirement", "Time of requirement", "Position", "Doctor Type", "Status", "Sender", "Receiver"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
