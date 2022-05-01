@@ -189,16 +189,52 @@ public class ManagePoliceStationJPanel extends javax.swing.JPanel {
 
     private void btnAddDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDoctorActionPerformed
         // TODO add your handling code here:
-        PoliceStationDirectory policeStationDirectory = new PoliceStationDirectory();
+       // PoliceStationDirectory policeStationDirectory = new PoliceStationDirectory();
+        int flag = 0;
         if(!unitTypeComboBox.getSelectedItem().toString().equals("")){
+            System.out.println("check a");
             
-            
-            
-            PoliceStation policeStation = ecoSystem.getPoliceStationList().addPolice() ;
+            if(ecoSystem.getPoliceStationList().getPoliceStationList().size() == 0){
+                System.out.println("check b");
+             PoliceStation policeStation = ecoSystem.getPoliceStationList().addPolice() ;
             policeStation.setPoliceType(unitTypeComboBox.getSelectedItem().toString());
-            policeStation.setUnitCount(Integer.parseInt(txtUnitSize.getText())); ;
-
+            policeStation.setUnitCount(Integer.parseInt(txtUnitSize.getText())); 
+            flag = 1;
             populatePoliceTable();
+            
+            } else{
+                System.out.println("check c");
+                for(PoliceStation police : ecoSystem.getPoliceStationList().getPoliceStationList()){
+                    System.out.println("check d");
+                if(police.getPoliceType().equals(unitTypeComboBox.getSelectedItem().toString())){
+                    System.out.println("check e");
+                    police.setUnitCount(police.getUnitCount() + Integer.parseInt(txtUnitSize.getText()));
+                    flag = 1;
+                    populatePoliceTable();
+                   return;
+                }
+                
+                }
+                
+                 if(flag == 0){
+                System.out.println("check f");
+                 PoliceStation policeStation = ecoSystem.getPoliceStationList().addPolice() ;
+            policeStation.setPoliceType(unitTypeComboBox.getSelectedItem().toString());
+            policeStation.setUnitCount(Integer.parseInt(txtUnitSize.getText())); 
+             populatePoliceTable();
+            
+            }
+            
+            }
+            
+           
+            
+            
+//            PoliceStation policeStation = ecoSystem.getPoliceStationList().addPolice() ;
+//            policeStation.setPoliceType(unitTypeComboBox.getSelectedItem().toString());
+//            policeStation.setUnitCount(Integer.parseInt(txtUnitSize.getText())); ;
+//
+       populatePoliceTable();
 
 //            CommunityBloodRequest communityBloodRequest = new CommunityBloodRequest();
 //            communityBloodRequest.setBloodType(bloodBank);
