@@ -36,6 +36,7 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
         this.ecoSystem = ecoSystem;
         this.userAccount = userAccount;
         
+        
 //        btnDonateBlood.setBorder(new RoundedBorder(20));
 //        btnPoliceService.setBorder(new RoundedBorder(20));
 //        btnRequestBlood.setBorder(new RoundedBorder(20));
@@ -68,10 +69,10 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
         btnRequestHospital = new javax.swing.JButton();
         btnDonateBlood = new javax.swing.JButton();
         btnRequestBlood = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        btnRequestHospital1 = new javax.swing.JButton();
+        btnRequestShelter = new javax.swing.JButton();
+        btnRequestHealthAid = new javax.swing.JButton();
         btnPoliceService = new javax.swing.JButton();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        btnFireRequest = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         SPTitle = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -87,7 +88,7 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnRequestServiceProviderActionPerformed(evt);
             }
         });
-        add(btnRequestServiceProvider, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, 230, -1));
+        add(btnRequestServiceProvider, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 250, 30));
 
         btnRequestHospital.setBackground(new java.awt.Color(255, 255, 255));
         btnRequestHospital.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -97,7 +98,7 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnRequestHospitalActionPerformed(evt);
             }
         });
-        add(btnRequestHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 250, -1));
+        add(btnRequestHospital, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 250, -1));
 
         btnDonateBlood.setBackground(new java.awt.Color(255, 255, 255));
         btnDonateBlood.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -107,7 +108,7 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnDonateBloodActionPerformed(evt);
             }
         });
-        add(btnDonateBlood, new org.netbeans.lib.awtextra.AbsoluteConstraints(243, 250, 240, -1));
+        add(btnDonateBlood, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 250, -1));
 
         btnRequestBlood.setBackground(new java.awt.Color(255, 255, 255));
         btnRequestBlood.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -117,27 +118,27 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnRequestBloodActionPerformed(evt);
             }
         });
-        add(btnRequestBlood, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 233, -1));
+        add(btnRequestBlood, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 250, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jButton1.setText("Request Shelter");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRequestShelter.setBackground(new java.awt.Color(255, 255, 255));
+        btnRequestShelter.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnRequestShelter.setText("Request Shelter");
+        btnRequestShelter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRequestShelterActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 233, -1));
+        add(btnRequestShelter, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 250, -1));
 
-        btnRequestHospital1.setBackground(new java.awt.Color(255, 255, 255));
-        btnRequestHospital1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        btnRequestHospital1.setText("Request Patient Health Aid");
-        btnRequestHospital1.addActionListener(new java.awt.event.ActionListener() {
+        btnRequestHealthAid.setBackground(new java.awt.Color(255, 255, 255));
+        btnRequestHealthAid.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnRequestHealthAid.setText("Request Patient Health Aid");
+        btnRequestHealthAid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRequestHospital1ActionPerformed(evt);
+                btnRequestHealthAidActionPerformed(evt);
             }
         });
-        add(btnRequestHospital1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 420, 233, -1));
+        add(btnRequestHealthAid, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, 250, -1));
 
         btnPoliceService.setBackground(new java.awt.Color(255, 255, 255));
         btnPoliceService.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -147,20 +148,20 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
                 btnPoliceServiceActionPerformed(evt);
             }
         });
-        add(btnPoliceService, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 480, 233, -1));
+        add(btnPoliceService, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 250, -1));
 
-        jToggleButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jToggleButton1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
-        jToggleButton1.setText("Fire Request");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnFireRequest.setBackground(new java.awt.Color(255, 255, 255));
+        btnFireRequest.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnFireRequest.setText("Fire Request");
+        btnFireRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                btnFireRequestActionPerformed(evt);
             }
         });
-        add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 233, -1));
+        add(btnFireRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 520, 250, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/employee.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 101, 510, 520));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 520, 470));
 
         SPTitle.setFont(new java.awt.Font("Malayalam MN", 1, 24)); // NOI18N
         SPTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -205,21 +206,21 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnRequestBloodActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRequestShelterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestShelterActionPerformed
         // TODO add your handling code here:
         RequestShelterJPanel requestShelterJPanel = new RequestShelterJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
         userProcessContainer.add("RequestShelterJPanel",requestShelterJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRequestShelterActionPerformed
 
-    private void btnRequestHospital1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestHospital1ActionPerformed
+    private void btnRequestHealthAidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestHealthAidActionPerformed
         // TODO add your handling code here:
         RequestDoctorCommunityAreaJPanel requestDoctorCommunityAreaJPanel = new RequestDoctorCommunityAreaJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
         userProcessContainer.add("RequestDoctorCommunityAreaJPanel",requestDoctorCommunityAreaJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnRequestHospital1ActionPerformed
+    }//GEN-LAST:event_btnRequestHealthAidActionPerformed
 
     private void btnPoliceServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliceServiceActionPerformed
         // TODO add your handling code here:
@@ -229,29 +230,26 @@ public class CommunityAdminWorkAreaJPanel extends javax.swing.JPanel {
          layout.next(userProcessContainer);
     }//GEN-LAST:event_btnPoliceServiceActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void btnFireRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFireRequestActionPerformed
         // TODO add your handling code here:
-        
-        RequestFireDepartmentJPanel requestFireDepartmentJPanel = new  RequestFireDepartmentJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
+          RequestFireDepartmentJPanel requestFireDepartmentJPanel = new  RequestFireDepartmentJPanel(userProcessContainer, userAccount, enterprise, ecoSystem);
          userProcessContainer.add("requestFireDepartmentJPanel",requestFireDepartmentJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
          layout.next(userProcessContainer);
-    
-
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_btnFireRequestActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel SPTitle;
     private javax.swing.JButton btnDonateBlood;
+    private javax.swing.JButton btnFireRequest;
     private javax.swing.JButton btnPoliceService;
     private javax.swing.JButton btnRequestBlood;
+    private javax.swing.JButton btnRequestHealthAid;
     private javax.swing.JButton btnRequestHospital;
-    private javax.swing.JButton btnRequestHospital1;
     private javax.swing.JButton btnRequestServiceProvider;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnRequestShelter;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }
