@@ -120,19 +120,29 @@ public class FireDepartmentAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-
+        
+        try{
         ManageCommunityRequestJPanel  manageCommunityRequestJPanel = new ManageCommunityRequestJPanel(userProcessContainer, enterprise.getOrganizationDirectory(),enterprise,userAccount,ecoSystem);
         userProcessContainer.add("manageCommunityRequestJPanel",manageCommunityRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "Some error occurred!!");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void btnManageFireStationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageFireStationActionPerformed
         // TODO add your handling code here:
+        try{
         ManageFireStationJPanel managePoliceStationJPanel = new ManageFireStationJPanel(userProcessContainer, enterprise.getOrganizationDirectory(),enterprise,userAccount,ecoSystem);
         userProcessContainer.add("managePoliceStationJPanel", managePoliceStationJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
+        }
+        catch(NullPointerException e){
+            JOptionPane.showMessageDialog(this, "Some error occurred!!");
+        }
     }//GEN-LAST:event_btnManageFireStationActionPerformed
 
     
