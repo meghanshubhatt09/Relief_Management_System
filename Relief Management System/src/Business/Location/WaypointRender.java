@@ -7,6 +7,10 @@ import javax.swing.JButton;
 import org.jxmapviewer.JXMapViewer;
 import org.jxmapviewer.viewer.WaypointPainter;
 
+/**
+ *
+ * @author rk
+ */
 public class WaypointRender extends WaypointPainter<MyWaypoint> {
 
     @Override
