@@ -14,6 +14,7 @@ import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -209,15 +210,37 @@ public class RequestServiceProviderJPanel extends javax.swing.JPanel {
     
     private void btnSendRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendRequestActionPerformed
         // TODO add your handling code here:
+        
+        if(txtPeopleCount.getText().isEmpty() || txtPurpose.getText().isEmpty() || txtVenue.getText().isEmpty()){
+        JOptionPane.showMessageDialog(this, "Please add all the fields");
+        return;
+        }
+        
         CommunityFoodRequest request =  new CommunityFoodRequest();
         Date date = new Date();
         request.setRequestDate(date);
         request.setLocation(txtVenue.getText());
-        request.setNoPeopleRequestingFood(Integer.parseInt(txtPeopleCount.getText()));
+        
+        try{
+                request.setNoPeopleRequestingFood(Integer.parseInt(txtPeopleCount.getText()));
+                request.setNoOfPackets(Integer.parseInt(txtPurpose.getText()));
+
+        }catch(NumberFormatException e){
+        JOptionPane.showMessageDialog(this, "Please enter numeric values");
+        return;
+        }
+        
         request.setStatus("Requested");
-        request.setNoOfPackets(Integer.parseInt(txtPurpose.getText()));
         request.setSender(account);
-        request.setRequestedFoodType(foodTypeComboBox.getSelectedItem().toString());
+        
+        try{
+            request.setRequestedFoodType(foodTypeComboBox.getSelectedItem().toString());
+
+        }catch(NullPointerException n){
+         JOptionPane.showMessageDialog(this, "Please wait for an update");
+        return;
+        }
+        
         account.getWorkQueue().getWorkRequestList().add(request);
         enterprise.getWorkQueue().getWorkRequestList().add(request);
         ecoSystem.getWorkQueue().getWorkRequestList().add(request);

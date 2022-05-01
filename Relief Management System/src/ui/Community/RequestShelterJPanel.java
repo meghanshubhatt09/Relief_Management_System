@@ -15,6 +15,7 @@ import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -215,11 +216,39 @@ public class RequestShelterJPanel extends javax.swing.JPanel {
     private void btnSendReqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendReqActionPerformed
         // TODO add your handling code here:
         
-         int capacityReq = Integer.parseInt(txtCapacity.getText());
-        String selectedShelterName = jComboBox1.getSelectedItem().toString();
+        if(txtCapacity.getText().isEmpty()){
+         JOptionPane.showMessageDialog(this, "Please add all the fields");
+        return;
+        
+        }
         CommunityShelterRequest communityShelterRequest = new CommunityShelterRequest();
+
+        try{
+                 int capacityReq = Integer.parseInt(txtCapacity.getText());
+                 
+                 if(capacityReq<=0){
+                     JOptionPane.showMessageDialog(this, "Please enter proper value");
+        return;
+                 }
+                 
+                 communityShelterRequest.setCapacityRequired(capacityReq);
+
+        }catch(NumberFormatException e){
+         JOptionPane.showMessageDialog(this, "Please enter numeric value");
+        return;
+        }
+        
+        
+        try{
+        String selectedShelterName = jComboBox1.getSelectedItem().toString();
         communityShelterRequest.setShelterName(selectedShelterName);
-         communityShelterRequest.setCapacityRequired(capacityReq);
+        }catch( NullPointerException n){
+        JOptionPane.showMessageDialog(this, "Please wait for an update");
+        return;
+        }
+        
+        
+        
           communityShelterRequest.setRequestDate(new Date());
            communityShelterRequest.setStatus("Requested");
        
