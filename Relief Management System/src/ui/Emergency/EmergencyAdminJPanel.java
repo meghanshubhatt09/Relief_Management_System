@@ -47,8 +47,13 @@ public class EmergencyAdminJPanel extends javax.swing.JPanel {
         btnCreateManageOrganization = new javax.swing.JButton();
         btnEmployeeCreation = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Malayalam MN", 1, 24)); // NOI18N
         jLabel1.setText("Emergency Admin");
 
+        btnUserAccountsManage.setBackground(new java.awt.Color(255, 153, 153));
+        btnUserAccountsManage.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnUserAccountsManage.setText("Manage User Accounts");
         btnUserAccountsManage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,6 +65,8 @@ public class EmergencyAdminJPanel extends javax.swing.JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/medical.png"))); // NOI18N
 
+        btnCreateManageOrganization.setBackground(new java.awt.Color(255, 153, 153));
+        btnCreateManageOrganization.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnCreateManageOrganization.setText("Organization");
         btnCreateManageOrganization.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +74,8 @@ public class EmergencyAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnEmployeeCreation.setBackground(new java.awt.Color(255, 153, 153));
+        btnEmployeeCreation.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnEmployeeCreation.setText("Create Employee");
         btnEmployeeCreation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,45 +88,41 @@ public class EmergencyAdminJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(281, 281, 281)
-                .addComponent(jLabel1)
-                .addContainerGap(319, Short.MAX_VALUE))
+                .addGap(241, 241, 241)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnCreateManageOrganization, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEmployeeCreation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnUserAccountsManage, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(250, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(17, 17, 17)
                     .addComponent(jLabel3)
-                    .addGap(96, 96, 96)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnUserAccountsManage, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnCreateManageOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnEmployeeCreation, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(71, 71, 71)
-                            .addComponent(jLabel2)))
-                    .addContainerGap(63, Short.MAX_VALUE)))
+                    .addGap(349, 349, 349)
+                    .addComponent(jLabel2)
+                    .addContainerGap(82, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addGap(69, 69, 69)
+                .addComponent(btnCreateManageOrganization, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(btnEmployeeCreation, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(btnUserAccountsManage, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(94, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(108, 108, 108)
+                    .addGap(160, 160, 160)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(52, 52, 52)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnCreateManageOrganization)
-                            .addGap(60, 60, 60)
-                            .addComponent(btnEmployeeCreation)
-                            .addGap(67, 67, 67)
-                            .addComponent(btnUserAccountsManage)))
-                    .addContainerGap(141, Short.MAX_VALUE)))
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel2))
+                    .addContainerGap(175, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 

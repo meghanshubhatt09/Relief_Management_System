@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package ui.AdminPanels;
+
 import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Emergency;
@@ -30,6 +31,7 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author rk
@@ -38,17 +40,18 @@ public class SetupAdminsJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private EcoSystem ecoSystem;
-     Employee employee;
+    Employee employee;
+
     /**
      * Creates new form SetupAdminsJPanel
      */
     public SetupAdminsJPanel(JPanel userProcessContainer, EcoSystem ecoSystem) {
         initComponents();
-        
+
         this.userProcessContainer = userProcessContainer;
         this.ecoSystem = ecoSystem;
         enterpriseJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
-        
+
         filltheTable();
         populateNetworkComboBox();
         submitJButton.setBorder(new RoundedBorder(10));
@@ -244,14 +247,14 @@ public class SetupAdminsJPanel extends javax.swing.JPanel {
         }
 
     }
-    
-    
+
+
     private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
         Network network = (Network) networkJComboBox.getSelectedItem();
         if (network != null) {
             populateEnterpriseJComboBox(network);
         }
-       
+
     }//GEN-LAST:event_networkJComboBoxActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -281,61 +284,56 @@ public class SetupAdminsJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
-         try{
-        Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
+        try {
+            Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
 
-        
-        String username = usernameJTextField.getText();
-        String password = String.valueOf(passwordJPasswordField.getPassword());
-        String name = nameJTextField.getText();
+            String username = usernameJTextField.getText();
+            String password = String.valueOf(passwordJPasswordField.getPassword());
+            String name = nameJTextField.getText();
 
-        if("".equals(usernameJTextField.getText())){
-            JOptionPane.showMessageDialog(null, "Please enter the username", "Warning", JOptionPane.WARNING_MESSAGE);
-               return;
-        }
-        else if("".equals(String.valueOf(passwordJPasswordField.getPassword()))) {
-            JOptionPane.showMessageDialog(null, "Please set a password");
-            return;
-        }
-        else{
-             employee = enterprise.getEmployeeDirectory().createEmployee(name);
-        }
-          
-        if (EcoSystem.checkIfUsernameIsUnique(username)) {
-            UserAccount account = null;
-            if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
-            } 
-            else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.ServiceProvider) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ServiceProviderAdminRole());
-            }else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Community) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new CommunityHeadRole());
+            if ("".equals(usernameJTextField.getText())) {
+                JOptionPane.showMessageDialog(null, "Please enter the username", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            } else if ("".equals(String.valueOf(passwordJPasswordField.getPassword()))) {
+                JOptionPane.showMessageDialog(null, "Please set a password");
+                return;
+            } else {
+                employee = enterprise.getEmployeeDirectory().createEmployee(name);
             }
-             else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.FSDistributor) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new FSAdminRole());
+
+            if (EcoSystem.checkIfUsernameIsUnique(username)) {
+                UserAccount account = null;
+                if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Hospital) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalAdminRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.ServiceProvider) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new ServiceProviderAdminRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Community) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new CommunityHeadRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.FSDistributor) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new FSAdminRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Donation) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DonationAdminRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.NGO) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new NGOAdminRole());
+                } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Emergency) {
+                    account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new EmergencyAdminRole());
+                }
+                resetFields();
+                filltheTable();
+            } else {
+                JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
             }
-            else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Donation) {
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DonationAdminRole());
-            }
-             else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.NGO) {
-               account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new NGOAdminRole());
-            } else if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Emergency){
-                account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new EmergencyAdminRole());
-            }
-          
-            filltheTable();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error Occured!!", "Warning", JOptionPane.WARNING_MESSAGE);
         }
-        else {
-            JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-        }
-        catch(Exception e){
-             JOptionPane.showMessageDialog(null, "Error Occured!!", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-       
+
     }//GEN-LAST:event_submitJButtonActionPerformed
 
-
+    public void resetFields() {
+        usernameJTextField.setText("");
+        nameJTextField.setText("");
+        passwordJPasswordField.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
     private javax.swing.JComboBox enterpriseJComboBox;

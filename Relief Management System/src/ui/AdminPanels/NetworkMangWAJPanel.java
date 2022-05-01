@@ -255,12 +255,16 @@ public class NetworkMangWAJPanel extends javax.swing.JPanel {
         Network network = ecoSystem.createAndAddNetwork();
         network.setName(name);
         network.setLocationPoint(locationPoint);
-
+        resetFields();
         fillNetworkTable();
         JOptionPane.showMessageDialog(null, "Added the nework!!");
         }
     }//GEN-LAST:event_submitJButtonActionPerformed
 
+    public void resetFields() {
+        nameJTextField.setText("");
+        JLocation.setText("");
+    }
     private void JLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JLocationActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JLocationActionPerformed

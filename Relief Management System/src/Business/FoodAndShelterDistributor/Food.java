@@ -13,7 +13,7 @@ public class Food {
     private String foodType;
     private String foodId;
     private int quantity;
-    private int price;
+    private double price;
     private boolean flag;
     private double totalPrice;
     private static int fCount;
@@ -21,6 +21,16 @@ public class Food {
     public Food() {
         foodId= "FOOD"+" "+(++fCount);
     }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    
+    
 
     public String getFoodType() {
         return foodType;
@@ -46,13 +56,7 @@ public class Food {
         this.quantity = quantity;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
+   
 
     public boolean isFlag() {
         return flag;
