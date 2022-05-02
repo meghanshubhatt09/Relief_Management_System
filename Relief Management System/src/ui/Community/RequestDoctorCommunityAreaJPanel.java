@@ -8,10 +8,22 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.UserAccount.UserAccount;
 import Business.Utils.HeaderColors;
+import Business.Utils.Validation;
 import Business.WorkQueue.PatientDoctorRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Date;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -30,6 +42,8 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
     UserAccount userAccount;
     Enterprise enterprise;
     EcoSystem ecoSystem;
+    private Validation validation;
+    boolean emailValid;
 
 
     public RequestDoctorCommunityAreaJPanel(JPanel userProcessContainer, UserAccount userAccount, Enterprise enterprise, EcoSystem ecoSystem) {
@@ -38,6 +52,9 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.enterprise = enterprise;
         this.ecoSystem = ecoSystem;
+        this.validation = new Validation();
+        emailValidateMessage.setVisible(false);
+        emailSuccessLabel.setVisible(false);
         tblRequestTablePatient.getTableHeader().setDefaultRenderer(new HeaderColors());
         
         fillTheRequestTable();
@@ -63,10 +80,14 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
         txtPatientName = new javax.swing.JTextField();
         txtPatientAge = new javax.swing.JTextField();
         txtPatientGender = new javax.swing.JTextField();
-        txtPurposeVisit = new javax.swing.JTextField();
+        emailSuccessLabel = new javax.swing.JLabel();
         btnCreate = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        txtPurposeVisit = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        emailValidateMessage = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -76,11 +97,11 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Patient Name", "Age", "Gender", "Purpose of Visit", "Request Date", "Resolve Date", "Doctor Name", "Status", "Sender", "Receiver"
+                "Name", "Age", "Gender", "Purpose", "Request Date", "Resolve Date", "Doctor Name", "Status", "Sender", "Receiver"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, true, true
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -89,7 +110,7 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblRequestTablePatient);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 695, 245));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 695, 245));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setText("Patient Request Doctor");
@@ -97,29 +118,26 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setText("Patient Name: ");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 226, -1, 20));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, 20));
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel3.setText("Patient Age: ");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel4.setText("Patient Gender: ");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 356, -1, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, 30));
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel5.setText("Purpose of Visit: ");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, 20));
-        add(txtPatientName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 124, -1));
-        add(txtPatientAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 124, -1));
-        add(txtPatientGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 124, -1));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, 20));
+        add(txtPatientName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 124, -1));
+        add(txtPatientAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 124, -1));
+        add(txtPatientGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 124, -1));
 
-        txtPurposeVisit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPurposeVisitActionPerformed(evt);
-            }
-        });
-        add(txtPurposeVisit, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, 124, -1));
+        emailSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tick.gif"))); // NOI18N
+        emailSuccessLabel.setText("jLabel7");
+        add(emailSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 40, 40));
 
         btnCreate.setBackground(new java.awt.Color(102, 217, 255));
         btnCreate.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -129,7 +147,33 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
                 btnCreateActionPerformed(evt);
             }
         });
-        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, -1, -1));
+        add(btnCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 450, -1, -1));
+
+        txtPurposeVisit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPurposeVisitActionPerformed(evt);
+            }
+        });
+        add(txtPurposeVisit, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 124, -1));
+
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmailKeyTyped(evt);
+            }
+        });
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 140, -1));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/emergencyServiceManager700x.png"))); // NOI18N
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 100, 1020, 580));
+
+        jLabel8.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel8.setText("Email Address:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, 20));
 
         jButton1.setBackground(new java.awt.Color(102, 217, 255));
         jButton1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -140,9 +184,7 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 11, -1, 37));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/emergencyServiceManager700x.png"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 1020, 580));
+        add(emailValidateMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 440, 190, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtPurposeVisitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPurposeVisitActionPerformed
@@ -152,7 +194,7 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
         
-        if(txtPatientAge.getText().isEmpty() || txtPatientGender.getText().isEmpty() || txtPatientName.getText().isEmpty() || txtPurposeVisit.getText().isEmpty()){
+        if(txtPatientAge.getText().isEmpty() || txtPatientGender.getText().isEmpty() || txtPatientName.getText().isEmpty() || txtPurposeVisit.getText().isEmpty()|| txtEmail.getText().isEmpty()){
          JOptionPane.showMessageDialog(this, "Please add all the fields");
         return;
         
@@ -172,6 +214,7 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
         
         request.setPatientGender(txtPatientGender.getText());
         request.setPurposeOfVisit(txtPurposeVisit.getText());
+        request.setEmailAdd(txtEmail.getText());
         
         Date requestDate = new Date();
         request.setRequestDate(requestDate); 
@@ -181,17 +224,23 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
         userAccount.getWorkQueue().getWorkRequestList().add(request);
         enterprise.getWorkQueue().getWorkRequestList().add(request);
         ecoSystem.getWorkQueue().getWorkRequestList().add(request);
+        validation.sendTextMessage(txtEmail.getText(), "Regarding Doctor Appointment Schedule", "Hi" + " " + txtPatientName.getText() +","
+        + "\n" + "Your appointment request has been sent to the Clinic. Please wait for the Doctor to schedule an appointment.");
         resetFields();
         
         
         
         fillTheRequestTable();
     }//GEN-LAST:event_btnCreateActionPerformed
-   public void resetFields() {
+   
+       
+        
+    public void resetFields() {
         txtPatientAge.setText("");
         txtPatientGender.setText("");
         txtPatientName.setText("");
         txtPurposeVisit.setText("");
+        txtEmail.setText("");
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -200,9 +249,40 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
+        // TODO add your handling code here:
+         if (!validation.emailValidator(txtEmail.getText())) {
+            emailValidateMessage.setVisible(true);
+            emailValid = false;
+        } else {
+            txtEmail.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txtEmail.setForeground(Color.BLACK);
+            emailValidateMessage.setVisible(false);
+            emailSuccessLabel.setVisible(true);
+            emailValid = true;
+            int delay = 2500; //milliseconds
+            ActionListener taskPerformer = new ActionListener() {
+                public void actionPerformed(ActionEvent evt) {
+                    emailSuccessLabel.setVisible(false);
+                }
+            };
+            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
+            tick.setRepeats(false);
+            tick.start();
+        }
+    }//GEN-LAST:event_txtEmailKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreate;
+    private javax.swing.JLabel emailSuccessLabel;
+    private javax.swing.JLabel emailValidateMessage;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -210,8 +290,10 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblRequestTablePatient;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtPatientAge;
     private javax.swing.JTextField txtPatientGender;
     private javax.swing.JTextField txtPatientName;

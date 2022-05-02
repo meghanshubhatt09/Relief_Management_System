@@ -10,6 +10,7 @@ import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
 import Business.Utils.HeaderColors;
+import Business.Utils.Validation;
 import Business.WorkQueue.CommunityDoctorRequest;
 import Business.WorkQueue.PatientDoctorRequest;
 import Business.WorkQueue.WorkRequest;
@@ -18,6 +19,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -33,6 +35,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     Organization organization;
     Enterprise enterprise;
     EcoSystem ecoSystem;
+    private Validation validation;
 
 
     public DoctorWorkAreaJPanel(JPanel UserContainer, UserAccount userAccount, Organization organization, Enterprise enterprise, EcoSystem system) {
@@ -42,6 +45,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         this.organization = organization;
         this.ecoSystem = system;
         this.enterprise = enterprise;
+        this.validation = new Validation();
         tblRequestTablePatient.getTableHeader().setDefaultRenderer(new HeaderColors());
         
         //System.out.println("ui.Doctor.DoctorWorkAreaJPanel.<init>()"+userAccount.getUsername());
@@ -293,7 +297,12 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
                     p.setResolveDate(resolveDate);
                     //p.setAdd(false);
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
-                    fillThePatientRequestTable();     
+                    fillThePatientRequestTable();
+                     validation.sendTextMessage(p.getEmailAdd(), "Regarding Doctor Appointment Schedule", "Hi" + " " + p.getPatientName()+","
+        + "\n" + "Your appointment has been scheduled with" + " " + p.getDoctorName() + " \n"
+                             + ". Please wait for further communication.");
+       
+                    
                     }
                     else
                     {

@@ -15,13 +15,20 @@ public class PatientDoctorRequest extends WorkRequest{
     private String patientGender;
     private String purposeOfVisit;
     private String doctorName;
-    
+    private String emailAdd;
     private String location;
     private boolean add;
     private String requestedDate;
     private String requestedTime;
     private String purpose;
-    
+
+    public String getEmailAdd() {
+        return emailAdd;
+    }
+
+    public void setEmailAdd(String emailAdd) {
+        this.emailAdd = emailAdd;
+    }
     
     public PatientDoctorRequest(){
         add = false;
