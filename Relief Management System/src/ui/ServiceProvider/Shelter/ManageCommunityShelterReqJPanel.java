@@ -317,10 +317,11 @@ public class ManageCommunityShelterReqJPanel extends javax.swing.JPanel {
                     }
 
                     p.setStatus("Approved");
+                    fillTheRequestedTable();
                     JOptionPane.showMessageDialog(null, "You have successfully completed the request");
                     Date date = new Date();
                     p.setResolveDate(date);
-                    fillTheRequestedTable();
+                    populateShelterTable();
 
                 } else if(p.getStatus().equalsIgnoreCase("Rejected")){
                     JOptionPane.showMessageDialog(null, "You cannot approve the rejected request.");
