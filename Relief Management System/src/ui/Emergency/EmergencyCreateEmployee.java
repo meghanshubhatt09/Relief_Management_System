@@ -7,6 +7,7 @@ package ui.Emergency;
 import Business.Employee.Employee;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
+import Business.Utils.HeaderColors;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -28,6 +29,7 @@ public class EmergencyCreateEmployee extends javax.swing.JPanel {
         this.organizationDirectory = organizationDirectory;
         this.userProcessContainer = userProcessContainer;
         populateOrgComboBox();
+        organizationJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
     }
 
     /**

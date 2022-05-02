@@ -39,6 +39,7 @@ public class EmergencyManageUserAccount extends javax.swing.JPanel {
         initComponents();
          this.enterprise = enterprise;
         this.userProcessContainer = userProcessContainer; 
+         tblUserAccounts.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateOrganizationComboBox();
         fillTheTable();
     }
