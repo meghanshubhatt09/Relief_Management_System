@@ -10,6 +10,7 @@ import Business.FireDepartment.FireDepartment;
 import Business.Organization.OrganizationDirectory;
 import Business.PoliceStation.PoliceStation;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import Business.WorkQueue.CommunityFireRequest;
 import Business.WorkQueue.CommunityPoliceRequest;
 import Business.WorkQueue.WorkRequest;
@@ -40,6 +41,7 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         populateAvailableFireTbl();
         populateRequestTable();
+         tblRequest.getTableHeader().setDefaultRenderer(new HeaderColors());
     }
 
     /**

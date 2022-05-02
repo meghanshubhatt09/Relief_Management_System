@@ -89,7 +89,7 @@ public class RequestFireDepartmentJPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Police Dispatched", "People Affected", "Request Date", "Resolution Date", "Venue", "Police Type", "Severity", "Status", "Sender", "Receiver"
+                "Units Dispatched", "People Affected", "Request Date", "Resolution Date", "Venue", "Unit Type", "Severity", "Status", "Sender", "Receiver"
             }
         ));
         tblRequest.setGridColor(new java.awt.Color(0, 0, 0));

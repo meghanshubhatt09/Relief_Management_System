@@ -11,6 +11,7 @@ import Business.FireDepartment.FireDepartmentDirectory;
 import Business.Organization.OrganizationDirectory;
 import Business.PoliceStation.PoliceStation;
 import Business.UserAccount.UserAccount;
+import Business.Utils.HeaderColors;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -35,6 +36,7 @@ public class ManageFireStationJPanel extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = userAccount;
         this.userProcessContainer = userProcessContainer;
+         tblPolice.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateFireDepartmentTable();
     }
 

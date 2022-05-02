@@ -42,6 +42,7 @@ public class ManageCommunityRequestJPanel extends javax.swing.JPanel {
         tblRequest.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateAvailablePoliceTbl();
         populateRequestTable();
+        tblRequest.getTableHeader().setDefaultRenderer(new HeaderColors());
     }
 
     /**

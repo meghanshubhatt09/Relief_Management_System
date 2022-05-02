@@ -10,6 +10,7 @@ import Business.Location.LocationPoint;
 import Business.Organization.Organization;
 import Business.Organization.Organization.Type;
 import Business.Organization.OrganizationDirectory;
+import Business.Utils.HeaderColors;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -37,6 +38,7 @@ public class EmergencyManageOrganization extends javax.swing.JPanel {
         this.organizationDirectory = organizationDirectory;
         this.ecoSystem = ecoSystem;
         this.enterprise = enterprise;
+        tblOrganizationEmergency.getTableHeader().setDefaultRenderer(new HeaderColors());
         filltheTable();
         filltheCombobox();
     }
