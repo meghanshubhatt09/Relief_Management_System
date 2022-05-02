@@ -197,9 +197,19 @@ public class RequestDoctorCommunityAreaJPanel extends javax.swing.JPanel {
         if(txtPatientAge.getText().isEmpty() || txtPatientGender.getText().isEmpty() || txtPatientName.getText().isEmpty() || txtPurposeVisit.getText().isEmpty()|| txtEmail.getText().isEmpty()){
          JOptionPane.showMessageDialog(this, "Please add all the fields");
         return;
-        
-        
         }
+        
+        if (!txtEmail.getText().contains("@")) {
+            JOptionPane.showMessageDialog(this, "Email format is incorrect!!");
+            return;
+        }
+        if (!txtEmail.getText().contains(".")) {
+            JOptionPane.showMessageDialog(this, "Email format is incorrect!!");
+            return;
+        }
+
+
+
         
         PatientDoctorRequest request = new PatientDoctorRequest();
         request.setPatientName(txtPatientName.getText());
