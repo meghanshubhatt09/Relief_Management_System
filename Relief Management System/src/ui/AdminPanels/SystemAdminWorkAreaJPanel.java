@@ -143,7 +143,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         manageEnterpriseAdmin = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         manageEnterpriseAdminLabel = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
         jSeparator2 = new javax.swing.JSeparator();
@@ -292,10 +291,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         );
 
         jPanel3.add(manageEnterpriseAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 88, 280, 40));
-
-        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel7.setText("Selected Node:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 140, 30));
 
         jScrollPane2.setBackground(new java.awt.Color(198, 210, 198));
 
@@ -515,7 +510,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;

@@ -62,7 +62,7 @@ public class OrganizationRequestGraph extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanelMap = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(198, 210, 198));
 
         networkJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,7 +72,7 @@ public class OrganizationRequestGraph extends javax.swing.JPanel {
 
         jLabel1.setText("Network: ");
 
-        jPanelMap.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelMap.setBackground(new java.awt.Color(198, 210, 198));
         jPanelMap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanelMap.setLayout(new java.awt.BorderLayout());
 
